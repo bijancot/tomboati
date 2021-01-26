@@ -1,6 +1,6 @@
 <?php
 
-class UserApi extends CI_Controller{
+class User extends CI_Controller{
 
     // constructor
     public function __construct(){

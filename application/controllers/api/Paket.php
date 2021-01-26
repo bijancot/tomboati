@@ -1,6 +1,6 @@
 <?php
 
-class PaketApi extends CI_Controller{
+class Paket extends CI_Controller{
 
     // constructor
     public function __construct(){
