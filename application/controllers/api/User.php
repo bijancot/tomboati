@@ -56,31 +56,31 @@ class User extends CI_Controller{
                         
                         if($this->db->affected_rows()>0){
                             $response['error']    = false;
-                            $response['messages'] = 'Sukses Register';
+                            $response['message'] = 'Sukses Register';
                             $this->throw(200, $response);
                             return;
                         }
                     }else{
                         $response['error']    = true;
-                        $response['messages'] = 'Unvalid Email Format';
+                        $response['message'] = 'Unvalid Email Format';
                         $this->throw(200, $response);
                         return;
                     }
                 }else{
                     $response['error']    = true;
-                    $response['messages'] = 'Email Sudah Terdaftar';
+                    $response['message'] = 'Email Sudah Terdaftar';
                     $this->throw(200, $response);
                     return;    
                 }
             }else{
                 $response['error']    = true;
-                $response['messages'] = 'No KTP Sudah Terdaftar';
+                $response['message'] = 'No KTP Sudah Terdaftar';
                 $this->throw(200, $response);
                 return;    
             }
         }else{
             $response['error']    = true;
-            $response['messages'] = 'Terdapat Data Kosong';
+            $response['message'] = 'Terdapat Data Kosong';
             $this->throw(200, $response);
             return;
         }

@@ -19,7 +19,7 @@ class Paket extends CI_Controller{
             $data = $this->db->query('SELECT * FROM PAKET WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$monthFilter.'"')->result();
     
             $response['error']    = false;
-            $response['messages'] = 'Sukses Tampil Data';
+            $response['message'] = 'Sukses Tampil Data';
             $response['data']     = $data;
             $this->throw(200, $response);
             return;
@@ -27,7 +27,7 @@ class Paket extends CI_Controller{
             $data = $this->db->query('SELECT * FROM PAKET WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$month.'"')->result();
     
             $response['error']    = false;
-            $response['messages'] = 'Sukses Tampil Data';
+            $response['message'] = 'Sukses Tampil Data';
             $response['data']     = $data;
             $this->throw(200, $response);
             return;
