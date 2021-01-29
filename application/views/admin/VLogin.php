@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="card-body">
                                     <!-- Login form-->
-                                    <form action="<?= base_url('') ?>" method="POST">
+                                    <form action="<?= base_url('login/auth_admin') ?>" method="POST">
                                         <div class="form-group">
                                             <label class="small mb-1" for="email">Email</label>
                                             <input type="email" class="form-control py-4" name="email" placeholder="Masukan Email" required />
