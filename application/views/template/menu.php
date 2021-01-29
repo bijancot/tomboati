@@ -26,23 +26,23 @@
                 </a>
                 <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                        <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('umroh/paket/Promo'); ?>">
                             <img class="logo" src="<?= base_url(); ?>assets/img/ic_umroh_promo.svg"></img>
                             PROMO
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('umroh/paket/Hemat'); ?>">
                             <img class="logo" src="<?= base_url(); ?>assets/img/ic_umroh_hemat.svg"></img>
                             HEMAT
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('umroh/paket/Bisnis'); ?>">
                             <img class="logo" src="<?= base_url(); ?>assets/img/ic_umroh_bisnis.svg"></img>
                             BISNIS
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('umroh/paket/Vip'); ?>">
                             <img class="logo" src="<?= base_url(); ?>assets/img/ic_umroh_vip.svg"></img>
                             VIP
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('umroh/paket/Plus'); ?>">
                             <img class="logo" src="<?= base_url(); ?>assets/img/ic_umroh_plus.svg"></img>
                             PLUS
                         </a>
