@@ -3,7 +3,6 @@ class Login extends CI_Controller
 {
     public function index()
     {
-    	if($usern)
         $this->load->view('admin/VLogin');
     }
 
@@ -12,7 +11,7 @@ class Login extends CI_Controller
 		$pass = $this->input->post('password');
 		// $auth = $this->Mlogin->auth($user, $pass
 
-		if($email === "admin" && $pass === "admin"){
+		if($email === "admin@tomboati.com" && $pass === "admin"){
 			$session = array(
         'who' => "admin",
         'isLogin' => true,
