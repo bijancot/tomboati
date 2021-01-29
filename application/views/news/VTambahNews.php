@@ -39,7 +39,7 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Form Tambah Berita</div>
+                        <div class="card-header">Form Tambah News</div>
                         <div class="card-body">
                             <!-- Component Preview-->
                             <div class="sbp-preview">
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="DeskripsiNews">Deskripsi News</label>
-                                            <textarea class="form-control" id="DeskripsiBerita" rows="3"></textarea>
+                                            <textarea class="form-control" id="DeskripsiNews" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="IsiNews">Isi News</label>
