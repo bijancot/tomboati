@@ -12,6 +12,7 @@
     <link href="<?= base_url(); ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
     <script src="<?= base_url(); ?>assets/js/plugin/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
+    <script data-search-pseudo-elements defer src="<?= base_url(); ?>assets/js/plugin/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -27,21 +28,13 @@
             <main>
                 <?php echo $contents; ?>
             </main>
-            
             <footer class="footer mt-auto footer-light">
-                <?php echo include "footer.php" ?>
+                <?php $this->load->view("template/footer.php") ?>
             </footer>
-
         </div>
     </div>
 
-    <script src="<?= base_url(); ?>assets/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="<?= base_url(); ?>assets/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="<?= base_url(); ?>assets/js/scripts.js"></script>
-    <script src="<?= base_url(); ?>assets/js/plugin/datatables/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="<?= base_url(); ?>assets/js/plugin/datatables/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="<?= base_url(); ?>assets/js/demo/datatables-demo.js"></script>
-
+    <?php $this->load->view("template/script.php") ?>
 </body>
 
 </html>
