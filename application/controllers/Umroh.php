@@ -102,9 +102,23 @@ class Umroh extends CI_Controller
         
     }
 
-    public function aksiTambahPaket($idPaket){
+    public function aksiTambahPaket($tipe){
+
+        // untuk mengecek tipe dan dijadikan kondisi di model
+        if($tipe == "Bisnis"){
+            $idPaket = "UMR-BSS";
+        }else if($tipe == "Hemat"){
+            $idPaket = "UMR-HMT";
+        }else if($tipe == "Plus"){
+            $idPaket = "UMR-PLS";
+        }else if($tipe == "Promo"){
+            $idPaket = "UMR-PRM";
+        }else if($tipe == "VIP"){
+            $idPaket = "UMR-VIP";
+        }
+
         $data = array(
-               'IDMASKAPAI' => $this->input->post('idMaskapai'),
+               'IDMASKAPAI' => $this->input->post('maskapai'),
                'IDMASTERPAKET' => $idPaket,
                'NAMAPAKET' => $this->input->post('namaPaket'),
                'DURASIPAKET' => $this->input->post('durasiPaket'),
@@ -124,7 +138,7 @@ class Umroh extends CI_Controller
 
         $this->MUmroh->savePaket($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah ditambahkan! </div>');
-        redirect('Umroh/paket/'.$idPaket);
+        redirect('Umroh/paket/'.$paket);
     }
 
     public function editPaket()

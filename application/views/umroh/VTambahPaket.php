@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="maskapai">Maskapai</label>
-                                                <select id="maskapai" class="form-control" name="maskapai">
+                                                <select id="maskapai" class="form-control" name="maskapai" required="">
                                                     <option selected="selected">
                                                         Pilih Maskapai
                                                     </option>
