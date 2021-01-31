@@ -41,32 +41,43 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form>
+                                        <?= form_open_multipart('Umroh/aksiTambahPaket/'.$tipe) ?>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" />
+                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="kuota">Kuota</label>
-                                                        <input name="kuota" class="form-control" id="kuota" type="number" />
+                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" required="" />
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="maskapai">Maskapai</label>
+                                                <select id="maskapai" class="form-control" name="maskapai">
+                                                    <option selected="selected">
+                                                        Pilih Maskapai
+                                                    </option>
+                                                    <?php foreach($maskapai as $row){ ?>
+                                                    <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="durasiPaket">Durasi Paket</label>
-                                                        <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" />
+                                                        <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                        <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" />
+                                                        <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,13 +85,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="penerbangan">Penerbangan</label>
-                                                        <input name="penerbangan" class="form-control" id="penerbangan" type="text" />
+                                                        <input name="penerbangan" class="form-control" id="penerbangan" type="text" placeholder="Masukkan Penerbangan" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="ratingHotel">Rating Hotel</label>
-                                                        <input name="ratingHotel" class="form-control" id="ratingHotel" type="number" />
+                                                        <input name="ratingHotel" class="form-control" id="ratingHotel" type="number" placeholder="Masukkan Rating Hotel" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,13 +99,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaHotelPertama">Nama Hotel Pertama</label>
-                                                        <input name="namaHotelA" class="form-control" id="namaHotelPertama" type="text" />
+                                                        <input name="namaHotelA" class="form-control" id="namaHotelPertama" type="text" placeholder="Masukkan Nama Hotel" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaHotelKedua">Nama Hotel Kedua</label>
-                                                        <input name="namaHotelB" class="form-control" id="namaHotelKedua" type="text" />
+                                                        <input name="namaHotelB" class="form-control" id="namaHotelKedua" type="text" placeholder="Masukkan Nama Hotel Kedua" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,23 +127,31 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="doubleSheet">Harga Double Sheet</label>
-                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" />
+                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tripleSheet">Harga Triple Sheet</label>
-                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" />
+                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="quadSheet">Harga Quad Sheet</label>
-                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" />
+                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required="" />
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                            <div class="form-group">
+                                                <label for="biayaSudahTermasuk">Biaya Sudah Termasuk</label>
+                                                <textarea  name="biayaSudahTermasuk" class="form-control" id="biayaSudahTermasuk" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
+                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"></textarea>
+                                            </div>
+
                                         <div class="text-md-right">
                                             <button type="submit" class="btn btn-primary "> Submit </button>
                                         </div>
