@@ -42,9 +42,19 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         <form>
-                                            <div class="form-group">
-                                                <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                <input name="namaPaket" class="form-control" id="namaPaket" type="text" />
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
+                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="kuota">Kuota</label>
+                                                        <input name="kuota" class="form-control" id="kuota" type="number" />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -55,22 +65,24 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="kuota">Kuota</label>
-                                                        <input name="kuota" class="form-control" id="kuota" type="number" />
+                                                        <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
+                                                        <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="ratingHotel">Rating Hotel</label>
-                                                <input name="ratingHotel" class="form-control" id="ratingHotel" type="text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="penerbangan">Penerbangan</label>
-                                                <input name="penerbangan" class="form-control" id="penerbangan" type="text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" />
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="penerbangan">Penerbangan</label>
+                                                        <input name="penerbangan" class="form-control" id="penerbangan" type="text" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="ratingHotel">Rating Hotel</label>
+                                                        <input name="ratingHotel" class="form-control" id="ratingHotel" type="number" />
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
