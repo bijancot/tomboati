@@ -15,4 +15,16 @@ class MUmroh extends CI_Model
 
         return $query->result();
     }
+
+    public function getMaskapai(){
+        $this->db->select('*');
+        $this->db->from('MASKAPAI');
+        $query = $this->db->get();
+
+        return $query->result();  
+    }
+
+    public function savePaket($data){
+        return $this->db->insert('PAKET', $data);
+    }
 }
