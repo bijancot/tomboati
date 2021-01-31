@@ -58,8 +58,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="maskapai">Maskapai</label>
-                                                <select id="maskapai" class="form-control" name="maskapai" required="">
-                                                    <option selected="selected">
+                                                <select id="maskapai" class="form-control" name="maskapai" required>
+                                                    <option value="">
                                                         Pilih Maskapai
                                                     </option>
                                                     <?php foreach($maskapai as $row){ ?>

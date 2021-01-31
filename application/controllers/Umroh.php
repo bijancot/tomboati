@@ -97,7 +97,6 @@ class Umroh extends CI_Controller
         // redirect('Umroh/paket/'.$idPaket);
         // }
 
-        echo "METU NDEK KENE";
         $this->template->load('template/template', 'umroh/VTambahPaket', $data);
         
     }
@@ -138,7 +137,7 @@ class Umroh extends CI_Controller
 
         $this->MUmroh->savePaket($data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah ditambahkan! </div>');
-        redirect('Umroh/paket/'.$paket);
+        redirect('Umroh/paket/'.$tipe);
     }
 
     public function editPaket()
