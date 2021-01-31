@@ -34,7 +34,7 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-                <a href="<?= site_url('Umroh/tambahPaket'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah Paket</a>
+                <a href="<?= base_url('Umroh/tambahPaket/'.$tipe); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah Paket</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
