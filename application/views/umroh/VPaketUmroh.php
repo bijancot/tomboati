@@ -43,22 +43,22 @@
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
 
                     $this->table->set_template($template);
-                    $this->table->set_heading('Aksi','No', 'Nama Paket', 'Maskapai', 'Durasi Paket', 'Kuota');
+                    $this->table->set_heading('No', 'Nama Paket', 'Maskapai', 'Durasi Paket', 'Kuota', 'Aksi');
                         // print_r($paket);
                         $no = 1;
                         foreach ($paket as $row) {
                             $this->table->add_row(
-                                '<a href="'.  base_url("Umroh/detailPaket/".$row->IDPAKET).'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'">Detail
-                                </a>
-                                <a href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning">Edit
-                                </a>
-                                <a href="'.  base_url("Umroh/hapusPaket/".$row->IDPAKET).'" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'">Hapus
-                                </a>',
                                 $no++,
                                 $row->NAMAPAKET,
                                 $row->NAMAMASKAPAI,
-                                $row->DURASIPAKET,
-                                $row->KUOTA
+                                $row->DURASIPAKET .' hari',
+                                $row->KUOTA .' orang',
+                                '<a href="'.  base_url("Umroh/detailPaket/".$row->IDPAKET).'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                                </a>
+                                <a href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
+                                </a>
+                                <a href="'.  base_url("Umroh/hapusPaket/".$row->IDPAKET).'" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
+                                </a>'
                             );
                         ?>
                             <!-- Modal Detail -->
@@ -168,11 +168,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="biayaSudahTermasuk">Biaya Sudah Termasuk</label>
-                                                        <h5><?= $row->BIAYASUDAHTERMASUK; ?></h5>
+                                                     <h5><?= $row->BIAYASUDAHTERMASUK; ?></h5>
                                             </div>
                                             <div class="form-group">
                                                 <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
-                                                        <h5><?= $row->BIAYABELUMTERMASUK; ?></h5>
+                                                    <h5><?= $row->BIAYABELUMTERMASUK; ?></h5>
+                                            </div>
+                                            <h5>Gambar Paket</h5>
+                                            <div class="form-group">
+                                                <img src="<?= $row->IMAGEPAKET;?>" width="300px">
                                             </div>
                                      </div>
                                      <div class="modal-footer">

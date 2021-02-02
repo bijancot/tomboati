@@ -5,8 +5,9 @@ class Umroh extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('form');
-        $this->load->helper('url');
+        $this->load->helper('file');
         $this->load->library('table');
+        $this->load->library('upload');
         $this->load->library('form_validation');
         
     }
@@ -127,6 +128,10 @@ class Umroh extends CI_Controller
             $valIsShow = 0;
         }
 
+        //upload foto
+        // $new_name = 'IMG'.trim($this->input->post('namaPaket'));
+        $imagePaket = $this->upload_image();
+
         $data = array(
                'IDMASKAPAI' => $this->input->post('maskapai'),
                'IDMASTERPAKET' => $idMasterPaket,
@@ -145,13 +150,15 @@ class Umroh extends CI_Controller
                'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
                'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
                'KUOTA' => $this->input->post('kuota'),
+               'IMAGEPAKET' => $imagePaket,
                'ISSHOW' => $valIsShow
         );
 
+        // print_r($data);
         $this->MUmroh->savePaket($data);
 
         //alert ketika sudah tersimpan
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah ditambahkan! </div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil ditambahkan! </div>');
 
         redirect('Umroh/paket/'.$tipe);
     }
@@ -196,6 +203,19 @@ class Umroh extends CI_Controller
             $valIsShow = 0;
         }
 
+        //mendapatkan data yang diedit
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+
+        //melakukan pengecekan file
+        if (empty($_FILES['imagePaket']['name'])){
+            $imagePaket = $dataPaket[0]['IMAGEPAKET'];
+        }
+        else{
+            // delete_files($dataPaket[0]['IMAGEPAKET']); 
+            // unlink($dataPaket[0]['IMAGEPAKET']);die;     
+             $imagePaket = $this->upload_image()  ;
+        }
+
         $data = array(
             'IDPAKET' => $idPaket,
             'IDMASKAPAI' => $this->input->post('maskapai'),
@@ -215,6 +235,7 @@ class Umroh extends CI_Controller
             'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
             'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
             'KUOTA' => $this->input->post('kuota'),
+            'IMAGEPAKET' => $imagePaket,
             'ISSHOW' => $valIsShow
         );
 
@@ -236,7 +257,7 @@ class Umroh extends CI_Controller
         $this->MUmroh->updatePaket($data);
 
         //alert ketika sudah tersimpan
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah diperbarui! </div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diperbarui! </div>');
 
         redirect('Umroh/paket/'.$tipe);
     }
@@ -262,8 +283,41 @@ class Umroh extends CI_Controller
         $this->MUmroh->deletePaket($idPaket);
         
         //alert ketika sudah terhapus
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah dihapus! </div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dihapus! </div>');
 
         redirect('Umroh/paket/'.$tipe);
+    }
+
+    function upload_image(){
+        $config['upload_path'] = './images/paketUmroh/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
+ 
+        $this->upload->initialize($config);
+        if(!empty($_FILES['imagePaket']['name'])){
+ 
+            if ($this->upload->do_upload('imagePaket')){
+                $gbr = $this->upload->data();
+                //Compress Image
+                $config['image_library']='gd2';
+                $config['source_image']='./images/paketUmroh/'.$gbr['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= true;
+                // $config['quality']= '100%';
+                $config['width']= 600;
+                // $config['height']= 400;
+                $config['new_image']= './images/paketUmroh/'.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+ 
+                $gambar=$gbr['file_name'];
+
+                return base_url('images/paketUmroh/'.$gambar);
+            }
+                      
+        }else{
+            return base_url('images/paketUmroh/default.png');
+        }
+                 
     }
 }

@@ -11,6 +11,16 @@
         <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
         <script data-search-pseudo-elements defer src="<?= base_url(); ?>assets/js/plugin/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
+        <!-- include summernote css/js -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <style type="text/css">
+            #image-preview{
+                display:none;
+                width : 300px;
+                margin-bottom: 15px;
+            }
+        </style>
     </head>
     <body>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -46,19 +56,19 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" required="" />
+                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="kuota">Kuota</label>
-                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" required="" />
+                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="maskapai">Maskapai</label>
-                                                <select id="maskapai" class="form-control" name="maskapai" required>
+                                                <select id="maskapai" class="form-control" name="maskapai">
                                                     <option value="">
                                                         Pilih Maskapai
                                                     </option>
@@ -127,19 +137,19 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="doubleSheet">Harga Double Sheet</label>
-                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tripleSheet">Harga Triple Sheet</label>
-                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="quadSheet">Harga Quad Sheet</label>
-                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,17 +159,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
-                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"></textarea>
+                                                <textarea name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
+                                                <!-- wadah preview -->
+                                                <img id="image-preview" alt="image preview"/>
                                                 <div class="custom-file">
-                                                  <input type="file" class="custom-file-input" id="customFile">
-                                                  <label class="custom-file-label" for="customFile">Upload Gambar</label>
+                                                  <input type="file" name="imagePaket" class="custom-file-input" id="image-source" onchange="previewImage();">
+                                                  <label class="custom-file-label" for="image-source">Upload Gambar</label>
                                                 </div>
                                             </div>
                                                 <div class="custom-control custom-switch">
                                                   <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" value="TRUE" checked="" name="isShow">
-                                                  <label class="custom-control-label" for="customSwitch1">Menu akan tampil dalam Apps</label>
+                                                  <label class="custom-control-label" for="customSwitch1">Paket akan tampil dalam Apps</label>
                                                 </div>
                                         <div class="text-md-right">
                                             <button type="submit" class="btn btn-primary "> Submit </button>
@@ -179,10 +191,29 @@
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/demo/datatables-demo.js"></script>
+
         <script type="text/javascript">
+            //switch on off
             $('.isShow').change(function(){
              cb = $(this);
              cb.val(cb.prop('checked'));
+            });
+
+            //preview sebelum upload
+            function previewImage() {
+                document.getElementById("image-preview").style.display = "block";
+                var oFReader = new FileReader();
+                 oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+
+                oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+                };
+            };
+
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function() {
+              var fileName = $(this).val().split("\\").pop();
+              $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
         </script>
     </body>
