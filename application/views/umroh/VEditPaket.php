@@ -36,23 +36,26 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Form Tambah Paket <?= $tipe; ?></div>
+                            <div class="card-header">Form Edit Paket</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <?= form_open_multipart('Umroh/aksiTambahPaket/'.$tipe) ?>
+                                        <?php foreach ($paket as $row) {
+                                            ?>
+                                        <?= form_open_multipart('Umroh/aksiEditPaket/'.$row['IDPAKET']) ?>
+                                        <input type="hidden" name="idMasterPaket" value="<?= $row['IDMASTERPAKET'] ?>">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" required="" />
+                                                        <label for="namaPaket">Nama Paket</label>
+                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" value="<?= $row['NAMAPAKET']; ?>" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="kuota">Kuota</label>
-                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" required="" />
+                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" value="<?= $row['KUOTA']; ?>" required="" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -62,8 +65,17 @@
                                                     <option value="">
                                                         Pilih Maskapai
                                                     </option>
-                                                    <?php foreach($maskapai as $row){ ?>
-                                                    <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?></option>
+                                                    <?php
+                                                        $selected = $row['IDMASKAPAI']; // Put value from database here.
+
+                                                        foreach($maskapai as $key){ ?>
+                                                        <option value="<?php echo $key->IDMASKAPAI; ?>" 
+                                                            <?php
+                                                                if ($key->IDMASKAPAI == $selected) {
+                                                                    echo 'selected="selected"';
+                                                                }
+                                                                ?>>
+                                                        <?php echo $key->NAMAMASKAPAI; ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -71,13 +83,14 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="durasiPaket">Durasi Paket</label>
-                                                        <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" />
+                                                        <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" 
+                                                        value="<?= $row['DURASIPAKET']; ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                        <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" />
+                                                        <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" value="<?= $row['TANGGALKEBERANGKATAN']; ?>"  />
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,13 +98,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="penerbangan">Penerbangan</label>
-                                                        <input name="penerbangan" class="form-control" id="penerbangan" type="text" placeholder="Masukkan Penerbangan" />
+                                                        <input name="penerbangan" class="form-control" id="penerbangan" type="text" placeholder="Masukkan Penerbangan" value="<?= $row['PENERBANGAN']; ?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="ratingHotel">Rating Hotel</label>
-                                                        <input name="ratingHotel" class="form-control" id="ratingHotel" type="number" placeholder="Masukkan Rating Hotel" />
+                                                        <input name="ratingHotel" class="form-control" id="ratingHotel" type="number" placeholder="Masukkan Rating Hotel"  value="<?= $row['RATINGHOTEL']; ?>"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,13 +112,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaHotelPertama">Nama Hotel Pertama</label>
-                                                        <input name="namaHotelA" class="form-control" id="namaHotelPertama" type="text" placeholder="Masukkan Nama Hotel" />
+                                                        <input name="namaHotelA" class="form-control" id="namaHotelPertama" type="text" placeholder="Masukkan Nama Hotel" value="<?= $row['NAMAHOTELA']; ?>"  />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaHotelKedua">Nama Hotel Kedua</label>
-                                                        <input name="namaHotelB" class="form-control" id="namaHotelKedua" type="text" placeholder="Masukkan Nama Hotel Kedua" />
+                                                        <input name="namaHotelB" class="form-control" id="namaHotelKedua" type="text" placeholder="Masukkan Nama Hotel Kedua" value="<?= $row['NAMAHOTELB']; ?>" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,13 +126,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="alamatHotelPertama">Alamat Hotel Pertama</label>
-                                                        <textarea name="tempatHotelA" class="form-control" id="alamatHotelPertama" rows="3"></textarea>
+                                                        <textarea name="tempatHotelA" class="form-control" id="alamatHotelPertama" rows="3"><?= $row['TEMPATHOTELA']; ?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="alamatHotelKedua">Alamat Hotel Kedua</label>
-                                                        <textarea  name="tempatHotelB" class="form-control" id="alamatHotelKedua" rows="3"></textarea>
+                                                        <textarea  name="tempatHotelB" class="form-control" id="alamatHotelKedua" rows="3"><?= $row['TEMPATHOTELB']; ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,40 +140,39 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="doubleSheet">Harga Double Sheet</label>
-                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required=""  value="<?= $row['DOUBLESHEET']; ?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tripleSheet">Harga Triple Sheet</label>
-                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required=""  value="<?= $row['TRIPLESHEET']; ?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="quadSheet">Harga Quad Sheet</label>
-                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required=""  value="<?= $row['QUADSHEET']; ?>"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="biayaSudahTermasuk">Biaya Sudah Termasuk</label>
-                                                <textarea  name="biayaSudahTermasuk" class="form-control" id="biayaSudahTermasuk" rows="3"></textarea>
+                                                <textarea  name="biayaSudahTermasuk" class="form-control" id="biayaSudahTermasuk" rows="3"><?= $row['BIAYASUDAHTERMASUK']; ?></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
-                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"></textarea>
+                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"><?= $row['BIAYABELUMTERMASUK']; ?></textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="custom-file">
-                                                  <input type="file" class="custom-file-input" id="customFile">
-                                                  <label class="custom-file-label" for="customFile">Upload Gambar</label>
-                                                </div>
-                                            </div>
-                                                <div class="custom-control custom-switch">
-                                                  <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" value="TRUE" checked="" name="isShow">
-                                                  <label class="custom-control-label" for="customSwitch1">Menu akan tampil dalam Apps</label>
-                                                </div>
+                                            <div class="custom-control custom-switch">
+                                                 <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" 
+                                                 <?php if ($row['ISSHOW'] == 1) echo "checked='checked'"; ?> name="isShow">
+                                                 <label class="custom-control-label" for="customSwitch1">Menu akan tampil dalam Apps</label>
+                                             </div>
+
+                                            <?php
+                                        }
+                                        ?>
                                         <div class="text-md-right">
                                             <button type="submit" class="btn btn-primary "> Submit </button>
                                         </div>

@@ -10,25 +10,26 @@ class Umroh extends CI_Controller
         $this->load->library('form_validation');
         
     }
+
     public function paket($tipe)
     {
         // untuk mengecek tipe dan dijadikan kondisi di model
         if($tipe == "Bisnis"){
-            $idPaket = "UMR-BSS";
+            $idMasterPaket = "UMR-BSS";
         }else if($tipe == "Hemat"){
-            $idPaket = "UMR-HMT";
+            $idMasterPaket = "UMR-HMT";
         }else if($tipe == "Plus"){
-            $idPaket = "UMR-PLS";
+            $idMasterPaket = "UMR-PLS";
         }else if($tipe == "Promo"){
-            $idPaket = "UMR-PRM";
+            $idMasterPaket = "UMR-PRM";
         }else if($tipe == "VIP"){
-            $idPaket = "UMR-VIP";
+            $idMasterPaket = "UMR-VIP";
         }
 
-        $dataPaket = $this->MUmroh->getPaket($idPaket);
+        $dataPaket = $this->MUmroh->getPaket($idMasterPaket);
 
         // echo $this->db->last_query();
-        //parse parameter
+        //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe,
             'tipe' => $tipe,
@@ -42,20 +43,20 @@ class Umroh extends CI_Controller
     {
         // untuk mengecek tipe dan dijadikan kondisi di model
         if($tipe == "Bisnis"){
-            $idPaket = "UMR-BSS";
+            $idMasterPaket = "UMR-BSS";
         }else if($tipe == "Hemat"){
-            $idPaket = "UMR-HMT";
+            $idMasterPaket = "UMR-HMT";
         }else if($tipe == "Plus"){
-            $idPaket = "UMR-PLS";
+            $idMasterPaket = "UMR-PLS";
         }else if($tipe == "Promo"){
-            $idPaket = "UMR-PRM";
+            $idMasterPaket = "UMR-PRM";
         }else if($tipe == "VIP"){
-            $idPaket = "UMR-VIP";
+            $idMasterPaket = "UMR-VIP";
         }
 
         $dataMaskapai = $this->MUmroh->getMaskapai();
 
-        //parse parameter
+        //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe,
             'tipe' => $tipe,
@@ -105,20 +106,30 @@ class Umroh extends CI_Controller
 
         // untuk mengecek tipe dan dijadikan kondisi di model
         if($tipe == "Bisnis"){
-            $idPaket = "UMR-BSS";
+            $idMasterPaket = "UMR-BSS";
         }else if($tipe == "Hemat"){
-            $idPaket = "UMR-HMT";
+            $idMasterPaket = "UMR-HMT";
         }else if($tipe == "Plus"){
-            $idPaket = "UMR-PLS";
+            $idMasterPaket = "UMR-PLS";
         }else if($tipe == "Promo"){
-            $idPaket = "UMR-PRM";
+            $idMasterPaket = "UMR-PRM";
         }else if($tipe == "VIP"){
-            $idPaket = "UMR-VIP";
+            $idMasterPaket = "UMR-VIP";
+        }
+
+        //convert boolean to int 
+        $valIsShow = "";
+        $isShow = $this->input->post('isShow');
+
+        if($isShow == "true" || $isShow == "TRUE"){
+            $valIsShow = 1;
+        }else{
+            $valIsShow = 0;
         }
 
         $data = array(
                'IDMASKAPAI' => $this->input->post('maskapai'),
-               'IDMASTERPAKET' => $idPaket,
+               'IDMASTERPAKET' => $idMasterPaket,
                'NAMAPAKET' => $this->input->post('namaPaket'),
                'DURASIPAKET' => $this->input->post('durasiPaket'),
                'RATINGHOTEL' => $this->input->post('ratingHotel'),
@@ -126,29 +137,133 @@ class Umroh extends CI_Controller
                'TANGGALKEBERANGKATAN' => $this->input->post('tanggalKeberangkatan'),
                'NAMAHOTELA' => $this->input->post('namaHotelA'),
                'NAMAHOTELB' => $this->input->post('namaHotelB'),
+               'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
+               'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
                'DOUBLESHEET' => $this->input->post('doubleSheet'),
                'TRIPLESHEET' => $this->input->post('tripleSheet'),
                'QUADSHEET' => $this->input->post('quadSheet'),
                'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
                'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
                'KUOTA' => $this->input->post('kuota'),
-               'ISSHOW' => TRUE
+               'ISSHOW' => $valIsShow
         );
 
         $this->MUmroh->savePaket($data);
+
+        //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah ditambahkan! </div>');
+
         redirect('Umroh/paket/'.$tipe);
     }
 
-    public function editPaket()
+    public function editPaket($idPaket)
     {
-        $data = array('title' => 'News');
-        $this->template->load('template/template', 'umroh/VTambahBerita', $data);
+        $dataMaskapai = $this->MUmroh->getMaskapai();
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe == "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe == "VIP";
+        }
+
+        //parse
+        $data = array(
+            'title' => 'Paket Umroh '.$tipe,
+            'tipe' => $tipe,
+            'maskapai' => $dataMaskapai,
+            'paket' => $dataPaket
+        );
+
+        $this->template->load('template/template', 'umroh/VEditPaket', $data);
     }
 
-    public function hapusPaket()
+    public function aksiEditPaket($idPaket){        
+        //convert boolean to int 
+        $valIsShow = "";
+        $isShow = $this->input->post('isShow');
+
+        if($isShow == "true" || $isShow == "TRUE"){
+            $valIsShow = 1;
+        }else{
+            $valIsShow = 0;
+        }
+
+        $data = array(
+            'IDPAKET' => $idPaket,
+            'IDMASKAPAI' => $this->input->post('maskapai'),
+            'IDMASTERPAKET' => $this->input->post('idMasterPaket'),
+            'NAMAPAKET' => $this->input->post('namaPaket'),
+            'DURASIPAKET' => $this->input->post('durasiPaket'),
+            'RATINGHOTEL' => $this->input->post('ratingHotel'),
+            'PENERBANGAN' => $this->input->post('penerbangan'),
+            'TANGGALKEBERANGKATAN' => $this->input->post('tanggalKeberangkatan'),
+            'NAMAHOTELA' => $this->input->post('namaHotelA'),
+            'NAMAHOTELB' => $this->input->post('namaHotelB'),
+            'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
+            'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
+            'DOUBLESHEET' => $this->input->post('doubleSheet'),
+            'TRIPLESHEET' => $this->input->post('tripleSheet'),
+            'QUADSHEET' => $this->input->post('quadSheet'),
+            'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
+            'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
+            'KUOTA' => $this->input->post('kuota'),
+            'ISSHOW' => $valIsShow
+        );
+
+        // untuk mengecek tipe dan dijadikan kondisi di model
+         if($data['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($data['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($data['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($data['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe == "Promo";
+        }else if($data['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe == "VIP";
+        }
+
+        // var_dump($data);
+
+        $this->MUmroh->updatePaket($data);
+
+        //alert ketika sudah tersimpan
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah diperbarui! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
+    }
+
+    public function aksiHapusPaket($idPaket)
     {
-        $data = array('title' => 'News');
-        $this->template->load('template/template', 'umroh/VTambahBerita', $data);
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+         
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe == "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe == "VIP";
+        }
+
+        //delete
+        $this->MUmroh->deletePaket($idPaket);
+        
+        //alert ketika sudah terhapus
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah dihapus! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
     }
 }
