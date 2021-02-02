@@ -11,6 +11,14 @@
         <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
         <script data-search-pseudo-elements defer src="<?= base_url(); ?>assets/js/plugin/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+            #image-preview{
+                width : 300px;
+                margin-bottom: 15px;
+            }
+        </style>
+
     </head>
     <body>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -164,10 +172,18 @@
                                                 <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
                                                 <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"><?= $row['BIAYABELUMTERMASUK']; ?></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <!-- wadah preview -->
+                                                <img id="image-preview" src="<?= $row['IMAGEPAKET']; ?>" alt="image preview"/>
+                                                <div class="custom-file">
+                                                  <input type="file" value="<?= $row['IMAGEPAKET']; ?>" name="imagePaket" class="custom-file-input" id="image-source" onchange="previewImage();">
+                                                  <label class="custom-file-label" for="image-source">Upload Gambar</label>
+                                                </div>
+                                            </div>
                                             <div class="custom-control custom-switch">
                                                  <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" 
                                                  <?php if ($row['ISSHOW'] == 1) echo "checked='checked'"; ?> name="isShow">
-                                                 <label class="custom-control-label" for="customSwitch1">Menu akan tampil dalam Apps</label>
+                                                 <label class="custom-control-label" for="customSwitch1">Paket akan tampil dalam Apps</label>
                                              </div>
 
                                             <?php
@@ -195,6 +211,23 @@
             $('.isShow').change(function(){
              cb = $(this);
              cb.val(cb.prop('checked'));
+            });
+
+            //preview sebelum upload
+            function previewImage() {
+                document.getElementById("image-preview").style.display = "block";
+                var oFReader = new FileReader();
+                 oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+
+                oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+                };
+            };
+
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function() {
+              var fileName = $(this).val().split("\\").pop();
+              $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
         </script>
     </body>
