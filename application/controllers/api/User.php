@@ -51,9 +51,14 @@ class User extends CI_Controller{
                             'FILEKTP'       => $filenameKTP,
                             'FOTO'          => $filenameFoto
                         );
+
+                        $dataChat = array(
+                            'NOMORKTP'      => $noKTP
+                        );
                 
                         $this->db->insert('USER_REGISTER', $data);
-                        
+                        $this->db->insert('CHAT_ROOM', $dataChat);
+
                         if($this->db->affected_rows()>0){
                             $response['error']    = false;
                             $response['message'] = 'Sukses Register';
@@ -91,8 +96,11 @@ class User extends CI_Controller{
         $response       = [];
         $email          = $this->input->post('email');
         $password       = $this->input->post('password');
+        $user_token     = $this->input->post('token');
         
-        $data = $this->db->where('EMAIL', $email)->where('PASSWORD', $password)->get('USER_REGISTER')->result();
+        $data = $this->db->query('SELECT * FROM USER_REGISTER JOIN CHAT_ROOM ON CHAT_ROOM.NOMORKTP = USER_REGISTER.NOMORKTP WHERE EMAIL="'.$email.'" AND PASSWORD="'.$password.'"')->result();
+
+        $dataUpdate = $this->db->set('USERTOKEN', $user_token)->where('EMAIL', $email)->update('USER_REGISTER');
 
         if($data != null){
             if($this->db->affected_rows() >= 0){
@@ -107,6 +115,25 @@ class User extends CI_Controller{
         $response["error"] = true;
         $response["message"] = "Email/Password are Incorrect!";
         $this->throw(200, $response);
+    }
+
+    public function logout_post(){
+        $response       = [];
+        $email          = $this->input->post('email');
+        
+        $this->db->set('USERTOKEN', null)->where('EMAIL', $email)->update('USER_REGISTER');
+
+        if($this->db->affected_rows() >= 0){
+            $response["error"]  = false;
+            $response["message"] = "Sukses Logout";
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response["error"]  = true;
+            $response["message"] = "Gagal Logout";
+            $this->throw(200, $response);
+            return;
+        }
     }
 
     private function throw($statusCode, $response){
