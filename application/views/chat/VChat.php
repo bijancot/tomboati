@@ -36,6 +36,18 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php $no=1; foreach($chat as $data){?>
+                            <tr>
+                                <td><?php echo $no++?></td>
+                                <td><?php echo $data->NAMALENGKAP?></td>
+                                <td><?php echo $data->MESSAGE?></td>
+                                <td>
+                                    <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info-square"> </span></a>
+                                </td>
+                            </tr>
+                            <?php }?>
+                        </tbody>
                     </table>
                 </div>
             </div>
