@@ -18,23 +18,23 @@
                     </a>
                     <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('Umroh/paket/Promo'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                                 PROMO
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('Umroh/paket/Hemat'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                                 HEMAT
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('Umroh/paket/Bisnis'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                                 BISNIS
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('Umroh/paket/VIP'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                                 VIP
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('Umroh/paket/Plus'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                                 PLUS
                             </a>

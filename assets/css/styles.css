@@ -20537,3 +20537,21 @@ pre[class*=language-] {
 .token.variable {
   color: #ff6666;
 }
+
+/*modal backdrop yang hitam*/
+.modal-backdrop {
+  background-color: rgba(0,0,0,0.3) !important;
+}
+
+/*image preview untuk paket*/
+#image-preview{
+  display:none;
+  width : 300px;
+  margin-bottom: 15px;
+}
+
+/*image preview untuk paket edit*/
+#image-preview-edit{
+  width : 300px;
+  margin-bottom: 15px;
+}
