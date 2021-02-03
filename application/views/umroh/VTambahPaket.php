@@ -14,6 +14,11 @@
         <!-- include summernote css/js -->
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+        <!-- datepicker -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet"/>
+
+
         <style type="text/css">
             #image-preview{
                 display:none;
@@ -191,8 +196,37 @@
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/demo/datatables-demo.js"></script>
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 
+        <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+        <!-- Editor -->
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#biayaSudahTermasuk' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+            } );
+            ClassicEditor
+                .create( document.querySelector( '#biayaBelumTermasuk' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+            } );
+        </script>
         <script type="text/javascript">
+            //datepicker
+            $('#tanggalKeberangkatan').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+            });
+
             //switch on off
             $('.isShow').change(function(){
              cb = $(this);

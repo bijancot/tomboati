@@ -12,6 +12,9 @@
         <script data-search-pseudo-elements defer src="<?= base_url(); ?>assets/js/plugin/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
 
+        <!-- datepicker -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet"/>
+
         <style type="text/css">
             #image-preview{
                 width : 300px;
@@ -164,13 +167,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- decode -->
+                                            <?php
+                                                $biayaSudahTermasuk = str_replace( '&', '&amp;', $row['BIAYASUDAHTERMASUK'] );
+                                            ?>
                                             <div class="form-group">
                                                 <label for="biayaSudahTermasuk">Biaya Sudah Termasuk</label>
-                                                <textarea  name="biayaSudahTermasuk" class="form-control" id="biayaSudahTermasuk" rows="3"><?= $row['BIAYASUDAHTERMASUK']; ?></textarea>
+                                                <textarea  name="biayaSudahTermasuk" class="form-control" id="biayaSudahTermasuk" rows="3"><?= $biayaSudahTermasuk; ?></textarea>
                                             </div>
+
+                                            <!-- decode -->
+                                            <?php
+                                                $biayaBelumTermasuk = str_replace( '&', '&amp;', $row['BIAYABELUMTERMASUK'] );
+                                            ?>
                                             <div class="form-group">
                                                 <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
-                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"><?= $row['BIAYABELUMTERMASUK']; ?></textarea>
+                                                <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"><?= $biayaBelumTermasuk; ?></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <!-- wadah preview -->
@@ -181,8 +193,7 @@
                                                 </div>
                                             </div>
                                             <div class="custom-control custom-switch">
-                                                 <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" 
-                                                 <?php if ($row['ISSHOW'] == 1) echo "checked='checked'"; ?> name="isShow">
+                                                 <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" value="<?php if ($row['ISSHOW'] == 1) echo "true"; ?>" <?php if ($row['ISSHOW'] == 1) echo "checked"; ?> name="isShow">
                                                  <label class="custom-control-label" for="customSwitch1">Paket akan tampil dalam Apps</label>
                                              </div>
 
@@ -207,7 +218,39 @@
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/plugin/datatables/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="<?= base_url(); ?>assets/js/demo/datatables-demo.js"></script>
+
+        <!-- datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+        <!-- Editor -->
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#biayaSudahTermasuk' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+            } );
+            ClassicEditor
+                .create( document.querySelector( '#biayaBelumTermasuk' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+            } );
+        </script>
         <script type="text/javascript">
+            //datepicker
+            $('#tanggalKeberangkatan').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+            });
+
+            //switch toogle
             $('.isShow').change(function(){
              cb = $(this);
              cb.val(cb.prop('checked'));
