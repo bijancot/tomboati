@@ -67,6 +67,16 @@
                                    <div class="modal-content">
                                      <div class="modal-header">
                                        <h5 class="modal-title" id="exampleModalLabel">Detail <?= $row->NAMAPAKET; ?></h5>
+                                       <?php if($row->ISSHOW == 1){
+                                        ?>
+                                        <span class="badge badge-pill badge-success">Aktif</span>
+                                        <?php
+                                       }else{
+                                        ?>
+                                        <span class="badge badge-pill badge-danger">Non-Aktif</span>
+                                        <?php
+                                        }
+                                        ?>
                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                          <span aria-hidden="true">&times;</span>
                                        </button>

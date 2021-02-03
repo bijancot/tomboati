@@ -168,6 +168,7 @@ class Umroh extends CI_Controller
         $dataMaskapai = $this->MUmroh->getMaskapai();
         $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
 
+        $tipe="";
         // untuk mengecek idMasterPaket
         if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
             $tipe = "Bisnis";
@@ -176,9 +177,9 @@ class Umroh extends CI_Controller
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
             $tipe = "Plus";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe == "Promo";
+            $tipe = "Promo";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe == "VIP";
+            $tipe = "VIP";
         }
 
         //parse
@@ -247,9 +248,9 @@ class Umroh extends CI_Controller
         }else if($data['IDMASTERPAKET'] == "UMR-PLS"){
             $tipe = "Plus";
         }else if($data['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe == "Promo";
+            $tipe = "Promo";
         }else if($data['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe == "VIP";
+            $tipe = "VIP";
         }
 
         // var_dump($data);
