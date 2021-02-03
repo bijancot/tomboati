@@ -38,6 +38,7 @@ class Umroh extends CI_Controller
         );
 
         $this->template->load('template/template', 'umroh/VPaketUmroh', $data);
+        $this->load->view("template/script.php");
     }
 
     public function tambahPaket($tipe)
@@ -100,6 +101,7 @@ class Umroh extends CI_Controller
         // }
 
         $this->template->load('template/template', 'umroh/VTambahPaket', $data);
+        $this->load->view("template/script.php");
         
     }
 
@@ -191,6 +193,7 @@ class Umroh extends CI_Controller
         );
 
         $this->template->load('template/template', 'umroh/VEditPaket', $data);
+        $this->load->view("template/script.php");
     }
 
     public function aksiEditPaket($idPaket){        
