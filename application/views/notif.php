@@ -1,7 +1,9 @@
 <?php
 
 $curl = curl_init();
-
+echo $judul;
+echo $pesan.'<br>';
+echo $token;
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
   CURLOPT_RETURNTRANSFER => true,
@@ -12,10 +14,10 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
-  "registration_ids":["e63ubxK2R2yT49u24Ud8LC:APA91bFw_FDExq-FODoOzLQ7dKg2s0C-Ynv-1CQK-rkcPaaMFnw53rM_1k40yVh00TTRAUjS3a4ASfxtwxOctwGwmg66gz9Q41YSMvczm1MGg-N398ZrZW-8SFKF6fAlAhRn0NNFVUwT"],
+  "registration_ids":["'.$token.'"],
   "notification": {
-      "title":"Title of your notification",
-      "body":"content of your notification"
+    "title": "'.$judul.'",
+    "body": "'.$pesan.'"
   }
 }',
   CURLOPT_HTTPHEADER => array(
