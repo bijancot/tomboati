@@ -15,7 +15,39 @@
     <script data-search-pseudo-elements defer src="<?= base_url(); ?>assets/js/plugin/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <!-- datepicker -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet"/>
+    <style>
+        #boxleft {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #23cba7;
+            height: auto;
+        }
 
+        #boxleft p{
+            color: #ffffff;
+            text-align: center;
+        }
+
+        #boxright p{
+            color: #ffffff;
+            text-align: center;
+        }
+
+        #boxright {
+            height: auto;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f7ca18;
+        }
+
+        .chat {
+            width: 100%;
+            height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body class="nav-fixed">

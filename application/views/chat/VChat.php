@@ -43,7 +43,7 @@
                                 <td><?php echo $data->NAMALENGKAP?></td>
                                 <td><?php echo $data->MESSAGE?></td>
                                 <td>
-                                    <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info-square"> </span></a>
+                                    <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span></a>
                                 </td>
                             </tr>
                             <?php }?>
@@ -55,4 +55,28 @@
     </div>
 </body>
 
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+      cluster: 'ap1',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr=$.ajax({    
+                method: 'POST',
+                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
+                success : function(response){
+                    $('.list-notifikasi').html(response);
+                }
+            })
+    });
+
+    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+        console.log("Clicked");
+    });
+    
+</script>
 </html>
