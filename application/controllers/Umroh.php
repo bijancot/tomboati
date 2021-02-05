@@ -8,7 +8,6 @@ class Umroh extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
         $this->load->library('upload');
-        $this->load->library('form_validation');
         
     }
 
@@ -32,7 +31,7 @@ class Umroh extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe,
+            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'paket' => $dataPaket
         );
@@ -60,45 +59,10 @@ class Umroh extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe,
+            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai
         );
-
-        //validasi
-        // $this->form_validation->set_rules('namaPaket', 'Nama paket', 'required');
-        // $this->form_validation->set_rules('kuota', 'Kuota', 'required');
-        // $this->form_validation->set_rules('durasiPaket', 'Durasi paket', 'required');
-        // $this->form_validation->set_rules('doubleSheet', 'Harga double sheet', 'required');
-        // $this->form_validation->set_rules('tripleSheet', 'Harga triple sheet', 'required');
-        // $this->form_validation->set_rules('quadSheet', 'Harga quad sheet', 'required');
-            
-        //pengecekan jika validasi berjalan dan hasilnya  salah, maka akan tetap di halaman ini
-        // if ($this->form_validation->run()) {     
-        // echo "TIDAK DISINI"; 
-        //  $data = array(
-        //        'IDMASKAPAI' => $this->input->post('idMaskapai'),
-        //        'IDMASTERPAKET' => $idPaket,
-        //        'NAMAPAKET' => $this->input->post('namaPaket'),
-        //        'DURASIPAKET' => $this->input->post('durasiPaket'),
-        //        'RATINGHOTEL' => $this->input->post('ratingHotel'),
-        //        'PENERBANGAN' => $this->input->post('penerbangan'),
-        //        'TANGGALKEBERANGKATAN' => $this->input->post('tanggalKeberangkatan'),
-        //        'NAMAHOTELA' => $this->input->post('namaHotelA'),
-        //        'NAMAHOTELB' => $this->input->post('namaHotelB'),
-        //        'DOUBLESHEET' => $this->input->post('doubleSheet'),
-        //        'TRIPLESHEET' => $this->input->post('tripleSheet'),
-        //        'QUADSHEET' => $this->input->post('quadSheet'),
-        //        'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
-        //        'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
-        //        'KUOTA' => $this->input->post('kuota'),
-        //        'ISSHOW' => TRUE
-        // );
-
-        // $this->MUmroh->savePaket($data);
-        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket telah ditambahkan! </div>');
-        // redirect('Umroh/paket/'.$idPaket);
-        // }
 
         $this->template->load('template/template', 'umroh/VTambahPaket', $data);
         $this->load->view("template/script.php");
@@ -186,7 +150,7 @@ class Umroh extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe,
+            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'paket' => $dataPaket
@@ -321,7 +285,6 @@ class Umroh extends CI_Controller
                       
         }else{
             return base_url('images/paketUmroh/default.png');
-        }
-                 
+        }         
     }
 }
