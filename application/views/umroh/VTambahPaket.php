@@ -32,26 +32,27 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" />
+                                                        <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="kuota">Kuota</label>
-                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" />
+                                                        <input name="kuota" class="form-control" id="kuota" type="number" placeholder="Masukkan Kuota" required=""/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="maskapai">Maskapai</label>
-                                                <select id="maskapai" class="form-control" name="maskapai">
+                                                <select id="maskapai" class="form-control" name="maskapai" required="">
                                                     <option value="">
                                                         Pilih Maskapai
                                                     </option>
                                                     <?php foreach($maskapai as $row){ ?>
-                                                    <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?></option>
+                                                    <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?> </option>
                                                     <?php } ?>
                                                 </select>
+                                                <a type="button" class="btn btn-primary mt-1" href="<?= base_url('maskapai/tambahMaskapai') ?>">Kelola Maskapai</a>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -113,19 +114,19 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="doubleSheet">Harga Double Sheet</label>
-                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" />
+                                                        <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="tripleSheet">Harga Triple Sheet</label>
-                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" />
+                                                        <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required="" />
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="quadSheet">Harga Quad Sheet</label>
-                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga"/>
+                                                        <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required=""/>
                                                     </div>
                                                 </div>
                                             </div>
