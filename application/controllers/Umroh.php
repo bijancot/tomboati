@@ -8,6 +8,8 @@ class Umroh extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
         $this->load->library('upload');
+        date_default_timezone_set('Asia/Jakarta');
+        $this->load->model('MNotifikasi');
         
     }
 
@@ -28,12 +30,18 @@ class Umroh extends CI_Controller
 
         $dataPaket = $this->MUmroh->getPaket($idMasterPaket);
 
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
         // echo $this->db->last_query();
         //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
-            'paket' => $dataPaket
+            'paket' => $dataPaket,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
         $this->template->load('template/template', 'umroh/VPaketUmroh', $data);
@@ -56,12 +64,18 @@ class Umroh extends CI_Controller
         }
 
         $dataMaskapai = $this->MUmroh->getMaskapai();
+        
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
 
         //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
-            'maskapai' => $dataMaskapai
+            'maskapai' => $dataMaskapai,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
         $this->template->load('template/template', 'umroh/VTambahPaket', $data);
@@ -148,12 +162,18 @@ class Umroh extends CI_Controller
             $tipe = "VIP";
         }
 
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
         //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
-            'paket' => $dataPaket
+            'paket' => $dataPaket,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
         $this->template->load('template/template', 'umroh/VEditPaket', $data);

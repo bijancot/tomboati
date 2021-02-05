@@ -208,3 +208,27 @@
             </div>
         </div>
 </body>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+      cluster: 'ap1',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr=$.ajax({    
+                method: 'POST',
+                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
+                success : function(response){
+                    $('.list-notifikasi').html(response);
+                }
+            })
+    });
+
+    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+        console.log("Clicked");
+    });
+    
+</script>
