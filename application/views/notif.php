@@ -1,9 +1,6 @@
 <?php
 
 $curl = curl_init();
-echo $judul;
-echo $pesan.'<br>';
-echo $token;
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
   CURLOPT_RETURNTRANSFER => true,
@@ -16,8 +13,8 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS =>'{
   "registration_ids":["'.$token.'"],
   "notification": {
-    "title": "'.$judul.'",
-    "body": "'.$pesan.'"
+    "title": "Ada Pesan Dari Admin",
+    "body": "Silahkan periksa pesan dari admin memalui aplikasi TomboAti"
   }
 }',
   CURLOPT_HTTPHEADER => array(

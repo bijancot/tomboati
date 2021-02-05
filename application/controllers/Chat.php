@@ -7,22 +7,24 @@ class Chat extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->library('table');
         $this->load->model('MChat');
         $this->load->model('MNotifikasi');
+        $this->load->library(array('upload', 'table'));
     }
 
     public function index()
     {
-        $dataChat       = $this->MChat->getChat();
-        $countMessage   = $this->MNotifikasi->countMessage();
-        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $dataChat               = $this->MChat->getChat();
+        $countMessage           = $this->MNotifikasi->countMessage();
+        $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
+        $countMessageNotSeen    = $this->MChat->getMessageNotSeen();
 
         $data = array(
-            'title'     => 'Chat | Tombo Ati',
-            'chat'      => $dataChat,
-            'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'title'                 => 'Chat | Tombo Ati',
+            'chat'                  => $dataChat,
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'countMessageNotSeen'   => $countMessageNotSeen
         );
 
         $this->template->load('template/template', 'chat/VChat', $data);
@@ -88,23 +90,33 @@ class Chat extends CI_Controller
         $idChatRoom     = $this->input->post('idChatRoom');
         $message        = $this->input->post('message');
         $token          = $this->input->post('userToken');
+        $filenameImg    = null;
+
         $createdAt      = date('Y-m-d H:i:s');
+
+        $config = ['upload_path' => './images/chats/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('img')){ 
+            $dataUpload     = $this->upload->data();
+            $filenameImg    = base_url('images/chats/' . $dataUpload['file_name']);
+        }
 
         $data = array(
             'MESSAGE'       => $message,
             'CREATEDAT'     => $createdAt,
             'ID_CHAT_ROOM'  => $idChatRoom,
-            'ISADMIN'       => 1
+            'ISADMIN'       => 1,
+            'IMG'           => $filenameImg
         );
 
         $dataKirim = array(
-            'judul'     => 'Admin',
-            'pesan'   => $message,
             'token'   => $token  
         );
 
         $this->MChat->adminKirimPesan($data);
+        
         $this->load->view('notif', $dataKirim);
-        // redirect('Chat/detailChat/'.$idChatRoom);
+        redirect('Chat/detailChat/'.$idChatRoom);
     }
 }

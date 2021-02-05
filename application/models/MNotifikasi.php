@@ -17,7 +17,7 @@ class MNotifikasi extends CI_Model
         $query = $this->db->get();
 
         return $query->num_rows();
-    }
+    }    
 
     public function dataNotifChat()
     {
