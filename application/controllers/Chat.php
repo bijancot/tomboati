@@ -81,7 +81,7 @@ class Chat extends CI_Controller
         $this->MChat->updateSeen($where, $idChatRoom);
 
         $this->template->load('template/template', 'chat/DetailChat', $data);
-        $this->load->view("template/script.php");
+        redirect('Chat/detailChat/'.$idChatRoom);
     }
 
     public function adminKirimPesan(){
