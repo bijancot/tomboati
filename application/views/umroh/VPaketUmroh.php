@@ -36,12 +36,12 @@
                         $row->NAMAMASKAPAI,
                         $row->DURASIPAKET .' hari',
                         $row->KUOTA .' orang',
-                        '<a href="'.  base_url("Umroh/detailPaket/".$row->IDPAKET).'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                        '<button title="Detail Paket" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                        </button>
+                        <a title="Edit Paket" href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
                         </a>
-                        <a href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
-                        </a>
-                        <a href="'.  base_url("Umroh/hapusPaket/".$row->IDPAKET).'" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
-                        </a>'
+                        <button title="Hapus Paket" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
+                        </button>'
                         );
                         ?>
                         <!-- Modal Detail -->
@@ -169,12 +169,12 @@
                                         </div>
                                         <h5>Gambar Paket</h5>
                                         <div class="form-group">
-                                            <img src="<?= $row->IMAGEPAKET;?>" width="300px">
+                                            <img src="<?= $row->IMAGEPAKET;?>" width="200px">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Umroh/editPaket/'.$row->IDPAKET) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit fa-sm mr-1"></i> Edit</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-sm fa-times mr-1"></i> Tutup</button>
+                                        <a href="<?= base_url('Umroh/editPaket/'.$row->IDPAKET) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -193,8 +193,8 @@
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMAPAKET ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Umroh/aksiHapusPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                                        <a href="<?= base_url('Umroh/aksiHapusPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>

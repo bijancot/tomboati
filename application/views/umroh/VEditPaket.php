@@ -158,6 +158,7 @@
                                         <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="15"><?= $biayaBelumTermasuk; ?></textarea>
                                     </div>
                                     <div class="form-group">
+                                        <label for="image-source">Gambar Paket</label>
                                         <!-- wadah preview -->
                                         <img id="image-preview-edit" src="<?= $row['IMAGEPAKET']; ?>" alt="image preview"/>
                                         <div class="custom-file">

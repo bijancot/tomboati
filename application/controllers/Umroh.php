@@ -262,9 +262,9 @@ class Umroh extends CI_Controller
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
             $tipe = "Plus";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe == "Promo";
+            $tipe = "Promo";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe == "VIP";
+            $tipe = "VIP";
         }
 
         //delete
