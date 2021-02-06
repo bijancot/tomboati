@@ -25,7 +25,7 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Nama Maskapai', 'Gambar Maskapai');
+                        $this->table->set_heading('No', 'Nama Maskapai', 'Gambar Maskapai', 'Aksi');
                         // print_r($paket);
                         $no = 1;
                         foreach ($maskapai as $row) {
