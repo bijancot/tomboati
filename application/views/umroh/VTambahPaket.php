@@ -52,7 +52,6 @@
                                                     <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?> </option>
                                                     <?php } ?>
                                                 </select>
-                                                <a type="button" class="btn btn-primary mt-1" href="<?= base_url('maskapai/tambahMaskapai') ?>">Kelola Maskapai</a>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -139,6 +138,7 @@
                                                 <textarea name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
+                                                <label for="image-source">Gambar Paket</label>
                                                 <!-- wadah preview -->
                                                 <img id="image-preview" alt="image preview"/>
                                                 <div class="custom-file">

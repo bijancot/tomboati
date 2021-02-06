@@ -32,6 +32,7 @@
                                         <input class="form-control" id="namaMaskapai" placeholder="Masukkan Nama" type="text" name="namaMaskapai" />
                                     </div>
                                     <div class="form-group">
+                                        <label for="image-source">Gambar Maskapai</label>
                                         <!-- wadah preview -->
                                         <img id="image-preview" alt="image preview"/>
                                         <div class="custom-file">

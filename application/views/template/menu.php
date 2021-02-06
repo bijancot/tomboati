@@ -108,7 +108,7 @@
                         Kata-Kata Mutiara
                     </a>
 
-                    <a class="nav-link " href="javascript:void(0);">
+                    <a class="nav-link " href="<?php echo site_url('user'); ?>">
                         <div class="nav-link-icon ml-2"><i data-feather="user"></i></div>
                         User
                     </a>

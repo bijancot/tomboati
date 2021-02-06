@@ -18,7 +18,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('Maskapai/tambahMaskapai'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah Maskapai</a>
+                <a href="<?= base_url('Maskapai/tambahMaskapai'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Maskapai</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
@@ -33,10 +33,10 @@
                         $no++,
                         $row->NAMAMASKAPAI,
                         '<img src="'. $row->IMAGEMASKAPAI .'" style="width:100px">',
-                        '<a href="'.  base_url("Maskapai/editMaskapai/".$row->IDMASKAPAI).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
+                        '<a data-toggle="tooltip" data-placement="top" title="Edit Maskapai" href="'.  base_url("Maskapai/editMaskapai/".$row->IDMASKAPAI).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
                         </a>
-                        <a href="'.  base_url("Maskapai/hapusPaket/".$row->IDMASKAPAI).'" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal'.$row->IDMASKAPAI.'"><i class="fa fa-trash"></i>
-                        </a>'
+                        <button data-toggle="tooltip" data-placement="top" title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal'.$row->IDMASKAPAI.'"><i class="fa fa-trash"></i>
+                        </button>'
                         );
                         ?>
                         <!-- Modal Hapus -->
@@ -53,8 +53,8 @@
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMAMASKAPAI ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Maskapai/aksiHapusMaskapai/'.$row->IDMASKAPAI) ?>" type="button" class="btn btn-danger">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                                        <a href="<?= base_url('Maskapai/aksiHapusMaskapai/'.$row->IDMASKAPAI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>

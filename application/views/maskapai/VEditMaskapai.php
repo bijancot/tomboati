@@ -34,6 +34,7 @@
                                         <input class="form-control" name="namaMaskapai" id="namaMaskapai" value="<?= $row['NAMAMASKAPAI']; ?>" type="text" />
                                     </div>
                                     <div class="form-group">
+                                        <label for="image-source">Gambar Maskapai</label>
                                         <!-- wadah preview -->
                                         <img id="image-preview-edit" src="<?= $row['IMAGEMASKAPAI']; ?>" alt="image preview"/>
                                         <div class="custom-file">
