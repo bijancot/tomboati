@@ -33,9 +33,9 @@
                         $no++,
                         $row->NAMAMASKAPAI,
                         '<img src="'. $row->IMAGEMASKAPAI .'" style="width:100px">',
-                        '<a data-toggle="tooltip" data-placement="top" title="Edit Maskapai" href="'.  base_url("Maskapai/editMaskapai/".$row->IDMASKAPAI).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
+                        '<a title="Edit Maskapai" href="'.  base_url("Maskapai/editMaskapai/".$row->IDMASKAPAI).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
                         </a>
-                        <button data-toggle="tooltip" data-placement="top" title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal'.$row->IDMASKAPAI.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal'.$row->IDMASKAPAI.'"><i class="fa fa-trash"></i>
                         </button>'
                         );
                         ?>
