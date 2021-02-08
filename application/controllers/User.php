@@ -239,11 +239,11 @@ class User extends CI_Controller
     }
 
     function aksiVerifikasiUser($idUser){
-        //CABUT
+        //verif
         $this->MUser->verifUser($idUser);
         
-        //alert ketika sudah terhapus
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> User berhasil dicabut verifikasi! </div>');
+        // echo $this->db->last_query();
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> User berhasil diverifikasi! </div>');
 
         redirect('user');
     }
@@ -252,7 +252,6 @@ class User extends CI_Controller
         //CABUT
         $this->MUser->cabutUser($idUser);
         
-        //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> User berhasil dicabut verifikasi! </div>');
 
         redirect('user');
