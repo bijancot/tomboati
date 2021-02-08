@@ -25,18 +25,20 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori', 'Aksi');
+                        $this->table->set_heading('No', 'Status', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori', 'Aksi');
                         // print_r($paket);
                         $no = 1;
                         $kategori;
                         foreach ($user as $row) {
 
                         if($row->STATUS == 1){
+                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->NOMORKTP.'"><i class="fa fa-times-circle"></i>
+                        </button>'; 
+                        $status = '<span class="badge badge-pill badge-success">Terverfikasi</span>';
+                        }else{
                         $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifikasiUserModal'.$row->NOMORKTP.'"><i class="fa fa-check"></i>
                         </button>';
-                        }else{
-                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->NOMORKTP.'"><i class="fa fa-times-circle"></i>
-                        </button>';
+                        $status = '<span class="badge badge-pill badge-danger">Belum Terverifikasi</span>';
                         }
                         //untuk kategori user
                         if($row->KATEGORI == 1){
@@ -49,7 +51,8 @@
                             $kategori = "Jamaah 4";
                         }
                         $this->table->add_row(
-                        $no++,
+                        $no++, 
+                        $status,
                         $row->NOMORKTP,
                         $row->NAMALENGKAP,
                         $row->EMAIL,
@@ -151,6 +154,16 @@
                                     </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <?php if($row->STATUS == 1){
+                                            ?>
+                                            <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                        <?php
+                                        }else{
+                                        ?>                                  
+                                            <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                        <?php
+                                        }
+                                        ?>
                                         <a href="<?= base_url('User/editUser/'.$row->NOMORKTP) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
                                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>

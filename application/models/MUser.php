@@ -37,12 +37,12 @@ class MUser extends CI_Model
     public function verifUser($idUser){
         $this->db->set('STATUS', 1);
         $this->db->where('NOMORKTP', $idUser);
-        return $this->db->update('USER_REGISTER', $data);
+        return $this->db->update('USER_REGISTER');
     }
 
     public function cabutUser($idUser){
         $this->db->set('STATUS', 0);
         $this->db->where('NOMORKTP', $idUser);
-        return $this->db->update('USER_REGISTER', $data);
+        return $this->db->update('USER_REGISTER');
     }
 }

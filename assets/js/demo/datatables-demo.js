@@ -6,5 +6,6 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#dataTableActivity').DataTable({
         "order": [[ 0, 'desc' ]]
+        "scrollX": true
     });
 });

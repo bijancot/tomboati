@@ -199,7 +199,7 @@ class Umroh extends CI_Controller
             $imagePaket = $dataPaket[0]['IMAGEPAKET'];
         }
         else{
-            // delete_files($dataPaket[0]['IMAGEPAKET']); 
+             delete_files($dataPaket[0]['IMAGEPAKET']); 
             // unlink($dataPaket[0]['IMAGEPAKET']);die;     
              $imagePaket = $this->upload_image()  ;
         }
@@ -228,6 +228,7 @@ class Umroh extends CI_Controller
         );
 
         // untuk mengecek tipe dan dijadikan kondisi di model
+        $tipe;
          if($data['IDMASTERPAKET'] == "UMR-BSS"){
             $tipe = "Bisnis";
         }else if($data['IDMASTERPAKET'] == "UMR-HMT"){
@@ -276,6 +277,58 @@ class Umroh extends CI_Controller
         redirect('Umroh/paket/'.$tipe);
     }
 
+    public function aksiAktifPaket($idPaket)
+    {
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+         
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe = "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe = "VIP";
+        }
+
+        //delete
+        $this->MUmroh->aktifPaket($idPaket);
+        
+        //alert ketika sudah terhapus
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
+    }
+
+    public function aksiNonAktifPaket($idPaket)
+    {
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+         
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe = "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe = "VIP";
+        }
+
+        //delete
+        $this->MUmroh->nonAktifPaket($idPaket);
+        
+        //alert ketika sudah terhapus
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
+    }
+
     function upload_image(){
         $config['upload_path'] = './images/paketUmroh/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
@@ -307,4 +360,5 @@ class Umroh extends CI_Controller
             return base_url('images/paketUmroh/default.png');
         }         
     }
+
 }
