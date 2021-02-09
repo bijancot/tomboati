@@ -112,7 +112,7 @@ class Chat extends CI_Controller
 
         $this->MChat->adminKirimPesan($data);
         
-        $this->load->view('notif', $dataKirim);
+        $this->template->view('notif', $dataKirim);
         redirect('Chat/detailChat/'.$idChatRoom);
     }
 }
