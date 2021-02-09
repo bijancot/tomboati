@@ -20,7 +20,7 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-                <a href="<?= site_url('katamutiara/tambahKataMutiara'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah Kata-Kata Mutiara</a>
+                <a href="<?= site_url('katamutiara/tambahKataMutiara'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Kata-Kata Mutiara</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
@@ -34,6 +34,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Kata Mutiara</td>
+                                <td>2011/04/25</td>
+                                <td>
+                                    <a button href="<?= site_url('KataMutiara/editKataMutiara'); ?>" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
+                                    <a button class="btn btn-danger mt-1"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
                             <!-- <?php foreach ($kata_mutiara as $row) : ?>
                                 <tr>
                                     <td width>
@@ -43,8 +52,8 @@
                                         <?php echo $row->waktu ?>
                                     </td>
                                     <td>
-                                        <a href="<?= site_url('KataMutiara/editKataMutiara'); ?>" class="btn btn-datatable btn-icon btn-yellow mr-2"><i data-feather="edit-2"></i></a>
-                                        <a href="<?= site_url('KataMutiara/hapusKataMutiara'); ?>" class="btn btn-datatable btn-icon btn-red mr-2"><i data-feather="trash-2"></i></a>
+                                        <a href="<?= site_url('KataMutiara/editKataMutiara'); ?>" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= site_url('KataMutiara/hapusKataMutiara'); ?>" class="btn btn-danger mt-1"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?> -->
@@ -55,28 +64,5 @@
         </div>
     </div>
 </body>
-<script>
-    Pusher.logToConsole = true;
 
-    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
-    });
-
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
-        console.log("Clicked");
-    });
-    
-</script>
 </html>
