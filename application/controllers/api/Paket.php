@@ -10,29 +10,38 @@ class Paket extends CI_Controller{
 
     // paket get
     public function paket_get(){
-        $response = [];
+        $response       = [];
+        $idMasterPaket  = null;
 
-        $month          = date('m');
+        $tipe           = $this->input->get('tipe');
         $monthFilter    = $this->input->post('monthFilter');
 
-        if($monthFilter !=null){
-            $data = $this->db->query('SELECT * FROM PAKET WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$monthFilter.'"')->result();
-    
+        if($tipe == "Bisnis"){
+            $idMasterPaket = "UMR-BSS";
+        } else if($tipe == "Hemat"){
+            $idMasterPaket = "UMR-HMT";
+        } else if($tipe == "Plus"){
+            $idMasterPaket = "UMR-PLS";
+        } else if($tipe == "Promo"){
+            $idMasterPaket = "UMR-PRM";
+        } else if($tipe == "VIP"){
+            $idMasterPaket = "UMR-VIP";
+        }
+
+        $data = $this->db->query('SELECT * FROM PAKET WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$monthFilter.'" && ISSHOW = 1')->result();
+
+        if(count($data) > 0){
             $response['error']    = false;
             $response['message'] = 'Sukses Tampil Data';
             $response['data']     = $data;
             $this->throw(200, $response);
             return;
         }else{
-            $data = $this->db->query('SELECT * FROM PAKET WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$month.'"')->result();
-    
-            $response['error']    = false;
-            $response['message'] = 'Sukses Tampil Data';
-            $response['data']     = $data;
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
             $this->throw(200, $response);
             return;
         }
-
         
     }
 

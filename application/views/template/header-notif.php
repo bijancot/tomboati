@@ -18,7 +18,7 @@
         foreach($dataNotifChat as $data){
     ?>
     <a class="dropdown-item dropdown-notifications-item notifikasi" href="<?php echo base_url('Chat/detailChatNotif/'.$data->ID_CHAT_ROOM.'')?>">
-        <img class="dropdown-notifications-item-img" src="https://source.unsplash.com/vTL_qy03D1I/60x60" />
+        <img class="dropdown-notifications-item-img" src="<?php echo $data->FOTO?>" />
         <div class="dropdown-notifications-item-content">
             <div class="dropdown-notifications-item-content-text"><?php echo $data->MESSAGE?></div>
             <div class="dropdown-notifications-item-content-details"><?php echo $data->NAMALENGKAP?> &#xB7; <?php echo $data->CREATEDAT?></div>
