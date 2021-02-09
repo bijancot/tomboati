@@ -15,7 +15,8 @@ curl_setopt_array($curl, array(
   "notification": {
     "title": "Ada Pesan Dari Admin",
     "body": "Silahkan periksa pesan dari admin memalui aplikasi TomboAti"
-  }
+  },
+  "priority":"high"
 }',
   CURLOPT_HTTPHEADER => array(
     'Content-type: application/json',

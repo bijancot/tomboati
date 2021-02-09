@@ -42,7 +42,7 @@
                                                 <div class="talk-bubble-admin tri-right right-in">
                                                     <div class="talktext">
                                                         <p><?php echo $data->MESSAGE?> </p>
-                                                        <span class="float-right"><?php echo $data->CREATEDAT?> <?php if($data->ISSEEN == 1 ){?><i class="fas fa-check"></i><?php }?></span> 
+                                    <span class="float-right"><?php echo $data->CREATEDAT?> <?php if($data->ISSEEN == 0 ){?><i class="fas fa-check-circle"></i><?php }else{ ?><span style="color: Yellow"><i class="fas fa-check-circle"></i></spam><?php }?></span> 
                                                     </div>
                                                     
                                                 </div>
