@@ -22,7 +22,6 @@ class Komunitas extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
         $this->template->view('komunitas/VKomunitas', $data);
-        $this->load->view("template/script.php");
     }
     public function tambahKomunitas()
     {
