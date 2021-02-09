@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
     <div id="layoutSidenav_nav">
         <nav class="sidenav shadow-right sidenav-light">
             <div class="sidenav-menu">
@@ -137,8 +133,3 @@
             </div>
         </nav>
     </div>
-
-        <?php $this->load->view("template/script.php") ?>
-</body>
-
-</html>
