@@ -18,7 +18,8 @@ class Dashboard extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-        $this->template->load('template/template', 'admin/VDashboard', $data);
-        $this->load->view("template/script.php");
+
+        //Change this 
+        $this->template->view('admin/VDashboard', $data);
     }
 }

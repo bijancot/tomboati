@@ -26,9 +26,7 @@ class Chat extends CI_Controller
             'dataNotifChat'         => $dataNotifChat,
             'countMessageNotSeen'   => $countMessageNotSeen
         );
-
-        $this->template->load('template/template', 'chat/VChat', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('chat/VChat', $data);
     }
 
     public function detailChat($idChatRoom)
@@ -52,8 +50,7 @@ class Chat extends CI_Controller
         );
 
         $this->MChat->updateSeen($where, $idChatRoom);
-        $this->template->load('template/template', 'chat/DetailChat', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('chat/DetailChat', $data);
     }
 
     public function detailChatNotif($idChatRoom)
@@ -81,8 +78,7 @@ class Chat extends CI_Controller
         );
 
         $this->MChat->updateSeen($where, $idChatRoom);
-
-        $this->template->load('template/template', 'chat/DetailChat', $data);
+        $this->template->view('chat/DetailChat', $data);
         redirect('Chat/detailChat/'.$idChatRoom);
     }
 

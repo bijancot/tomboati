@@ -21,7 +21,7 @@ class Komunitas extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-        $this->template->load('template/template', 'komunitas/VKomunitas', $data);
+        $this->template->view('komunitas/VKomunitas', $data);
         $this->load->view("template/script.php");
     }
     public function tambahKomunitas()
@@ -35,8 +35,24 @@ class Komunitas extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
+
+        $this->template->view('komunitas/VTambahKomunitas', $data);
+    }
+
+    public function editKomunitas()
+    {
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
+        $data = array(
+            'title' => 'Edit Komunitas | Tombo Ati',
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
+        );
+
+
+        $this->template->view('komunitas/VEditKomunitas', $data);
         
-        $this->template->load('template/template', 'komunitas/VTambahKomunitas', $data);
-        $this->load->view("template/script.php");
     }
 }
