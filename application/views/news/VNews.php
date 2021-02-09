@@ -20,7 +20,7 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-                <a href="<?= site_url('news/tambahNews'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah News</a>
+                <a href="<?= site_url('news/tambahNews'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah News</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
@@ -43,8 +43,8 @@
                                 <td>Isi</td>
                                 <td>2011/04/25</td>
                                 <td>
-                                    <a href="<?= site_url('News/editNews'); ?>" class="btn btn-datatable btn-icon btn-yellow mr-2"><i data-feather="edit-2"></i></a>
-                                    <a class="btn btn-datatable btn-icon btn-red mr-2"><i data-feather="trash-2"></i></a>
+                                    <a button href="<?= site_url('News/editNews'); ?>" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
+                                    <a button class="btn btn-danger mt-1"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             <!-- <?php foreach ($news_info as $row) : ?>
@@ -62,8 +62,8 @@
                                     <?php echo $row->tanggalnews ?>
                                     </td>
                                     <td>
-                                       <a href="<?= site_url('News/editNews'); ?>" class="btn btn-datatable btn-icon btn-yellow mr-2"><i data-feather="edit-2"></i></a>
-                                       <a href="<?= site_url('News/hapusNews'); ?>"class="btn btn-datatable btn-icon btn-red mr-2"><i data-feather="trash-2"></i></a>
+                                       <a href="<?= site_url('News/editNews'); ?>" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
+                                       <a href="<?= site_url('News/hapusNews'); ?>"class="btn btn-danger mt-1"><i class="fa fa-trash"></i></a>
                                  </td>
                                 </tr>
                             <?php endforeach; ?> -->
@@ -78,24 +78,24 @@
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
+        cluster: 'ap1',
+        forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
     });
 
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
     });
-    
 </script>
+
 </html>
