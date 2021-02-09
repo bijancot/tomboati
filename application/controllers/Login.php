@@ -18,7 +18,7 @@ class Login extends CI_Controller
         'isDosen' => false
       );
 			$this->session->set_userdata($session);
-			redirect('News');
+			redirect('Dashboard');
 
 		}else{
 			$this->session->set_flashdata('error_login', 'Username/Password is incorrect!');

@@ -19,47 +19,38 @@
         </div>
     </header>
     <div class="container mt-n10">
-        <div class="row">
-            <div class="col-lg-9">
-                <!-- Default Bootstrap Form Controls-->
-                <div id="default">
-                    <div class="card mb-4">
-                        <div class="card-header">Form Tambah Komunitas</div>
-                        <div class="card-body">
-                            <!-- Component Preview-->
-                            <div class="sbp-preview">
-                                <div class="sbp-preview-content">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="judulnews">Judul News</label>
-                                            <input class="form-control" id="judulnews" name="judulnews" type="text"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="contentnews">Content News</label>
-                                            <input class="form-control" id="contentnews" name="contentnews" type="text"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="image-source">Foto</label>
-                                            <!-- wadah preview -->
-                                            <img id="image-preview" alt="image preview" />
-                                            <div class="custom-file">
-                                                <input type="file" name="foto" class="custom-file-input" id="image-source" onchange="previewImage();">
-                                                <label class="custom-file-label" for="image-source">Upload Gambar</label>
-                                            </div>
-                                        </div>
-                                        <div class="text-md-right">
-                                            <button type="submit" class="btn btn-primary "> Submit </button>
-                                        </div>
-                                    </form>
-                                </div>
+        <div id="solid">
+            <div class="card mb-4">
+                <div class="card-header">Form Edit Komunitas</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="judulnews">Judul News</label>
+                            <input class="form-control" id="judulnews" name="judulnews" type="text"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="contentnews">Content News</label>
+                            <input class="form-control" id="contentnews" name="contentnews" type="text"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="image-source">Foto</label>
+                            <!-- wadah preview -->
+                            <img id="image-preview" alt="image preview" />
+                            <div class="custom-file">
+                                <input type="file" name="foto" class="custom-file-input" id="image-source" onchange="previewImage();">
+                                <label class="custom-file-label" for="image-source">Upload Gambar</label>
                             </div>
                         </div>
-                    </div>
+                        <div class="text-md-right">
+                            <button type="submit" class="btn btn-primary "> Submit </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 <script>
     ClassicEditor
         .create(document.querySelector('#contentnews'))
@@ -88,7 +79,6 @@
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 </script>
-
 <script>
     Pusher.logToConsole = true;
 
@@ -112,5 +102,3 @@
         console.log("Clicked");
     });
 </script>
-
-</html>

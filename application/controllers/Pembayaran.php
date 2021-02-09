@@ -21,7 +21,7 @@ class Pembayaran extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-        $this->template->load('template/template', 'pembayaran/VPembayaran', $data);
-        $this->load->view("template/script.php"); 
+        
+        $this->template->view('pembayaran/VPembayaran', $data);
     }
 }

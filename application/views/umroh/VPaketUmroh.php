@@ -19,7 +19,7 @@
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('Umroh/tambahPaket/'.$tipe); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Paket</a>
-                <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a>
+                <!-- <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a> -->
             </div>
             <div class="card-body">
                 <div class="datatable">

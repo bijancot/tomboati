@@ -1,16 +1,16 @@
 <?php
 class Template
 {
-    var $template_data = array();
-    function set($name, $value)
-    {
-        $this->template_data[$name] = $value;
-    }
+    protected $_ci;
 
-    function load($template = '', $view = '', $view_data = array(), $return = FALSE)
-    {
-        $this->CI = &get_instance();
-        $this->set('contents', $this->CI->load->view($view, $view_data, TRUE));
-        return $this->CI->load->view($template, $this->template_data, $return);
+    function __construct(){
+        $this->_ci = &get_instance();
+    }
+    
+    function view($content, $data = null){
+        $this->_ci->load->view('template/header', $data); // Header
+        $this->_ci->load->view($content, $data); // Content
+        $this->_ci->load->view('template/footer', $data); // Footer
     }
 }
+?>

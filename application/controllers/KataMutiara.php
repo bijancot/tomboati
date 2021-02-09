@@ -21,9 +21,8 @@ class KataMutiara extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-
-        $this->template->load('template/template', 'katamutiara/VKataMutiara', $data);
-        $this->load->view("template/script.php");
+        
+        $this->template->view('katamutiara/VKataMutiara', $data);
     }
     
     public function tambahKataMutiara()
@@ -38,8 +37,7 @@ class KataMutiara extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'katamutiara/VtambahKataMutiara', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('katamutiara/VtambahKataMutiara', $data);
     }
     public function editKataMutiara()
     {
@@ -53,8 +51,7 @@ class KataMutiara extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
         
-        $this->template->load('template/template', 'katamutiara/VEditKataMutiara', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('katamutiara/VEditKataMutiara', $data);
     }
     public function hapusKataMutiara()
     {

@@ -24,14 +24,13 @@ class User extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'User',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'user/VUser', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('user/VUser', $data);
     }
 
     public function tambahUser()
@@ -43,14 +42,12 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'Tambah User',
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'user/VTambahUser', $data);
-        $this->load->view("template/script.php");
-        
+        $this->template->view('user/VTambahUser', $data);
     }
 
     public function aksiTambahUser(){
@@ -94,14 +91,13 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'Edit User',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'user/VEditUser', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('user/VEditUser', $data);
     }
 
     public function aksiEditUser($idUser){        

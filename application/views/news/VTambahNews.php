@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <a href="<?= base_url(); ?>news">
-                                <button class="btn btn-blue btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             News
                         </h1>
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="IsiNews">Isi News</label>
-                                            <textarea class="form-control" id="IsiNews" rows="15"></textarea>
+                                            <textarea class="form-control" id="IsiNews" rows="5"></textarea>
                                         </div>
                                     </form>
                                     <div class="text-md-right">
@@ -57,27 +57,45 @@
     </div>
 </body>
 <script>
+    ClassicEditor
+        .create(document.querySelector('#DeskripsiNews'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#IsiNews'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
+        cluster: 'ap1',
+        forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
     });
 
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
     });
-    
 </script>
+
 </html>

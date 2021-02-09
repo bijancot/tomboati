@@ -23,8 +23,7 @@ class News extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'news/VNews', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('news/VNews', $data);
     }
 
     public function tambahNews()
@@ -39,8 +38,7 @@ class News extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'news/VTambahNews', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('news/VTambahNews', $data);
     }
 
     public function editNews()
@@ -54,8 +52,8 @@ class News extends CI_Controller
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-        $this->template->load('template/template', 'news/VEditNews', $data);
-        $this->load->view("template/script.php");
+        
+        $this->template->view('news/VEditNews', $data);
     }
 
     public function hapusNews()

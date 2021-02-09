@@ -32,31 +32,76 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xxl-3 col-lg-4">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-white-75 small">Jumlah User</div>
+                                <div class="text-lg font-weight-bold">0</div>
+                            </div>
+                            <i class="feather-xl text-white-50" data-feather="users"></i>
+                        </div>
+                    </div>
+                    <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Report</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-xxl-3 col-lg-4">
+                <div class="card bg-green text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-white-75 small">Pembayaran</div>
+                                <div class="text-lg font-weight-bold">0</div>
+                            </div>
+                            <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-lg-4">
+                <div class="card bg-yellow text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-white-75 small">Pesan</div>
+                                <div class="text-lg font-weight-bold">17</div>
+                            </div>
+                            <i class="feather-xl text-white-50" data-feather="message-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 </body>
 <script>
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
+        cluster: 'ap1',
+        forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
     });
 
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
     });
-    
 </script>
+
 </html>

@@ -37,15 +37,14 @@ class Umroh extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
+            'title' => 'Paket Umroh '.$tipe.' ',
             'tipe' => $tipe,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VPaketUmroh', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('umroh/VPaketUmroh', $data);
     }
 
     public function tambahPaket($tipe)
@@ -78,9 +77,7 @@ class Umroh extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VTambahPaket', $data);
-        $this->load->view("template/script.php");
-        
+        $this->template->view('umroh/VTambahPaket', $data);
     }
 
     public function aksiTambahPaket($tipe){
@@ -176,8 +173,7 @@ class Umroh extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VEditPaket', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('umroh/VEditPaket', $data);
     }
 
     public function aksiEditPaket($idPaket){        
@@ -228,7 +224,7 @@ class Umroh extends CI_Controller
         );
 
         // untuk mengecek tipe dan dijadikan kondisi di model
-        $tipe;
+        $tipe = null;
          if($data['IDMASTERPAKET'] == "UMR-BSS"){
             $tipe = "Bisnis";
         }else if($data['IDMASTERPAKET'] == "UMR-HMT"){
