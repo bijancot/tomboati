@@ -134,6 +134,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('MUmroh', 'MMaskapai');
-$autoload['model'] = array('MUmroh', 'MMaskapai', 'MUser', 'MNews');
-$autoload['model'] = array('MUmroh', 'MMaskapai', 'MUser', 'MNews');
+$autoload['model'] = array('MUmroh', 'MMaskapai', 'MUser', 'MNews', 'MWisataHalal');

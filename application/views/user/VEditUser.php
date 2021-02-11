@@ -29,7 +29,7 @@
                                 <div class="sbp-preview-content">
                                     <?php foreach ($user as $row) {
                                     ?>
-                                    <?= form_open_multipart('User/aksiEditUser/'.$row['NOMORKTP']) ?>
+                                    <?= form_open_multipart('User/aksiEditUser/'.$row['IDUSERREGISTER']) ?>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
@@ -63,24 +63,18 @@
                                                     if ($row['KATEGORI'] == "1") {
                                                     echo 'selected="selected"';
                                                     }
-                                                    ?>>Jamaah 1</option>
+                                                    ?>>Jamaah</option>
                                                     <option value="2" <?php
                                                     if ($row['KATEGORI'] == "2") {
                                                     echo 'selected="selected"';
                                                     }
-                                                    ?>>Jamaah 2</option>
+                                                    ?>>Agen</option>
                                                     <option value="3"
                                                     <?php
                                                     if ($row['KATEGORI'] == "3") {
                                                     echo 'selected="selected"';
                                                     }
-                                                    ?>>Jamaah 3</option>
-                                                    <option value="4"
-                                                    <?php
-                                                    if ($row['KATEGORI'] == "4") {
-                                                    echo 'selected="selected"';
-                                                    }
-                                                    ?>>Jamaah 4</option>
+                                                    ?>>Mitra</option>
                                                 </select>
                                             </div>
                                         </div>

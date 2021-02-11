@@ -74,15 +74,15 @@
                     </a>
                     <div class="collapse" id="collapseWisataHalal" data-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/Internasional'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
                                 INTERNASIONAL
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/Nasional'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
                                 NASIONAL
                             </a>
-                            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+                            <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/ZiarahWali'); ?>">
                                 <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
                                 ZIARAH WALI
                             </a>

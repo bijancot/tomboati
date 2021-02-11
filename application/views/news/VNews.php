@@ -36,7 +36,7 @@
                             $row->JUDULNEWS,
                             $row->DESKRIPSINEWS,
                             $row->CONTENTNEWS,
-                            $row->FOTO,
+                            '<img src="'. $row->FOTO .'" style="width:100px">',
                             $row->TANGGALNEWS,
                             '
                             <button title="Detail News" type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#detailNews' . $row->IDNEWSINFO . '"><i class="fa fa-ellipsis-h"></i>
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?= base_url('News/editNews/' . $row->IDNEWSINFO) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?= base_url() ?>News/hapusNews/<?= $row->IDNEWSINFO; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>

@@ -29,7 +29,7 @@
                                     <?= form_open_multipart('maskapai/aksiTambahMaskapai') ?>
                                     <div class="form-group">
                                         <label for="namaMaskapai">Nama Maskapai</label>
-                                        <input class="form-control" id="namaMaskapai" placeholder="Masukkan Nama" type="text" name="namaMaskapai" />
+                                        <input class="form-control" id="namaMaskapai" placeholder="Masukkan Nama" type="text" name="namaMaskapai" required="" />
                                     </div>
                                     <div class="form-group">
                                         <label for="image-source">Gambar Maskapai</label>

@@ -48,7 +48,7 @@
                                             <label for="contentNews">Isi News</label>
                                             <textarea class="form-control" name="contentNews" id="contentNews" required="" rows="5"></textarea>
                                             <div class="form-group">
-                                                <label for="contentNews">Foto User</label>
+                                                <label for="contentNews">Foto News</label>
                                                 <!-- wadah preview -->
                                                 <img id="foto-preview" alt="image preview" />
                                                 <div class="custom-file">

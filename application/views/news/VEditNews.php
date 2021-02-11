@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="foto">Foto User</label>
+                                                <label for="foto">Foto News</label>
                                                 <!-- wadah preview -->
                                                 <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview" />
                                                 <div class="custom-file">
@@ -77,11 +77,11 @@
 <script type="text/javascript">
     //preview sebelum upload
     function previewFoto() {
-        document.getElementById("foto-preview").style.display = "block";
+        document.getElementById("foto-preview-edit").style.display = "block";
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("source-foto").files[0]);
         oFReader.onload = function(oFREvent) {
-            document.getElementById("foto-preview").src = oFREvent.target.result;
+            document.getElementById("foto-preview-edit").src = oFREvent.target.result;
         };
     };
     // Add the following code if you want the name of the file appear on select
