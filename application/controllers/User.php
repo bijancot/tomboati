@@ -24,7 +24,7 @@ class User extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'User',
+            'title' => 'User | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
@@ -42,7 +42,7 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Tambah User',
+            'title' => 'User | Tombo Ati',
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
@@ -91,12 +91,11 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Edit User',
+            'title' => 'User | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-
         $this->template->view('user/VEditUser', $data);
     }
 
