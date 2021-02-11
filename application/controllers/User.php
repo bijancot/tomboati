@@ -69,7 +69,8 @@ class User extends CI_Controller
                'KODEREFERRAL' => $kodeReferral,
                'NOMORHP' => $this->input->post('nomorHP'),
                'FILEKTP' => $fileKTP,
-               'FOTO' => $foto
+               'FOTO' => $foto,
+               'CREATED_AT' => date("Y-m-d h:i:sa")
         );
 
         // print_r($data);
@@ -125,6 +126,7 @@ class User extends CI_Controller
         }
 
         $data = array(
+               'IDUSERREGISTER' => $idUser,
                'NOMORKTP' => $this->input->post('nomorKTP'),
                'EMAIL' => $this->input->post('email'),
                'PASSWORD' => $this->input->post('password'),
@@ -135,7 +137,7 @@ class User extends CI_Controller
                'FILEKTP' => $fileKTP,
                'FOTO' => $foto
         );
-
+        // var_dump($data);
         $this->MUser->updateUser($data);
 
         //alert ketika sudah tersimpan

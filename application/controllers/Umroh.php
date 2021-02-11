@@ -37,7 +37,7 @@ class Umroh extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' ',
+            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
@@ -128,7 +128,8 @@ class Umroh extends CI_Controller
                'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
                'KUOTA' => $this->input->post('kuota'),
                'IMAGEPAKET' => $imagePaket,
-               'ISSHOW' => $valIsShow
+               'ISSHOW' => $valIsShow,
+               'CREATED_AT' => date("Y-m-d h:i:sa")
         );
 
         // print_r($data);
@@ -320,7 +321,7 @@ class Umroh extends CI_Controller
         $this->MUmroh->nonAktifPaket($idPaket);
         
         //alert ketika sudah terhapus
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dinonaktifkan! </div>');
 
         redirect('Umroh/paket/'.$tipe);
     }

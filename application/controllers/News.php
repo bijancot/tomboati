@@ -46,7 +46,7 @@ class News extends CI_Controller
     public function aksiTambahNews()
     {
         //upload Foto
-        $foto   = $this->upload_foto();
+        $foto   = $this->upload_foto($this->input->post('IDNEWSINFO'));
 
         $data = array(
             'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
@@ -123,12 +123,11 @@ class News extends CI_Controller
         redirect('news');
     }
 
-    function upload_foto()
+    function upload_foto($name)
     {
         $config['upload_path'] = './images/news/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        $new_name = $this->input->post('IDNEWSINFO') . '_FOTO';
-        $config['file_name'] = $new_name;
+        $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
 
         $this->upload->initialize($config);
         if (!empty($_FILES['foto']['name'])) {
