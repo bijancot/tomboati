@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< Updated upstream
 $autoload['libraries'] = array('template', 'database', 'session');
+=======
+$autoload['libraries'] = array('database', 'session', 'Template', 'upload');
+>>>>>>> Stashed changes
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('form','url');
+$autoload['helper'] = array('form', 'url');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +136,8 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
+<<<<<<< Updated upstream
 $autoload['model'] = array('MUmroh', 'MMaskapai');
+=======
+$autoload['model'] = array('MUmroh', 'MMaskapai', 'MUser', 'MNews');
+>>>>>>> Stashed changes

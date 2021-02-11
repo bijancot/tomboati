@@ -30,20 +30,44 @@
                             <!-- Component Preview-->
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="JudulNews">Judul News</label>
-                                            <input class="form-control" id="JudulNews" type="text" />
+                                    <?php foreach ($news as $row) { ?>
+                                        <?= form_open_multipart('news/aksiEditNews/' . $row['IDNEWSINFO']) ?>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="judulNews">Judul News</label>
+                                                <input class="form-control" name="judulNews" id="judulNews" type="text" value="<?= $row['JUDULNEWS']; ?>" required="" />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="DeskripsiNews">Deskripsi News</label>
-                                            <textarea class="form-control" id="DeskripsiNews" rows="3"></textarea>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="deskripsiNews">Deskripsi News</label>
+                                                <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" rows="3" required=""><?= $row['DESKRIPSINEWS']; ?></textarea>
+                                            </div>
                                         </div>
+<<<<<<< Updated upstream
                                         <div class="form-group">
                                             <label for="IsiNews">Isi News</label>
                                             <textarea class="form-control" id="IsiNews" rows="15"></textarea>
+=======
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="contentNews">Isi News</label>
+                                                <textarea class="form-control" name="contentNews" id="contentNews" rows="5" required=""><?= $row['CONTENTNEWS']; ?></textarea>
+                                            </div>
+>>>>>>> Stashed changes
                                         </div>
-                                    </form>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="foto">Foto User</label>
+                                                <!-- wadah preview -->
+                                                <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview" />
+                                                <div class="custom-file">
+                                                    <input type="file" name="foto" value="<?= $row['FOTO']; ?>" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
+                                                    <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <div class="text-md-right">
                                         <button type="submit" class="btn btn-primary "> Submit </button>
                                     </div>
@@ -56,5 +80,65 @@
         </div>
     </div>
 </body>
+<<<<<<< Updated upstream
+=======
+<script type="text/javascript">
+    //preview sebelum upload
+    function previewFoto() {
+        document.getElementById("foto-preview").style.display = "block";
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("source-foto").files[0]);
+        oFReader.onload = function(oFREvent) {
+            document.getElementById("foto-preview").src = oFREvent.target.result;
+        };
+    };
+    // Add the following code if you want the name of the file appear on select
+    $(".foto").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".label-foto").addClass("selected").html(fileName);
+    });
+</script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#DeskripsiNews'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#ContentNews'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
+    });
+
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
+        console.log("Clicked");
+    });
+</script>
+>>>>>>> Stashed changes
 
 </html>
