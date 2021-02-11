@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <a href="<?= base_url(); ?>news">
-                                <button class="btn btn-blue btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             News
                         </h1>
@@ -45,13 +45,6 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                                            <label for="IsiNews">Isi News</label>
-                                            <textarea class="form-control" id="IsiNews" rows="15"></textarea>
-=======
-=======
->>>>>>> Stashed changes
                                             <label for="contentNews">Isi News</label>
                                             <textarea class="form-control" name="contentNews" id="contentNews" required="" rows="5"></textarea>
                                             <div class="form-group">
@@ -63,10 +56,6 @@
                                                     <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
                                                 </div>
                                             </div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                                         </div>
                                     </div>
                                     <div class="text-md-right">
@@ -81,11 +70,6 @@
         </div>
     </div>
 </body>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 <script type="text/javascript">
     //preview sebelum upload
     function previewFoto() {
@@ -146,6 +130,5 @@
         console.log("Clicked");
     });
 </script>
->>>>>>> Stashed changes
 
 </html>
