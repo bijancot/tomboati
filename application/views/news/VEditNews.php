@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <a href="<?= base_url(); ?>news">
-                                <button class="btn btn-blue btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             News
                         </h1>
@@ -44,21 +44,11 @@
                                                 <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" rows="3" required=""><?= $row['DESKRIPSINEWS']; ?></textarea>
                                             </div>
                                         </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                                        <div class="form-group">
-                                            <label for="IsiNews">Isi News</label>
-                                            <textarea class="form-control" id="IsiNews" rows="15"></textarea>
-=======
-=======
->>>>>>> Stashed changes
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="contentNews">Isi News</label>
                                                 <textarea class="form-control" name="contentNews" id="contentNews" rows="5" required=""><?= $row['CONTENTNEWS']; ?></textarea>
                                             </div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
@@ -71,20 +61,6 @@
                                                 </div>
                                             </div>
                                         </div>
-=======
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="foto">Foto User</label>
-                                                <!-- wadah preview -->
-                                                <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview" />
-                                                <div class="custom-file">
-                                                    <input type="file" name="foto" value="<?= $row['FOTO']; ?>" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
-                                                    <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
-                                                </div>
-                                            </div>
-                                        </div>
->>>>>>> Stashed changes
                                     <?php } ?>
                                     <div class="text-md-right">
                                         <button type="submit" class="btn btn-primary "> Submit </button>
@@ -98,11 +74,6 @@
         </div>
     </div>
 </body>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 <script type="text/javascript">
     //preview sebelum upload
     function previewFoto() {
@@ -160,6 +131,5 @@
         console.log("Clicked");
     });
 </script>
->>>>>>> Stashed changes
 
 </html>
