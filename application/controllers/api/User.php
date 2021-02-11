@@ -21,6 +21,7 @@ class User extends CI_Controller{
         $password       = $this->input->post('password');
         $namaLengkap    = $this->input->post('namaLengkap');
         $nomorHP        = $this->input->post('nomorHP');
+        $user_token     = $this->input->post('token');
         $filenameKTP    = null;
         $filenameFoto   = null;
 
@@ -49,7 +50,8 @@ class User extends CI_Controller{
                             'NAMALENGKAP'   => $namaLengkap,
                             'NOMORHP'       => $nomorHP,
                             'FILEKTP'       => $filenameKTP,
-                            'FOTO'          => $filenameFoto
+                            'FOTO'          => $filenameFoto,
+                            'USERTOKEN'     => $user_token
                         );
 
                         $dataChat = array(

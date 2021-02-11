@@ -11,6 +11,9 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
+                            <a href="<?= base_url(); ?>chat">
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                            </a>
                             <div class="page-header-icon"><i data-feather="message-circle"></i></div>
                             Chat
                         </h1>
@@ -26,44 +29,65 @@
                 Chat Dari : <?php foreach($chatFrom as $data) echo $data->NAMALENGKAP?>
             </div>
             <div class="card-body">
-                <div class="chat">
-                    <?php foreach($chat as $data){?>
-                    <?php if($data->ISADMIN == 1){?>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="float-right">&nbsp;
-                                <div id="boxright">
-                                    <p><?php echo $data->MESSAGE?></p>
-                                </div>
-                                <?php if($data->IMG != NULL){?>
-                                <div>
-                                    <img width="200px" src="<?php echo $data->IMG?>"/>
-                                </div>
-                                <?php }?>
+                <div class="row">
+                    <div id="wrapper">
+                        <div class="scrollbar" id="style-3">
+                            <div class="force-overflow">
+                                <div class="chat">
+                                    <?php foreach($chat as $data){?>
+                                    <?php if($data->ISADMIN == 1){?>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="float-right">&nbsp;
+                                                <div class="talk-bubble-admin tri-right right-in">
+                                                    <div class="talktext">
+                                                        <p><?php echo $data->MESSAGE?> </p>
+                                    <span class="float-right"><?php echo $data->CREATEDAT?> <?php if($data->ISSEEN == 0 ){?><i class="fas fa-check-circle"></i><?php }else{ ?><span style="color: Yellow"><i class="fas fa-check-circle"></i></spam><?php }?></span> 
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                                <?php if($data->IMG != NULL){?>
+                                                <div>
+                                                    <img width="200px" src="<?php echo $data->IMG?>"/>
+                                                </div>
+                                                <?php }?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }else{?>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="float-left">    
+                                                <div class="talk-bubble-user tri-right left-top">
+                                                    <div class="talktext">
+                                                        <p><?php echo $data->MESSAGE?></p>
+                                                        <span class="float-right"><?php echo $data->CREATEDAT?></span>
+                                                    </div>
+                                                </div>
+                                                <?php if($data->IMG != NULL){?>
+                                                <div>
+                                                    <img width="200px" src="<?php echo $data->IMG?>"/>
+                                                </div>
+                                                <?php }?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }}?>
+                                    <br>
+                                </div><br>
                             </div>
                         </div>
                     </div>
-                    <?php }else{?>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="float-left">
-                                <div id="boxleft">
-                                    <p><?php echo $data->MESSAGE?></p>
-                                </div>
-                                <?php if($data->IMG != NULL){?>
-                                <div>
-                                    <img width="200px" src="<?php echo $data->IMG?>"/>
-                                </div>
-                                <?php }?>
-                            </div>
-                        </div>
-                    </div>
-                    <?php }}?>
-                    <br>
-                </div><br>
+                </div>
+                
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="row" method="post" action="<?php echo base_url()?>Chat/adminKirimPesan">
+                        <form class="row" method="post" enctype="multipart/form-data" action="<?php echo base_url()?>Chat/adminKirimPesan">
+                            <div class="col-12 col-sm-auto pl-sm-0">
+                                <input type="file" id="upload" name="img" hidden/>
+                                <label style="height:100%; width:100%; margin-left:20px;" class="btn btn-success btn-block" for="upload"><i class="fas fa-paperclip"></i></label>
+                            </div>
                             <div class="col-12 col-sm pr-sm-0">
                                 <input type="hidden" name="idChatRoom" value="<?php echo $data->ID_CHAT_ROOM?>" class="form-control">
                                 <input type="hidden" name="userToken" value="<?php echo $data->USERTOKEN?>" class="form-control">

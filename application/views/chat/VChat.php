@@ -43,7 +43,12 @@
                                 <td><?php echo $data->NAMALENGKAP?></td>
                                 <td><?php echo $data->MESSAGE?></td>
                                 <td>
-                                    <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span></a>
+                                    <?php if($data->ISSEEN == 0){?>
+                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-yellow" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
+                                    <?php }else{?>
+                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
+                                    <?php }?>
+                                    
                                 </td>
                             </tr>
                             <?php }?>

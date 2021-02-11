@@ -19,29 +19,39 @@
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('Umroh/tambahPaket/'.$tipe); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Paket</a>
-                <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a>
+                <!-- <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a> -->
             </div>
             <div class="card-body">
                 <div class="datatable">
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Nama Paket', 'Maskapai', 'Durasi Paket', 'Kuota', 'Aksi');
-                        // print_r($paket);
+                        $this->table->set_heading('No', 'Status', 'Nama Paket', 'Maskapai', 'Durasi Paket', 'Kuota', 'Aksi');
                         $no = 1;
                         foreach ($paket as $row) {
+                        if($row->ISSHOW == 1){
+                        $verfikasi = '<button title="Non-Aktifkan Paket" type="button" class="btn btn-danger" data-toggle="modal" data-target="#nonAktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-times-circle"></i>
+                        </button>'; 
+                        $status = '<span class="badge badge-pill badge-success">Aktif</span>';
+                        }else{
+                        $verfikasi = '<button title="Aktifkan Paket" type="button" class="btn btn-primary" data-toggle="modal" data-target="#aktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-check"></i>
+                        </button>';
+                        $status = '<span class="badge badge-pill badge-danger">Non-Aktif</span>';
+                        }
                         $this->table->add_row(
                         $no++,
+                        $status,
                         $row->NAMAPAKET,
                         $row->NAMAMASKAPAI,
                         $row->DURASIPAKET .' hari',
                         $row->KUOTA .' orang',
-                        '<a href="'.  base_url("Umroh/detailPaket/".$row->IDPAKET).'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                        $verfikasi.
+                        '<button title="Detail Paket" type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                        </button><br>
+                        <a title="Edit Paket" href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
                         </a>
-                        <a href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
-                        </a>
-                        <a href="'.  base_url("Umroh/hapusPaket/".$row->IDPAKET).'" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
-                        </a>'
+                        <button title="Hapus Paket" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
+                        </button>'
                         );
                         ?>
                         <!-- Modal Detail -->
@@ -169,12 +179,22 @@
                                         </div>
                                         <h5>Gambar Paket</h5>
                                         <div class="form-group">
-                                            <img src="<?= $row->IMAGEPAKET;?>" width="300px">
+                                            <img src="<?= $row->IMAGEPAKET;?>" width="200px">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Umroh/editPaket/'.$row->IDPAKET) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit fa-sm mr-1"></i> Edit</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-sm fa-times mr-1"></i> Tutup</button>
+                                        <?php if($row->ISSHOW == 1){
+                                            ?>
+                                            <a href="<?= base_url('Umroh/aksiNonAktifPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
+                                        <?php
+                                        }else{
+                                        ?>                                  
+                                            <a href="<?= base_url('Umroh/aksiAktifPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
+                                        <?php
+                                        }
+                                        ?>
+                                        <a href="<?= base_url('Umroh/editPaket/'.$row->IDPAKET) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -193,8 +213,48 @@
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMAPAKET ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Umroh/aksiHapusPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger">Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                                        <a href="<?= base_url('Umroh/aksiHapusPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Aktif -->
+                        <div class="modal fade" id="aktifPaketModal<?= $row->IDPAKET; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Aktifkan Paket <?= $title ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5>Apakah anda yakin akan mengaktifkan <b> <?= $row->NAMAPAKET ?> ?</b></h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="<?= base_url('Umroh/aksiAktifPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Non-Aktif -->
+                        <div class="modal fade" id="nonAktifPaketModal<?= $row->IDPAKET; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5>Apakah anda yakin akan menonaktifkan <b> <?= $row->NAMAPAKET ?> ?</b></h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="<?= base_url('Umroh/aksiNonAktifPaket/'.$row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -208,3 +268,27 @@
             </div>
         </div>
 </body>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+      cluster: 'ap1',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr=$.ajax({    
+                method: 'POST',
+                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
+                success : function(response){
+                    $('.list-notifikasi').html(response);
+                }
+            })
+    });
+
+    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+        console.log("Clicked");
+    });
+    
+</script>

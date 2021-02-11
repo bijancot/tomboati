@@ -48,4 +48,16 @@ class MUmroh extends CI_Model
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->delete('PAKET');
     }
+
+    public function aktifPaket($idPaket){
+        $this->db->set('ISSHOW', 1);
+        $this->db->where('IDPAKET', $idPaket);
+        return $this->db->update('PAKET');
+    }
+
+    public function nonAktifPaket($idPaket){
+        $this->db->set('ISSHOW', 0);
+        $this->db->where('IDPAKET', $idPaket);
+        return $this->db->update('PAKET');
+    }
 }

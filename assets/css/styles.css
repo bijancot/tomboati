@@ -11,7 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: #00441F;
+  --blue: #0061f2;
   --indigo: #5800e8;
   --purple: #6900c7;
   --pink: #e30059;
@@ -20550,8 +20550,37 @@ pre[class*=language-] {
   margin-bottom: 15px;
 }
 
+/*foto preview untuk user*/
+#foto-preview{
+  display:none;
+  width : 300px;
+  margin-bottom: 15px;
+}
+
+/*ktp preview untuk ktp*/
+#ktp-preview{
+  display:none;
+  width : 300px;
+  margin-bottom: 15px;
+}
+
 /*image preview untuk paket edit*/
 #image-preview-edit{
   width : 300px;
   margin-bottom: 15px;
+  display: block;
+}
+
+/*image preview untuk paket edit*/
+#foto-preview-edit{
+  width : 300px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/*image preview untuk paket edit*/
+#ktp-preview-edit{
+  width : 300px;
+  margin-bottom: 15px;
+  display: block;
 }

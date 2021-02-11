@@ -45,24 +45,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="maskapai">Maskapai</label>
-                                        <select id="maskapai" class="form-control" name="maskapai" required>
-                                            <option value="">
-                                                Pilih Maskapai
-                                            </option>
-                                            <?php
-                                            $selected = $row['IDMASKAPAI']; // Put value from database here.
-                                            foreach($maskapai as $key){ ?>
-                                            <option value="<?php echo $key->IDMASKAPAI; ?>"
-                                                <?php
-                                                if ($key->IDMASKAPAI == $selected) {
-                                                echo 'selected="selected"';
-                                                }
-                                                ?>>
-                                            <?php echo $key->NAMAMASKAPAI; ?></option>
-                                            <?php } ?>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="maskapai">Maskapai</label>
+                                                <select id="maskapai" class="form-control" name="maskapai" required>
+                                                    <option value="">
+                                                        Pilih Maskapai
+                                                    </option>
+                                                    <?php
+                                                    $selected = $row['IDMASKAPAI']; // Put value from database here.
+                                                    foreach($maskapai as $key){ ?>
+                                                    <option value="<?php echo $key->IDMASKAPAI; ?>"
+                                                        <?php
+                                                        if ($key->IDMASKAPAI == $selected) {
+                                                        echo 'selected="selected"';
+                                                        }
+                                                        ?>>
+                                                    <?php echo $key->NAMAMASKAPAI; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col mt-auto">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-m' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -158,6 +168,7 @@
                                         <textarea  name="biayaBelumTermasuk" class="form-control" id="biayaBelumTermasuk" rows="15"><?= $biayaBelumTermasuk; ?></textarea>
                                     </div>
                                     <div class="form-group">
+                                        <label for="image-source">Gambar Paket</label>
                                         <!-- wadah preview -->
                                         <img id="image-preview-edit" src="<?= $row['IMAGEPAKET']; ?>" alt="image preview"/>
                                         <div class="custom-file">
@@ -232,5 +243,26 @@
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+    </script>
+    <script>
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+    cluster: 'ap1',
+    forceTLS: true
+    });
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+    xhr=$.ajax({
+    method: 'POST',
+    url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
+    success : function(response){
+    $('.list-notifikasi').html(response);
+    }
+    })
+    });
+    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    console.log("Clicked");
+    });
+    
     </script>
 </body>

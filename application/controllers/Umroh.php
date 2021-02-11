@@ -8,6 +8,8 @@ class Umroh extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
         $this->load->library('upload');
+        date_default_timezone_set('Asia/Jakarta');
+        $this->load->model('MNotifikasi');
         
     }
 
@@ -28,16 +30,21 @@ class Umroh extends CI_Controller
 
         $dataPaket = $this->MUmroh->getPaket($idMasterPaket);
 
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
+            'title' => 'Paket Umroh '.$tipe.' ',
             'tipe' => $tipe,
-            'paket' => $dataPaket
+            'paket' => $dataPaket,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VPaketUmroh', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('umroh/VPaketUmroh', $data);
     }
 
     public function tambahPaket($tipe)
@@ -56,17 +63,21 @@ class Umroh extends CI_Controller
         }
 
         $dataMaskapai = $this->MUmroh->getMaskapai();
+        
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
 
         //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
-            'maskapai' => $dataMaskapai
+            'maskapai' => $dataMaskapai,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VTambahPaket', $data);
-        $this->load->view("template/script.php");
-        
+        $this->template->view('umroh/VTambahPaket', $data);
     }
 
     public function aksiTambahPaket($tipe){
@@ -148,16 +159,21 @@ class Umroh extends CI_Controller
             $tipe = "VIP";
         }
 
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
         //parse
         $data = array(
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
-            'paket' => $dataPaket
+            'paket' => $dataPaket,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
-        $this->template->load('template/template', 'umroh/VEditPaket', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('umroh/VEditPaket', $data);
     }
 
     public function aksiEditPaket($idPaket){        
@@ -179,7 +195,7 @@ class Umroh extends CI_Controller
             $imagePaket = $dataPaket[0]['IMAGEPAKET'];
         }
         else{
-            // delete_files($dataPaket[0]['IMAGEPAKET']); 
+             delete_files($dataPaket[0]['IMAGEPAKET']); 
             // unlink($dataPaket[0]['IMAGEPAKET']);die;     
              $imagePaket = $this->upload_image()  ;
         }
@@ -208,6 +224,7 @@ class Umroh extends CI_Controller
         );
 
         // untuk mengecek tipe dan dijadikan kondisi di model
+        $tipe = null;
          if($data['IDMASTERPAKET'] == "UMR-BSS"){
             $tipe = "Bisnis";
         }else if($data['IDMASTERPAKET'] == "UMR-HMT"){
@@ -242,9 +259,9 @@ class Umroh extends CI_Controller
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
             $tipe = "Plus";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe == "Promo";
+            $tipe = "Promo";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe == "VIP";
+            $tipe = "VIP";
         }
 
         //delete
@@ -252,6 +269,58 @@ class Umroh extends CI_Controller
         
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dihapus! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
+    }
+
+    public function aksiAktifPaket($idPaket)
+    {
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+         
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe = "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe = "VIP";
+        }
+
+        //delete
+        $this->MUmroh->aktifPaket($idPaket);
+        
+        //alert ketika sudah terhapus
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
+
+        redirect('Umroh/paket/'.$tipe);
+    }
+
+    public function aksiNonAktifPaket($idPaket)
+    {
+        $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+         
+        // untuk mengecek idMasterPaket
+        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
+            $tipe = "Bisnis";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
+            $tipe = "Hemat";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+            $tipe = "Plus";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
+            $tipe = "Promo";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
+            $tipe = "VIP";
+        }
+
+        //delete
+        $this->MUmroh->nonAktifPaket($idPaket);
+        
+        //alert ketika sudah terhapus
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
 
         redirect('Umroh/paket/'.$tipe);
     }
@@ -287,4 +356,5 @@ class Umroh extends CI_Controller
             return base_url('images/paketUmroh/default.png');
         }         
     }
+
 }

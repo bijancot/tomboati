@@ -22,15 +22,14 @@ class Maskapai extends CI_Controller
             'title' => 'Maskapai | Tombo Ati',
             'maskapai' => $dataMaskapai);
 
-        $this->template->load('template/template', 'maskapai/VMaskapai', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('maskapai/VMaskapai', $data);
     }
 
     public function tambahMaskapai()
     {
         $data = array('title' => 'Tambah Maskapai | Tombo Ati');
-        $this->template->load('template/template', 'maskapai/VTambahMaskapai', $data);
-        $this->load->view("template/script.php");
+        
+        $this->template->view('maskapai/VTambahMaskapai', $data);
     }
 
     public function aksiTambahMaskapai(){
@@ -59,8 +58,7 @@ class Maskapai extends CI_Controller
             'maskapai' => $dataMaskapai
         );
 
-        $this->template->load('template/template', 'maskapai/VEditMaskapai', $data);
-        $this->load->view("template/script.php");
+        $this->template->view('maskapai/VEditMaskapai', $data);
     }
 
     public function aksiEditMaskapai($idMaskapai){

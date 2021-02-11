@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
     <div id="layoutSidenav_nav">
         <nav class="sidenav shadow-right sidenav-light">
             <div class="sidenav-menu">
@@ -108,7 +104,7 @@
                         Kata-Kata Mutiara
                     </a>
 
-                    <a class="nav-link " href="javascript:void(0);">
+                    <a class="nav-link " href="<?php echo site_url('user'); ?>">
                         <div class="nav-link-icon ml-2"><i data-feather="user"></i></div>
                         User
                     </a>
@@ -137,8 +133,3 @@
             </div>
         </nav>
     </div>
-
-        <?php $this->load->view("template/script.php") ?>
-</body>
-
-</html>
