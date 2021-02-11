@@ -9,6 +9,7 @@ class News extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         
     }
     public function index()
@@ -17,6 +18,8 @@ class News extends CI_Controller
         $this->template->load('template/template', 'news/VNews', $data);
         $this->load->view("template/script.php");
 =======
+=======
+>>>>>>> Stashed changes
         $this->load->library('upload');
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('MNotifikasi');
@@ -66,14 +69,38 @@ class News extends CI_Controller
 
         redirect('news');
     }
+    public function aksiTambahNews()
+    {
+        //upload Foto
+        $foto   = $this->upload_foto();
+
+        $data = array(
+            'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
+            'JUDULNEWS'     => $this->input->post('judulNews'),
+            'DESKRIPSINEWS' => $this->input->post('deskripsiNews'),
+            'CONTENTNEWS'   => $this->input->post('contentNews'),
+            'FOTO'          => $foto
+        );
+
+        // print_r($data);
+        $this->MNews->saveNews($data);
+
+        //alert ketika sudah tersimpan
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> News berhasil ditambahkan! </div>');
+
+        redirect('news');
+    }
 
     public function editNews($idNews)
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         $data = array('title' => 'Edit News | Tombo Ati');
         $this->template->load('template/template', 'news/VEditNews', $data);
         $this->load->view("template/script.php");
 =======
+=======
+>>>>>>> Stashed changes
         $dataNews = $this->MNews->getSelectNews($idNews);
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
@@ -119,7 +146,40 @@ class News extends CI_Controller
 
         redirect('news');
     }
+    public function aksiEditNews($idNews)
+    {
 
+        //mendapatkan data yang diedit
+        $dataNews = $this->MNews->getSelectNews($idNews);
+
+<<<<<<< Updated upstream
+=======
+        //melakukan pengecekan file foto
+        if (empty($_FILES['foto']['name'])) {
+            $foto = $dataNews[0]['FOTO'];
+        } else {
+            // delete_files($dataPaket[0]['IMAGEPAKET']); 
+            // unlink($dataPaket[0]['IMAGEPAKET']);die;     
+            $foto = $this->upload_foto();
+        }
+
+        $data = array(
+            'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
+            'JUDULNEWS'     => $this->input->post('judulNews'),
+            'DESKRIPSINEWS' => $this->input->post('deskripsiNews'),
+            'CONTENTNEWS'   => $this->input->post('contentNews'),
+            'FOTO'          => $foto
+        );
+
+        $this->MNews->updateNews($data);
+
+        //alert ketika sudah tersimpan
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> News berhasil diperbarui! </div>');
+
+        redirect('news');
+    }
+
+>>>>>>> Stashed changes
     public function hapusNews($idNews)
     {
         //delete

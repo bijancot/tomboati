@@ -46,9 +46,12 @@
                                     <div class="col">
                                         <div class="form-group">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                             <label for="IsiNews">Isi News</label>
                                             <textarea class="form-control" id="IsiNews" rows="15"></textarea>
 =======
+=======
+>>>>>>> Stashed changes
                                             <label for="contentNews">Isi News</label>
                                             <textarea class="form-control" name="contentNews" id="contentNews" required="" rows="5"></textarea>
                                             <div class="form-group">
@@ -60,6 +63,9 @@
                                                     <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
                                                 </div>
                                             </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                                         </div>
                                     </div>
@@ -76,7 +82,10 @@
     </div>
 </body>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <script type="text/javascript">
     //preview sebelum upload
     function previewFoto() {

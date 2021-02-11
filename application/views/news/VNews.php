@@ -21,6 +21,7 @@
         <div class="card mb-4">
             <div class="card-header">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <a href="<?= site_url('news/tambahNews'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah News</a>
             </div>
             <div class="card-body">
@@ -76,6 +77,13 @@
             </div>
             <div class="card-body">
                 <div class="datatable">
+=======
+                <?= $this->session->flashdata('message'); ?>
+                <a href="<?= base_url('news/tambahNews/'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah News</a>
+            </div>
+            <div class="card-body">
+                <div class="datatable">
+>>>>>>> Stashed changes
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                     $this->table->set_template($template);
@@ -165,6 +173,9 @@
                     }
                     echo $this->table->generate();
                     ?>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 </div>
             </div>
