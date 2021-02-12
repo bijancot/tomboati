@@ -23,14 +23,16 @@
             <div class="card mb-4">
                 <div class="card-header">Form Edit Kata-Kata Mutiara</div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <?php foreach ($kataMutiara as $row) { ?>
+                        <?= form_open_multipart('KataMutiara/aksiEditKatamutiara/' . $row['IDKATAMUTIARA']) ?>
                         <div class="form-group">
-                            <label for="KataMutiara">Kata Mutiara</label>
-                            <textarea class="form-control" id="KataMutiara" name="katamutiara" type="text" rows="5"></textarea>
+                            <label for="isiKatamutiara">Kata Mutiara</label>
+                            <textarea class="form-control" name="isiKatamutiara" id="isiKatamutiara" rows="3" required=""><?= $row['TEKSKATAMUTIARA']; ?></textarea>
                         </div>
-                        <div class="text-md-right">
-                            <button type="submit" class="btn btn-primary "> Submit </button>
-                        </div>
+                    <?php } ?>
+                    <div class="text-md-right">
+                        <button type="submit" class="btn btn-primary "> Submit </button>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -39,7 +41,7 @@
 </body>
 <script>
     ClassicEditor
-        .create(document.querySelector('#KataMutiara'))
+        .create(document.querySelector('#isiKatamutiara'))
         .then(editor => {
             console.log(editor);
         })
