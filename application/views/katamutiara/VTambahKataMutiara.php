@@ -29,13 +29,13 @@
                             <!-- Component Preview-->
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <form>
+                                    <form action="<?= site_url(); ?>KataMutiara/aksiTambahKataMutiara" method="POST">
                                         <div class="form-group">
-                                            <label for="KataMutiara">Kata Mutiara</label>
-                                            <textarea class="form-control" id="KataMutiara" name="katamutiara" type="text" rows="5"></textarea>
+                                            <label for="isiKatamutiara">Kata Mutiara</label>
+                                            <textarea class="form-control" id="isiKatamutiara" name="isiKatamutiara" type="text" rows="5"></textarea>
                                         </div>
                                         <div class="text-md-right">
-                                            <button type="submit" class="btn btn-primary "> Submit </button>
+                                            <button type="submit" class="btn btn-primary ">Submit </button>
                                         </div>
                                     </form>
                                 </div>
@@ -49,7 +49,7 @@
 </body>
 <script>
     ClassicEditor
-        .create(document.querySelector('#KataMutiara'))
+        .create(document.querySelector('#isiKatamutiara'))
         .then(editor => {
             console.log(editor);
         })

@@ -97,7 +97,7 @@ class News extends CI_Controller
         }
 
         $data = array(
-            'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
+            'IDNEWSINFO'    => $idNews,
             'JUDULNEWS'     => $this->input->post('judulNews'),
             'DESKRIPSINEWS' => $this->input->post('deskripsiNews'),
             'CONTENTNEWS'   => $this->input->post('contentNews'),
