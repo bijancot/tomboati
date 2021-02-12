@@ -24,7 +24,7 @@ class MNotifikasi extends CI_Model
         $this->db->select('*');
         $this->db->from('CHAT');
         $this->db->join('CHAT_ROOM', 'CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM');
-        $this->db->join('USER_REGISTER', 'USER_REGISTER.NOMORKTP = CHAT_ROOM.NOMORKTP');  
+        $this->db->join('USER_REGISTER', 'USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER');  
         $this->db->where('SEENAT', null);  
         $this->db->where('ISSEEN', 0);  
         $this->db->where('ISADMIN', 0);  

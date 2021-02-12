@@ -32,11 +32,11 @@
                         foreach ($user as $row) {
 
                         if($row->STATUS == 1){
-                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->NOMORKTP.'"><i class="fa fa-times-circle"></i>
+                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-times-circle"></i>
                         </button>'; 
                         $status = '<span class="badge badge-pill badge-success">Terverfikasi</span>';
                         }else{
-                        $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifikasiUserModal'.$row->NOMORKTP.'"><i class="fa fa-check"></i>
+                        $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-check"></i>
                         </button>';
                         $status = '<span class="badge badge-pill badge-danger">Belum Terverifikasi</span>';
                         }
@@ -58,16 +58,16 @@
                         $row->EMAIL,
                         $kategori,
                         $verfikasi.'
-                        <button title="Detail User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailUser'.$row->NOMORKTP.'"><i class="fa fa-ellipsis-h"></i>
+                        <button title="Detail User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailUser'.$row->IDUSERREGISTER.'"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
-                        <a title="Edit User" href="'.  base_url("User/editUser/".$row->NOMORKTP).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                        <a title="Edit User" href="'.  base_url("User/editUser/".$row->IDUSERREGISTER).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus User" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusUserModal'.$row->NOMORKTP.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus User" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-trash"></i>
                         </button>'
                         );
                         ?>
                         <!-- Modal Detail -->
-                        <div class="modal fade" id="detailUser<?= $row->NOMORKTP?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="detailUser<?= $row->IDUSERREGISTER?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -156,22 +156,22 @@
                                     <div class="modal-footer">
                                         <?php if($row->STATUS == 1){
                                             ?>
-                                            <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                            <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
                                         <?php
                                         }else{
                                         ?>                                  
-                                            <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                            <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
                                         <?php
                                         }
                                         ?>
-                                        <a href="<?= base_url('User/editUser/'.$row->NOMORKTP) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
+                                        <a href="<?= base_url('User/editUser/'.$row->IDUSERREGISTER) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal Hapus -->
-                        <div class="modal fade" id="hapusUserModal<?= $row->NOMORKTP; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapusUserModal<?= $row->IDUSERREGISTER; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -184,14 +184,14 @@
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiHapusUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <a href="<?= base_url('User/aksiHapusUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal Verifikasi -->
-                        <div class="modal fade" id="verifikasiUserModal<?= $row->NOMORKTP; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="verifikasiUserModal<?= $row->IDUSERREGISTER; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -204,14 +204,14 @@
                                         <h5>Apakah anda yakin menverifikasi <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal Cabut Verifikasi -->
-                        <div class="modal fade" id="cabutVerifikasiUserModal<?= $row->NOMORKTP; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="cabutVerifikasiUserModal<?= $row->IDUSERREGISTER; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -224,8 +224,8 @@
                                         <h5>Apakah anda yakin mencabut verifikasi <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->NOMORKTP) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>

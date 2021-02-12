@@ -31,7 +31,7 @@
                                     <?= form_open_multipart('maskapai/aksiEditMaskapai/'.$row['IDMASKAPAI']) ?>
                                     <div class="form-group">
                                         <label for="namaMaskapai">Nama Maskapai</label>
-                                        <input class="form-control" name="namaMaskapai" id="namaMaskapai" value="<?= $row['NAMAMASKAPAI']; ?>" type="text" />
+                                        <input class="form-control" name="namaMaskapai" id="namaMaskapai" value="<?= $row['NAMAMASKAPAI']; ?>" type="text"  required="" />
                                     </div>
                                     <div class="form-group">
                                         <label for="image-source">Gambar Maskapai</label>

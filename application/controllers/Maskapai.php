@@ -37,7 +37,8 @@ class Maskapai extends CI_Controller
         $imageMaskapai = $this->upload_image();
         $data = array(
             'NAMAMASKAPAI' => $this->input->post('namaMaskapai'),
-            'IMAGEMASKAPAI' => $imageMaskapai
+            'IMAGEMASKAPAI' => $imageMaskapai,
+            'CREATED_AT' => date("Y-m-d h:i:sa")
         );
         // var_dump($data);
 

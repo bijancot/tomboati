@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?= base_url('Maskapai/aksiHapusMaskapai/'.$row->IDMASKAPAI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>

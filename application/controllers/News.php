@@ -8,18 +8,6 @@ class News extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('file');
         $this->load->library('table');
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        
-    }
-    public function index()
-    {
-        $data = array('title' => 'News | Tombo Ati');
-        $this->template->load('template/template', 'news/VNews', $data);
-        $this->load->view("template/script.php");
-=======
-=======
->>>>>>> Stashed changes
         $this->load->library('upload');
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('MNotifikasi');
@@ -39,40 +27,26 @@ class News extends CI_Controller
         );
 
         $this->template->view('news/VNews', $data);
->>>>>>> Stashed changes
     }
 
     public function tambahNews()
     {
-        $data = array('title' => 'Tambah News | Tombo Ati');
-        $this->template->load('template/template', 'news/VTambahNews', $data);
-        $this->load->view("template/script.php");
-    }
-    public function aksiTambahNews()
-    {
-        //upload Foto
-        $foto   = $this->upload_foto();
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
 
         $data = array(
-            'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
-            'JUDULNEWS'     => $this->input->post('judulNews'),
-            'DESKRIPSINEWS' => $this->input->post('deskripsiNews'),
-            'CONTENTNEWS'   => $this->input->post('contentNews'),
-            'FOTO'          => $foto
+            'title' => 'Tambah News | Tombo Ati',
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat
         );
 
-        // print_r($data);
-        $this->MNews->saveNews($data);
-
-        //alert ketika sudah tersimpan
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> News berhasil ditambahkan! </div>');
-
-        redirect('news');
+        $this->template->view('news/VTambahNews', $data);
     }
     public function aksiTambahNews()
     {
         //upload Foto
-        $foto   = $this->upload_foto();
+        $foto   = $this->upload_foto($this->input->post('IDNEWSINFO'));
 
         $data = array(
             'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
@@ -93,14 +67,6 @@ class News extends CI_Controller
 
     public function editNews($idNews)
     {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        $data = array('title' => 'Edit News | Tombo Ati');
-        $this->template->load('template/template', 'news/VEditNews', $data);
-        $this->load->view("template/script.php");
-=======
-=======
->>>>>>> Stashed changes
         $dataNews = $this->MNews->getSelectNews($idNews);
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
@@ -114,7 +80,6 @@ class News extends CI_Controller
         );
 
         $this->template->view('news/VEditNews', $data);
->>>>>>> Stashed changes
     }
     public function aksiEditNews($idNews)
     {
@@ -122,38 +87,6 @@ class News extends CI_Controller
         //mendapatkan data yang diedit
         $dataNews = $this->MNews->getSelectNews($idNews);
 
-        //melakukan pengecekan file foto
-        if (empty($_FILES['foto']['name'])) {
-            $foto = $dataNews[0]['FOTO'];
-        } else {
-            // delete_files($dataPaket[0]['IMAGEPAKET']); 
-            // unlink($dataPaket[0]['IMAGEPAKET']);die;     
-            $foto = $this->upload_foto();
-        }
-
-        $data = array(
-            'IDNEWSINFO'    => $this->input->post('IDNEWSINFO'),
-            'JUDULNEWS'     => $this->input->post('judulNews'),
-            'DESKRIPSINEWS' => $this->input->post('deskripsiNews'),
-            'CONTENTNEWS'   => $this->input->post('contentNews'),
-            'FOTO'          => $foto
-        );
-
-        $this->MNews->updateNews($data);
-
-        //alert ketika sudah tersimpan
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> News berhasil diperbarui! </div>');
-
-        redirect('news');
-    }
-    public function aksiEditNews($idNews)
-    {
-
-        //mendapatkan data yang diedit
-        $dataNews = $this->MNews->getSelectNews($idNews);
-
-<<<<<<< Updated upstream
-=======
         //melakukan pengecekan file foto
         if (empty($_FILES['foto']['name'])) {
             $foto = $dataNews[0]['FOTO'];
@@ -179,7 +112,6 @@ class News extends CI_Controller
         redirect('news');
     }
 
->>>>>>> Stashed changes
     public function hapusNews($idNews)
     {
         //delete
@@ -195,8 +127,7 @@ class News extends CI_Controller
     {
         $config['upload_path'] = './images/news/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        $new_name = $this->input->post('IDNEWSINFO') . '_FOTO';
-        $config['file_name'] = $new_name;
+        $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
 
         $this->upload->initialize($config);
         if (!empty($_FILES['foto']['name'])) {

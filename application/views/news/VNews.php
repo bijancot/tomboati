@@ -20,70 +20,11 @@
     <div class="container mt-n10">
         <div class="card mb-4">
             <div class="card-header">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <a href="<?= site_url('news/tambahNews'); ?>" class='btn btn-primary btn-sm' type='submit'>Tambah News</a>
-            </div>
-            <div class="card-body">
-                <div class="datatable">
-                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Judul News</th>
-                                <th>Deskripsi News</th>
-                                <th>Isi News</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Judul</td>
-                                <td>Deskripsi</td>
-                                <td>Isi</td>
-                                <td>2011/04/25</td>
-                                <td>
-                                    <a href="<?= site_url('News/editNews'); ?>" class="btn btn-datatable btn-icon btn-yellow mr-2"><i data-feather="edit-2"></i></a>
-                                    <a class="btn btn-datatable btn-icon btn-red mr-2"><i data-feather="trash-2"></i></a>
-                                </td>
-                            </tr>
-                            <!-- <?php foreach ($news_info as $row) : ?>
-                                <tr>
-                                    <td width>
-                                    <?php echo $row->judulnews ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row->deskripsinews ?>
-                                    </td>
-                                    <td>
-                                    <?php echo $row->contentnew ?>
-                                    </td>
-                                    <td>
-                                    <?php echo $row->tanggalnews ?>
-                                    </td>
-                                    <td>
-                                       <a href="<?= site_url('News/editNews'); ?>" class="btn btn-datatable btn-icon btn-yellow mr-2"><i data-feather="edit-2"></i></a>
-                                       <a href="<?= site_url('News/hapusNews'); ?>"class="btn btn-datatable btn-icon btn-red mr-2"><i data-feather="trash-2"></i></a>
-                                 </td>
-                                </tr>
-                            <?php endforeach; ?> -->
-                        </tbody>
-                    </table>
-=======
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('news/tambahNews/'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah News</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
-=======
-                <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('news/tambahNews/'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah News</a>
-            </div>
-            <div class="card-body">
-                <div class="datatable">
->>>>>>> Stashed changes
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                     $this->table->set_template($template);
@@ -95,7 +36,7 @@
                             $row->JUDULNEWS,
                             $row->DESKRIPSINEWS,
                             $row->CONTENTNEWS,
-                            $row->FOTO,
+                            '<img src="'. $row->FOTO .'" style="width:100px">',
                             $row->TANGGALNEWS,
                             '
                             <button title="Detail News" type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#detailNews' . $row->IDNEWSINFO . '"><i class="fa fa-ellipsis-h"></i>
@@ -143,7 +84,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?= base_url('News/editNews/' . $row->IDNEWSINFO) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +104,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?= base_url() ?>News/hapusNews/<?= $row->IDNEWSINFO; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -173,14 +114,33 @@
                     }
                     echo $this->table->generate();
                     ?>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
+    });
+
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
+        console.log("Clicked");
+    });
+</script>
 
 </html>

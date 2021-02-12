@@ -6,7 +6,7 @@ class MChat extends CI_Model
 
     public function getChat()
     {
-        return $this->db->query("SELECT * FROM CHAT JOIN CHAT_ROOM ON CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM JOIN USER_REGISTER ON USER_REGISTER.NOMORKTP = CHAT_ROOM.NOMORKTP WHERE ID_CHAT IN (SELECT MAX(ID_CHAT) FROM CHAT WHERE ISADMIN=0 GROUP BY CHAT.ID_CHAT_ROOM)")->result();
+        return $this->db->query("SELECT * FROM CHAT JOIN CHAT_ROOM ON CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM JOIN USER_REGISTER ON USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER WHERE ID_CHAT IN (SELECT MAX(ID_CHAT) FROM CHAT WHERE ISADMIN=0 GROUP BY CHAT.ID_CHAT_ROOM)")->result();
 
     }
 
@@ -14,7 +14,7 @@ class MChat extends CI_Model
         $this->db->select('*, COUNT(MESSAGE) as BANYAK');
         $this->db->from('CHAT');
         $this->db->join('CHAT_ROOM', 'CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM');
-        $this->db->join('USER_REGISTER', 'USER_REGISTER.NOMORKTP = CHAT_ROOM.NOMORKTP');  
+        $this->db->join('USER_REGISTER', 'USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER');  
         $this->db->where('SEENAT', null);  
         $this->db->where('ISSEEN', 0);  
         $this->db->where('ISADMIN', 0);  
@@ -31,7 +31,7 @@ class MChat extends CI_Model
         $this->db->select('*');
         $this->db->from('CHAT');
         $this->db->join('CHAT_ROOM', 'CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM');
-        $this->db->join('USER_REGISTER', 'USER_REGISTER.NOMORKTP = CHAT_ROOM.NOMORKTP');  
+        $this->db->join('USER_REGISTER', 'USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER');  
         $this->db->where('CHAT.ID_CHAT_ROOM', $where);
         $this->db->order_by('CREATEDAT', 'ASC');
         
@@ -45,7 +45,7 @@ class MChat extends CI_Model
         $this->db->select('*');
         $this->db->from('CHAT');
         $this->db->join('CHAT_ROOM', 'CHAT_ROOM.ID_CHAT_ROOM = CHAT.ID_CHAT_ROOM');
-        $this->db->join('USER_REGISTER', 'USER_REGISTER.NOMORKTP = CHAT_ROOM.NOMORKTP');  
+        $this->db->join('USER_REGISTER', 'USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER');  
         $this->db->where('CHAT.ID_CHAT_ROOM', $idChatRoom);
         $this->db->order_by('CREATEDAT', 'ASC');
         $this->db->group_by('CHAT.ID_CHAT_ROOM');
