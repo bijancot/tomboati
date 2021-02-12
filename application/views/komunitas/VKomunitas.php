@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-</head>
-
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
         <div class="container">
@@ -100,5 +94,3 @@
         console.log("Clicked");
     });
 </script>
-
-</html>

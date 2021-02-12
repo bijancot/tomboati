@@ -8,8 +8,8 @@
 </footer>
 </div>
 </div>
-
-<?php $this->load->view("template/script.php") ?>
+<?php $this->load->view("template/script.php") ?> 
+      
 </body>
 
 </html>
