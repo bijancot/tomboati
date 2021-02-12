@@ -41,9 +41,9 @@
                             <div class="form-group">
                                 <label for="foto">Foto News</label>
                                 <!-- wadah preview -->
-                                <img id="foto-preview" src="<?= $row['FOTO']; ?>" alt="image preview" />
+                                <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview" />
                                 <div class="custom-file">
-                                    <input type="file" name="foto" value="<?= $row['FOTO']; ?>" class="custom-file-input" id="source-foto" onchange="previewFoto();">
+                                    <input type="file" name="foto" value="<?= $row['FOTO']; ?>" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
                                     <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
                                 </div>
                             </div>
@@ -70,20 +70,18 @@
 </script>
 <script type="text/javascript">
     //preview sebelum upload
-    function previewImage() {
-        document.getElementById("image-preview").style.display = "block";
+    function previewFoto() {
+        document.getElementById("foto-preview-edit").style.display = "block";
         var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("foto-source").files[0]);
-
+        oFReader.readAsDataURL(document.getElementById("source-foto").files[0]);
         oFReader.onload = function(oFREvent) {
-            document.getElementById("foto-preview").src = oFREvent.target.result;
+            document.getElementById("foto-preview-edit").src = oFREvent.target.result;
         };
     };
-
     // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
+    $(".foto").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(this).siblings(".label-foto").addClass("selected").html(fileName);
     });
 </script>
 <script>
