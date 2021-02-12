@@ -10,6 +10,3 @@
         $('#dataTable').DataTable();
     });
 </script>
-
-<!-- datepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
