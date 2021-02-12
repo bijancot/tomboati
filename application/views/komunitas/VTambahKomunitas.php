@@ -29,28 +29,31 @@
                             <!-- Component Preview-->
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <form>
+                                    <?= form_open_multipart('Komunitas/aksiTambahKomunitas/') ?>
+                                    <div class="col">
                                         <div class="form-group">
-                                            <label for="judulnews">Judul News</label>
-                                            <input class="form-control" id="judulnews" name="judulnews" type="text"></input>
+                                            <label for="judulNews">Judul News</label>
+                                            <input class="form-control" name="judulNews" id="judulNews" type="text" required="" />
                                         </div>
+                                    </div>
+                                    <div class="col">
                                         <div class="form-group">
-                                            <label for="contentnews">Content News</label>
-                                            <input class="form-control" id="contentnews" name="contentnews" type="text"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="image-source">Foto</label>
-                                            <!-- wadah preview -->
-                                            <img id="image-preview" alt="image preview" />
-                                            <div class="custom-file">
-                                                <input type="file" name="foto" class="custom-file-input" id="image-source" onchange="previewImage();">
-                                                <label class="custom-file-label" for="image-source">Upload Gambar</label>
+                                            <label for="contentNews">Content News</label>
+                                            <input class="form-control" name="contentNews" id="contentNews" rows="5" required=""></input>
+                                            <div class="form-group">
+                                                <label for="contentNews">Foto</label>
+                                                <!-- wadah preview -->
+                                                <img id="foto-preview" alt="image preview" />
+                                                <div class="custom-file">
+                                                    <input type="file" name="foto" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
+                                                    <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="text-md-right">
-                                            <button type="submit" class="btn btn-primary "> Submit </button>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <div class="text-md-right">
+                                        <button type="submit" class="btn btn-primary "> Submit </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +65,7 @@
 </body>
 <script>
     ClassicEditor
-        .create(document.querySelector('#contentnews'))
+        .create(document.querySelector('#contentNews'))
         .then(editor => {
             console.log(editor);
         })
