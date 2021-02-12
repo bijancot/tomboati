@@ -26,7 +26,7 @@
 
     <!-- CK editor JS harus di taruh sebelum, initialisasi editor pada textarea -->
     <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
-    
+
     <!-- Pusher -->
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
@@ -204,14 +204,6 @@
         <img class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
         <a class="navbar-brand" href="<?php echo site_url('umroh'); ?>"> Tombo Ati </a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2 ml-0" id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
-        <form class="form-inline mr-auto d-none d-md-block">
-            <div class="input-group input-group-joined input-group-solid">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <div class="input-group-append">
-                    <div class="input-group-text"><i data-feather="search"></i></div>
-                </div>
-            </div>
-        </form>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
