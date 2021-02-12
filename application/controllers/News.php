@@ -123,7 +123,7 @@ class News extends CI_Controller
         redirect('news');
     }
 
-    function upload_foto($name)
+    function upload_foto()
     {
         $config['upload_path'] = './images/news/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
