@@ -13,8 +13,8 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS =>'{
   "registration_ids":["'.$token.'"],
   "notification": {
-    "title": "Ada Pesan Dari Admin",
-    "body": "Silahkan periksa pesan dari admin memalui aplikasi TomboAti"
+    "title": "Admin",
+    "body": "'.$message.'"
   },
   "priority":"high"
 }',

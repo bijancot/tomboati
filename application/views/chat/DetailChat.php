@@ -28,13 +28,17 @@
             <div class="card-header">
                 Chat Dari : <?php foreach($chatFrom as $data) echo $data->NAMALENGKAP?>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color:#eeebe6">
                 <div class="row">
                     <div id="wrapper">
                         <div class="scrollbar" id="style-3">
                             <div class="force-overflow">
                                 <div class="chat">
                                     <?php foreach($chat as $data){?>
+                                    <?php 
+                                         $orgDate = $data->CREATEDAT;  
+                                         $newDate = date("d/m/Y H:i", strtotime($orgDate));      
+                                    ?>
                                     <?php if($data->ISADMIN == 1){?>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -42,7 +46,7 @@
                                                 <div class="talk-bubble-admin tri-right right-in">
                                                     <div class="talktext">
                                                         <p><?php echo $data->MESSAGE?> </p>
-                                    <span class="float-right"><?php echo $data->CREATEDAT?> <?php if($data->ISSEEN == 0 ){?><i class="fas fa-check-circle"></i><?php }else{ ?><span style="color: Yellow"><i class="fas fa-check-circle"></i></spam><?php }?></span> 
+                                                        <span class="float-right"><?php echo $newDate?> <?php if($data->ISSEEN == 0 ){?><i class="fas fa-check-circle"></i><?php }else{ ?><span style="color: Yellow"><i class="fas fa-check-circle"></i></spam><?php }?></span> 
                                                     </div>
                                                     
                                                 </div>
@@ -62,7 +66,7 @@
                                                 <div class="talk-bubble-user tri-right left-top">
                                                     <div class="talktext">
                                                         <p><?php echo $data->MESSAGE?></p>
-                                                        <span class="float-right"><?php echo $data->CREATEDAT?></span>
+                                                        <span class="float-right"><?php echo $newDate?></span>
                                                     </div>
                                                 </div>
                                                 <?php if($data->IMG != NULL){?>

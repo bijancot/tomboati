@@ -119,6 +119,91 @@ class User extends CI_Controller{
         $this->throw(200, $response);
     }
 
+    // update profil
+    // public function updateProfil(){ 
+    //     $response = [];
+
+    //     $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+    //     $this->upload->initialize($config);
+
+    //     $idUser         = $this->input->get('idUser');
+    //     $noKTP          = $this->input->post('noKTP'); 
+    //     $email          = $this->input->post('email');
+    //     $password       = $this->input->post('password');
+    //     $namaLengkap    = $this->input->post('namaLengkap');
+    //     $nomorHP        = $this->input->post('nomorHP');
+    //     $filenameKTP    = null;
+    //     $filenameFoto   = null;
+
+    //     if($noKTP != '' && $email != '' && $password != ''){ //check if kosong
+    //         $checkKTPFound      = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->row();
+    //         $checkEmailFound    = $this->db->where('EMAIL', $email)->get('USER_REGISTER')->row();
+
+    //         if($checkKTPFound == null){ //check if no KTP duplikat
+    //             if($checkEmailFound == null){ //check if Email duplikat
+
+    //                 if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
+    //                     $dataUpload     = $this->upload->data();
+    //                     $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
+    //                 }
+                    
+    //                 if($this->upload->do_upload('foto')){ //check if foto upload
+    //                     $dataUpload     = $this->upload->data();
+    //                     $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
+    //                 }
+    
+    //                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
+    //                     $data = array(
+    //                         'NOMORKTP'      => $noKTP,
+    //                         'EMAIL'         => $email,
+    //                         'PASSWORD'      => $password,
+    //                         'NAMALENGKAP'   => $namaLengkap,
+    //                         'NOMORHP'       => $nomorHP,
+    //                         'FILEKTP'       => $filenameKTP,
+    //                         'FOTO'          => $filenameFoto,
+    //                         'USERTOKEN'     => $user_token
+    //                     );
+
+    //                     $where = array(
+    //                         'IDUSERREGISTER' => $idUser
+    //                     );
+                        
+                
+    //                     $this->db->where($where);
+    //                     $this->db->update('USER_REGISTER', $data);
+
+    //                     if($this->db->affected_rows()>0){
+    //                         $response['error']    = false;
+    //                         $response['message'] = 'Sukses Edit Profil';
+    //                         $this->throw(200, $response);
+    //                         return;
+    //                     }
+    //                 }else{
+    //                     $response['error']    = true;
+    //                     $response['message'] = 'Unvalid Email Format';
+    //                     $this->throw(200, $response);
+    //                     return;
+    //                 }
+    //             }else{
+    //                 $response['error']    = true;
+    //                 $response['message'] = 'Email Sudah Terdaftar';
+    //                 $this->throw(200, $response);
+    //                 return;    
+    //             }
+    //         }else{
+    //             $response['error']    = true;
+    //             $response['message'] = 'No KTP Sudah Terdaftar';
+    //             $this->throw(200, $response);
+    //             return;    
+    //         }
+    //     }else{
+    //         $response['error']    = true;
+    //         $response['message'] = 'Terdapat Data Kosong';
+    //         $this->throw(200, $response);
+    //         return;
+    //     }
+    // }
+
     public function logout_post(){
         $response       = [];
         $email          = $this->input->post('email');
