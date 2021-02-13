@@ -107,7 +107,8 @@ class Chat extends CI_Controller
         );
 
         $dataKirim = array(
-            'token'   => $token  
+            'token'   => $token,
+            'message' => $message  
         );
 
         $this->MChat->adminKirimPesan($data);

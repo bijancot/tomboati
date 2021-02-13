@@ -14,7 +14,43 @@ class Paket extends CI_Controller{
         $idMasterPaket  = null;
 
         $tipe           = $this->input->get('tipe');
-        $monthFilter    = $this->input->post('monthFilter');
+    
+        if($tipe == "Bisnis"){
+            $idMasterPaket = "UMR-BSS";
+        } else if($tipe == "Hemat"){
+            $idMasterPaket = "UMR-HMT";
+        } else if($tipe == "Plus"){
+            $idMasterPaket = "UMR-PLS";
+        } else if($tipe == "Promo"){
+            $idMasterPaket = "UMR-PRM";
+        } else if($tipe == "VIP"){
+            $idMasterPaket = "UMR-VIP";
+        }
+
+        $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $data;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
+    // detailPaket
+    public function detailPaket(){
+        $response       = [];
+        $idMasterPaket  = null;
+
+        $tipe           = $this->input->get('tipe');
+        $idPaket        = $this->input->get('idPaket');
 
         if($tipe == "Bisnis"){
             $idMasterPaket = "UMR-BSS";
@@ -28,7 +64,7 @@ class Paket extends CI_Controller{
             $idMasterPaket = "UMR-VIP";
         }
 
-        $data = $this->db->query('SELECT * FROM PAKET WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$monthFilter.'" && ISSHOW = 1')->result();
+        $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && IDPAKET = "'.$idPaket.'" && ISSHOW = 1')->result();
 
         if(count($data) > 0){
             $response['error']    = false;
