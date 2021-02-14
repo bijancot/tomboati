@@ -208,7 +208,7 @@ class User extends CI_Controller{
                     return;    
                 }
             } else if ($noKTP != $noKTPSame && $email == $emailSame) {
-                echo "ktp beda, email sama";
+                // echo "ktp beda, email sama";
                 $checkKTPFound     = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->row();
 
                 if($checkKTPFound == null){ //check if no KTP duplikat
