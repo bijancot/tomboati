@@ -40,11 +40,8 @@
             position: relative;
             width: 500px;
             height: auto;
-<<<<<<< Updated upstream
             background-color: #262d31;
-=======
             background-color: #ffffff;
->>>>>>> Stashed changes
             margin-left: 20px;
         }
 
@@ -73,11 +70,8 @@
             top: -8px;
             bottom: auto;
             border: 32px solid;
-<<<<<<< Updated upstream
             border-color: #262d31 transparent transparent transparent;
-=======
             border-color: #ffffff transparent transparent transparent;
->>>>>>> Stashed changes
         }
 
         .tri-right.left-top:after {
@@ -90,11 +84,8 @@
             top: 0px;
             bottom: auto;
             border: 22px solid;
-<<<<<<< Updated upstream
             border-color: #262d31 transparent transparent transparent;
-=======
             border-color: #ffffff transparent transparent transparent;
->>>>>>> Stashed changes
         }
 
         /* Right triangle, right side slightly down*/
