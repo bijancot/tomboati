@@ -41,6 +41,8 @@
             width: auto;
             max-width: 450px;
             height: auto;
+            background-color: #262d31;
+            background-color: #ffffff;
             background-color:#ffffff;
             margin-left: 20px;
             border-radius: 0px 5px 5px 5px;
@@ -73,6 +75,8 @@
             top: -8px;
             bottom: auto;
             border: 32px solid;
+            border-color: #262d31 transparent transparent transparent;
+            border-color: #ffffff transparent transparent transparent;
             border-color:#ffffff transparent transparent transparent;
         }
 
@@ -86,6 +90,8 @@
             top: 0px;
             bottom: auto;
             border: 22px solid;
+            border-color: #262d31 transparent transparent transparent;
+            border-color: #ffffff transparent transparent transparent;
             border-color:#ffffff transparent transparent transparent;
         }
 
@@ -272,7 +278,7 @@
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         Account
                     </a>
-                    <a class="dropdown-item" href="<?php echo site_url('#'); ?>">
+                    <a type="button" class="dropdown-item" data-toggle="modal" data-target="#KonfirmasiModal">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                         Logout
                     </a>
@@ -280,6 +286,27 @@
             </li>
         </ul>
     </nav>
+    <!--Modal Konfirmasi-->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="KonfirmasiModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Apakah anda yakin keluar ? </h5>
+                </div>
+                <div class="modal-footer">
+                    <a href="<?= base_url('login') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>
+                    <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Akhir Modal Konfirmasi-->
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sidenav shadow-right sidenav-light">
