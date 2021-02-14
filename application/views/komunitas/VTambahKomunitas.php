@@ -29,28 +29,31 @@
                             <!-- Component Preview-->
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <form>
+                                    <?= form_open_multipart('Komunitas/aksiTambahKomunitas/') ?>
+                                    <div class="col">
                                         <div class="form-group">
-                                            <label for="judulnews">Judul News</label>
-                                            <input class="form-control" id="judulnews" name="judulnews" type="text"></input>
+                                            <label for="judulNews">Judul News</label>
+                                            <input class="form-control" name="judulNews" id="judulNews" type="text" required="" />
                                         </div>
+                                    </div>
+                                    <div class="col">
                                         <div class="form-group">
-                                            <label for="contentnews">Content News</label>
-                                            <input class="form-control" id="contentnews" name="contentnews" type="text"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="image-source">Foto</label>
-                                            <!-- wadah preview -->
-                                            <img id="image-preview" alt="image preview" />
-                                            <div class="custom-file">
-                                                <input type="file" name="foto" class="custom-file-input" id="image-source" onchange="previewImage();">
-                                                <label class="custom-file-label" for="image-source">Upload Gambar</label>
+                                            <label for="contentNews">Content News</label>
+                                            <input class="form-control" name="contentNews" id="contentNews" rows="5" required=""></input>
+                                            <div class="form-group">
+                                                <label for="contentNews">Foto</label>
+                                                <!-- wadah preview -->
+                                                <img id="foto-preview" alt="image preview" />
+                                                <div class="custom-file">
+                                                    <input type="file" name="foto" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
+                                                    <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="text-md-right">
-                                            <button type="submit" class="btn btn-primary "> Submit </button>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <div class="text-md-right">
+                                        <button type="submit" class="btn btn-primary "> Submit </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +65,7 @@
 </body>
 <script>
     ClassicEditor
-        .create(document.querySelector('#contentnews'))
+        .create(document.querySelector('#contentNews'))
         .then(editor => {
             console.log(editor);
         })
@@ -72,20 +75,18 @@
 </script>
 <script type="text/javascript">
     //preview sebelum upload
-    function previewImage() {
-        document.getElementById("image-preview").style.display = "block";
+    function previewFoto() {
+        document.getElementById("foto-preview").style.display = "block";
         var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
-
+        oFReader.readAsDataURL(document.getElementById("source-foto").files[0]);
         oFReader.onload = function(oFREvent) {
-            document.getElementById("image-preview").src = oFREvent.target.result;
+            document.getElementById("foto-preview").src = oFREvent.target.result;
         };
     };
-
     // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
+    $(".foto").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(this).siblings(".label-foto").addClass("selected").html(fileName);
     });
 </script>
 

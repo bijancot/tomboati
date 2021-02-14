@@ -9,25 +9,38 @@ class Maskapai extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
         $this->load->library('upload');
+        $this->load->model('MNotifikasi');
         
     }
 
     public function index()
     {
         $dataMaskapai = $this->MMaskapai->getMaskapai();
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
 
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Maskapai | Tombo Ati',
-            'maskapai' => $dataMaskapai);
+            'title'                 => 'Maskapai | Tombo Ati',
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'maskapai'              => $dataMaskapai
+        );
 
         $this->template->view('maskapai/VMaskapai', $data);
     }
 
     public function tambahMaskapai()
     {
-        $data = array('title' => 'Tambah Maskapai | Tombo Ati');
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+
+        $data = array(
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'title'                 => 'Tambah Maskapai | Tombo Ati'
+        );
         
         $this->template->view('maskapai/VTambahMaskapai', $data);
     }
@@ -35,6 +48,8 @@ class Maskapai extends CI_Controller
     public function aksiTambahMaskapai(){
 
         $imageMaskapai = $this->upload_image();
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
         $data = array(
             'NAMAMASKAPAI' => $this->input->post('namaMaskapai'),
             'IMAGEMASKAPAI' => $imageMaskapai,
@@ -53,10 +68,14 @@ class Maskapai extends CI_Controller
     public function editMaskapai($idMaskapai)
     {
         $dataMaskapai = $this->MMaskapai->getSelectMaskapai($idMaskapai);
-
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        
         $data = array(
-            'title' => 'Edit Maskapai | Tombo Ati',
-            'maskapai' => $dataMaskapai
+            'title'                 => 'Edit Maskapai | Tombo Ati',
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'maskapai'              => $dataMaskapai
         );
 
         $this->template->view('maskapai/VEditMaskapai', $data);

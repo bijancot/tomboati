@@ -94,7 +94,7 @@
 </script>
 <script>
     ClassicEditor
-        .create(document.querySelector('#DeskripsiNews'))
+        .create(document.querySelector('#deskripsiNews'))
         .then(editor => {
             console.log(editor);
         })
@@ -102,7 +102,7 @@
             console.error(error);
         });
     ClassicEditor
-        .create(document.querySelector('#ContentNews'))
+        .create(document.querySelector('#contentNews'))
         .then(editor => {
             console.log(editor);
         })

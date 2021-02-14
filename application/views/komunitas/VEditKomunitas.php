@@ -23,28 +23,35 @@
             <div class="card mb-4">
                 <div class="card-header">Form Edit Komunitas</div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="judulnews">Judul News</label>
-                            <input class="form-control" id="judulnews" name="judulnews" type="text"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="contentnews">Content News</label>
-                            <input class="form-control" id="contentnews" name="contentnews" type="text"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="image-source">Foto</label>
-                            <!-- wadah preview -->
-                            <img id="image-preview" alt="image preview" />
-                            <div class="custom-file">
-                                <input type="file" name="foto" class="custom-file-input" id="image-source" onchange="previewImage();">
-                                <label class="custom-file-label" for="image-source">Upload Gambar</label>
+                    <?php foreach ($komunitas as $row) { ?>
+                        <?= form_open_multipart('Komunitas/aksiEditKomunitas/' . $row['IDKOMUNITASINFO']) ?>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="judulNews">Judul News</label>
+                                <input class="form-control" name="judulNews" id="judulNews" type="text" value="<?= $row['JUDULNEWS']; ?>" required="" />
                             </div>
                         </div>
-                        <div class="text-md-right">
-                            <button type="submit" class="btn btn-primary "> Submit </button>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="contentNews">Isi News</label>
+                                <textarea class="form-control" name="contentNews" id="contentNews" rows="5" required=""><?= $row['CONTENTNEWS']; ?></textarea>
+                            </div>
                         </div>
-                    </form>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="foto">Foto News</label>
+                                <!-- wadah preview -->
+                                <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview" />
+                                <div class="custom-file">
+                                    <input type="file" name="foto" value="<?= $row['FOTO']; ?>" class="custom-file-input foto" id="source-foto" onchange="previewFoto();">
+                                    <label class="custom-file-label label-foto" for="image-source source-foto">Upload Foto</label>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <div class="text-md-right">
+                        <button type="submit" class="btn btn-primary "> Submit </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +60,7 @@
 
 <script>
     ClassicEditor
-        .create(document.querySelector('#contentnews'))
+        .create(document.querySelector('#contentNews'))
         .then(editor => {
             console.log(editor);
         })
@@ -63,20 +70,18 @@
 </script>
 <script type="text/javascript">
     //preview sebelum upload
-    function previewImage() {
-        document.getElementById("image-preview").style.display = "block";
+    function previewFoto() {
+        document.getElementById("foto-preview-edit").style.display = "block";
         var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
-
+        oFReader.readAsDataURL(document.getElementById("source-foto").files[0]);
         oFReader.onload = function(oFREvent) {
-            document.getElementById("image-preview").src = oFREvent.target.result;
+            document.getElementById("foto-preview-edit").src = oFREvent.target.result;
         };
     };
-
     // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
+    $(".foto").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(this).siblings(".label-foto").addClass("selected").html(fileName);
     });
 </script>
 <script>
