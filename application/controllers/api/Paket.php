@@ -68,6 +68,56 @@ class Paket extends CI_Controller{
         
     }
 
+    public function getPaketMonth(){
+        $response       = [];
+        $idMasterPaket  = null;
+        
+        $tipe           = $this->input->get('tipe');
+    
+        if($tipe == "Bisnis"){
+            $idMasterPaket = "UMR-BSS";
+        } else if($tipe == "Hemat"){
+            $idMasterPaket = "UMR-HMT";
+        } else if($tipe == "Plus"){
+            $idMasterPaket = "UMR-PLS";
+        } else if($tipe == "Promo"){
+            $idMasterPaket = "UMR-PRM";
+        } else if($tipe == "VIP"){
+            $idMasterPaket = "UMR-VIP";
+        }
+
+        $namaBulan      = "";
+        $data = $this->db->query('SELECT TANGGALKEBERANGKATAN FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 GROUP BY MONTH(TANGGALKEBERANGKATAN)')->result();
+        $arr = array();
+
+        foreach($data as $d){
+            $dataMonth = $d->TANGGALKEBERANGKATAN;
+            $newDate = date("m", strtotime($dataMonth));  
+            $arr[] = $newDate;
+        }
+
+        $excludes = implode(',', $arr);
+        $explode = explode(',', $excludes);
+
+        $dataBulan = array(
+            'bulan' => $explode
+        );
+
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $dataBulan;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
     private function throw($statusCode, $response){
         $this->output->set_status_header($statusCode)
         ->set_content_type('application/json')
