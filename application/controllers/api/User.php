@@ -103,7 +103,7 @@ class User extends CI_Controller{
         $password       = $this->input->post('password');
         $user_token     = $this->input->post('token');
         
-        $data = $this->db->query('SELECT * FROM USER_REGISTER JOIN CHAT_ROOM ON CHAT_ROOM.NOMORKTP = USER_REGISTER.NOMORKTP WHERE EMAIL="'.$email.'" AND PASSWORD="'.$password.'"')->result();
+        $data = $this->db->query('SELECT * FROM USER_REGISTER JOIN CHAT_ROOM ON CHAT_ROOM.IDUSERREGISTER = USER_REGISTER.IDUSERREGISTER WHERE EMAIL="'.$email.'" AND PASSWORD="'.$password.'"')->result();
 
         $dataUpdate = $this->db->set('USERTOKEN', $user_token)->where('EMAIL', $email)->update('USER_REGISTER');
 
