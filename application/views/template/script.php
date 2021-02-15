@@ -9,7 +9,7 @@
     $(document).ready(function() {
         $('#dataTable').DataTable({	
   			"scrollX": true,
-  			"order": [[ 1, "desc" ]]
+  			"order": [[ 0, 'asc']]
         });
     });
 </script>

@@ -45,12 +45,12 @@ class Komunitas extends CI_Controller
     public function aksiTambahKomunitas()
     {
         //upload Foto
-        $foto   = $this->upload_foto($this->input->post('IDKOMUNITASINFO'));
+        $foto   = $this->upload_foto();
 
         $data = array(
-            'IDKOMUNITASINFO'    => $this->input->post('IDKOMUNITASINFO'),
+            // 'IDKOMUNITASINFO'    => $this->input->post('IDKOMUNITASINFO'),
             'JUDULNEWS'          => $this->input->post('judulNews'),
-            'DESKRIPSINEWS'      => $this->input->post('deskripsiNews'),
+            // 'DESKRIPSINEWS'      => $this->input->post('deskripsiNews'),
             'CONTENTNEWS'        => $this->input->post('contentNews'),
             'FOTO'               => $foto
         );
@@ -99,7 +99,7 @@ class Komunitas extends CI_Controller
         $data = array(
             'IDKOMUNITASINFO'    => $idKomunitas,
             'JUDULNEWS'          => $this->input->post('judulNews'),
-            'DESKRIPSINEWS'      => $this->input->post('deskripsiNews'),
+            // 'DESKRIPSINEWS'      => $this->input->post('deskripsiNews'),
             'CONTENTNEWS'        => $this->input->post('contentNews'),
             'FOTO'               => $foto
         );
