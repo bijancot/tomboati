@@ -188,10 +188,12 @@ class User extends CI_Controller{
                 
                         $this->db->where($where);
                         $this->db->update('USER_REGISTER', $data);
+                        $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
 
                         if($this->db->affected_rows()>0){
-                            $response['error']    = false;
-                            $response['message'] = 'Sukses Edit Profil';
+                            $response['error']      = false;
+                            $response['message']    = 'Sukses Edit Profil';
+                            $response['data']       = $query;
                             $this->throw(200, $response);
                             return;
                         }
@@ -241,9 +243,12 @@ class User extends CI_Controller{
                     $this->db->where($where);
                     $this->db->update('USER_REGISTER', $data);
 
+                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
+
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
+                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }
@@ -291,9 +296,12 @@ class User extends CI_Controller{
                             $this->db->where($where);
                             $this->db->update('USER_REGISTER', $data);
 
+                            $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
+
                             if($this->db->affected_rows()>0){
                                 $response['error']    = false;
                                 $response['message'] = 'Sukses Edit Profil';
+                                $response['data']       = $query;
                                 $this->throw(200, $response);
                                 return;
                             }
@@ -342,11 +350,14 @@ class User extends CI_Controller{
                         'IDUSERREGISTER' => $idUser
                     );
                     
-                    $query = $this->db->where($where)->update('USER_REGISTER', $data);
-                    print_r($query);
+                    $this->db->where($where)->update('USER_REGISTER', $data);
+                    
+                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
+                    
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
+                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }else{
