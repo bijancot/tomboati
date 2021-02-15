@@ -68,6 +68,30 @@ class Paket extends CI_Controller{
         
     }
 
+    //detail itinerary
+    public function detailItinerary(){
+        $response       = [];
+        $idMasterPaket  = null;
+        
+        $idPaket        = $this->input->get('idPaket');
+
+        $data = $this->db->query('SELECT *, PAKET.IDPAKET FROM DETAIL_ITINERARY JOIN PAKET ON PAKET.IDPAKET = DETAIL_ITINERARY.IDPAKET JOIN WISATA_HALAL ON WISATA_HALAL.IDWISATAHALAL = DETAIL_ITINERARY.IDWISATAHALAL WHERE DETAIL_ITINERARY.IDPAKET = "'.$idPaket.'"')->result();
+
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $data;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
     public function getPaketMonth(){
         $response       = [];
         $idMasterPaket  = null;
