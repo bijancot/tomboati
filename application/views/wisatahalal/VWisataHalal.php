@@ -26,7 +26,7 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Status', 'Nama Wisata', 'Maskapai', 'Durasi Wisata', 'Kuota', 'Aksi');
+                        $this->table->set_heading('No', 'Status', 'Nama Wisata', 'Maskapai', 'Durasi Wisata', 'Kuota', 'Waktu', 'Aksi');
                         $no = 1;
                         foreach ($wisata as $row) {
                         if($row->ISSHOW == 1){
@@ -45,6 +45,7 @@
                         $row->NAMAMASKAPAI,
                         $row->DURASIWISATA .' hari',
                         $row->KUOTA .' orang',
+                        $row->CREATED_AT,
                         $verfikasi.
                         '<button title="Detail Paket" type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#detailPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-ellipsis-h"></i>
                         </button><br>

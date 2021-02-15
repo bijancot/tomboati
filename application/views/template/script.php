@@ -7,6 +7,9 @@
 <script src="<?= base_url(); ?>assets/js/plugin/datatables/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        $('#dataTable').DataTable();
+        $('#dataTable').DataTable({	
+  			"scrollX": true,
+  			"order": [[ 1, "desc" ]]
+        });
     });
 </script>
