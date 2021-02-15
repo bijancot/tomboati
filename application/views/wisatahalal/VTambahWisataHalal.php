@@ -31,8 +31,8 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="namaPaket">Nama Wisata Halal <?= $tipe; ?></label>
-                                                <input name="namaPaket" class="form-control" id="namaPaket" type="text" placeholder="Masukkan Nama Paket" required="" />
+                                                <label for="namaWisata">Nama Wisata Halal <?= $tipe; ?></label>
+                                                <input name="namaWisata" class="form-control" id="namaWisata" type="text" placeholder="Masukkan Nama Paket" required="" />
                                             </div>
                                         </div>
                                         <div class="col">
@@ -66,8 +66,8 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="durasiPaket">Durasi Paket (hari)</label>
-                                                <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" />
+                                                <label for="durasiWisata">Durasi Paket (hari)</label>
+                                                <input name="durasiWisata" class="form-control" id="durasiWisata" type="number" placeholder="Masukkan Durasi" />
                                             </div>
                                         </div>
                                         <div class="col">
@@ -160,6 +160,20 @@
                                         <input type="checkbox" class="custom-control-input isShow" id="customSwitch1" value="TRUE" checked="" name="isShow">
                                         <label class="custom-control-label" for="customSwitch1">Paket akan tampil dalam Apps</label>
                                     </div>
+                                    <hr>
+                                    <h5>Detail Rencana Perjalanan</h5>
+                                    <div id="itinerary">                                     
+                                        <div class="form-group">
+                                            <label for="hari">Hari Ke 1</label>
+                                            <textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tempat1">Tempat</label>
+                                            <input name="tempat[]" class="form-control" id="tempat1" type="text" placeholder="Masukkan Tempat"/>
+                                        </div>
+                                    </div>
+                                    <button name="tambah" id="tambah" type="button" class="btn btn-success tambah"><i class="fa fa-plus"></i>Tambah Rencana Perjalanan</button>
+                                    <hr>
                                     <div class="text-md-right">
                                         <button type="submit" class="btn btn-primary "> Submit </button>
                                     </div>
@@ -219,6 +233,33 @@
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        // DETAIL RENCANA
+        var i = 1;
+        $('.tambah').click(function() {
+        i++;
+        $('#itinerary').append(
+            '<div id="row' +i+ '">' +
+            '<hr>' +
+            '<div class="col text-right">' +
+            '<button type="button" name="remove" id="' +i+ '" class="btn btn-danger btn_remove btn-sm">X</button>' +
+            '</div>' +
+            '<div class="form-group">'+
+            '<label for="hari"'+i+'">Hari Ke '+i+'</label>'+
+            '<textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan"'+i+'" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label for="tempat1">Tempat</label>'+
+            '<input name="tempat[]" class="form-control" id="tempat"'+i+'" type="text" placeholder="Masukkan Tempat"/>'+
+            '</div>');
+        });
+
+        // Hapus detail
+        $(document).on('click', '.btn_remove', function() {
+            var button_id = $(this).attr("id");
+            $('#row' + button_id + '').remove();
+            i--;
         });
     </script>
 </body>

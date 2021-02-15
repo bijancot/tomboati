@@ -39,6 +39,15 @@ class MUmroh extends CI_Model
         return $query->result_array();
     }
 
+    public function getSelectItinerary($idPaket){
+        $this->db->from('DETAIL_ITINERARY');
+        $this->db->join('PAKET', 'PAKET.IDPAKET = DETAIL_ITINERARY.IDPAKET');
+        $this->db->where('DETAIL_ITINERARY.IDPAKET', $idPaket);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function updatePaket($data){
         $this->db->where('IDPAKET', $data['IDPAKET']);
         return $this->db->update('PAKET', $data);
@@ -47,6 +56,11 @@ class MUmroh extends CI_Model
     public function deletePaket($idPaket){
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->delete('PAKET');
+    }
+
+    public function deleteIntenary($idPaket){
+        $this->db->where('IDPAKET', $idPaket);
+        return $this->db->delete('DETAIL_ITINERARY');
     }
 
     public function aktifPaket($idPaket){
@@ -59,5 +73,15 @@ class MUmroh extends CI_Model
         $this->db->set('ISSHOW', 0);
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->update('PAKET');
+    }
+
+    public function getSelectLastPaket(){
+        $this->db->order_by('CREATED_AT', 'DESC');
+        $query = $this->db->get('PAKET');
+        return $query->result_array();
+    }
+
+    public function saveItinerary($data){
+        return $this->db->insert('DETAIL_ITINERARY', $data);
     }
 }

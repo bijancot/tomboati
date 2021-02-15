@@ -29,6 +29,7 @@ class Umroh extends CI_Controller
         }
 
         $dataPaket = $this->MUmroh->getPaket($idMasterPaket);
+        // print_r($dataPaket);
 
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
@@ -106,7 +107,6 @@ class Umroh extends CI_Controller
         }
 
         //upload foto
-        // $new_name = 'IMG'.trim($this->input->post('namaPaket'));
         $imagePaket = $this->upload_image();
 
         $data = array(
@@ -135,6 +135,23 @@ class Umroh extends CI_Controller
         // print_r($data);
         $this->MUmroh->savePaket($data);
 
+        //GET LAST SELECT ADD
+        $dataPaket = $this->MUmroh->getSelectLastPaket();
+
+        //DETAIL ITINERARY
+        $detailKegiatan = $this->input->post('detailKegiatan');
+        for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
+            $dataItinerary = [
+                'IDPAKET' => $dataPaket[0]['IDPAKET'],
+                'HARIKE' => $x+1,
+                'TEMPAT' => $this->input->post('tempat')[$x],
+                'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
+                'CREATED_AT' => date("Y-m-d h:i:sa")
+            ];
+
+            $this->MUmroh->saveItinerary($dataItinerary);
+        }
+
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil ditambahkan! </div>');
 
@@ -145,6 +162,7 @@ class Umroh extends CI_Controller
     {
         $dataMaskapai = $this->MUmroh->getMaskapai();
         $dataPaket = $this->MUmroh->getSelectPaket($idPaket);
+        $dataItinerary = $this->MUmroh->getSelectItinerary($idPaket);
 
         $tipe="";
         // untuk mengecek idMasterPaket
@@ -169,6 +187,7 @@ class Umroh extends CI_Controller
             'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
+            'itinerary' => $dataItinerary,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
@@ -224,6 +243,24 @@ class Umroh extends CI_Controller
             'ISSHOW' => $valIsShow
         );
 
+        //dihapus dulu
+        //delete itinerary
+        $this->MUmroh->deleteIntenary($idPaket);
+
+        //DETAIL ITINERARY
+        $detailKegiatan = $this->input->post('detailKegiatan');
+        for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
+            $dataItinerary = [
+                'IDPAKET' => $dataPaket[0]['IDPAKET'],
+                'HARIKE' => $x+1,
+                'TEMPAT' => $this->input->post('tempat')[$x],
+                'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
+               'CREATED_AT' => date("Y-m-d h:i:sa")
+            ];
+
+            $this->MUmroh->saveItinerary($dataItinerary);
+        }
+
         // untuk mengecek tipe dan dijadikan kondisi di model
         $tipe = null;
          if($data['IDMASTERPAKET'] == "UMR-BSS"){
@@ -264,6 +301,9 @@ class Umroh extends CI_Controller
         }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
             $tipe = "VIP";
         }
+
+        //delete itinerary
+        $this->MUmroh->deleteIntenary($idPaket);
 
         //delete
         $this->MUmroh->deletePaket($idPaket);

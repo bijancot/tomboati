@@ -183,6 +183,34 @@
                                     <?php
                                     }
                                     ?>
+                                    <hr>
+                                    <h5>Detail Rencana Perjalanan</h5>
+                                    <div id="itinerary">
+                                    <?php 
+                                    $hari = 0;
+                                    foreach($itinerary as $key){
+                                        $hari++;
+                                        ?>
+                                        <div id="row<?= $hari; ?>">
+                                        <hr>
+                                            <div class="col text-right">
+                                            <button type="button" name="remove" id="<?= $hari; ?>" class="btn btn-danger btn_remove btn-sm">X</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="hari">Hari Ke <?= $key['HARIKE'] ?></label>
+                                                <textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan" rows="3" placeholder="Masukkan Detail Kegiatan"><?= $key['DETAILKEGIATAN'] ?></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tempat">Tempat</label>
+                                                <input name="tempat[]" class="form-control" id="tempat1" type="text" placeholder="Masukkan Tempat" value="<?= $key['TEMPAT'] ?>" />
+                                            </div>
+                                        </div>
+                                        <?php
+                                        }   
+                                        ?>                                    
+                                    </div>
+                                    <button name="tambah" id="tambah" type="button" class="btn btn-success tambah"><i class="fa fa-plus"></i>Tambah Rencana Perjalanan</button>
+                                    <hr>
                                     <div class="text-md-right">
                                         <button type="submit" class="btn btn-primary "> Submit </button>
                                     </div>
@@ -243,6 +271,34 @@
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+
+    // DETAIL RENCANA
+    var i = <?= $hari ?>;
+    $('.tambah').click(function() {
+    i++;
+    $('#itinerary').append(
+        '<div id="row' +i+ '">' +
+        '<hr>' +
+        '<div class="col text-right">' +
+        '<button type="button" name="remove" id="' +i+ '" class="btn btn-danger btn_remove btn-sm">X</button>' +
+        '</div>' +
+        '<div class="form-group">'+
+        '<label for="hari"'+i+'">Hari Ke '+i+'</label>'+
+        '<textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan"'+i+'" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>'+
+        '</div>'+
+        '<div class="form-group">'+
+        '<label for="tempat1">Tempat</label>'+
+        '<input name="tempat[]" class="form-control" id="tempat"'+i+'" type="text" placeholder="Masukkan Tempat"/>'+
+        '</div>');
+    });
+
+    // Hapus detail
+    $(document).on('click', '.btn_remove', function() {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+        i--;
+    });
+
     </script>
     <script>
     Pusher.logToConsole = true;

@@ -37,6 +37,15 @@ class MWisataHalal extends CI_Model
         return $query->result_array();
     }
 
+    public function getSelectItinerary($idWisata){
+        $this->db->from('DETAIL_ITINERARY');
+        $this->db->join('WISATA_HALAL', 'WISATA_HALAL.IDWISATAHALAL = DETAIL_ITINERARY.IDWISATAHALAL');
+        $this->db->where('DETAIL_ITINERARY.IDWISATAHALAL', $idWisata);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function updateWisataHalal($data){
         $this->db->where('IDWISATAHALAL', $data['IDWISATAHALAL']);
         return $this->db->update('WISATA_HALAL', $data);
@@ -45,6 +54,11 @@ class MWisataHalal extends CI_Model
     public function deleteWisataHalal($idWisata){
         $this->db->where('IDWISATAHALAL', $idWisata);
         return $this->db->delete('WISATA_HALAL');
+    }
+
+    public function deleteIntenary($idWisata){
+        $this->db->where('IDWISATAHALAL', $idWisata);
+        return $this->db->delete('DETAIL_ITINERARY');
     }
 
     public function aktifWisataHalal($idWisata){
@@ -57,5 +71,15 @@ class MWisataHalal extends CI_Model
         $this->db->set('ISSHOW', 0);
         $this->db->where('IDWISATAHALAL', $idWisata);
         return $this->db->update('WISATA_HALAL');
+    }
+
+    public function getSelectLastWisataHalal(){
+        $this->db->order_by('CREATED_AT', 'DESC');
+        $query = $this->db->get('WISATA_HALAL');
+        return $query->result_array();
+    }
+
+    public function saveItinerary($data){
+        return $this->db->insert('DETAIL_ITINERARY', $data);
     }
 }

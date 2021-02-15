@@ -114,6 +114,23 @@ class WisataHalal extends CI_Controller
         // print_r($data);
         $this->MWisataHalal->saveWisataHalal($data);
 
+        //GET LAST SELECT ADD
+        $dataWisata = $this->MWisataHalal->getSelectLastWisataHalal();
+
+        //DETAIL ITINERARY
+        $detailKegiatan = $this->input->post('detailKegiatan');
+        for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
+            $dataItinerary = [
+                'IDWISATAHALAL' => $dataWisata[0]['IDWISATAHALAL'],
+                'HARIKE' => $x+1,
+                'TEMPAT' => $this->input->post('tempat')[$x],
+                'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
+                'CREATED_AT' => date("Y-m-d h:i:sa")
+            ];
+
+            $this->MWisataHalal->saveItinerary($dataItinerary);
+        }
+
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Wisata Halal berhasil ditambahkan! </div>');
 
@@ -124,6 +141,7 @@ class WisataHalal extends CI_Controller
     {
         $dataMaskapai = $this->MWisataHalal->getMaskapai();
         $dataWisata = $this->MWisataHalal->getSelectWisataHalal($idWisata);
+        $dataItinerary = $this->MWisataHalal->getSelectItinerary($idWisata);
 
          // untuk mengecek
         if($dataWisata[0]['TIPEWISATA'] == "1"){
@@ -144,6 +162,7 @@ class WisataHalal extends CI_Controller
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'wisata' => $dataWisata,
+            'itinerary' => $dataItinerary,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
@@ -174,9 +193,10 @@ class WisataHalal extends CI_Controller
              $imageWisata = $this->upload_image()  ;
         }
 
+        $kodeTipe = $this->input->post('tipeWisata');
         $data = array(
                'IDWISATAHALAL' => $idWisata,
-               'TIPEWISATA' => $this->input->post('tipeWisata'),
+               'TIPEWISATA' => $kodeTipe,
                'IDMASKAPAI' => $this->input->post('maskapai'),
                'NAMAWISATA' => $this->input->post('namaWisata'),
                'DURASIWISATA' => $this->input->post('durasiWisata'),
@@ -196,6 +216,24 @@ class WisataHalal extends CI_Controller
                'IMAGEWISATA' => $imageWisata,
                'ISSHOW' => $valIsShow,
         );
+
+        //dihapus dulu
+        //delete itinerary
+        $this->MWisataHalal->deleteIntenary($idWisata);
+
+        //DETAIL ITINERARY
+        $detailKegiatan = $this->input->post('detailKegiatan');
+        for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
+            $dataItinerary = [
+                'IDWISATAHALAL' => $dataWisata[0]['IDWISATAHALAL'],
+                'HARIKE' => $x+1,
+                'TEMPAT' => $this->input->post('tempat')[$x],
+                'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
+                'CREATED_AT' => date("Y-m-d h:i:sa")
+            ];
+
+            $this->MWisataHalal->saveItinerary($dataItinerary);
+        }
 
         // untuk mengecek tipe dan dijadikan di redirect
         $tipe = null;
@@ -229,6 +267,9 @@ class WisataHalal extends CI_Controller
         }else if($dataWisata[0]['TIPEWISATA'] == "3"){
             $tipe = "ZiarahWali";
         }
+
+        //delete itinerary
+        $this->MWisataHalal->deleteIntenary($idWisata);
 
         //delete
         $this->MWisataHalal->deleteWisataHalal($idWisata);

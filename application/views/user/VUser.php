@@ -25,7 +25,7 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Status', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori', 'Aksi');
+                        $this->table->set_heading('No', 'Status', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori','Waktu', 'Aksi');
                         // print_r($paket);
                         $no = 1;
                         $kategori;
@@ -57,6 +57,7 @@
                         $row->NAMALENGKAP,
                         $row->EMAIL,
                         $kategori,
+                        $row->CREATED_AT,
                         $verfikasi.'
                         <button title="Detail User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailUser'.$row->IDUSERREGISTER.'"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
