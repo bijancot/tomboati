@@ -361,6 +361,7 @@ class User extends CI_Controller{
             }
         }else{
             $error = ['error' => $this->upload->display_errors()];
+            print_r($error);
         }
         
     }
@@ -393,11 +394,10 @@ class User extends CI_Controller{
                 $response['message']  = 'Sukses Upload Foto';
                 $this->throw(200, $response);
                 return;
-            }else{
-                echo "error";
             }
         }else{
             $error = ['error' => $this->upload->display_errors()];
+            print_r($error);
         }
         
         
