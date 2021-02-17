@@ -342,28 +342,28 @@ class User extends CI_Controller{
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
             $dataUpload     = $this->upload->data();
             $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-
+            $data = array(
+                'FILEKTP'       => $filenameKTP
+            );
+    
+            $where = array(
+                'IDUSERREGISTER' => $idUser
+            );
+        
+            $this->db->where($where);
+            $this->db->update('USER_REGISTER', $data);
+    
+            if($this->db->affected_rows()>0){
+                $response['error']    = false;
+                $response['message']  = 'Sukses Upload Foto KTP';
+                $this->throw(200, $response);
+                return;
+            }
+        }else{
+            $error = ['error' => $this->upload->display_errors()];
+            print_r($error);
         }
         
-        $data = array(
-            'FILEKTP'       => $filenameKTP
-        );
-
-        $where = array(
-            'IDUSERREGISTER' => $idUser
-        );
-    
-        $this->db->where($where);
-        $this->db->update('USER_REGISTER', $data);
-
-        if($this->db->affected_rows()>0){
-            $response['error']    = false;
-            $response['message']  = 'Sukses Upload Foto KTP';
-            $this->throw(200, $response);
-            return;
-        }else{
-            echo "error";
-        }
     }
 
     public function updateFoto(){
@@ -378,28 +378,29 @@ class User extends CI_Controller{
         if($this->upload->do_upload('foto')){ //check if fileKTP upload
             $dataUpload     = $this->upload->data();
             $filenameFoto    = base_url('images/users/' . $dataUpload['file_name']);
-            
+            $data = array(
+                'FOTO'       => $filenameFoto
+            );
+    
+            $where = array(
+                'IDUSERREGISTER' => $idUser
+            );
+        
+            $this->db->where($where);
+            $this->db->update('USER_REGISTER', $data);
+    
+            if($this->db->affected_rows()>0){
+                $response['error']    = false;
+                $response['message']  = 'Sukses Upload Foto';
+                $this->throw(200, $response);
+                return;
+            }
+        }else{
+            $error = ['error' => $this->upload->display_errors()];
+            print_r($error);
         }
         
-        $data = array(
-            'FOTO'       => $filenameFoto
-        );
-
-        $where = array(
-            'IDUSERREGISTER' => $idUser
-        );
-    
-        $this->db->where($where);
-        $this->db->update('USER_REGISTER', $data);
-
-        if($this->db->affected_rows()>0){
-            $response['error']    = false;
-            $response['message']  = 'Sukses Upload Foto';
-            $this->throw(200, $response);
-            return;
-        }else{
-            echo "error";
-        }
+        
     }
 
     public function logout_post(){
