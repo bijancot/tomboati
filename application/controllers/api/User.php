@@ -342,7 +342,8 @@ class User extends CI_Controller{
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
             $dataUpload     = $this->upload->data();
             $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-
+        }else{
+            $error = ['error' => $this->upload->display_errors()];
         }
         
         $data = array(
@@ -378,7 +379,8 @@ class User extends CI_Controller{
         if($this->upload->do_upload('foto')){ //check if fileKTP upload
             $dataUpload     = $this->upload->data();
             $filenameFoto    = base_url('images/users/' . $dataUpload['file_name']);
-            
+        }else{
+            $error = ['error' => $this->upload->display_errors()];
         }
         
         $data = array(
