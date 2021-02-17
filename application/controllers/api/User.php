@@ -332,6 +332,7 @@ class User extends CI_Controller{
         $response = [];
 
         $idUser = $this->input->get('idUser');
+        $filenameKTP = null;
 
         $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
@@ -369,6 +370,7 @@ class User extends CI_Controller{
         $response = [];
 
         $idUser = $this->input->get('idUser');
+        $filenameFoto = null;
 
         $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
