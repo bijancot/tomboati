@@ -110,7 +110,8 @@ class Paket extends CI_Controller{
         $idMasterPaket  = null;
         
         $tipe           = $this->input->get('tipe');
-    
+        $bulan          = date('Y-m-d');
+
         if($tipe == "Bisnis"){
             $idMasterPaket = "UMR-BSS";
         } else if($tipe == "Hemat"){
@@ -124,7 +125,7 @@ class Paket extends CI_Controller{
         }
 
         $namaBulan      = "";
-        $data = $this->db->query('SELECT TANGGALKEBERANGKATAN FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 GROUP BY MONTH(TANGGALKEBERANGKATAN)')->result();
+        $data = $this->db->query('SELECT TANGGALKEBERANGKATAN FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 GROUP BY MONTH(TANGGALKEBERANGKATAN) ORDER BY TANGGALKEBERANGKATAN ASC')->result();
         $arr = array();
 
         foreach($data as $d){
