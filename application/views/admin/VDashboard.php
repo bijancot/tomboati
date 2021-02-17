@@ -38,7 +38,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Jumlah User</div>
-                                <div class="text-lg font-weight-bold">0</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalUser;?> User</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="users"></i>
                         </div>
