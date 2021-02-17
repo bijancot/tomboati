@@ -19,6 +19,8 @@ class Dashboard extends CI_Controller
             'dataNotifChat' => $dataNotifChat
         );
 
+        $data['totalUser']			= $this->MUser->totalUser();
+
         //Change this 
         $this->template->view('admin/VDashboard', $data);
     }
