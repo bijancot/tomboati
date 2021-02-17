@@ -14,6 +14,7 @@ class Paket extends CI_Controller{
         $idMasterPaket  = null;
 
         $tipe           = $this->input->get('tipe');
+        $bulan          = $this->input->get('bulan');
     
         if($tipe == "Bisnis"){
             $idMasterPaket = "UMR-BSS";
@@ -27,8 +28,12 @@ class Paket extends CI_Controller{
             $idMasterPaket = "UMR-VIP";
         }
 
-        $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
-
+        if(isset($bulan)){
+            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+        }else{
+            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+        }
+        
         if(count($data) > 0){
             $response['error']    = false;
             $response['message'] = 'Sukses Tampil Data';
