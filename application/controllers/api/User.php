@@ -26,6 +26,7 @@ class User extends CI_Controller{
         $filenameKTP    = null;
         $filenameFoto   = null;
         $createdAt      = date('Y-m-d H:i:s');
+        $idUserRegister = null;
 
         if($noKTP != '' && $email != '' && $password != ''){ //check if kosong
             $checkKTPFound      = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->row();
@@ -57,11 +58,17 @@ class User extends CI_Controller{
                             'CREATED_AT'    => $createdAt
                         );
 
-                        $dataChat = array(
-                            'NOMORKTP'      => $noKTP
-                        );
-                
                         $this->db->insert('USER_REGISTER', $data);
+
+                        $getID    = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->result();
+                        // var_dump($getID);
+                        foreach ($getID as $data) {
+                            $idUserRegister = $data->IDUSERREGISTER;
+                        }
+
+                        $dataChat = array(
+                            'IDUSERREGISTER'      => $idUserRegister
+                        );
                         $this->db->insert('CHAT_ROOM', $dataChat);
 
                         if($this->db->affected_rows()>0){
@@ -158,16 +165,6 @@ class User extends CI_Controller{
                 $checkEmailFound   = $this->db->where('EMAIL', $email)->get('USER_REGISTER')->row();
 
                 if($checkEmailFound == null){ //check if Email duplikat
-
-                    if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-                    
-                    if($this->upload->do_upload('foto')){ //check if foto upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                    }
     
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                         $data = array(
@@ -175,8 +172,6 @@ class User extends CI_Controller{
                             'PASSWORD'      => $password,
                             'NAMALENGKAP'   => $namaLengkap,
                             'NOMORHP'       => $nomorHP,
-                            'FILEKTP'       => $filenameKTP,
-                            'FOTO'          => $filenameFoto,
                             'STATUS'        => 0,
                             'UPDATED_AT'    => $updatedat
                         );
@@ -188,12 +183,10 @@ class User extends CI_Controller{
                 
                         $this->db->where($where);
                         $this->db->update('USER_REGISTER', $data);
-                        $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
 
                         if($this->db->affected_rows()>0){
-                            $response['error']      = false;
-                            $response['message']    = 'Sukses Edit Profil';
-                            $response['data']       = $query;
+                            $response['error']    = false;
+                            $response['message'] = 'Sukses Edit Profil';
                             $this->throw(200, $response);
                             return;
                         }
@@ -214,23 +207,12 @@ class User extends CI_Controller{
                 $checkKTPFound     = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->row();
 
                 if($checkKTPFound == null){ //check if no KTP duplikat
-                    if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-                    
-                    if($this->upload->do_upload('foto')){ //check if foto upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-    
+            
                     $data = array(
                         'NOMORKTP'      => $noKTP,
                         'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
-                        'FILEKTP'       => $filenameKTP,
-                        'FOTO'          => $filenameFoto,
                         'STATUS'        => 0,
                         'UPDATED_AT'    => $updatedat
                     );
@@ -243,12 +225,9 @@ class User extends CI_Controller{
                     $this->db->where($where);
                     $this->db->update('USER_REGISTER', $data);
 
-                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
-                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }
@@ -264,16 +243,6 @@ class User extends CI_Controller{
 
                 if($checkKTPFound == null){ //check if no KTP duplikat
                     if($checkEmailFound == null){ //check if Email duplikat
-
-                        if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                            $dataUpload     = $this->upload->data();
-                            $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                        }
-                        
-                        if($this->upload->do_upload('foto')){ //check if foto upload
-                            $dataUpload     = $this->upload->data();
-                            $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                        }
         
                         if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                             $data = array(
@@ -282,8 +251,6 @@ class User extends CI_Controller{
                                 'PASSWORD'      => $password,
                                 'NAMALENGKAP'   => $namaLengkap,
                                 'NOMORHP'       => $nomorHP,
-                                'FILEKTP'       => $filenameKTP,
-                                'FOTO'          => $filenameFoto,
                                 'STATUS'        => 0,
                                 'UPDATED_AT'    => $updatedat
                             );
@@ -296,12 +263,9 @@ class User extends CI_Controller{
                             $this->db->where($where);
                             $this->db->update('USER_REGISTER', $data);
 
-                            $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-
                             if($this->db->affected_rows()>0){
                                 $response['error']    = false;
                                 $response['message'] = 'Sukses Edit Profil';
-                                $response['data']       = $query;
                                 $this->throw(200, $response);
                                 return;
                             }
@@ -325,23 +289,12 @@ class User extends CI_Controller{
                 }
             }else{
                 //echo "ktp sama, email sama";
-                if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                    $dataUpload     = $this->upload->data();
-                    $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                }
                 
-                if($this->upload->do_upload('foto')){ //check if foto upload
-                    $dataUpload     = $this->upload->data();
-                    $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                }
-
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                     $data = array(
                         'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
-                        'FILEKTP'       => $filenameKTP,
-                        'FOTO'          => $filenameFoto,
                         'STATUS'        => 0,
                         'UPDATED_AT'    => $updatedat
                     );
@@ -350,14 +303,11 @@ class User extends CI_Controller{
                         'IDUSERREGISTER' => $idUser
                     );
                     
-                    $this->db->where($where)->update('USER_REGISTER', $data);
-                    
-                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-                    
+                    $query = $this->db->where($where)->update('USER_REGISTER', $data);
+                    // print_r($query);
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
-                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }else{
@@ -375,6 +325,80 @@ class User extends CI_Controller{
             $response['message'] = 'Terdapat Data Kosong';
             $this->throw(200, $response);
             return;
+        }
+    }
+
+    public function updateFileKTP(){
+        $response = [];
+
+        $idUser = $this->input->get('idUser');
+        $filenameKTP = null;
+
+        $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        // var_dump($this->upload->do_upload('fileKTP'));
+
+        if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
+            $dataUpload     = $this->upload->data();
+            $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
+
+        }
+        
+        $data = array(
+            'FILEKTP'       => $filenameKTP
+        );
+
+        $where = array(
+            'IDUSERREGISTER' => $idUser
+        );
+    
+        $this->db->where($where);
+        $this->db->update('USER_REGISTER', $data);
+
+        if($this->db->affected_rows()>0){
+            $response['error']    = false;
+            $response['message']  = 'Sukses Upload Foto KTP';
+            $this->throw(200, $response);
+            return;
+        }else{
+            echo "error";
+        }
+    }
+
+    public function updateFoto(){
+        $response = [];
+
+        $idUser = $this->input->get('idUser');
+        $filenameFoto = null;
+
+        $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('foto')){ //check if fileKTP upload
+            $dataUpload     = $this->upload->data();
+            $filenameFoto    = base_url('images/users/' . $dataUpload['file_name']);
+            
+        }
+        
+        $data = array(
+            'FOTO'       => $filenameFoto
+        );
+
+        $where = array(
+            'IDUSERREGISTER' => $idUser
+        );
+    
+        $this->db->where($where);
+        $this->db->update('USER_REGISTER', $data);
+
+        if($this->db->affected_rows()>0){
+            $response['error']    = false;
+            $response['message']  = 'Sukses Upload Foto';
+            $this->throw(200, $response);
+            return;
+        }else{
+            echo "error";
         }
     }
 

@@ -36,6 +36,7 @@
                                         TomboAti
                                     </div>
                                     <h3 class="font-weight-light my-4 text-md-center">Login</h3>
+                                    <?= $this->session->flashdata('message'); ?>
                                 </div>
                                 <div class="card-body">
                                     <!-- Login form-->

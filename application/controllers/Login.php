@@ -15,14 +15,13 @@ class Login extends CI_Controller
 		if ($email === "admin@tomboati.com" && $pass === "admin") {
 			$session = array(
 				'who' => "admin",
-				'isLogin' => true,
-				'isDosen' => false
+				'isLogin' => true
 			);
 			$this->session->set_userdata($session);
 			
 			redirect('Dashboard');
 		} else {
-			$this->session->set_flashdata('error_login', 'Username/Password is incorrect!');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email / password salah! </div>');
 			redirect('Login');
 		}
 	}
