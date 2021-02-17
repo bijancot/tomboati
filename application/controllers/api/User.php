@@ -158,16 +158,6 @@ class User extends CI_Controller{
                 $checkEmailFound   = $this->db->where('EMAIL', $email)->get('USER_REGISTER')->row();
 
                 if($checkEmailFound == null){ //check if Email duplikat
-
-                    if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-                    
-                    if($this->upload->do_upload('foto')){ //check if foto upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                    }
     
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                         $data = array(
@@ -175,8 +165,6 @@ class User extends CI_Controller{
                             'PASSWORD'      => $password,
                             'NAMALENGKAP'   => $namaLengkap,
                             'NOMORHP'       => $nomorHP,
-                            'FILEKTP'       => $filenameKTP,
-                            'FOTO'          => $filenameFoto,
                             'STATUS'        => 0,
                             'UPDATED_AT'    => $updatedat
                         );
@@ -188,12 +176,10 @@ class User extends CI_Controller{
                 
                         $this->db->where($where);
                         $this->db->update('USER_REGISTER', $data);
-                        $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
 
                         if($this->db->affected_rows()>0){
-                            $response['error']      = false;
-                            $response['message']    = 'Sukses Edit Profil';
-                            $response['data']       = $query;
+                            $response['error']    = false;
+                            $response['message'] = 'Sukses Edit Profil';
                             $this->throw(200, $response);
                             return;
                         }
@@ -214,23 +200,12 @@ class User extends CI_Controller{
                 $checkKTPFound     = $this->db->where('NOMORKTP', $noKTP)->get('USER_REGISTER')->row();
 
                 if($checkKTPFound == null){ //check if no KTP duplikat
-                    if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-                    
-                    if($this->upload->do_upload('foto')){ //check if foto upload
-                        $dataUpload     = $this->upload->data();
-                        $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                    }
-    
+            
                     $data = array(
                         'NOMORKTP'      => $noKTP,
                         'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
-                        'FILEKTP'       => $filenameKTP,
-                        'FOTO'          => $filenameFoto,
                         'STATUS'        => 0,
                         'UPDATED_AT'    => $updatedat
                     );
@@ -243,12 +218,9 @@ class User extends CI_Controller{
                     $this->db->where($where);
                     $this->db->update('USER_REGISTER', $data);
 
-                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
-                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }
@@ -264,16 +236,6 @@ class User extends CI_Controller{
 
                 if($checkKTPFound == null){ //check if no KTP duplikat
                     if($checkEmailFound == null){ //check if Email duplikat
-
-                        if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                            $dataUpload     = $this->upload->data();
-                            $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                        }
-                        
-                        if($this->upload->do_upload('foto')){ //check if foto upload
-                            $dataUpload     = $this->upload->data();
-                            $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                        }
         
                         if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                             $data = array(
@@ -282,8 +244,6 @@ class User extends CI_Controller{
                                 'PASSWORD'      => $password,
                                 'NAMALENGKAP'   => $namaLengkap,
                                 'NOMORHP'       => $nomorHP,
-                                'FILEKTP'       => $filenameKTP,
-                                'FOTO'          => $filenameFoto,
                                 'STATUS'        => 0,
                                 'UPDATED_AT'    => $updatedat
                             );
@@ -296,12 +256,9 @@ class User extends CI_Controller{
                             $this->db->where($where);
                             $this->db->update('USER_REGISTER', $data);
 
-                            $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-
                             if($this->db->affected_rows()>0){
                                 $response['error']    = false;
                                 $response['message'] = 'Sukses Edit Profil';
-                                $response['data']       = $query;
                                 $this->throw(200, $response);
                                 return;
                             }
@@ -325,23 +282,12 @@ class User extends CI_Controller{
                 }
             }else{
                 //echo "ktp sama, email sama";
-                if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
-                    $dataUpload     = $this->upload->data();
-                    $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
-                }
                 
-                if($this->upload->do_upload('foto')){ //check if foto upload
-                    $dataUpload     = $this->upload->data();
-                    $filenameFoto   = base_url('images/users/' . $dataUpload['file_name']);
-                }
-
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                     $data = array(
                         'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
-                        'FILEKTP'       => $filenameKTP,
-                        'FOTO'          => $filenameFoto,
                         'STATUS'        => 0,
                         'UPDATED_AT'    => $updatedat
                     );
@@ -350,14 +296,11 @@ class User extends CI_Controller{
                         'IDUSERREGISTER' => $idUser
                     );
                     
-                    $this->db->where($where)->update('USER_REGISTER', $data);
-                    
-                    $query = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUser.'"')->result();
-                    
+                    $query = $this->db->where($where)->update('USER_REGISTER', $data);
+                    print_r($query);
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
-                        $response['data']       = $query;
                         $this->throw(200, $response);
                         return;
                     }else{
@@ -376,6 +319,83 @@ class User extends CI_Controller{
             $this->throw(200, $response);
             return;
         }
+    }
+
+    public function updateFileKTP(){
+        $response = [];
+
+        $idUser = $this->input->get('idUser');
+
+        $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
+            $dataUpload     = $this->upload->data();
+            $filenameKTP    = base_url('images/users/' . $dataUpload['file_name']);
+
+            $data = array(
+                'FILEKTP'       => $filenameKTP
+            );
+    
+            $where = array(
+                'IDUSERREGISTER' => $idUser
+            );
+        
+            $this->db->where($where);
+            $this->db->update('USER_REGISTER', $data);
+
+            if($this->db->affected_rows()>0){
+                $response['error']    = false;
+                $response['message']  = 'Sukses Upload Foto KTP';
+                $this->throw(200, $response);
+                return;
+            }else{
+                echo "error";
+            }
+        }else{
+            $response['error']    = true;
+            $response['message']  = 'Gagal Upload Foto KTP';
+            $this->throw(200, $response);
+            return;
+        }      
+    }
+
+    public function updateFoto(){
+        $response = [];
+
+        $idUser = $this->input->get('idUser');
+
+        $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        if($this->upload->do_upload('foto')){ //check if fileKTP upload
+            $dataUpload     = $this->upload->data();
+            $filenameFoto    = base_url('images/users/' . $dataUpload['file_name']);
+            $data = array(
+                'FOTO'       => $filenameFoto
+            );
+    
+            $where = array(
+                'IDUSERREGISTER' => $idUser
+            );
+        
+            $this->db->where($where);
+            $this->db->update('USER_REGISTER', $data);
+
+            if($this->db->affected_rows()>0){
+                $response['error']    = false;
+                $response['message']  = 'Sukses Upload Foto';
+                $this->throw(200, $response);
+                return;
+            }else{
+                echo "error";
+            }
+        }else{
+            $response['error']    = true;
+            $response['message']  = 'Gagal Upload Foto';
+            $this->throw(200, $response);
+            return;
+        }      
     }
 
     public function logout_post(){
