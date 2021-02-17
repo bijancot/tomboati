@@ -6,6 +6,7 @@ class Paket extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->database();
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     // paket get
@@ -29,9 +30,13 @@ class Paket extends CI_Controller{
         }
 
         if(isset($bulan)){
-            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+            if($bulan>0 && $bulan<12 ){
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
+            }else{
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
+            }
         }else{
-            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
         }
         
         if(count($data) > 0){
