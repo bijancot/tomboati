@@ -14,10 +14,8 @@
     <style>
         .bg-login {
             background-color: transparent;
-            background: url(<?php echo base_url('assets/img/bg-tomboati.png') ?>) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
+            background: url(<?php echo base_url('assets/img/bg-green-idfitri.svg') ?>) no-repeat center center fixed;
+            height: 100%;
             background-size: cover;
         }
     </style>
