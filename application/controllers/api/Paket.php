@@ -16,7 +16,8 @@ class Paket extends CI_Controller{
 
         $tipe           = $this->input->get('tipe');
         $bulan          = $this->input->get('bulan');
-    
+        $hari           = date('Y-m-d');
+        
         if($tipe == "Bisnis"){
             $idMasterPaket = "UMR-BSS";
         } else if($tipe == "Hemat"){
@@ -29,14 +30,16 @@ class Paket extends CI_Controller{
             $idMasterPaket = "UMR-VIP";
         }
 
+        // echo $hari;
+
         if(isset($bulan)){
             if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
             }else{
-                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
             }
         }else{
-            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC')->result();
+            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
         }
         
         if(count($data) > 0){
