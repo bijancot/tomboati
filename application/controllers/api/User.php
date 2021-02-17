@@ -304,7 +304,7 @@ class User extends CI_Controller{
                     );
                     
                     $query = $this->db->where($where)->update('USER_REGISTER', $data);
-                    print_r($query);
+                    // print_r($query);
                     if($this->db->affected_rows()>0){
                         $response['error']    = false;
                         $response['message'] = 'Sukses Edit Profil';
@@ -337,7 +337,7 @@ class User extends CI_Controller{
         $config = ['upload_path' => './images/users/', 'allowed_types' => 'jpg|png|jpeg', 'max_size' => 1024];            
         $this->upload->initialize($config);
 
-        var_dump($this->upload->do_upload('fileKTP'));
+        // var_dump($this->upload->do_upload('fileKTP'));
 
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
             $dataUpload     = $this->upload->data();
