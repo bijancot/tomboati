@@ -413,7 +413,12 @@ class User extends CI_Controller{
         foreach ($getEmail as $data) {
             $email = $data->EMAIL;
         }
-        $mesg = $this->load->view('template/email','',TRUE);
+
+        $data = array(
+            'pesan' => 'Arema'
+        );
+        
+        $mesg = $this->load->view('template/email',$data,TRUE);
 
         $this->load->library('email');
         $config = Array(
@@ -423,8 +428,7 @@ class User extends CI_Controller{
             'smtp_user' => 'adm.tomboati@gmail.com',
             'smtp_pass' => 'TomboAti123',
             'smtp_crypto' => 'ssl',
-            'charset'    => 'utf-8',
-            'newline'    => '\r\n',
+            'charset'    => 'iso-8859-1',
             'mailtype' => 'html',            
             'wordwrap'=> TRUE,
             'validation' => TRUE // bool whether to validate email or not      
