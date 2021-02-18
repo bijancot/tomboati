@@ -403,6 +403,53 @@ class User extends CI_Controller{
         
     }
 
+    public function gantiPassword(){
+        $response       = [];
+        $idUserRegister = $this->input->post('idUserRegister');
+        $email          = null;
+
+        $getEmail       = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUserRegister.'"')->result();
+
+        foreach ($getEmail as $data) {
+            $email = $data->EMAIL;
+        }
+
+
+        $this->load->library('email');
+
+        $config['protocol'] = 'ssmtp';
+        $config['smtp_host'] = 'ssl://ssmtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = 'adm.tomboati@gmail.com';
+        $config['smtp_pass']    = 'TomboAti';
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'text'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not      
+
+        $this->email->initialize($config);
+
+        $this->email->from('adm.tomboati@gmail.com', 'Tombo Ati');
+        $this->email->to('aderamadhanapratama@gmail.com'); 
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');  
+
+        $this->email->send();
+
+        echo $this->email->print_debugger();
+
+        if($this->db->affected_rows()>0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses';
+            $this->throw(200, $response);
+            return;
+        }else{
+            echo "error";
+        }
+
+    }
+
     public function logout_post(){
         $response       = [];
         $email          = $this->input->post('email');
