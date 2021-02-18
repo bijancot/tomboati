@@ -414,40 +414,36 @@ class User extends CI_Controller{
             $email = $data->EMAIL;
         }
 
-
         $this->load->library('email');
-
-        $config['protocol'] = 'ssmtp';
-        $config['smtp_host'] = 'ssl://ssmtp.gmail.com';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = 'adm.tomboati@gmail.com';
-        $config['smtp_pass']    = 'TomboAti';
-        $config['charset']    = 'utf-8';
-        $config['newline']    = "\r\n";
-        $config['mailtype'] = 'text'; // or html
-        $config['validation'] = TRUE; // bool whether to validate email or not      
-
-        $this->email->initialize($config);
-
-        $this->email->from('adm.tomboati@gmail.com', 'Tombo Ati');
-        $this->email->to('aderamadhanapratama@gmail.com'); 
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');  
-
-        $this->email->send();
-
-        echo $this->email->print_debugger();
-
-        if($this->db->affected_rows()>0){
-            $response['error']    = false;
-            $response['message'] = 'Sukses';
-            $this->throw(200, $response);
-            return;
-        }else{
-            echo "error";
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'adm.tomboati@gmail.com',
+            'smtp_pass' => 'TomboAti123',
+            'mailtype'  => 'text',
+            'charset'   => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->from('adm.tomboati@gmail.com');
+        $this->email->to('aderamadhanapratama@gmail.com');
+        $this->email->subject('This the test');
+        $this->email->message('this is the test message');
+        
+        if ($this->email->send()) {
+            echo 'Your Email has successfully been sent.';
+        } else {
+            show_error($this->email->print_debugger());
         }
 
+        // if($this->db->affected_rows()>0){
+        //     $response['error']    = false;
+        //     $response['message'] = 'Sukses';
+        //     $this->throw(200, $response);
+        //     return;
+        // }else{
+        //     echo "error";
+        // }
     }
 
     public function logout_post(){
