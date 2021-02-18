@@ -41,13 +41,13 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="deskripsiNews">Deskripsi News</label>
-                                                <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" rows="3" required=""><?= $row['DESKRIPSINEWS']; ?></textarea>
+                                                <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" rows="3" ><?= $row['DESKRIPSINEWS']; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="contentNews">Isi News</label>
-                                                <textarea class="form-control" name="contentNews" id="contentNews" rows="5" required=""><?= $row['CONTENTNEWS']; ?></textarea>
+                                                <textarea class="form-control" name="contentNews" id="contentNews" rows="5" ><?= $row['CONTENTNEWS']; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col">
