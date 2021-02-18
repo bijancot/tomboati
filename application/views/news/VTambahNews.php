@@ -40,13 +40,13 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="deskripsiNews">Deskripsi News</label>
-                                            <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" required="" rows="3"></textarea>
+                                            <textarea class="form-control" name="deskripsiNews" id="deskripsiNews" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="contentNews">Isi News</label>
-                                            <textarea class="form-control" name="contentNews" id="contentNews" required="" rows="5"></textarea>
+                                            <textarea class="form-control" name="contentNews" id="contentNews" rows="5"></textarea>
                                             <div class="form-group">
                                                 <label for="contentNews">Foto News</label>
                                                 <!-- wadah preview -->
