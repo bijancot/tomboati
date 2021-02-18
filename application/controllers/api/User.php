@@ -417,31 +417,29 @@ class User extends CI_Controller{
         $data = array(
             'pesan' => 'Arema'
         );
-        
+
         $mesg = $this->load->view('template/email',$data,TRUE);
 
         $this->load->library('email');
         $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'adm.tomboati@gmail.com',
-            'smtp_pass' => 'TomboAti123',
-            'smtp_crypto' => 'ssl',
-            'charset'    => 'iso-8859-1',
-            'mailtype' => 'html',            
-            'wordwrap'=> TRUE,
-            'validation' => TRUE // bool whether to validate email or not      
-    
+            'protocol'      => 'smtp',
+            'smtp_host'     => 'ssl://smtp.googlemail.com',
+            'smtp_port'     => 465,
+            'smtp_user'     => 'adm.tomboati@gmail.com',
+            'smtp_pass'     => 'TomboAti123',
+            'smtp_crypto'   => 'ssl',
+            'mailtype'      => 'html',  
+            'charset'       => 'iso-8859-1'
         );
 
-
         $this->load->library('email', $config);
-        $this->email->from('adm.tomboati@gmail.com');
+
+        $this->email->set_newline("\r\n");
+        
+        $this->email->from('adm.tomboati@gmail.com','Tombo Ati');
         $this->email->to('aderamadhanapratama@gmail.com');
         $this->email->subject('Ganti Password');
-        $this->email->set_header('Content-Type', 'text/html');
-        $this->email->message($mesg);
+        $this->email->message('Silagkan klik link dibawah ini untuk mengganti password\n Link');
         
         if ($this->email->send()) {
             echo 'Your Email has successfully been sent.';
