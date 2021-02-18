@@ -421,9 +421,14 @@ class User extends CI_Controller{
             'smtp_port' => 465,
             'smtp_user' => 'adm.tomboati@gmail.com',
             'smtp_pass' => 'TomboAti123',
-            'mailtype'  => 'text',
-            'charset'   => 'iso-8859-1'
+            'charset'    => 'utf-8',
+            'newline'    => '\r\n',
+            'wordwrap' => TRUE,
+            'mailtype' => 'text', // or html
+            'validation' => TRUE // bool whether to validate email or not      
+    
         );
+
         $this->load->library('email', $config);
         $this->email->from('adm.tomboati@gmail.com');
         $this->email->to('aderamadhanapratama@gmail.com');
