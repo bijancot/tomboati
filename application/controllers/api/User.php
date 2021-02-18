@@ -413,7 +413,7 @@ class User extends CI_Controller{
         foreach ($getEmail as $data) {
             $email = $data->EMAIL;
         }
-        $mesg = $this->load->view('template/email','',true);
+        $mesg = $this->load->view('template/email');
 
         $this->load->library('email');
         $config = Array(
@@ -435,7 +435,7 @@ class User extends CI_Controller{
         $this->load->library('email', $config);
         $this->email->from('adm.tomboati@gmail.com');
         $this->email->to('aderamadhanapratama@gmail.com');
-        $this->email->subject($subject);
+        $this->email->subject('Ganti Password');
         $this->email->set_header('Content-Type', 'text/html');
         $this->email->message($mesg);
         
