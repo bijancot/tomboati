@@ -425,16 +425,26 @@ class User extends CI_Controller{
             'charset'    => 'iso-8859-1',
             'newline'    => '\r\n',
             'wordwrap' => TRUE,
-            'mailtype' => 'text', // or html
+            'mailtype' => 'html', // or html
             'validation' => TRUE // bool whether to validate email or not      
     
         );
 
+        $body ="<table  width=100% border=0><tr><td>";
+        $body .= "<img width=200 src='";
+        $body .= "https://cdn.pixabay.com/photo/2014/04/03/00/43/wildcat-309220_960_720.png";
+        $body .="'></img></td><td style=position:absolute;left:350;top:60;><h2><font color = #346699>PMS Pvt Ltd.</font><h2></td></tr>";
+        $body .='<tr><td colspan=2><br/><br/><br/><strong>Dear</strong></td></tr>';
+        $body .= '<tr><td colspan=2><br/><font size=3>As per Your request we send Your Password.</font><br/><br/>Password is : <b>'.$pass.'</b></td></tr>';
+        $body .= '<tr><td colspan=2><br/>If you have any questions, please feel free to contact us at:<br/><a href="mailto:support@pms.com" target="_blank">support@pms.com</a></td></tr>';
+        $body .= '<tr><td colspan=2><br/><br/>Best regards,<br>The PMS Team.</td></tr></table>';
+        $subject = "Forgot Password";
+
         $this->load->library('email', $config);
         $this->email->from('adm.tomboati@gmail.com');
         $this->email->to('aderamadhanapratama@gmail.com');
-        $this->email->subject('This the test');
-        $this->email->message('this is the test message');
+        $this->email->subject($subject);
+        $this->email->message($body);
         
         if ($this->email->send()) {
             echo 'Your Email has successfully been sent.';
