@@ -415,35 +415,35 @@ class User extends CI_Controller{
         }
         $mesg = $this->load->view('template/email');
 
-        // $this->load->library('email');
-        // $config = Array(
-        //     'protocol' => 'smtp',
-        //     'smtp_host' => 'ssl://smtp.googlemail.com',
-        //     'smtp_port' => 465,
-        //     'smtp_user' => 'adm.tomboati@gmail.com',
-        //     'smtp_pass' => 'TomboAti123',
-        //     'smtp_crypto' => 'ssl',
-        //     'charset'    => 'utf-8',
-        //     'newline'    => '\r\n',
-        //     'mailtype' => 'html',            
-        //     'wordwrap'=> TRUE,
-        //     'validation' => TRUE // bool whether to validate email or not      
+        $this->load->library('email');
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'adm.tomboati@gmail.com',
+            'smtp_pass' => 'TomboAti123',
+            'smtp_crypto' => 'ssl',
+            'charset'    => 'utf-8',
+            'newline'    => '\r\n',
+            'mailtype' => 'html',            
+            'wordwrap'=> TRUE,
+            'validation' => TRUE // bool whether to validate email or not      
     
-        // );
+        );
 
 
-        // $this->load->library('email', $config);
-        // $this->email->from('adm.tomboati@gmail.com');
-        // $this->email->to('aderamadhanapratama@gmail.com');
-        // $this->email->subject('Ganti Password');
-        // $this->email->set_header('Content-Type', 'text/html');
-        // $this->email->message($mesg);
+        $this->load->library('email', $config);
+        $this->email->from('adm.tomboati@gmail.com');
+        $this->email->to('aderamadhanapratama@gmail.com');
+        $this->email->subject('Ganti Password');
+        $this->email->set_header('Content-Type', 'text/html');
+        $this->email->message($mesg);
         
-        // if ($this->email->send()) {
-        //     echo 'Your Email has successfully been sent.';
-        // } else {
-        //     show_error($this->email->print_debugger());
-        // }
+        if ($this->email->send()) {
+            echo 'Your Email has successfully been sent.';
+        } else {
+            show_error($this->email->print_debugger());
+        }
 
         // if($this->db->affected_rows()>0){
         //     $response['error']    = false;
