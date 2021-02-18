@@ -425,7 +425,7 @@ class User extends CI_Controller{
             'charset'    => 'iso-8859-1',
             'newline'    => '\r\n',
             'wordwrap' => TRUE,
-            'mailtype' => 'html', // or html
+            'mailtype' => 'text/html', // or html
             'validation' => TRUE // bool whether to validate email or not      
     
         );
@@ -444,6 +444,7 @@ class User extends CI_Controller{
         $this->email->from('adm.tomboati@gmail.com');
         $this->email->to('aderamadhanapratama@gmail.com');
         $this->email->subject($subject);
+        $this->email->set_header('Content-Type', 'text/html');
         $this->email->message($body);
         
         if ($this->email->send()) {
