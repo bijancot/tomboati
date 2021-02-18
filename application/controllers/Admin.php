@@ -33,7 +33,7 @@ class Admin extends CI_Controller
         }
     }
 
-    public function ChangePassword()
+    public function ChangePassword($idUserRegister)
     {
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
