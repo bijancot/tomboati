@@ -17,6 +17,23 @@
             background: url(<?php echo base_url('assets/img/bg-green-idfitri.svg') ?>) no-repeat center center fixed;
             height: 100%;
             background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .col-lg-13 {
+            flex: 0 0 400px;
+            max-width: 400px;
         }
     </style>
 </head>
@@ -26,34 +43,36 @@
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
-                            <!-- Basic login form-->
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header justify-content-center">
-                                    <div class="strong form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                        <img src="<?= base_url(); ?>assets/img/logo_tomboati.png">
-                                        TomboAti
+                    <div class="center">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-13">
+                                <!-- Basic login form-->
+                                <div class="card shadow-lg border-0 rounded-lg ">
+                                    <div class="card-header justify-content-center">
+                                        <div class="strong form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                                            <img src="<?= base_url(); ?>assets/img/logo_tomboati.png">
+                                            TomboAti
+                                        </div>
+                                        <h3 class="font-weight-light my-4 text-md-center">Login</h3>
+                                        <?= $this->session->flashdata('message'); ?>
                                     </div>
-                                    <h3 class="font-weight-light my-4 text-md-center">Login</h3>
-                                    <?= $this->session->flashdata('message'); ?>
-                                </div>
-                                <div class="card-body">
-                                    <!-- Login form-->
-                                    <form action="<?= base_url('login/auth_admin') ?>" method="POST">
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="email">Email</label>
-                                            <input type="email" class="form-control py-4" name="email" placeholder="Masukan Email" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="password">Password</label>
-                                            <input type="password" class="form-control py-4" name="password" placeholder="Masukan Password" required />
-                                        </div>
-                                        <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <a class="small"></a>
-                                            <input type="submit" class="btn btn-primary " value="Login" />
-                                        </div>
-                                    </form>
+                                    <div class="card-body">
+                                        <!-- Login form-->
+                                        <form action="<?= base_url('Admin/auth_admin') ?>" method="POST">
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="email">Email</label>
+                                                <input type="email" class="form-control py-4" name="email" placeholder="Masukan Email" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="password">Password</label>
+                                                <input type="password" class="form-control py-4" name="password" placeholder="Masukan Password" required />
+                                            </div>
+                                            <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                                                <a class="small"></a>
+                                                <input type="submit" class="btn btn-primary " value="Login" />
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +83,7 @@
         <div id="layoutAuthentication_footer">
             <footer class="footer mt-auto footer-dark ">
                 <div class="container-fluid">
-                    <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                    <div class="form-group d-flex align-items-center justify-content-center mt-5 mb-0">
                         <div class="row ">
                             <div class="col-md-50 small">Copyright &#xA9; Tombo Ati</div>
                         </div>
