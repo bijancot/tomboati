@@ -119,6 +119,11 @@
         <div class="nav-link-icon ml-2"><i data-feather="message-circle"></i></div>
         Chat
     </a>
+
+    <a class="nav-link " href="<?php echo site_url('Pengumuman'); ?>">
+        <div class="nav-link-icon ml-2"><i data-feather="briefcase"></i></div>
+        Pengumuman
+    </a>
 </div>
 <div class="sidenav-footer">
     <div class="sidenav-footer-content">

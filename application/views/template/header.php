@@ -212,7 +212,7 @@
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <img class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
-        <a class="navbar-brand" href="<?php echo site_url('umroh'); ?>"> Tombo Ati </a>
+        <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2 ml-0" id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
@@ -270,13 +270,13 @@
                         <i data-feather="user"></i>
 
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">Mr. Fakhri Fahreza</div>
+                            <div class="dropdown-user-details-name">Admin</div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo site_url('#'); ?>">
-                        <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        Account
+                    <a class="dropdown-item" href="<?php echo site_url('Admin/ChangePassword'); ?>">
+                        <div class="dropdown-item-icon"><i data-feather="key"></i></div>
+                        Change Password
                     </a>
                     <a type="button" class="dropdown-item" data-toggle="modal" data-target="#KonfirmasiModal">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>

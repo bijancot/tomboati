@@ -5,10 +5,10 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <a href="<?= base_url('maskapai'); ?>">
-                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                            <a>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
-                        Maskapai
+                            Tambah Maskapai
                         </h1>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <label for="image-source">Gambar Maskapai</label>
                                         <!-- wadah preview -->
-                                        <img id="image-preview" alt="image preview"/>
+                                        <img id="image-preview" alt="image preview" />
                                         <div class="custom-file">
                                             <input type="file" name="imageMaskapai" class="custom-file-input" id="image-source" onchange="previewImage();">
                                             <label class="custom-file-label" for="image-source">Upload Gambar</label>
@@ -53,20 +53,20 @@
     </div>
 </body>
 <script type="text/javascript">
-//preview sebelum upload
-function previewImage() {
-document.getElementById("image-preview").style.display = "block";
-var oFReader = new FileReader();
-oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
-oFReader.onload = function(oFREvent) {
-document.getElementById("image-preview").src = oFREvent.target.result;
-};
-};
-// Add the following code if you want the name of the file appear on select
-$(".custom-file-input").on("change", function() {
-var fileName = $(this).val().split("\\").pop();
-$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
+    //preview sebelum upload
+    function previewImage() {
+        document.getElementById("image-preview").style.display = "block";
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+        oFReader.onload = function(oFREvent) {
+            document.getElementById("image-preview").src = oFREvent.target.result;
+        };
+    };
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
 </script>
 <script>
     Pusher.logToConsole = true;

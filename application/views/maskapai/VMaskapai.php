@@ -5,8 +5,11 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="activity"></i></div>
-                        <?= $title; ?>
+                            <a>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
+                            </a>
+                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                            <?= $title; ?>
                         </h1>
                         Daftar Maskapai
                     </div>
@@ -24,21 +27,21 @@
                 <div class="datatable">
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
-                        $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Nama Maskapai', 'Gambar Maskapai', 'Aksi');
-                        // print_r($paket);
-                        $no = 1;
-                        foreach ($maskapai as $row) {
+                    $this->table->set_template($template);
+                    $this->table->set_heading('No', 'Nama Maskapai', 'Gambar Maskapai', 'Aksi');
+                    // print_r($paket);
+                    $no = 1;
+                    foreach ($maskapai as $row) {
                         $this->table->add_row(
-                        $no++,
-                        $row->NAMAMASKAPAI,
-                        '<img src="'. $row->IMAGEMASKAPAI .'" style="width:100px">',
-                        '<a title="Edit Maskapai" href="'.  base_url("Maskapai/editMaskapai/".$row->IDMASKAPAI).'" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
+                            $no++,
+                            $row->NAMAMASKAPAI,
+                            '<img src="' . $row->IMAGEMASKAPAI . '" style="width:100px">',
+                            '<a title="Edit Maskapai" href="' .  base_url("Maskapai/editMaskapai/" . $row->IDMASKAPAI) . '" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal'.$row->IDMASKAPAI.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal' . $row->IDMASKAPAI . '"><i class="fa fa-trash"></i>
                         </button>'
                         );
-                        ?>
+                    ?>
                         <!-- Modal Hapus -->
                         <div class="modal fade" id="hapusMaskapaiModal<?= $row->IDMASKAPAI; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -46,27 +49,27 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMAMASKAPAI ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Maskapai/aksiHapusMaskapai/'.$row->IDMASKAPAI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <a href="<?= base_url('Maskapai/aksiHapusMaskapai/' . $row->IDMASKAPAI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                        }
-                        echo $this->table->generate();
-                        ?>
-                    </div>
+                    <?php
+                    }
+                    echo $this->table->generate();
+                    ?>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script>
     Pusher.logToConsole = true;
