@@ -437,7 +437,7 @@ class User extends CI_Controller{
         $this->email->to('aderamadhanapratama@gmail.com');
         $this->email->subject($subject);
         $this->email->set_header('Content-Type', 'text/html');
-        $this->email->message($body);
+        $this->email->message($mesg);
         
         if ($this->email->send()) {
             echo 'Your Email has successfully been sent.';
