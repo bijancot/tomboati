@@ -421,7 +421,8 @@ class User extends CI_Controller{
             'smtp_port' => 465,
             'smtp_user' => 'adm.tomboati@gmail.com',
             'smtp_pass' => 'TomboAti123',
-            'charset'    => 'utf-8',
+            'smtp_crypto' => 'ssl',
+            'charset'    => 'iso-8859-1',
             'newline'    => '\r\n',
             'wordwrap' => TRUE,
             'mailtype' => 'text', // or html
