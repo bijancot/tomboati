@@ -57,6 +57,27 @@ class Paket extends CI_Controller{
         
     }
 
+    // getPaketLimit
+    public function getPaketLimit(){
+        $response       = [];
+        
+        $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE ISSHOW = 1 ORDER BY PAKET.CREATED_AT DESC LIMIT 3')->result();
+        
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $data;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
     // detailPaket
     public function detailPaket(){
         $response       = [];
@@ -101,8 +122,7 @@ class Paket extends CI_Controller{
             $response['message'] = 'Data Promo Kosong';
             $this->throw(200, $response);
             return;
-        }
-        
+        } 
     }
 
     public function getPaketMonth(){
