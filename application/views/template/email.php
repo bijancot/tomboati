@@ -1,5 +1,10 @@
 <html>
     <head>
+    <meta charset="utf-8" />
+
+  <title>Anil Labs - Codeigniter mail templates</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style type="text/css">
         .center {
   display: block;
