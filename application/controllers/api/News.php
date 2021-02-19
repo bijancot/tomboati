@@ -47,7 +47,7 @@ class News extends CI_Controller{
     public function getNewsLimit(){
         $response       = [];
         
-        $data = $this->db->query('SELECT * FROM NEWS ORDER BY NEWS.TANGGALNEWS DESC LIMIT 1')->result();
+        $data = $this->db->query('SELECT * FROM NEWS_INFO ORDER BY NEWS_INFO.TANGGALNEWS DESC LIMIT 1')->result();
         
         if(count($data) > 0){
             $response['error']    = false;
