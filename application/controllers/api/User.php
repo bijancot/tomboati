@@ -407,20 +407,18 @@ class User extends CI_Controller{
         $response       = [];
         $idUserRegister = $this->input->post('idUserRegister');
         $email          = null;
-        $idUserRegister = null;
         $namaLengkap    = null;
 
         $getEmail       = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUserRegister.'"')->result();
 
         foreach ($getEmail as $data) {
             $email          = $data->EMAIL;
-            $idUserRegister = $data->IDUSERREGISTER;
             $namaLengkap    = $data->NAMALENGKAP;
         }
 
-        $data = array(
-            'IdUserRegister'    => $idUserRegister,
-            'namaLengkap'       => $namaLengkap
+        $dataEmail = array(
+            'IDUSERREGISTER'    => $idUserRegister,
+            'NAMALENGKAP'       => $namaLengkap
         );
 
         $this->load->library('email');
@@ -447,25 +445,23 @@ class User extends CI_Controller{
 		$this->email->initialize($config);
 		
 		$this->email->from('adm.tomboati@gmail.com', 'Admin Tombo Ati'); 
-		$this->email->to('sanade2034@gmail.com'); 
+		$this->email->to($email); 
 		$this->email->subject('Ganti Password');
-		$msg =  $this->load->view('template/email',$data,true);
+		$msg =  $this->load->view('template/email',$dataEmail,true);
         $this->email->message($msg);
         
         if ($this->email->send()) {
-            echo 'Your Email has successfully been sent.';
+            $response['error']      = false;
+            $response['message']    = 'Link Pergantian Password Telah Dikirim ke Email Anda';
+            $response['email']      = $email;
+            $this->throw(200, $response);
+            return;
         } else {
-            show_error($this->email->print_debugger());
+            $response['error']    = true;
+            $response['message'] = 'Gagal Mengirim Email';
+            $this->throw(200, $response);
+            return;
         }
-
-        // if($this->db->affected_rows()>0){
-        //     $response['error']    = false;
-        //     $response['message'] = 'Sukses';
-        //     $this->throw(200, $response);
-        //     return;
-        // }else{
-        //     echo "error";
-        // }
     }
 
     public function logout_post(){
