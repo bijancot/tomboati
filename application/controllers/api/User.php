@@ -418,28 +418,34 @@ class User extends CI_Controller{
             'pesan' => 'Arema'
         );
 
-        $mesg = $this->load->view('template/email',$data,TRUE);
-
         $this->load->library('email');
-        $config = Array(
-            'protocol'      => 'smtp',
-            'smtp_host'     => 'ssl://smtp.googlemail.com',
-            'smtp_port'     => 465,
-            'smtp_user'     => 'adm.tomboati@gmail.com',
-            'smtp_pass'     => 'TomboAti123',
-            'smtp_crypto'   => 'ssl',
-            'mailtype'      => 'html',  
-            'charset'       => 'iso-8859-1'
-        );
 
-        $this->load->library('email', $config);
+		$config['useragent'] = 'Tombo Ati';
+		$config['protocol'] = 'smtp';
+		
+		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_user'] = 'adm.tomboati@gmail.com';
+		$config['smtp_pass'] = 'TomboAti123';
+		$config['smtp_port'] = 465; 
+		$config['smtp_timeout'] = 15;
+		$config['wordwrap'] = TRUE;
+		$config['wrapchars'] = 76;
+		$config['mailtype'] = 'html';
+		$config['charset'] = 'utf-8';
+		$config['validate'] = FALSE;
+		$config['priority'] = 3;
+		$config['crlf'] = "\r\n";
+		$config['newline'] = "\r\n";
+		$config['bcc_batch_mode'] = FALSE;
+		$config['bcc_batch_size'] = 200;
 
-        $this->email->set_newline("\r\n");
-        
-        $this->email->from('adm.tomboati@gmail.com','Tombo Ati');
-        $this->email->to('aderamadhanapratama@gmail.com');
-        $this->email->subject('Ganti Password');
-        $this->email->message('Silagkan klik link dibawah ini untuk mengganti password\n Link');
+		$this->email->initialize($config);
+		
+		$this->email->from('adm.tomboati@gmail.com', 'Admin Tombo Ati'); 
+		$this->email->to('sanade2034@gmail.com'); 
+		$this->email->subject('Ganti Password');
+		$msg =  $this->load->view('template/email',$data,true);
+        $this->email->message($msg);
         
         if ($this->email->send()) {
             echo 'Your Email has successfully been sent.';
