@@ -36,7 +36,7 @@ class Admin extends CI_Controller
     public function ChangePassword()
     {
         $data = array(
-            'title' => 'Change Password | Tombo Ati'
+            'title' => 'Reset Password | Tombo Ati'
         );
 
         $this->load->view('admin/VChangePassword', $data);
