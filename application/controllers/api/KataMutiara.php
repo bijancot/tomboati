@@ -47,7 +47,7 @@ class KataMutiara extends CI_Controller{
     public function getKataMutiaraLimit(){
         $response       = [];
         
-        $data = $this->db->query('SELECT * FROM KATA_MUTIARA ORDER BY KATA_MUTIARA.WAKTU DESC LIMIT 3')->result();
+        $data = $this->db->query('SELECT * FROM KATA_MUTIARA ORDER BY KATA_MUTIARA.WAKTU DESC LIMIT 1')->result();
         
         if(count($data) > 0){
             $response['error']    = false;

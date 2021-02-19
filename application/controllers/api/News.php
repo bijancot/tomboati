@@ -69,7 +69,7 @@ class News extends CI_Controller{
         
         $idNews      = $this->input->get('idNews');
 
-        $data = $this->db->query('SELECT * FROM NEWS WHERE IDNEWS = "'.$idNews.'"')->result();
+        $data = $this->db->query('SELECT * FROM NEWS_INFO WHERE IDNEWSINFO = "'.$idNews.'"')->result();
 
         if(count($data) > 0){
             $response['error']    = false;

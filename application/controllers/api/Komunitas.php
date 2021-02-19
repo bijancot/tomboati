@@ -20,12 +20,12 @@ class Komunitas extends CI_Controller{
 
         if(isset($bulan)){
             if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM KOMUNITAS WHERE TANGGALNEWS > "'.$hari.'" && MONTH(TANGGALNEWS) = "'.$bulan.'"  ORDER BY TANGGALNEWS ASC')->result();
+                $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" && MONTH(TANGGALNEWS) = "'.$bulan.'"  ORDER BY TANGGALNEWS ASC')->result();
             }else{
-                $data = $this->db->query('SELECT * FROM KOMUNITAS WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
+                $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
             }
         }else{
-            $data = $this->db->query('SELECT * FROM KOMUNITAS WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
+            $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
         }
         
         if(count($data) > 0){
@@ -47,7 +47,7 @@ class Komunitas extends CI_Controller{
     public function getKomunitasLimit(){
         $response       = [];
         
-        $data = $this->db->query('SELECT * FROM KOMUNITAS ORDER BY WISATA_HALAL.TANGGALNEWS DESC LIMIT 3')->result();
+        $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO ORDER BY KOMUNITAS_INFO.TANGGALNEWS DESC LIMIT 1')->result();
         
         if(count($data) > 0){
             $response['error']    = false;
@@ -69,7 +69,7 @@ class Komunitas extends CI_Controller{
         
         $idKomunitas      = $this->input->get('idKomunitas');
 
-        $data = $this->db->query('SELECT * FROM KOMUNITAS WHERE IDKOMUNITASINFO = "'.$idKomunitas.'"')->result();
+        $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE IDKOMUNITASINFO = "'.$idKomunitas.'"')->result();
 
         if(count($data) > 0){
             $response['error']    = false;
