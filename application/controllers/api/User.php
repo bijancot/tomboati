@@ -407,15 +407,20 @@ class User extends CI_Controller{
         $response       = [];
         $idUserRegister = $this->input->post('idUserRegister');
         $email          = null;
+        $idUserRegister = null;
+        $namaLengkap    = null;
 
         $getEmail       = $this->db->query('SELECT * FROM USER_REGISTER WHERE IDUSERREGISTER="'.$idUserRegister.'"')->result();
 
         foreach ($getEmail as $data) {
-            $email = $data->EMAIL;
+            $email          = $data->EMAIL;
+            $idUserRegister = $data->IDUSERREGISTER;
+            $namaLengkap    = $data->NAMALENGKAP;
         }
 
         $data = array(
-            'pesan' => 'Arema'
+            'IdUserRegister'    => $idUserRegister,
+            'namaLengkap'       => $namaLengkap
         );
 
         $this->load->library('email');

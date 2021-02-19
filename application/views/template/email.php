@@ -6,17 +6,21 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style type="text/css">
-        .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-}
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 20%;
+            }
         </style>
     </head>
     
     <body>
         <img class="center" src="<?php echo base_url('assets/img/bg-green-idfitri.svg') ?>">
-        <p>Ganti Password</p>
+        <p><strong>Konfirmasi Pergantian Password</strong></p>
+        <p>Yth. Bapak/Ibu <strong><?php echo $namaLengkap;?></strong></p>
+        <p>Kami mendapat permintaan mengganti kata sandi, mengganti kata sandi dapat dilakukan melalui link dibawah ini </p>
+        <p>Link : https://tomboati.bgskr-project.my.id/Admin/ChangePassword/<?php echo $IdUserRegister?></p>
+        <p>Jika Anda mengabaikan pesan ini, kata sandi tidak akan berubah</p>
     </body>
 </html>
