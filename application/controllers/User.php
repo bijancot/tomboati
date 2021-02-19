@@ -257,6 +257,7 @@ class User extends CI_Controller
     function gantiPassword(){
         $idUserRegister = $this->input->post('idUserRegister');
         $password       = $this->input->post('password');
+        $pw             = $this->input->post('password');
         $confirmPassword = $this->input->post('confirmPassword');
         $strlenPassword = strlen($password);
 
@@ -267,7 +268,7 @@ class User extends CI_Controller
                 redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
             }else{
                 if($strlenPassword <= 6)
-                $data = $this->MUser->gantiPassword($idUserRegister, $password);
+                $data = $this->MUser->gantiPassword($idUserRegister, $pw);
                 if($data = true){
                     $this->session->set_flashdata('success', '<strong>Sukses Reset Password</strong>, Silahkan login kembali ke Aplikasi Tombo Ati');
                     redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
