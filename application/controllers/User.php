@@ -260,7 +260,7 @@ class User extends CI_Controller
         $confirmPassword = $this->input->post('confirmPassword');
         $strlenPassword = strlen($password);
 
-        if ($strlenPassword >=6 && preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $password)){
+        if ($strlenPassword >=6 && preg_match('~[0-9]+~', $password)){
             if($confirmPassword != $password){
                 $this->session->set_flashdata('message', 'Password Berbeda');
                 $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
