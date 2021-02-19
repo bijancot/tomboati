@@ -50,7 +50,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg ">
                                     <div class="card-header justify-content-center">
                                         <div class="strong form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <img src="<?= base_url(); ?>assets/img/logo_tomboati.png">
+                                            <img style="width:12%" src="<?= base_url(); ?>assets/img/logo_tomboati.png">
                                             TomboAti
                                         </div>
                                         <h3 class="font-weight-light my-4 text-md-center">Login</h3>
