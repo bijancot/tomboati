@@ -9,7 +9,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="globe"></i></div>
-                            Dashboard
+                            Dashboardd
                         </h1>
                     </div>
                 </div>
