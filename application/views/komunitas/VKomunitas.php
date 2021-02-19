@@ -65,7 +65,7 @@
                                         </div>
                                         <h5>Foto</h5>
                                         <div class="form-group">
-                                            <img src="<?= base_url(); ?>images/komunitas/<?= $row->FOTO; ?>" width="200px">
+                                            <img src="<?= $row->FOTO; ?>" width="200px">
                                         </div>
                                         <div class="form-group">
                                             <label for="tanggalNews">Tanggal</label>
