@@ -253,4 +253,34 @@ class User extends CI_Controller
 
         redirect('user');
     }
+
+    function gantiPassword(){
+        $idUserRegister = $this->input->post('idUserRegister');
+        $password       = $this->input->post('password');
+        $confirmPassword = $this->input->post('confirmPassword');
+        $strlenPassword = strlen($password);
+
+        if ($strlenPassword >=6 && preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $password)){
+            if($confirmPassword != $password){
+                $this->session->set_flashdata('message', 'Password Berbeda');
+                $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
+                redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
+            }else{
+                if($strlenPassword <= 6)
+                $data = $this->MUser->gantiPassword($idUserRegister, $password);
+                if($data = true){
+                    $this->session->set_flashdata('success', '<strong>Sukses Reset Password</strong>, Silahkan login kembali ke Aplikasi Tombo Ati');
+                    redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
+                    $this->session->mark_as_temp('success', 300);
+                }else{
+                    $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
+                    redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
+                }
+            }
+        }else{
+            $this->session->set_flashdata('mess', 'Min 6 Karakter, Karakter dan Numerik');
+            $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
+            redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
+        }
+    }
 }

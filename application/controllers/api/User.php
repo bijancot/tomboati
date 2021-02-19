@@ -405,7 +405,7 @@ class User extends CI_Controller{
 
     public function gantiPassword(){
         $response       = [];
-        $idUserRegister = $this->input->post('idUserRegister');
+        $idUserRegister = $this->input->get('idUserRegister');
         $email          = null;
         $namaLengkap    = null;
 
@@ -446,7 +446,7 @@ class User extends CI_Controller{
 		
 		$this->email->from('adm.tomboati@gmail.com', 'Admin Tombo Ati'); 
 		$this->email->to($email); 
-		$this->email->subject('Ganti Password');
+		$this->email->subject('Reset Password');
 		$msg =  $this->load->view('template/email',$dataEmail,true);
         $this->email->message($msg);
         

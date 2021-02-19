@@ -58,4 +58,10 @@ class MUser extends CI_Model
         
         return $query->num_rows();
     }
+
+    public function gantiPassword($idUserRegister, $password){
+        $this->db->set('PASSWORD', $password);
+        $this->db->where('IDUSERREGISTER', $idUserRegister);
+        return $this->db->update('USER_REGISTER');
+    }
 }
