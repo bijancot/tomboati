@@ -33,14 +33,20 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n8">
+    <?php if($this->session->flashdata('success') == true){ ?>
+        <div class="alert alert-success" role="alert"><?php echo $this->session->flashdata('success')?></div>
+    <?php }?>
+    <?php if($this->session->flashdata('gagal') == true){ ?>
+        <div class="alert alert-danger" role="alert"><?php echo $this->session->flashdata('gagal')?></div>
+    <?php }?>
+    <div class="container mt-n8 elemen">
         <hr class="mt-0 mb-4" />
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card-header">Change Password</div>
                     <div class="card-body">
-                        <form>
+                        <form action="<?php echo site_url('User/gantiPassword')?>" method="post">
                             <!-- Form Group (current password)-->
                             <!-- <div class="form-group">
                             <label class="small mb-1" for="currentPassword">Current Password</label>
@@ -49,14 +55,21 @@
                             <!-- Form Group (new password)-->
                             <div class="form-group">
                                 <label class="small mb-1" for="newPassword">New Password</label>
-                                <input class="form-control" id="newPassword" type="password" placeholder="Masukan Password Baru" />
+                                <input type="hidden" name="idUserRegister" value="<?php echo $_GET['idUserRegister']?>">
+                                <input class="form-control" name="password" id="newPassword" type="password" placeholder="Masukan Password Baru" required/>
+                                <?php if($this->session->flashdata('mess') == true){ ?>
+                                <label class="text-danger"><?php echo $this->session->flashdata('mess');?></label>
+                                <?php }?>
                             </div>
                             <!-- Form Group (confirm password)-->
                             <div class="form-group">
                                 <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                <input class="form-control" id="confirmPassword" type="password" placeholder="Konfirmasi Password Baru" />
+                                <input class="form-control" name="confirmPassword" id="confirmPassword" type="password" placeholder="Konfirmasi Password Baru" required/>
+                                <?php if($this->session->flashdata('message') == true){ ?>
+                                <label class="text-danger"><?php echo $this->session->flashdata('message');?></label>
+                                <?php }?>
                             </div>
-                            <button class="btn btn-primary" type="button">Simpan</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
                     </div>
                 </div>
@@ -66,3 +79,11 @@
     <?php $this->load->view("template/script.php") ?>
 
 </body>
+<script>
+    $( document ).ready(function() {
+        <?php if($this->session->flashdata('success') == true){?>
+            $(".elemen").hide();
+        <?php }?>
+    });
+    
+</script>
