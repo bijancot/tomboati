@@ -300,7 +300,7 @@
                     <h5>Apakah anda yakin keluar ? </h5>
                 </div>
                 <div class="modal-footer">
-                    <a href="<?= base_url('login') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>
+                    <a href="<?= base_url('Admin') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>
                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                 </div>
             </div>

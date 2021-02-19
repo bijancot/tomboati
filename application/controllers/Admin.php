@@ -33,17 +33,12 @@ class Admin extends CI_Controller
         }
     }
 
-    public function ChangePassword($idUserRegister)
+    public function ChangePassword()
     {
-        $countMessage   = $this->MNotifikasi->countMessage();
-        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
-
         $data = array(
-            'title' => 'Change Password | Tombo Ati',
-            'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'title' => 'Change Password | Tombo Ati'
         );
 
-        $this->template->view('admin/VChangePassword', $data);
+        $this->load->view('admin/VChangePassword', $data);
     }
 }
