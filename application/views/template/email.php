@@ -16,11 +16,10 @@
     </head>
     
     <body>
-        <img class="center" src="<?php echo base_url('assets/img/bg-green-idfitri.svg') ?>">
         <p><strong>Konfirmasi Pergantian Password</strong></p>
-        <p>Yth. Bapak/Ibu <strong><?php echo $namaLengkap;?></strong></p>
+        <p>Yth. Bapak/Ibu <strong><?php echo $NAMALENGKAP;?></strong></p>
         <p>Kami mendapat permintaan mengganti kata sandi, mengganti kata sandi dapat dilakukan melalui link dibawah ini </p>
-        <p>Link : https://tomboati.bgskr-project.my.id/Admin/ChangePassword/<?php echo $IdUserRegister?></p>
+        <p>Link : https://tomboati.bgskr-project.my.id/Admin/ChangePassword/<?php echo $IDUSERREGISTER?></p>
         <p>Jika Anda mengabaikan pesan ini, kata sandi tidak akan berubah</p>
     </body>
 </html>
