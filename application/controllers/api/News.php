@@ -20,12 +20,12 @@ class News extends CI_Controller{
 
         if(isset($bulan)){
             if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM NEWS WHERE TANGGALNEWS > "'.$hari.'" && MONTH(TANGGALNEWS) = "'.$bulan.'"  ORDER BY TANGGALNEWS ASC')->result();
+                $data = $this->db->query('SELECT * FROM NEWS_INFO WHERE TANGGALNEWS > "'.$hari.'" && MONTH(TANGGALNEWS) = "'.$bulan.'"  ORDER BY TANGGALNEWS ASC')->result();
             }else{
-                $data = $this->db->query('SELECT * FROM NEWS WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
+                $data = $this->db->query('SELECT * FROM NEWS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
             }
         }else{
-            $data = $this->db->query('SELECT * FROM NEWS WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
+            $data = $this->db->query('SELECT * FROM NEWS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
         }
         
         if(count($data) > 0){
