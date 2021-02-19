@@ -16,7 +16,7 @@
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <img style="width:3%" class="navbar-brand-img ml-3 image" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
-        <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
+        <a class="navbar-brand"> Tombo Ati </a>
     </nav>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-9">
         <div class="container">
