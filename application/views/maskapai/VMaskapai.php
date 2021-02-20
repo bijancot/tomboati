@@ -1,6 +1,6 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
@@ -8,7 +8,7 @@
                             <a>
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
-                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                            <div class="page-header-icon"><i data-feather="navigation"></i></div>
                             <?= $title; ?>
                         </h1>
                         Daftar Maskapai
@@ -17,7 +17,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
@@ -36,9 +36,9 @@
                             $no++,
                             $row->NAMAMASKAPAI,
                             '<img src="' . $row->IMAGEMASKAPAI . '" style="width:100px">',
-                            '<a title="Edit Maskapai" href="' .  base_url("Maskapai/editMaskapai/" . $row->IDMASKAPAI) . '" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>
+                            '<a title="Edit Maskapai" href="' .  base_url("Maskapai/editMaskapai/" . $row->IDMASKAPAI) . '" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus Maskapai" type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusMaskapaiModal' . $row->IDMASKAPAI . '"><i class="fa fa-trash"></i>
+                        <button title="Hapus Maskapai" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusMaskapaiModal' . $row->IDMASKAPAI . '"><i class="fa fa-trash"></i>
                         </button>'
                         );
                     ?>
