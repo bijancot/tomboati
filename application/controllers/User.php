@@ -266,7 +266,6 @@ class User extends CI_Controller
                 $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
                 redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
             }else{
-                if($strlenPassword <= 6)
                 $data = $this->MUser->gantiPassword($idUserRegister, $password);
                 if($data = true){
                     $this->session->set_flashdata('success', '<strong>Sukses Reset Password</strong>, Silahkan login kembali ke Aplikasi Tombo Ati');
