@@ -1,11 +1,11 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                        <div class="page-header-icon"><i data-feather="home"></i></div>
                         <?= $title; ?>
                         </h1>
                         Daftar Paket
@@ -14,15 +14,14 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('Umroh/tambahPaket/'.$tipe); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Paket</a>
-                <!-- <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a> -->
-            </div>
+                </div>
             <div class="card-body">
-                <div class="datatable">
+                <div class="datatable table-responsive">
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                         $this->table->set_template($template);
@@ -30,28 +29,28 @@
                         $no = 1;
                         foreach ($paket as $row) {
                         if($row->ISSHOW == 1){
-                        $verfikasi = '<button title="Non-Aktifkan Paket" type="button" class="btn btn-danger" data-toggle="modal" data-target="#nonAktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-times-circle"></i>
+                        $verfikasi = '<button title="Non-Aktifkan Paket" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#nonAktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-times-circle"></i>
                         </button>'; 
                         $status = '<span class="badge badge-pill badge-success">Aktif</span>';
                         }else{
-                        $verfikasi = '<button title="Aktifkan Paket" type="button" class="btn btn-primary" data-toggle="modal" data-target="#aktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-check"></i>
+                        $verfikasi = '<button title="Aktifkan Paket" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#aktifPaketModal'.$row->IDPAKET.'"><i class="fa fa-check"></i>
                         </button>';
                         $status = '<span class="badge badge-pill badge-danger">Non-Aktif</span>';
                         }
                         $this->table->add_row(
                         $no++,
                         $status,
-                        $row->NAMAPAKET,
+                        $row->NAMAPAKET ,
                         $row->NAMAMASKAPAI,
                         $row->DURASIPAKET .' hari',
                         $row->KUOTA .' orang',
                         $row->CREATED_AT,
                         $verfikasi.
-                        '<button title="Detail Paket" type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
+                        '<button title="Detail Paket" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailPaketModal'.$row->IDPAKET.'"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
-                        <a title="Edit Paket" href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                        <a title="Edit Paket" href="'.  base_url("Umroh/editPaket/".$row->IDPAKET).'" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus Paket" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus Paket" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDPAKET.'"><i class="fa fa-trash"></i>
                         </button>'
                         );
                         ?>

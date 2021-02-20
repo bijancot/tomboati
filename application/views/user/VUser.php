@@ -1,11 +1,11 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                        <div class="page-header-icon"><i data-feather="user"></i></div>
                         <?= $title; ?>
                         </h1>
                         Daftar User
@@ -14,7 +14,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
@@ -32,11 +32,11 @@
                         foreach ($user as $row) {
 
                         if($row->STATUS == 1){
-                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-times-circle"></i>
+                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-times-circle"></i>
                         </button>'; 
                         $status = '<span class="badge badge-pill badge-success">Terverfikasi</span>';
                         }else{
-                        $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-check"></i>
+                        $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-check"></i>
                         </button>';
                         $status = '<span class="badge badge-pill badge-danger">Belum Terverifikasi</span>';
                         }
@@ -59,11 +59,11 @@
                         $kategori,
                         $row->CREATED_AT,
                         $verfikasi.'
-                        <button title="Detail User" type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailUser'.$row->IDUSERREGISTER.'"><i class="fa fa-ellipsis-h"></i>
+                        <button title="Detail User" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailUser'.$row->IDUSERREGISTER.'"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
-                        <a title="Edit User" href="'.  base_url("User/editUser/".$row->IDUSERREGISTER).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                        <a title="Edit User" href="'.  base_url("User/editUser/".$row->IDUSERREGISTER).'" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus User" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus User" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-trash"></i>
                         </button>'
                         );
                         ?>

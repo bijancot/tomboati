@@ -8,6 +8,7 @@
                             <a>
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
+                            <div class="page-header-icon"><i data-feather="plus-circle"></i></div>
                             Tambah Maskapai
                         </h1>
                     </div>
@@ -17,7 +18,7 @@
     </header>
     <div class="container mt-n10">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">

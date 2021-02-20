@@ -1,11 +1,11 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                        <div class="page-header-icon"><i data-feather="compass"></i></div>
                         <?= $title; ?>
                         </h1>
                         Daftar Wisata Halal
@@ -14,12 +14,11 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('WisataHalal/tambah/'.$tipe); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Wisata Halal</a>
-                <!-- <a href="<?= base_url('Maskapai'); ?>" class='btn btn-success btn-sm' type='submit'><i class="fa fa-cog mr-1"></i>Kelola Maskapai</a> -->
             </div>
             <div class="card-body">
                 <div class="datatable">
@@ -30,11 +29,11 @@
                         $no = 1;
                         foreach ($wisata as $row) {
                         if($row->ISSHOW == 1){
-                        $verfikasi = '<button title="Non-Aktifkan Paket" type="button" class="btn btn-danger" data-toggle="modal" data-target="#nonAktifPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-times-circle"></i>
+                        $verfikasi = '<button title="Non-Aktifkan Paket" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#nonAktifPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-times-circle"></i>
                         </button>'; 
                         $status = '<span class="badge badge-pill badge-success">Aktif</span>';
                         }else{
-                        $verfikasi = '<button title="Aktifkan Paket" type="button" class="btn btn-primary" data-toggle="modal" data-target="#aktifPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-check"></i>
+                        $verfikasi = '<button title="Aktifkan Paket" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#aktifPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-check"></i>
                         </button>';
                         $status = '<span class="badge badge-pill badge-danger">Non-Aktif</span>';
                         }
@@ -47,11 +46,11 @@
                         $row->KUOTA .' orang',
                         $row->CREATED_AT,
                         $verfikasi.
-                        '<button title="Detail Paket" type="button" class="btn btn-primary ml-1" data-toggle="modal" data-target="#detailPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-ellipsis-h"></i>
-                        </button><br>
-                        <a title="Edit Paket" href="'.  base_url("WisataHalal/edit/".$row->IDWISATAHALAL).'" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                        '<a title="Detail Paket" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-ellipsis-h"></i>
+                        </a><br>
+                        <a title="Edit Paket" href="'.  base_url("WisataHalal/edit/".$row->IDWISATAHALAL).'" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus Paket" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus Paket" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-trash"></i>
                         </button>'
                         );
                         ?>

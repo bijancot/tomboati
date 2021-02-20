@@ -1,22 +1,22 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <a href="<?= base_url('umroh/paket/' . $tipe); ?>">
-                            <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
-                        </a>
-                        <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                        <?= $title; ?>
+                            <a onclick="history.back(-1) . $tipe">
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                            </a>
+                            <div class="page-header-icon"><i data-feather="plus-circle"></i></div>
+                            <?= $title; ?>
                         </h1>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="row">
             <div class="col-lg-12">
                 <!-- Default Bootstrap Form Controls-->
@@ -51,7 +51,7 @@
                                                         Pilih Maskapai
                                                     </option>
                                                     <?php foreach ($maskapai as $row) { ?>
-                                                    <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?> </option>
+                                                        <option value="<?php echo $row->IDMASKAPAI; ?>"><?php echo $row->NAMAMASKAPAI; ?> </option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -162,14 +162,14 @@
                                     </div>
                                     <hr>
                                     <h5>Detail Rencana Perjalanan</h5>
-                                    <div id="itinerary">                                     
+                                    <div id="itinerary">
                                         <div class="form-group">
                                             <label for="hari">Hari Ke 1</label>
                                             <textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="tempat1">Tempat</label>
-                                            <input name="tempat[]" class="form-control" id="tempat1" type="text" placeholder="Masukkan Tempat"/>
+                                            <input name="tempat[]" class="form-control" id="tempat1" type="text" placeholder="Masukkan Tempat" />
                                         </div>
                                     </div>
                                     <button name="tambah" id="tambah" type="button" class="btn btn-success tambah"><i class="fa fa-plus"></i>Tambah Rencana Perjalanan</button>
@@ -187,95 +187,96 @@
     </div>
     <!-- Editor -->
     <script>
-    ClassicEditor
-    .create(document.querySelector('#biayaSudahTermasuk'))
-    .then(editor => {
-    console.log(editor);
-    })
-    .catch(error => {
-    console.error(error);
-    });
-    ClassicEditor
-    .create(document.querySelector('#biayaBelumTermasuk'))
-    .then(editor => {
-    console.log(editor);
-    })
-    .catch(error => {
-    console.error(error);
-    });
+        ClassicEditor
+            .create(document.querySelector('#biayaSudahTermasuk'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#biayaBelumTermasuk'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
     <script type="text/javascript">
-    //datepicker
-    $('#tanggalKeberangkatan').datepicker({
-    format: 'yyyy-mm-dd',
-    autoclose: true,
-    todayHighlight: true,
-    });
-    //switch on off
-    $('.isShow').change(function() {
-    cb = $(this);
-    cb.val(cb.prop('checked'));
-    });
-    //preview sebelum upload
-    function previewImage() {
-    document.getElementById("image-preview").style.display = "block";
-    var oFReader = new FileReader();
-    oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
-    oFReader.onload = function(oFREvent) {
-    document.getElementById("image-preview").src = oFREvent.target.result;
-    };
-    };
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-    // DETAIL RENCANA
-    var i = 1;
-    $('.tambah').click(function() {
-    i++;
-    $('#itinerary').append(
-        '<div id="row' +i+ '">' +
-        '<hr>' +
-        '<div class="col text-right">' +
-        '<button type="button" name="remove" id="' +i+ '" class="btn btn-danger btn_remove btn-sm">X</button>' +
-        '</div>' +
-        '<div class="form-group">'+
-        '<label for="hari"'+i+'">Hari Ke '+i+'</label>'+
-        '<textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan"'+i+'" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>'+
-        '</div>'+
-        '<div class="form-group">'+
-        '<label for="tempat1">Tempat</label>'+
-        '<input name="tempat[]" class="form-control" id="tempat"'+i+'" type="text" placeholder="Masukkan Tempat"/>'+
-        '</div>');
-    });
+        //datepicker
+        $('#tanggalKeberangkatan').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
+        //switch on off
+        $('.isShow').change(function() {
+            cb = $(this);
+            cb.val(cb.prop('checked'));
+        });
+        //preview sebelum upload
+        function previewImage() {
+            document.getElementById("image-preview").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+            };
+        };
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+        // DETAIL RENCANA
+        var i = 1;
+        $('.tambah').click(function() {
+            i++;
+            $('#itinerary').append(
+                '<div id="row' + i + '">' +
+                '<hr>' +
+                '<div class="col text-right">' +
+                '<button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove btn-sm">X</button>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="hari"' + i + '">Hari Ke ' + i + '</label>' +
+                '<textarea name="detailKegiatan[]" class="form-control" id="detailKegiatan"' + i + '" rows="3" placeholder="Masukkan Detail Kegiatan"></textarea>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="tempat1">Tempat</label>' +
+                '<input name="tempat[]" class="form-control" id="tempat"' + i + '" type="text" placeholder="Masukkan Tempat"/>' +
+                '</div>');
+        });
 
-    // Hapus detail
-    $(document).on('click', '.btn_remove', function() {
-        var button_id = $(this).attr("id");
-        $('#row' + button_id + '').remove();
-        i--;
-    });
+        // Hapus detail
+        $(document).on('click', '.btn_remove', function() {
+            var button_id = $(this).attr("id");
+            $('#row' + button_id + '').remove();
+            i--;
+        });
     </script>
 </body>
 <script>
-Pusher.logToConsole = true;
-var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-cluster: 'ap1',
-forceTLS: true
-});
-var channel = pusher.subscribe('my-channel');
-channel.bind('my-event', function(response) {
-xhr = $.ajax({
-method: 'POST',
-url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
-success: function(response) {
-$('.list-notifikasi').html(response);
-}
-})
-});
-$('.list-notifikasi').on('click', '.notifikasi', function(e) {
-console.log("Clicked");
-});
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+        cluster: 'ap1',
+        forceTLS: true
+    });
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(response) {
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
+    });
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
+        console.log("Clicked");
+    });
 </script>
+
 </html>

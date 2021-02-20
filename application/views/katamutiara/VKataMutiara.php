@@ -3,7 +3,7 @@
 
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
@@ -36,11 +36,11 @@
                             $row->TEKSKATAMUTIARA,
                             $row->WAKTU,
                             '
-                            <button title="Detail Kata Mutiara" type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#detailKamu' . $row->IDKATAMUTIARA . '"><i class="fa fa-ellipsis-h"></i>
+                            <button title="Detail Kata Mutiara" type="button" class="btn btn-sm btn-primary mt-1 " data-toggle="modal" data-target="#detailKamu' . $row->IDKATAMUTIARA . '"><i class="fa fa-ellipsis-h"></i>
                             </button>
-                            <a title="Edit Kata Mutiara" href="' .  base_url("KataMutiara/editKatamutiara/" . $row->IDKATAMUTIARA) . '" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                            <a title="Edit Kata Mutiara" href="' .  base_url("KataMutiara/editKatamutiara/" . $row->IDKATAMUTIARA) . '" type="button" class="btn btn-sm btn-warning mt-1"><i class="fa fa-edit"></i>
                             </a>
-                            <button title="Hapus Kata Mutiara" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusKamuModal' . $row->IDKATAMUTIARA . '"><i class="fa fa-trash"></i>
+                            <button title="Hapus Kata Mutiara" type="button" class="btn btn-sm btn-danger mt-1" data-toggle="modal" data-target="#hapusKamuModal' . $row->IDKATAMUTIARA . '"><i class="fa fa-trash"></i>
                             </button>'
                         );
                     ?>

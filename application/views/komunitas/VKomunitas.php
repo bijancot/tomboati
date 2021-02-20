@@ -1,6 +1,6 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
@@ -14,7 +14,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
@@ -35,11 +35,11 @@
                             '<img src="' . $row->FOTO . '" style="width:100px">',
                             $row->TANGGALNEWS,
                             '
-                            <button title="Detail Komunitas" type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#detailKomunitas' . $row->IDKOMUNITASINFO . '"><i class="fa fa-ellipsis-h"></i>
+                            <button title="Detail Komunitas" type="button" class="btn btn-sm btn-primary mt-1 " data-toggle="modal" data-target="#detailKomunitas' . $row->IDKOMUNITASINFO . '"><i class="fa fa-ellipsis-h"></i>
                             </button>
-                            <a title="Edit Komunitas" href="' .  base_url("Komunitas/editKomunitas/" . $row->IDKOMUNITASINFO) . '" type="button" class="btn btn-warning mt-1"><i class="fa fa-edit"></i>
+                            <a title="Edit Komunitas" href="' .  base_url("Komunitas/editKomunitas/" . $row->IDKOMUNITASINFO) . '" type="button" class="btn btn-sm btn-warning mt-1 "><i class="fa fa-edit"></i>
                             </a>
-                            <button title="Hapus Komunitas" type="button" class="btn btn-danger mt-1" data-toggle="modal" data-target="#hapusKomunitasModal' . $row->IDKOMUNITASINFO . '"><i class="fa fa-trash"></i>
+                            <button title="Hapus Komunitas" type="button" class="btn btn-sm btn-danger mt-1" data-toggle="modal" data-target="#hapusKomunitasModal' . $row->IDKOMUNITASINFO . '"><i class="fa fa-trash"></i>
                             </button>'
                         );
                     ?>
