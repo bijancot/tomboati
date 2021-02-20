@@ -139,7 +139,6 @@ class User extends CI_Controller{
         $idUser         = $this->input->get('idUser');
         $noKTP          = $this->input->post('noKTP'); 
         $email          = $this->input->post('email');
-        $password       = $this->input->post('password');
         $namaLengkap    = $this->input->post('namaLengkap');
         $nomorHP        = $this->input->post('nomorHP');
         $filenameKTP    = null;
@@ -148,7 +147,7 @@ class User extends CI_Controller{
         $emailSame      = null;
         $updatedat      = date('Y-m-d H:i:s');
 
-        if($noKTP != '' && $email != '' && $password != ''){ //check if kosong
+        if($noKTP != '' && $email != ''){ //check if kosong
             
             $checkKTPSame      = $this->db->where('IDUSERREGISTER', $idUser)->get('USER_REGISTER')->result();
             foreach($checkKTPSame as $data){ // if no KTP Same
@@ -169,7 +168,6 @@ class User extends CI_Controller{
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                         $data = array(
                             'EMAIL'         => $email,
-                            'PASSWORD'      => $password,
                             'NAMALENGKAP'   => $namaLengkap,
                             'NOMORHP'       => $nomorHP,
                             'STATUS'        => 0,
@@ -210,7 +208,6 @@ class User extends CI_Controller{
             
                     $data = array(
                         'NOMORKTP'      => $noKTP,
-                        'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
                         'STATUS'        => 0,
@@ -248,7 +245,6 @@ class User extends CI_Controller{
                             $data = array(
                                 'NOMORKTP'      => $noKTP,
                                 'EMAIL'         => $email,
-                                'PASSWORD'      => $password,
                                 'NAMALENGKAP'   => $namaLengkap,
                                 'NOMORHP'       => $nomorHP,
                                 'STATUS'        => 0,
@@ -292,7 +288,6 @@ class User extends CI_Controller{
                 
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //check valid email
                     $data = array(
-                        'PASSWORD'      => $password,
                         'NAMALENGKAP'   => $namaLengkap,
                         'NOMORHP'       => $nomorHP,
                         'STATUS'        => 0,
