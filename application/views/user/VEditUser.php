@@ -1,6 +1,6 @@
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-        <div class="container">
+        <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-n10">
+    <div class="container-fluid mt-n10">
         <div class="row">
             <div class="col-lg-12">
                 <!-- Default Bootstrap Form Controls-->
