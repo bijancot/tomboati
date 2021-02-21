@@ -215,21 +215,31 @@
         <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2 ml-0" id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
-            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-pemberitahuan">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell"></i>&nbsp;
+                    <span class="badge badge-danger bg-danger"><?php echo $countJamaahDaftar; ?></span>
+                </a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
                     <h6 class="dropdown-header dropdown-notifications-header">
                         <i class="mr-2" data-feather="bell"></i>
-                        Alerts Center
+                        Pemberitahuan
                     </h6>
-                    <a class="dropdown-item dropdown-notifications-item" href="#!">
-                        <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
-                        <div class="dropdown-notifications-item-content">
-                            <div class="dropdown-notifications-item-content-details">December 29, 2019</div>
-                            <div class="dropdown-notifications-item-content-text">This is an alert message. It&apos;s nothing serious, but it requires your attention.</div>
-                        </div>
-                    </a>
-                    <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
+                    <?php
+                    if ($countJamaahDaftar == 0) {
+                    ?>
+                        <a class="dropdown-item dropdown-notifications-item notifikasi">
+                            Tidak Ada Pemberitahuan
+                        </a>
+                    <?php }else{ ?>
+                        <a class="dropdown-item dropdown-notifications-item notifikasi" href="<?php echo site_url('Jamaah/notifJamaah'); ?>">
+                            <i class="fas fa-user"></i>&nbsp;&nbsp;
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Pendaftaran Jamaah</div>
+                                    <div class="dropdown-notifications-item-content-details">Terdapat <?php echo $countJamaahDaftar?> pendaftaran jamaah baru</div>
+                            </div>
+                        </a>
+                        <?php }?>                    
                 </div>
             </li>
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notifikasi">
@@ -240,7 +250,7 @@
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
                     <h6 class="dropdown-header dropdown-notifications-header">
                         <i class="mr-2" data-feather="mail"></i>
-                        Message Center
+                        Chat
                     </h6>
                     <?php
                     if ($countMessage == 0) {
@@ -260,7 +270,7 @@
                             </div>
                         </a>
                     <?php } ?>
-                    <a class="dropdown-item dropdown-notifications-footer" href="<?php echo base_url('Chat') ?>">Read All Messages</a>
+                    <a class="dropdown-item dropdown-notifications-footer" href="<?php echo base_url('Chat') ?>">Lihat Semua Chat</a>
                 </div>
             </li>
             <li class="nav-item dropdown no-caret mr-2 dropdown-user">

@@ -105,7 +105,7 @@
         User
     </a>
 
-    <a class="nav-link " href="javascript:void(0);">
+    <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">
         <div class="nav-link-icon ml-2"><i data-feather="user-check"></i></div>
         Jamaah
     </a>

@@ -18,6 +18,7 @@ class Maskapai extends CI_Controller
         $dataMaskapai = $this->MMaskapai->getMaskapai();
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         // echo $this->db->last_query();
         //parse
@@ -25,7 +26,8 @@ class Maskapai extends CI_Controller
             'title'                 => 'Maskapai | Tombo Ati',
             'countMessage'          => $countMessage,
             'dataNotifChat'         => $dataNotifChat,
-            'maskapai'              => $dataMaskapai
+            'maskapai'              => $dataMaskapai,
+            'countJamaahDaftar'     => $countJamaahDaftar
         );
 
         $this->template->view('maskapai/VMaskapai', $data);
@@ -35,10 +37,12 @@ class Maskapai extends CI_Controller
     {
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'countMessage'          => $countMessage,
             'dataNotifChat'         => $dataNotifChat,
+            'countJamaahDaftar'     => $countJamaahDaftar,
             'title'                 => 'Tambah Maskapai | Tombo Ati'
         );
         
@@ -70,11 +74,13 @@ class Maskapai extends CI_Controller
         $dataMaskapai = $this->MMaskapai->getSelectMaskapai($idMaskapai);
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
         
         $data = array(
             'title'                 => 'Edit Maskapai | Tombo Ati',
             'countMessage'          => $countMessage,
             'dataNotifChat'         => $dataNotifChat,
+            'countJamaahDaftar'     => $countJamaahDaftar,
             'maskapai'              => $dataMaskapai
         );
 

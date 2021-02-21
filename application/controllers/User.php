@@ -20,6 +20,7 @@ class User extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         // echo $this->db->last_query();
         //parse
@@ -27,7 +28,8 @@ class User extends CI_Controller
             'title' => 'User | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('user/VUser', $data);
@@ -39,12 +41,14 @@ class User extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
             'title' => 'User | Tombo Ati',
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('user/VTambahUser', $data);
@@ -89,13 +93,15 @@ class User extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
             'title' => 'User | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
         $this->template->view('user/VEditUser', $data);
     }

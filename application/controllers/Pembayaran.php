@@ -15,11 +15,13 @@ class Pembayaran extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title' => 'Pembayaran | Tombo Ati',
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
         
         $this->template->view('pembayaran/VPembayaran', $data);

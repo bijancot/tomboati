@@ -29,6 +29,7 @@ class WisataHalal extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         // echo $this->db->last_query();
         //parse
@@ -37,7 +38,8 @@ class WisataHalal extends CI_Controller
             'tipe' => $tipe,
             'wisata' => $dataWisata,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('wisatahalal/VWisataHalal', $data);
@@ -51,6 +53,7 @@ class WisataHalal extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
@@ -58,7 +61,8 @@ class WisataHalal extends CI_Controller
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('wisatahalal/VTambahWisataHalal', $data);
@@ -155,6 +159,7 @@ class WisataHalal extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
@@ -164,7 +169,8 @@ class WisataHalal extends CI_Controller
             'wisata' => $dataWisata,
             'itinerary' => $dataItinerary,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('wisatahalal/VEditWisataHalal', $data);
