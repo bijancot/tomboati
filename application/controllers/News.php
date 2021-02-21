@@ -18,12 +18,14 @@ class News extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title' => 'News | Tombo Ati',
             'news' => $dataNews,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('news/VNews', $data);
@@ -34,11 +36,13 @@ class News extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title' => 'Tambah News | Tombo Ati',
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('news/VTambahNews', $data);
@@ -71,12 +75,14 @@ class News extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title' => 'Edit News | Tombo Ati',
             'news' => $dataNews,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('news/VEditNews', $data);

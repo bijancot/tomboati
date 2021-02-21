@@ -17,6 +17,7 @@ class Chat extends CI_Controller
         $dataChat               = $this->MChat->getChat();
         $countMessage           = $this->MNotifikasi->countMessage();
         $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
         $countMessageNotSeen    = $this->MChat->getMessageNotSeen();
 
         $data = array(
@@ -24,6 +25,7 @@ class Chat extends CI_Controller
             'chat'                  => $dataChat,
             'countMessage'          => $countMessage,
             'dataNotifChat'         => $dataNotifChat,
+            'countJamaahDaftar'     => $countJamaahDaftar,
             'countMessageNotSeen'   => $countMessageNotSeen
         );
         $this->template->view('chat/VChat', $data);
@@ -35,6 +37,7 @@ class Chat extends CI_Controller
         $chatFrom       = $this->MChat->getChatFrom($idChatRoom);
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar = $this->MNotifikasi->countJamaahDaftar();
         $isSeen      = 1;
 
         $data = array(
@@ -42,7 +45,8 @@ class Chat extends CI_Controller
             'chat'      => $detailDataChat,
             'chatFrom'  => $chatFrom,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
         
         $where = array(
@@ -60,6 +64,8 @@ class Chat extends CI_Controller
         
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $seenAt      = date('Y-m-d H:i:s');
         $isSeen      = 1;
@@ -69,7 +75,8 @@ class Chat extends CI_Controller
             'chat'      => $detailDataChat,
             'chatFrom'  => $chatFrom,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $where = array(

@@ -133,20 +133,20 @@ class Pendaftaran extends CI_Controller{
             $this->db->insert('PENDAFTARAN', $data);
         
             if($this->db->affected_rows()>0){
-                // require APPPATH . 'views/vendor/autoload.php';
-                // $options = array(
-                //     'cluster' => 'ap1',
-                //     'useTLS' => true
-                // );
-                // $pusher = new Pusher\Pusher(
-                //     'ee692ab95bb9aeaa1dcc',
-                //     'b062506e42b3a8c66368',
-                //     '1149993',
-                //     $options
-                // );
+                require APPPATH . 'views/vendor/autoload.php';
+                $options = array(
+                    'cluster' => 'ap1',
+                    'useTLS' => true
+                );
+                $pusher = new Pusher\Pusher(
+                    'ee692ab95bb9aeaa1dcc',
+                    'b062506e42b3a8c66368',
+                    '1149993',
+                    $options
+                );
         
-                // $response['status'] = 'Sukses Notif';
-                // $pusher->trigger('my-channel', 'my-event', $response);
+                $response['statusDaftar'] = 'Sukses Notif';
+                $pusher->trigger('my-channel', 'my-event', $response);
     
                 $response['error']    = false;
                 $response['message'] = 'Sukses Daftar';

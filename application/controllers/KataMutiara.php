@@ -13,15 +13,18 @@ class KataMutiara extends CI_Controller
     public function index()
     {
         $dataKamu = $this->MKatamutiara->getKatamutiara();
+
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title'         => 'Kata Mutiara | Tombo Ati',
             'kataMutiara'   => $dataKamu,
             'countMessage'  => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('katamutiara/VKataMutiara', $data);
@@ -32,11 +35,13 @@ class KataMutiara extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title' => 'Tambah Kata Mutiara | Tombo Ati',
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('katamutiara/VTambahKataMutiara', $data);
@@ -62,12 +67,14 @@ class KataMutiara extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $data = array(
             'title'         => 'Edit Kata Mutiara | Tombo Ati',
             'kataMutiara'   => $dataKamu,
             'countMessage'  => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('katamutiara/VEditKataMutiara', $data);

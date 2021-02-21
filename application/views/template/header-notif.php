@@ -5,7 +5,7 @@
 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
     <h6 class="dropdown-header dropdown-notifications-header">
         <i class="mr-2" data-feather="mail"></i>&nbsp;
-        Message Center 
+        Chat
     </h6>
     <?php 
         if($countMessage == 0){
@@ -25,5 +25,5 @@
         </div>
     </a>
     <?php }?>
-    <a class="dropdown-item dropdown-notifications-footer" href="<?php echo base_url('Chat')?>">Read All Messages</a>
+    <a class="dropdown-item dropdown-notifications-footer" href="<?php echo base_url('Chat')?>">Lihat Semua Chat</a>
 </div>

@@ -34,6 +34,7 @@ class Umroh extends CI_Controller
         //notifikasi
         $countMessage    = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         // echo $this->db->last_query();
         //parse
@@ -42,7 +43,8 @@ class Umroh extends CI_Controller
             'tipe' => $tipe,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('umroh/VPaketUmroh', $data);
@@ -68,6 +70,7 @@ class Umroh extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
@@ -75,7 +78,8 @@ class Umroh extends CI_Controller
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('umroh/VTambahPaket', $data);
@@ -181,6 +185,7 @@ class Umroh extends CI_Controller
         //notifikasi pesan
         $countMessage   = $this->MNotifikasi->countMessage();
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         //parse
         $data = array(
@@ -190,7 +195,8 @@ class Umroh extends CI_Controller
             'itinerary' => $dataItinerary,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('umroh/VEditPaket', $data);
