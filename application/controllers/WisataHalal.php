@@ -116,16 +116,13 @@ class WisataHalal extends CI_Controller
         );
 
         // print_r($data);
-        $this->MWisataHalal->saveWisataHalal($data);
-
-        //GET LAST SELECT ADD
-        $dataWisata = $this->MWisataHalal->getSelectLastWisataHalal();
+        $idWisata = $this->MWisataHalal->saveWisataHalal($data);
 
         //DETAIL ITINERARY
         $detailKegiatan = $this->input->post('detailKegiatan');
         for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
             $dataItinerary = [
-                'IDWISATAHALAL' => $dataWisata[0]['IDWISATAHALAL'],
+                'IDWISATAHALAL' => $idWisata,
                 'HARIKE' => $x+1,
                 'TEMPAT' => $this->input->post('tempat')[$x],
                 'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
@@ -231,7 +228,7 @@ class WisataHalal extends CI_Controller
         $detailKegiatan = $this->input->post('detailKegiatan');
         for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
             $dataItinerary = [
-                'IDWISATAHALAL' => $dataWisata[0]['IDWISATAHALAL'],
+                'IDWISATAHALAL' => $idWisata,
                 'HARIKE' => $x+1,
                 'TEMPAT' => $this->input->post('tempat')[$x],
                 'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],

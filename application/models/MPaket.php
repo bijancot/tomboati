@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MUmroh extends CI_Model
+class MPaket extends CI_Model
 {
 
     public function getPaket($idMasterPaket)
@@ -25,7 +25,8 @@ class MUmroh extends CI_Model
     }
 
     public function savePaket($data){
-        return $this->db->insert('PAKET', $data);
+        $this->db->insert('PAKET', $data);
+        return $this->db->insert_id();
     }
 
     public function getSelectPaket($idPaket){
@@ -73,12 +74,6 @@ class MUmroh extends CI_Model
         $this->db->set('ISSHOW', 0);
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->update('PAKET');
-    }
-
-    public function getSelectLastPaket(){
-        $this->db->order_by('CREATED_AT', 'DESC');
-        $query = $this->db->get('PAKET');
-        return $query->result_array();
     }
 
     public function saveItinerary($data){
