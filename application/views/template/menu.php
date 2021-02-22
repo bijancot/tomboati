@@ -40,23 +40,23 @@
     </a>
     <div class="collapse" id="collapseHaji" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+            <a class="nav-link" href="<?php echo site_url('Haji/paket/Reguler'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
                 REGULER
             </a>
-            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+            <a class="nav-link" href="<?php echo site_url('Haji/paket/Plus'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
                 PLUS
             </a>
-            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+            <a class="nav-link" href="<?php echo site_url('Haji/paket/TanpaAntri'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
                 TANPA ANTRI
             </a>
-            <a class="nav-link" href="<?php echo site_url('#'); ?>">
+            <a class="nav-link" href="<?php echo site_url('Haji/paket/Talangan'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
                 TALANGAN
             </a>
-            <a class="nav-link" href="<?php echo site_url('umroh/plus'); ?>">
+            <a class="nav-link" href="<?php echo site_url('Haji/paket/Badal'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
                 BADAL
             </a>

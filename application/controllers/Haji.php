@@ -1,5 +1,5 @@
 <?php
-class Umroh extends CI_Controller
+class Haji extends CI_Controller
 {
     public function __construct()
     {
@@ -16,16 +16,16 @@ class Umroh extends CI_Controller
     public function paket($tipe)
     {
         // untuk mengecek tipe dan dijadikan kondisi di model
-        if($tipe == "Bisnis"){
-            $idMasterPaket = "UMR-BSS";
-        }else if($tipe == "Hemat"){
-            $idMasterPaket = "UMR-HMT";
+        if($tipe == "Reguler"){
+            $idMasterPaket = "HAJ-REG";
         }else if($tipe == "Plus"){
-            $idMasterPaket = "UMR-PLS";
-        }else if($tipe == "Promo"){
-            $idMasterPaket = "UMR-PRM";
-        }else if($tipe == "VIP"){
-            $idMasterPaket = "UMR-VIP";
+            $idMasterPaket = "HAJ-PLS";
+        }else if($tipe == "TanpaAntri"){
+            $idMasterPaket = "HAJ-TPA";
+        }else if($tipe == "Talangan"){
+            $idMasterPaket = "HAJ-TLN";
+        }else if($tipe == "Badal"){
+            $idMasterPaket = "HAJ-BDL";
         }
 
         $dataPaket = $this->MPaket->getPaket($idMasterPaket);
@@ -39,7 +39,7 @@ class Umroh extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
+            'title' => 'Paket Haji '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'paket' => $dataPaket,
             'countMessage' => $countMessage,
@@ -47,22 +47,22 @@ class Umroh extends CI_Controller
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
-        $this->template->view('umroh/VPaketUmroh', $data);
+        $this->template->view('haji/VPaketHaji', $data);
     }
 
     public function tambahPaket($tipe)
     {
         // untuk mengecek tipe dan dijadikan kondisi di model
-        if($tipe == "Bisnis"){
-            $idMasterPaket = "UMR-BSS";
-        }else if($tipe == "Hemat"){
-            $idMasterPaket = "UMR-HMT";
+        if($tipe == "Reguler"){
+            $idMasterPaket = "HAJ-REG";
         }else if($tipe == "Plus"){
-            $idMasterPaket = "UMR-PLS";
-        }else if($tipe == "Promo"){
-            $idMasterPaket = "UMR-PRM";
-        }else if($tipe == "VIP"){
-            $idMasterPaket = "UMR-VIP";
+            $idMasterPaket = "HAJ-PLS";
+        }else if($tipe == "TanpaAntri"){
+            $idMasterPaket = "HAJ-TPA";
+        }else if($tipe == "Talangan"){
+            $idMasterPaket = "HAJ-TLN";
+        }else if($tipe == "Badal"){
+            $idMasterPaket = "HAJ-BDL";
         }
 
         $dataMaskapai = $this->MPaket->getMaskapai();
@@ -74,7 +74,7 @@ class Umroh extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
+            'title' => 'Paket Haji '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'countMessage' => $countMessage,
@@ -82,22 +82,22 @@ class Umroh extends CI_Controller
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
-        $this->template->view('umroh/VTambahPaket', $data);
+        $this->template->view('haji/VTambahPaket', $data);
     }
 
     public function aksiTambahPaket($tipe){
 
         // untuk mengecek tipe dan dijadikan kondisi di model
-        if($tipe == "Bisnis"){
-            $idMasterPaket = "UMR-BSS";
-        }else if($tipe == "Hemat"){
-            $idMasterPaket = "UMR-HMT";
+        if($tipe == "Reguler"){
+            $idMasterPaket = "HAJ-REG";
         }else if($tipe == "Plus"){
-            $idMasterPaket = "UMR-PLS";
-        }else if($tipe == "Promo"){
-            $idMasterPaket = "UMR-PRM";
-        }else if($tipe == "VIP"){
-            $idMasterPaket = "UMR-VIP";
+            $idMasterPaket = "HAJ-PLS";
+        }else if($tipe == "TanpaAntri"){
+            $idMasterPaket = "HAJ-TPA";
+        }else if($tipe == "Talangan"){
+            $idMasterPaket = "HAJ-TLN";
+        }else if($tipe == "Badal"){
+            $idMasterPaket = "HAJ-BDL";
         }
 
         //convert boolean to int 
@@ -157,7 +157,7 @@ class Umroh extends CI_Controller
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil ditambahkan! </div>');
 
-        redirect('Umroh/paket/'.$tipe);
+        redirect('Haji/paket/'.$tipe);
     }
 
     public function editPaket($idPaket)
@@ -168,16 +168,16 @@ class Umroh extends CI_Controller
 
         $tipe="";
         // untuk mengecek idMasterPaket
-        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
-            $tipe = "Bisnis";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
-            $tipe = "Hemat";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+        if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+            $tipe = "Reguler";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe = "Promo";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe = "VIP";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "Talangan";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+            $tipe = "Badal";
         }
 
         //notifikasi pesan
@@ -187,7 +187,7 @@ class Umroh extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'Paket Umroh '.$tipe.' | Tombo Ati',
+            'title' => 'Paket Haji '.$tipe.' | Tombo Ati',
             'tipe' => $tipe,
             'maskapai' => $dataMaskapai,
             'itinerary' => $dataItinerary,
@@ -197,7 +197,7 @@ class Umroh extends CI_Controller
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
-        $this->template->view('umroh/VEditPaket', $data);
+        $this->template->view('Haji/VEditPaket', $data);
     }
 
     public function aksiEditPaket($idPaket){        
@@ -259,7 +259,7 @@ class Umroh extends CI_Controller
                 'HARIKE' => $x+1,
                 'TEMPAT' => $this->input->post('tempat')[$x],
                 'DETAILKEGIATAN' => $this->input->post('detailKegiatan')[$x],
-               'CREATED_AT' => date("Y-m-d h:i:sa")
+                'CREATED_AT' => date("Y-m-d h:i:sa")
             ];
 
             $this->MPaket->saveItinerary($dataItinerary);
@@ -267,15 +267,15 @@ class Umroh extends CI_Controller
 
         // untuk mengecek tipe dan dijadikan kondisi di model
         $tipe = null;
-         if($data['IDMASTERPAKET'] == "UMR-BSS"){
+        if($data['IDMASTERPAKET'] == "HAJ-REG"){
             $tipe = "Bisnis";
-        }else if($data['IDMASTERPAKET'] == "UMR-HMT"){
+        }else if($data['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Hemat";
-        }else if($data['IDMASTERPAKET'] == "UMR-PLS"){
+        }else if($data['IDMASTERPAKET'] == "HAJ-TLN"){
             $tipe = "Plus";
-        }else if($data['IDMASTERPAKET'] == "UMR-PRM"){
+        }else if($data['IDMASTERPAKET'] == "HAJ-TPA"){
             $tipe = "Promo";
-        }else if($data['IDMASTERPAKET'] == "UMR-VIP"){
+        }else if($data['IDMASTERPAKET'] == "HAJ-BDL"){
             $tipe = "VIP";
         }
 
@@ -286,7 +286,7 @@ class Umroh extends CI_Controller
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diperbarui! </div>');
 
-        redirect('Umroh/paket/'.$tipe);
+        redirect('Haji/paket/'.$tipe);
     }
 
     public function aksiHapusPaket($idPaket)
@@ -294,16 +294,16 @@ class Umroh extends CI_Controller
         $dataPaket = $this->MPaket->getSelectPaket($idPaket);
          
         // untuk mengecek idMasterPaket
-        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
-            $tipe = "Bisnis";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
-            $tipe = "Hemat";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+        if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+            $tipe = "Reguler";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe = "Promo";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe = "VIP";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "Talangan";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+            $tipe = "Badal";
         }
 
         //delete itinerary
@@ -315,7 +315,7 @@ class Umroh extends CI_Controller
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dihapus! </div>');
 
-        redirect('Umroh/paket/'.$tipe);
+        redirect('Haji/paket/'.$tipe);
     }
 
     public function aksiAktifPaket($idPaket)
@@ -323,16 +323,16 @@ class Umroh extends CI_Controller
         $dataPaket = $this->MPaket->getSelectPaket($idPaket);
          
         // untuk mengecek idMasterPaket
-        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
-            $tipe = "Bisnis";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
-            $tipe = "Hemat";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+        if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+            $tipe = "Reguler";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe = "Promo";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe = "VIP";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "Talangan";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+            $tipe = "Badal";
         }
 
         //delete
@@ -341,7 +341,7 @@ class Umroh extends CI_Controller
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
 
-        redirect('Umroh/paket/'.$tipe);
+        redirect('Haji/paket/'.$tipe);
     }
 
     public function aksiNonAktifPaket($idPaket)
@@ -349,16 +349,16 @@ class Umroh extends CI_Controller
         $dataPaket = $this->MPaket->getSelectPaket($idPaket);
          
         // untuk mengecek idMasterPaket
-        if($dataPaket[0]['IDMASTERPAKET'] == "UMR-BSS"){
-            $tipe = "Bisnis";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-HMT"){
-            $tipe = "Hemat";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PLS"){
+        if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+            $tipe = "Reguler";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-PRM"){
-            $tipe = "Promo";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "UMR-VIP"){
-            $tipe = "VIP";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "Talangan";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+            $tipe = "Badal";
         }
 
         //delete
@@ -367,11 +367,11 @@ class Umroh extends CI_Controller
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dinonaktifkan! </div>');
 
-        redirect('Umroh/paket/'.$tipe);
+        redirect('Haji/paket/'.$tipe);
     }
 
     function upload_image(){
-        $config['upload_path'] = './images/paketUmroh/'; //path folder
+        $config['upload_path'] = './images/paketHaji/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
  
@@ -382,23 +382,23 @@ class Umroh extends CI_Controller
                 $gbr = $this->upload->data();
                 //Compress Image
                 $config['image_library']='gd2';
-                $config['source_image']='./images/paketUmroh/'.$gbr['file_name'];
+                $config['source_image']='./images/paketHaji/'.$gbr['file_name'];
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= true;
                 // $config['quality']= '100%';
                 $config['width']= 600;
                 // $config['height']= 400;
-                $config['new_image']= './images/paketUmroh/'.$gbr['file_name'];
+                $config['new_image']= './images/paketHaji/'.$gbr['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
  
                 $gambar=$gbr['file_name'];
 
-                return base_url('images/paketUmroh/'.$gambar);
+                return base_url('images/paketHaji/'.$gambar);
             }
                       
         }else{
-            return base_url('images/paketUmroh/default.png');
+            return base_url('images/paketHaji/default.png');
         }         
     }
 

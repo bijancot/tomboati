@@ -24,7 +24,8 @@ class MWisataHalal extends CI_Model
     }
 
     public function saveWisataHalal($data){
-        return $this->db->insert('WISATA_HALAL', $data);
+        $this->db->insert('WISATA_HALAL', $data);
+        return $this->db->insert_id();
     }
 
     public function getSelectWisataHalal($idWisata){
@@ -72,13 +73,7 @@ class MWisataHalal extends CI_Model
         $this->db->where('IDWISATAHALAL', $idWisata);
         return $this->db->update('WISATA_HALAL');
     }
-
-    public function getSelectLastWisataHalal(){
-        $this->db->order_by('CREATED_AT', 'DESC');
-        $query = $this->db->get('WISATA_HALAL');
-        return $query->result_array();
-    }
-
+    
     public function saveItinerary($data){
         return $this->db->insert('DETAIL_ITINERARY', $data);
     }
