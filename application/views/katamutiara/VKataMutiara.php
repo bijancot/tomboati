@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
         <div class="container-fluid">
@@ -124,4 +121,28 @@
     });
 </script>
 
-</html>
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [
+                {
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '10%',
+                    targets: 2
+                },
+                {
+                    sWidth: '15%',
+                    targets: 3
+                }
+            ],
+            fixedColumns: false
+        });
+    });
+</script>

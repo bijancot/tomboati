@@ -25,7 +25,7 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                     $this->table->set_template($template);
-                    $this->table->set_heading('No', 'Judul News', 'Content News', 'Foto', 'Tanggal News', 'Aksi');
+                    $this->table->set_heading('No', 'Judul News', 'Content News', 'Foto', 'Tanggal', 'Aksi');
                     $no = 1;
                     foreach ($komunitas as $row) {
                         $this->table->add_row(
@@ -130,5 +130,26 @@
 
     $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
+    });
+</script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [{
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '15%',
+                    targets: 5
+                }
+            ],
+            fixedColumns: false
+        });
     });
 </script>

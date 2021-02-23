@@ -46,8 +46,8 @@
                         $row->KUOTA .' orang',
                         $row->CREATED_AT,
                         $verfikasi.
-                        '<a title="Detail Paket" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-ellipsis-h"></i>
-                        </a><br>
+                        '<button title="Detail Paket" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailPaketModal' . $row->IDWISATAHALAL . '"><i class="fa fa-ellipsis-h"></i>
+                        </button><br>
                         <a title="Edit Paket" href="'.  base_url("WisataHalal/edit/".$row->IDWISATAHALAL).'" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
                         <button title="Hapus Paket" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusPaketModal'.$row->IDWISATAHALAL.'"><i class="fa fa-trash"></i>
@@ -291,4 +291,39 @@
         console.log("Clicked");
     });
     
+</script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [
+                {
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '5%',
+                    targets: 1
+                },{
+                    sWidth: '12%',
+                    targets: 4
+                }, {
+                    sWidth: '10%',
+                    targets: 5
+                }, {
+                    sWidth: '10%',
+                    targets: 6
+                },
+                {
+                    sWidth: '10%',
+                    targets: 7
+                }
+            ],
+            fixedColumns: false,
+        });
+    });
 </script>
