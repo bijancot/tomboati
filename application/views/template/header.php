@@ -278,16 +278,15 @@
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
                         <i data-feather="user"></i>
-
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name">Admin</div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo site_url('Admin/ChangePassword'); ?>">
+                    <!-- <a class="dropdown-item" href="<?php echo site_url('Admin/ChangePassword'); ?>">
                         <div class="dropdown-item-icon"><i data-feather="key"></i></div>
                         Change Password
-                    </a>
+                    </a> -->
                     <a type="button" class="dropdown-item" data-toggle="modal" data-target="#KonfirmasiModal">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                         Logout
