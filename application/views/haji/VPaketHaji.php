@@ -293,3 +293,37 @@
     });
     
 </script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [{
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '5%',
+                    targets: 1
+                }, {
+                    sWidth: '12%',
+                    targets: 4
+                }, {
+                    sWidth: '10%',
+                    targets: 5
+                }, {
+                    sWidth: '10%',
+                    targets: 6
+                },
+                {
+                    sWidth: '10%',
+                    targets: 7
+                }
+            ],
+            fixedColumns: false
+        });
+    });
+</script>

@@ -94,3 +94,29 @@
         console.log("Clicked");
     });
 </script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [
+                {
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '30%',
+                    targets: 1
+                },
+                {
+                    sWidth: '10%',
+                    targets: 3
+                }
+            ],
+            fixedColumns: false
+        });
+    });
+</script>

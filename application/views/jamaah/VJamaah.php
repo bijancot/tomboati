@@ -54,8 +54,7 @@
                                 <td><?php echo $data->EMAIL?></td>
                                 <td>
                                     <button title="Detail Jamaah" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target=""><i class="fa fa-ellipsis-h"></i>
-                                    </button><br>
-                                    
+                                    </button>
                                     <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target=""><i class="fa fa-trash"></i>
                                     </button>
                                 </td>
@@ -90,4 +89,26 @@
         console.log("Clicked");
     });
     
+</script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [
+                {
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '10%',
+                    targets: 5
+                }
+            ],
+            fixedColumns: false
+        });
+    });
 </script>

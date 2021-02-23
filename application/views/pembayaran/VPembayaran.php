@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-</head>
-
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
         <div class="container">
@@ -49,24 +43,42 @@
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
+        cluster: 'ap1',
+        forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
     });
 
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
     });
-    
 </script>
-</html>
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [{
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '10%',
+                    targets: 6
+                }
+            ],
+            fixedColumns: false
+        });
+    });
+</script>

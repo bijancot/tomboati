@@ -5,8 +5,8 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="user"></i></div>
-                        <?= $title; ?>
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                            <?= $title; ?>
                         </h1>
                         Daftar User
                     </div>
@@ -24,148 +24,148 @@
                 <div class="datatable">
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
-                        $this->table->set_template($template);
-                        $this->table->set_heading('No', 'Status', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori','Waktu', 'Aksi');
-                        // print_r($paket);
-                        $no = 1;
-                        $kategori;
-                        foreach ($user as $row) {
+                    $this->table->set_template($template);
+                    $this->table->set_heading('No', 'Status', 'Nomor KTP', 'Nama Lengkap', 'Email', 'Kategori', 'Waktu', 'Aksi');
+                    // print_r($paket);
+                    $no = 1;
+                    $kategori;
+                    foreach ($user as $row) {
 
-                        if($row->STATUS == 1){
-                        $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-times-circle"></i>
-                        </button>'; 
-                        $status = '<span class="badge badge-pill badge-success">Terverfikasi</span>';
-                        }else{
-                        $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verifikasiUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-check"></i>
+                        if ($row->STATUS == 1) {
+                            $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-times-circle"></i>
                         </button>';
-                        $status = '<span class="badge badge-pill badge-danger">Belum Terverifikasi</span>';
+                            $status = '<span class="badge badge-pill badge-success">Verified</span>';
+                        } else {
+                            $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-check"></i>
+                        </button>';
+                            $status = '<span class="badge badge-pill badge-danger">Unverified</span>';
                         }
                         //untuk kategori user
-                        if($row->KATEGORI == 1){
+                        if ($row->KATEGORI == 1) {
                             $kategori = "Jamaah";
-                        }else if($row->KATEGORI == 2){
+                        } else if ($row->KATEGORI == 2) {
                             $kategori = "Mitra";
-                        }else if($row->KATEGORI == 3) {
+                        } else if ($row->KATEGORI == 3) {
                             $kategori = "Agen";
-                        }else if($row->KATEGORI == 4){
+                        } else if ($row->KATEGORI == 4) {
                             $kategori = "Jamaah 4";
                         }
                         $this->table->add_row(
-                        $no++, 
-                        $status,
-                        $row->NOMORKTP,
-                        $row->NAMALENGKAP,
-                        $row->EMAIL,
-                        $kategori,
-                        $row->CREATED_AT,
-                        $verfikasi.'
-                        <button title="Detail User" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailUser'.$row->IDUSERREGISTER.'"><i class="fa fa-ellipsis-h"></i>
+                            $no++,
+                            $status,
+                            $row->NOMORKTP,
+                            $row->NAMALENGKAP,
+                            $row->EMAIL,
+                            $kategori,
+                            $row->CREATED_AT,
+                            $verfikasi . '
+                        <button title="Detail User" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
-                        <a title="Edit User" href="'.  base_url("User/editUser/".$row->IDUSERREGISTER).'" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
+                        <a title="Edit User" href="' .  base_url("User/editUser/" . $row->IDUSERREGISTER) . '" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus User" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal'.$row->IDUSERREGISTER.'"><i class="fa fa-trash"></i>
+                        <button title="Hapus User" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-trash"></i>
                         </button>'
                         );
-                        ?>
+                    ?>
                         <!-- Modal Detail -->
-                        <div class="modal fade" id="detailUser<?= $row->IDUSERREGISTER?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="detailUser<?= $row->IDUSERREGISTER ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
-                                        <?php if($row->STATUS == 1){
+                                        <?php if ($row->STATUS == 1) {
                                         ?>
-                                        <span class="badge badge-pill badge-success ml-1">Terverfikasi</span>
+                                            <span class="badge badge-pill badge-success ml-1">Terverfikasi</span>
                                         <?php
-                                        }else{
+                                        } else {
                                         ?>
-                                        <span class="badge badge-pill badge-danger ml-1">Belum Terverifikasi</span>
+                                            <span class="badge badge-pill badge-danger ml-1">Belum Terverifikasi</span>
                                         <?php
                                         }
                                         ?>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="nomorKTP">Nomor KTP</label>
-                                                <h5><?= $row->NOMORKTP; ?></h5>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="nomorKTP">Nomor KTP</label>
+                                                    <h5><?= $row->NOMORKTP; ?></h5>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="namaLengkap">Nama Lengkap</label>
+                                                    <h5><?= $row->NAMALENGKAP; ?></h5>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="namaLengkap">Nama Lengkap</label>
-                                                <h5><?= $row->NAMALENGKAP; ?></h5>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <h5><?= $row->EMAIL; ?></h5>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="kategori">Kategori User</label>
+                                                    <H5>
+                                                        <?php
+                                                        if ($row->KATEGORI == 1) {
+                                                            echo "Jamaah";
+                                                        } else if ($row->KATEGORI == 2) {
+                                                            echo "Agen";
+                                                        } else if ($row->KATEGORI == 3) {
+                                                            echo "Mitra";
+                                                        } else if ($row->KATEGORI == 4) {
+                                                            echo "Jamaah 4";
+                                                        }
+                                                        ?></H5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div> 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <h5><?= $row->EMAIL; ?></h5>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="kodeReferral">Referral</label>
+                                                    <h5><?= $row->KODEREFERRAL ?></h5>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="kodeReferralFrom">Referral dari</label>
+                                                    <h5><?= $row->KODEREFERRALFROM ?></h5>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="kategori">Kategori User</label>
-                                                <H5>
-                                                <?php 
-                                                if($row->KATEGORI == 1){
-                                                    echo "Jamaah";
-                                                }else if($row->KATEGORI == 2){
-                                                    echo "Agen"; 
-                                                }else if($row->KATEGORI == 3){
-                                                    echo "Mitra"; 
-                                                }else if($row->KATEGORI == 4){
-                                                    echo "Jamaah 4"; 
-                                                }
-                                                ?></H5>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="namaLengkap">Jumlah Poin</label>
+                                            <h5><?= $row->POIN; ?></h5>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="kodeReferral">Referral</label>
-                                                <h5><?= $row->KODEREFERRAL ?></h5>
-                                            </div>
+                                        <div class="form-group">
+                                            <h5>File KTP</h5>
+                                            <img src="<?= $row->FILEKTP; ?>" width="200px">
                                         </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="kodeReferralFrom">Referral dari</label>
-                                                <h5><?= $row->KODEREFERRALFROM ?></h5>
-                                            </div>
+                                        <div class="form-group">
+                                            <h5>File Foto</h5>
+                                            <img src="<?= $row->FOTO; ?>" width="200px">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="namaLengkap">Jumlah Poin</label>
-                                        <h5><?= $row->POIN; ?></h5>
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>File KTP</h5>
-                                        <img src="<?= $row->FILEKTP;?>" width="200px">
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>File Foto</h5>
-                                        <img src="<?= $row->FOTO;?>" width="200px">
-                                    </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <?php if($row->STATUS == 1){
-                                            ?>
-                                            <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                        <?php if ($row->STATUS == 1) {
+                                        ?>
+                                            <a href="<?= base_url('User/aksiCabutVerifikasiUser/' . $row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
                                         <?php
-                                        }else{
-                                        ?>                                  
-                                            <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                        } else {
+                                        ?>
+                                            <a href="<?= base_url('User/aksiVerifikasiUser/' . $row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
                                         <?php
                                         }
                                         ?>
-                                        <a href="<?= base_url('User/editUser/'.$row->IDUSERREGISTER) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                        <a href="<?= base_url('User/editUser/' . $row->IDUSERREGISTER) ?> " type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                     </div>
                                 </div>
@@ -178,14 +178,14 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin akan menghapus <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiHapusUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                        <a href="<?= base_url('User/aksiHapusUser/' . $row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
@@ -198,14 +198,14 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Verifikasi <?= $title ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin menverifikasi <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                        <a href="<?= base_url('User/aksiVerifikasiUser/' . $row->IDUSERREGISTER) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
@@ -218,49 +218,82 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <h5>Apakah anda yakin mencabut verifikasi <b> <?= $row->NAMALENGKAP ?> </b> dengan Nomor KTP <b> <?= $row->NOMORKTP; ?> ? </b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('User/aksiCabutVerifikasiUser/'.$row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                        <a href="<?= base_url('User/aksiCabutVerifikasiUser/' . $row->IDUSERREGISTER) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                        }
-                        echo $this->table->generate();
-                        ?>
-                    </div>
+                    <?php
+                    }
+                    echo $this->table->generate();
+                    ?>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script>
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-      cluster: 'ap1',
-      forceTLS: true
+        cluster: 'ap1',
+        forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(response) {
-        xhr=$.ajax({    
-                method: 'POST',
-                url: "<?php echo base_url()?>/Notifikasi/listNotifikasi",
-                success : function(response){
-                    $('.list-notifikasi').html(response);
-                }
-            })
+        xhr = $.ajax({
+            method: 'POST',
+            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+            success: function(response) {
+                $('.list-notifikasi').html(response);
+            }
+        })
     });
 
-    $('.list-notifikasi').on('click','.notifikasi', function(e) {
+    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
         console.log("Clicked");
     });
-    
+</script>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [{
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '5%',
+                    targets: 1
+                }, {
+                    sWidth: '12%',
+                    targets: 4
+                }, {
+                    sWidth: '10%',
+                    targets: 5
+                }, {
+                    sWidth: '10%',
+                    targets: 6
+                },
+                {
+                    sWidth: '10%',
+                    targets: 7
+                }
+            ],
+            fixedColumns: false
+        });
+    });
 </script>

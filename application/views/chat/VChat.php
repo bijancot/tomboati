@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-</head>
-
 <body>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
         <div class="container-fluid">
@@ -44,9 +38,9 @@
                                 <td><?php echo $data->MESSAGE?></td>
                                 <td>
                                     <?php if($data->ISSEEN == 0){?>
-                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-yellow" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
+                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-sm btn-yellow" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
                                     <?php }else{?>
-                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
+                                        <a href="<?php echo base_url('Chat/detailChat/'.$data->ID_CHAT_ROOM.'')?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Detail Chat"><span class="fas fa-info"> </span> </a>
                                     <?php }?>
                                     
                                 </td>
@@ -84,4 +78,29 @@
     });
     
 </script>
-</html>
+
+<script>
+    $().ready(function() {
+        var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+                [0, 'asc']
+            ],
+            columnDefs: [
+                {
+                    sWidth: '5%',
+                    targets: 0
+                },
+                {
+                    sWidth: '25%',
+                    targets: 1
+                },
+                {
+                    sWidth: '10%',
+                    targets: 3
+                }
+            ],
+            fixedColumns: false
+        });
+    });
+</script>
