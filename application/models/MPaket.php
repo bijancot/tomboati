@@ -79,4 +79,27 @@ class MPaket extends CI_Model
     public function saveItinerary($data){
         return $this->db->insert('DETAIL_ITINERARY', $data);
     }
+
+    // Untuk Haji yang khusus
+        public function getKhususPaket($idMasterPaket)
+    {
+        $this->db->select('*');
+        $this->db->from('PAKET');
+        $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
+        $this->db->where('MASTER_PAKET.IDMASTERPAKET', $idMasterPaket);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    // Untuk Haji yang khusus
+    public function getKhususSelectPaket($idPaket){
+        $this->db->select('*');
+        $this->db->from('PAKET');
+        $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
+        $this->db->where('PAKET.IDPAKET', $idPaket);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }
