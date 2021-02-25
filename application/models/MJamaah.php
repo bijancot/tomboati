@@ -17,4 +17,18 @@ class MJamaah extends CI_Model
         $this->db->where('ISSEEN', 0);
         $this->db->update('PENDAFTARAN');
     }
+
+    public function verifPendaftaranJamaah($kodePendaftaran)
+    {
+        $this->db->set('STATUSPENDAFTARAN', 1);
+        $this->db->where('KODEPENDAFTARAN', $kodePendaftaran);
+        return $this->db->update('PENDAFTARAN');
+    }
+
+    public function cabutPendaftaranJamaah($kodePendaftaran)
+    {
+        $this->db->set('STATUSPENDAFTARAN', 0);
+        $this->db->where('KODEPENDAFTARAN', $kodePendaftaran);
+        return $this->db->update('PENDAFTARAN');
+    }
 }

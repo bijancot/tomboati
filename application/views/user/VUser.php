@@ -61,10 +61,13 @@
                             $verfikasi . '
                         <button title="Detail User" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
+                        <a title="Chat User" href="' .  base_url("Chat/detailChat/" . $row->ID_CHAT_ROOM) . '" type="button" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-envelope"></i>
+                        </a>
                         <a title="Edit User" href="' .  base_url("User/editUser/" . $row->IDUSERREGISTER) . '" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
                         <button title="Hapus User" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-trash"></i>
-                        </button>'
+                        </button>
+                        '
                         );
                     ?>
                         <!-- Modal Detail -->
