@@ -33,7 +33,9 @@
                     <div id="wrapper">
                         <div class="scrollbar" id="style-3">
                             <div class="force-overflow">
+                            
                                 <div class="chat">
+                                    <?php if($countDetailChatRows != 0){ ?>
                                     <?php foreach($chat as $data){?>
                                     <?php 
                                          $orgDate = $data->CREATEDAT;  
@@ -79,6 +81,7 @@
                                     </div>
                                     <?php }}?>
                                     <br>
+                                    <?php }?>
                                 </div><br>
                             </div>
                         </div>

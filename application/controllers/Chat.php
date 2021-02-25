@@ -33,20 +33,22 @@ class Chat extends CI_Controller
 
     public function detailChat($idChatRoom)
     {
-        $detailDataChat = $this->MChat->getDetailChat($idChatRoom);
-        $chatFrom       = $this->MChat->getChatFrom($idChatRoom);
-        $countMessage   = $this->MNotifikasi->countMessage();
-        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
-        $countJamaahDaftar = $this->MNotifikasi->countJamaahDaftar();
-        $isSeen      = 1;
+        $detailDataChat     = $this->MChat->getDetailChat($idChatRoom);
+        $detailDataChatRows = $this->MChat->getDetailChatRows($idChatRoom);
+        $chatFrom           = $this->MChat->getChatFrom($idChatRoom);
+        $countMessage       = $this->MNotifikasi->countMessage();
+        $dataNotifChat      = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar  = $this->MNotifikasi->countJamaahDaftar();
+        $isSeen             = 1;
 
         $data = array(
-            'title'     => 'Detail Chat | Tombo Ati',
-            'chat'      => $detailDataChat,
-            'chatFrom'  => $chatFrom,
-            'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat,
-            'countJamaahDaftar' => $countJamaahDaftar
+            'title'                 => 'Detail Chat | Tombo Ati',
+            'chat'                  => $detailDataChat,
+            'chatFrom'              => $chatFrom,
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'countJamaahDaftar'     => $countJamaahDaftar,
+            'countDetailChatRows'   => $detailDataChatRows
         );
         
         $where = array(
@@ -59,24 +61,26 @@ class Chat extends CI_Controller
 
     public function detailChatNotif($idChatRoom)
     {
-        $detailDataChat = $this->MChat->getDetailChat($idChatRoom);
-        $chatFrom       = $this->MChat->getChatFrom($idChatRoom);
+        $detailDataChat     = $this->MChat->getDetailChat($idChatRoom);
+        $detailDataChatRows = $this->MChat->getDetailChatRows($idChatRoom);
+        $chatFrom           = $this->MChat->getChatFrom($idChatRoom);
         
-        $countMessage   = $this->MNotifikasi->countMessage();
-        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countMessage       = $this->MNotifikasi->countMessage();
+        $dataNotifChat      = $this->MNotifikasi->dataNotifChat();
         
-        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+        $countJamaahDaftar  = $this->MNotifikasi->countJamaahDaftar();
 
-        $seenAt      = date('Y-m-d H:i:s');
-        $isSeen      = 1;
+        $seenAt     = date('Y-m-d H:i:s');
+        $isSeen     = 1;
         
         $data = array(
-            'title'     => 'Detail Chat | Tombo Ati',
-            'chat'      => $detailDataChat,
-            'chatFrom'  => $chatFrom,
-            'countMessage' => $countMessage,
-            'dataNotifChat' => $dataNotifChat,
-            'countJamaahDaftar' => $countJamaahDaftar
+            'title'                 => 'Detail Chat | Tombo Ati',
+            'chat'                  => $detailDataChat,
+            'chatFrom'              => $chatFrom,
+            'countMessage'          => $countMessage,
+            'dataNotifChat'         => $dataNotifChat,
+            'countJamaahDaftar'     => $countJamaahDaftar,
+            'countDetailChatRows'   => $detailDataChatRows
         );
 
         $where = array(
@@ -120,7 +124,7 @@ class Chat extends CI_Controller
 
         $this->MChat->adminKirimPesan($data);
         
-        $this->template->view('notif', $dataKirim);
+        $this->template->view('notif/chat', $dataKirim);
         redirect('Chat/detailChat/'.$idChatRoom);
     }
 }
