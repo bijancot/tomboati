@@ -16,20 +16,23 @@ class MPaket extends CI_Model
         return $query->result();
     }
 
-    public function getMaskapai(){
+    public function getMaskapai()
+    {
         $this->db->select('*');
         $this->db->from('MASKAPAI');
         $query = $this->db->get();
 
-        return $query->result();  
+        return $query->result();
     }
 
-    public function savePaket($data){
+    public function savePaket($data)
+    {
         $this->db->insert('PAKET', $data);
         return $this->db->insert_id();
     }
 
-    public function getSelectPaket($idPaket){
+    public function getSelectPaket($idPaket)
+    {
         $this->db->select('*');
         $this->db->from('PAKET');
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
@@ -40,7 +43,8 @@ class MPaket extends CI_Model
         return $query->result_array();
     }
 
-    public function getSelectItinerary($idPaket){
+    public function getSelectItinerary($idPaket)
+    {
         $this->db->from('DETAIL_ITINERARY');
         $this->db->join('PAKET', 'PAKET.IDPAKET = DETAIL_ITINERARY.IDPAKET');
         $this->db->where('DETAIL_ITINERARY.IDPAKET', $idPaket);
@@ -49,34 +53,61 @@ class MPaket extends CI_Model
         return $query->result_array();
     }
 
-    public function updatePaket($data){
+    public function updatePaket($data)
+    {
         $this->db->where('IDPAKET', $data['IDPAKET']);
         return $this->db->update('PAKET', $data);
     }
 
-    public function deletePaket($idPaket){
+    public function deletePaket($idPaket)
+    {
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->delete('PAKET');
     }
 
-    public function deleteIntenary($idPaket){
+    public function deleteIntenary($idPaket)
+    {
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->delete('DETAIL_ITINERARY');
     }
 
-    public function aktifPaket($idPaket){
+    public function aktifPaket($idPaket)
+    {
         $this->db->set('ISSHOW', 1);
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->update('PAKET');
     }
 
-    public function nonAktifPaket($idPaket){
+    public function nonAktifPaket($idPaket)
+    {
         $this->db->set('ISSHOW', 0);
         $this->db->where('IDPAKET', $idPaket);
         return $this->db->update('PAKET');
     }
 
-    public function saveItinerary($data){
+    public function saveItinerary($data)
+    {
         return $this->db->insert('DETAIL_ITINERARY', $data);
+    }
+
+    public function totalPaketAktif()
+    {
+        $this->db->from('PAKET');
+        $this->db->select('ISSHOW');
+        $this->db->where('ISSHOW', 1);
+        
+        $query = $this->db->get('');
+
+        return $query->num_rows();
+    }
+
+    public function totalPaketNonaktif()
+    {
+        $this->db->from('PAKET');
+        $this->db->select('ISSHOW');
+        $this->db->where('ISSHOW', 0);
+        $query = $this->db->get('');
+
+        return $query->num_rows();
     }
 }
