@@ -23,7 +23,9 @@ class Dashboard extends CI_Controller
         );
 
         $data['totalUser']			= $this->MUser->totalUser();
-
+        $data['totalPaketAktif']	= $this->MPaket->totalPaketAktif();
+        $data['totalPaketNonaktif']	= $this->MPaket->totalPaketNonaktif();
+        
         //Change this 
         $this->template->view('admin/VDashboard', $data);
     }
