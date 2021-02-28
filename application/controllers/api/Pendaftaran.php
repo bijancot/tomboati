@@ -46,6 +46,12 @@ class Pendaftaran extends CI_Controller{
         $riwayatPenyakit            = $this->input->post('riwayatPenyakit');
         $statusPendaftaran          = 0;
         $isJamaahBerangkat          = 0;
+        $ttdPendaftar               = null;
+        $fcKTPAlmarhum              = null;
+        $fcKKAlmarhum               = null;
+        $fcFotoAlmarhum             = null;
+        
+
 
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
             $dataUpload = $this->upload->data();
@@ -97,6 +103,46 @@ class Pendaftaran extends CI_Controller{
             return; 
         }
 
+        if($this->upload->do_upload('ttdPendaftar')){ //check if ttdPendaftar upload
+            $dataUpload         = $this->upload->data();
+            $ttdPendaftar       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']   = true;
+            $response['message'] = 'Gagal Upload TTD Pendaftar';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcKTPAlmarhum')){ //check if file FC KTP Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKTPAlmarhum      = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KTP Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcKKAlmarhum')){ //check if file FC KK Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKKAlmarhum       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KK Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcFotoAlmarhum')){ //check if file FC Foto Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcFotoAlmarhum     = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Gagal Upload FC Foto Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
         $data = array(
             'IDUSERREGISTER'            => $idUserRegister,
             'EMAIL'                     => $email,
@@ -125,7 +171,11 @@ class Pendaftaran extends CI_Controller{
             'PEKERJAAN'                 => $pekerjaan,
             'RIWAYATPENYAKIT'           => $riwayatPenyakit,
             'STATUSPENDAFTARAN'         => $statusPendaftaran,
-            'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat
+            'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
+            'TTDPENDAFTAR'              => $ttdPendaftar,
+            'FCKTPALMARHUM'             => $fcKTPAlmarhum,
+            'FCKKALMARHUM'              => $fcKKAlmarhum,
+            'FCFOTOALMARHUM'            => $fcFotoAlmarhum
         );
 
         //check if inputan kosong
