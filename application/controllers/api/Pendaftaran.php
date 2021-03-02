@@ -56,6 +56,14 @@ class Pendaftaran extends CI_Controller{
         $sheet                      = $this->input->post('sheet');
         $sheetHarga                 = $this->input->post('sheetHarga');
         $waktu                      = $this->input->post('waktu');
+        $namaLengkapKeluarga        = $this->input->post('namaLengkapKeluarga');
+        $alamatKeluarga             = $this->input->post('alamatKeluarga');
+        $kelurahanKeluarga          = $this->input->post('kelurahanKeluarga');
+        $kecamatanKeluarga          = $this->input->post('kecamatanKeluarga');
+        $kotakabupatenKeluarga      = $this->input->post('kotakabupatenKeluarga');
+        $provinsiKeluarga           = $this->input->post('provinsiKeluarga');
+        $kodePOSKeluarga            = $this->input->post('kodePOSKeluarga');
+        $nomorHPKeluarga            = $this->input->post('nomorHPKeluarga');
 
 
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
@@ -201,14 +209,14 @@ class Pendaftaran extends CI_Controller{
 
             //dataKeluarga
             $dataKeluarga = array(
-                'NAMALENGKAP'               => $namaLengkap,
-                'ALAMAT'                    => $alamat,
-                'KELURAHAN'                 => $kelurahan,
-                'KECAMATAN'                 => $kecamatan,
-                'KOTAKABUPATEN'             => $kotakabupaten,
-                'PROVINSI'                  => $provinsi,
-                'KODEPOS'                   => $kodePOS,
-                'NOMORHP'                   => $nomorHP,
+                'NAMALENGKAP'               => $namaLengkapKeluarga,
+                'ALAMAT'                    => $alamatKeluarga,
+                'KELURAHAN'                 => $kelurahanKeluarga,
+                'KECAMATAN'                 => $kecamatanKeluarga,
+                'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
+                'PROVINSI'                  => $provinsiKeluarga,
+                'KODEPOS'                   => $kodePOSKeluarga,
+                'NOMORHP'                   => $nomorHPKeluarga,
                 'KODEPENDAFTARAN'           => $kodePendaftaran
             );
 
