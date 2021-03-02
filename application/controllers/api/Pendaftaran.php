@@ -50,7 +50,12 @@ class Pendaftaran extends CI_Controller{
         $fcKTPAlmarhum              = null;
         $fcKKAlmarhum               = null;
         $fcFotoAlmarhum             = null;
-        
+        $kodePendaftaran            = null;
+        $idPaket                    = $this->input->post('idPaket');
+        $tanggalBerangkat           = $this->input->post('tanggalBerangkat');
+        $sheet                      = $this->input->post('sheet');
+        $sheetHarga                 = $this->input->post('sheetHarga');
+        $waktu                      = $this->input->post('waktu');
 
 
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
@@ -181,6 +186,49 @@ class Pendaftaran extends CI_Controller{
         //check if inputan kosong
         if($idUserRegister != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
             $this->db->insert('PENDAFTARAN', $data);
+
+            //getKodePendaftaran
+            $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
+            foreach($dataKodePendaftaran as $dKodePendaftaran){
+                $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
+            }
+
+            //getCountTransaksi
+            $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+            $idTransaksi    = $countTransaksi + 1;
+            $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+            $idTrans        = 'TR'.''.$transId.'';
+
+            //dataKeluarga
+            $dataKeluarga = array(
+                'NAMALENGKAP'               => $namaLengkap,
+                'ALAMAT'                    => $alamat,
+                'KELURAHAN'                 => $kelurahan,
+                'KECAMATAN'                 => $kecamatan,
+                'KOTAKABUPATEN'             => $kotakabupaten,
+                'PROVINSI'                  => $provinsi,
+                'KODEPOS'                   => $kodePOS,
+                'NOMORHP'                   => $nomorHP,
+                'KODEPENDAFTARAN'           => $kodePendaftaran
+            );
+
+            //insert data keluarga
+            $this->db->insert('DATA_KELUARGA', $dataKeluarga);
+
+            //dataTransaksi
+            $dataTransaksi = array(
+                'IDTRANSAKSI'           => $idTrans,
+                'IDPAKET'               => $idPaket,
+                'STATUSTRANSAKSI'       => 0,
+                'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
+                'SHEET'                 => $sheet,
+                'SHEETHARGA'            => $sheetHarga,
+                'WAKTU'                 => $waktu,
+                'KODEPENDAFTARAN'       => $kodePendaftaran
+            );
+
+            //insert data transaksi
+            $this->db->insert('TRANSAKSI', $dataTransaksi);
         
             if($this->db->affected_rows()>0){
                 require APPPATH . 'views/vendor/autoload.php';
