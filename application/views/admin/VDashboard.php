@@ -8,7 +8,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="globe"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-home ml-2 fa-xs"></i></div>
                             Dashboard
                         </h1>
                     </div>

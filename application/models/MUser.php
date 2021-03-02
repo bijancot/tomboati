@@ -57,7 +57,10 @@ class MUser extends CI_Model
 
     public function totalUser()
     {
-        $query = $this->db->get('USER_REGISTER');
+        $this->db->from('USER_REGISTER');
+        $this->db->select('IDUSERREGISTER');
+        // $this->db->where('STATUS', 1);
+        $query = $this->db->get('');
         
         return $query->num_rows();
     }

@@ -1,127 +1,125 @@
 <div class="nav accordion" id="accordionSidenav">
     <a class="nav-link " href="<?php echo site_url('Dashboard'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="globe"></i></div>
+        <i class="fas fa-home ml-2 mr-3 fa-lg"></i>
         Dashboard
     </a>
     <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
-        <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+        <i class="fas fa-mosque ml-2 mr-3 fa-lg"></i>
         Umroh
         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
     <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
             <a class="nav-link" href="<?php echo site_url('Umroh/paket/Promo'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg"></i>
                 PROMO
             </a>
             <a class="nav-link" href="<?php echo site_url('Umroh/paket/Hemat'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg"></i>
                 HEMAT
             </a>
             <a class="nav-link" href="<?php echo site_url('Umroh/paket/Bisnis'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg"></i>
                 BISNIS
             </a>
             <a class="nav-link" href="<?php echo site_url('Umroh/paket/VIP'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg"></i>
                 VIP
             </a>
             <a class="nav-link" href="<?php echo site_url('Umroh/paket/Plus'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg"></i>
                 PLUS
             </a>
         </nav>
     </div>
-
     <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseHaji" aria-expanded="false" aria-controls="collapseHaji">
-        <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+        <i class="fas fa-kaaba ml-2 mr-3 fa-lg"></i>
         Haji
         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
     <div class="collapse" id="collapseHaji" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
             <a class="nav-link" href="<?php echo site_url('Haji/paket/Reguler'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+                <i class="fas fa-kaaba ml-2 mr-2 fa-lg"></i>
                 REGULER
             </a>
             <a class="nav-link" href="<?php echo site_url('Haji/paket/Plus'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+                <i class="fas fa-kaaba ml-2 mr-2 fa-lg"></i>
                 PLUS
             </a>
             <a class="nav-link" href="<?php echo site_url('Haji/paket/TanpaAntri'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+                <i class="fas fa-kaaba ml-2 mr-2 fa-lg"></i>
                 TANPA ANTRI
             </a>
             <a class="nav-link" href="<?php echo site_url('Haji/paket/Talangan'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+                <i class="fas fa-kaaba ml-2 mr-2 fa-lg"></i>
                 TALANGAN
             </a>
             <a class="nav-link" href="<?php echo site_url('Haji/paket/Badal'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="trending-up"></i></div>
+                <i class="fas fa-kaaba ml-2 mr-2 fa-lg"></i>
                 BADAL
             </a>
         </nav>
     </div>
-
     <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseWisataHalal" aria-expanded="false" aria-controls="collapseWisataHalal">
-        <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
+        <i class="fas fa-route ml-2 mr-3 fa-lg"></i>
         Wisata Halal
         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
     <div class="collapse" id="collapseWisataHalal" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
             <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/Internasional'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
+                <i class="fas fa-route ml-2 mr-2 fa-lg"></i>
                 INTERNASIONAL
             </a>
             <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/Nasional'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
+                <i class="fas fa-route ml-2  mr-2 fa-lg"></i>
                 NASIONAL
             </a>
             <a class="nav-link" href="<?php echo site_url('WisataHalal/paket/ZiarahWali'); ?>">
-                <div class="nav-link-icon ml-2"><i data-feather="compass"></i></div>
+                <i class="fas fa-route ml-2 mr-2 fa-lg"></i>
                 ZIARAH WALI
             </a>
         </nav>
     </div>
 
     <a class="nav-link " href="<?php echo site_url('news'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="activity"></i></div>
+        <i class="fa fa-newspaper ml-2 mr-3 fa-lg"></i>
         News
     </a>
 
     <a class="nav-link " href="<?php echo site_url('Komunitas'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="users"></i></div>
+        <i class="fa fa-users ml-2 mr-3 fa-lg"></i>
         Komunitas
     </a>
 
     <a class="nav-link " href="<?php echo site_url('KataMutiara'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="book-open"></i></div>
+        <i class="fa fa-book-open ml-2 mr-3 fa-lg"></i>
         Kata-Kata Mutiara
     </a>
 
     <a class="nav-link " href="<?php echo site_url('User'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="user"></i></div>
-        User
+        <i class="fas fa-user-alt ml-2 mr-3 fa-lg"></i>
+         User
     </a>
 
     <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="user-check"></i></div>
+        <i class="fas fa-user-check ml-2 mr-2 fa-lg"></i>
         Jamaah
     </a>
 
     <a class="nav-link" href="<?php echo site_url('Pembayaran'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="dollar-sign"></i></div>
+        <i class="fas fa-dollar-sign ml-3 mr-3 fa-lg"></i>
         Pembayaran
     </a>
 
     <a class="nav-link " href="<?php echo site_url('Chat'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="message-circle"></i></div>
+        <i class="fas fa-inbox ml-2 mr-3 fa-lg"></i>
         Chat
     </a>
 
     <a class="nav-link " href="<?php echo site_url('Pengumuman'); ?>">
-        <div class="nav-link-icon ml-2"><i data-feather="briefcase"></i></div>
+        <i class="fas fa-bullhorn ml-2 mr-3 fa-lg"></i>
         Pengumuman
     </a>
 </div>

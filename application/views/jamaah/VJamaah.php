@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                        <div class="page-header-icon"><i class="fas fa-user-check ml-2 fa-xs"></i></div>
                         <?= $title; ?>
                         </h1>
                         Daftar Jamaah
