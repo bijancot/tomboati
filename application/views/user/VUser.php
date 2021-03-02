@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                        <i class="page-header-icon fas fa-user ml-2 fa-xs"></i>
                             <?= $title; ?>
                         </h1>
                         Daftar User

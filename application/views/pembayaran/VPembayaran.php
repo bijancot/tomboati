@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="dollar-sign"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-dollar-sign ml-2 fa-xs"></i></div>
                             Pembayaran
                         </h1>
                         <div class="page-header-subtitle">Daftar Pembayaran</div>

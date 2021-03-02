@@ -8,7 +8,7 @@
                             <a>
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
-                            <div class="page-header-icon"><i data-feather="plus-circle"></i></div>
+                            <i class="page-header-icon fas fa-plus-circle ml-2 fa-xs"></i>
                             Tambah Maskapai
                         </h1>
                     </div>

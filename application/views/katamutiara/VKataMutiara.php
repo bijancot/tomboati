@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="book-open"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-book-open ml-2 fa-xs"></i></div>
                             Kata-Kata Mutiara
                         </h1>
                         <div class="page-header-subtitle">Daftar Kata-Kata Mutiara</div>

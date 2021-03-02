@@ -8,7 +8,7 @@
                             <a>
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
-                            <div class="page-header-icon"><i data-feather="navigation"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-plane ml-2 fa-xs"></i></div>
                             <?= $title; ?>
                         </h1>
                         Daftar Maskapai
