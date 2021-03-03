@@ -8,7 +8,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="globe"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-home ml-2 fa-xs"></i></div>
                             Dashboard
                         </h1>
                     </div>
@@ -32,45 +32,54 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-3 col-lg-4">
+            <div class="col-xxl-3 col-lg-3">
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Jumlah User</div>
-                                <div class="text-lg font-weight-bold"><?php echo $totalUser;?> User</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalUser; ?> User</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="user"></i>
                         </div>
                     </div>
-                    <!-- <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Report</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div> -->
                 </div>
             </div>
-            <div class="col-xxl-3 col-lg-4">
+            <div class="col-xxl-3 col-lg-3">
                 <div class="card bg-green text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Pembayaran</div>
-                                <div class="text-lg font-weight-bold">0</div>
+                                <div class="text-white-75 small">Paket Aktif</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalPaketAktif; ?> Paket</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
+                            <i class="feather-xl text-white-50" data-feather="box"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-3 col-lg-4">
-                <div class="card bg-yellow text-white mb-4">
+            <div class="col-xxl-3 col-lg-3">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-white-75 small">Paket Nonaktif</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalPaketNonaktif; ?> Paket</div>
+                            </div>
+                            <i class="feather-xl text-white-50" data-feather="box"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-lg-3">
+                <div class="card bg-orange text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Pesan</div>
-                                <div class="text-lg font-weight-bold">17</div>
+                                <div class="text-lg font-weight-bold">0</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="message-circle"></i>
+                            <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
                         </div>
                     </div>
                 </div>

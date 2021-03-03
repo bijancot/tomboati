@@ -154,6 +154,15 @@ class Umroh extends CI_Controller
             $this->MPaket->saveItinerary($dataItinerary);
         }
 
+        $query = $this->db->query('SELECT USERTOKEN FROM USER_REGISTER WHERE USERTOKEN IS NOT NULL')->result();
+
+        $dataPaketNotif = array(
+            'namaPaket' => $this->input->post('namaPaket'),
+            'dataToken' => $query
+        );
+        
+        $this->load->view('notif/paket', $dataPaketNotif);
+
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil ditambahkan! </div>');
 

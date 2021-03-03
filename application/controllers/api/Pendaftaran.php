@@ -46,6 +46,25 @@ class Pendaftaran extends CI_Controller{
         $riwayatPenyakit            = $this->input->post('riwayatPenyakit');
         $statusPendaftaran          = 0;
         $isJamaahBerangkat          = 0;
+        $ttdPendaftar               = null;
+        $fcKTPAlmarhum              = null;
+        $fcKKAlmarhum               = null;
+        $fcFotoAlmarhum             = null;
+        $kodePendaftaran            = null;
+        $idPaket                    = $this->input->post('idPaket');
+        $tanggalBerangkat           = $this->input->post('tanggalBerangkat');
+        $sheet                      = $this->input->post('sheet');
+        $sheetHarga                 = $this->input->post('sheetHarga');
+        $waktu                      = $this->input->post('waktu');
+        $namaLengkapKeluarga        = $this->input->post('namaLengkapKeluarga');
+        $alamatKeluarga             = $this->input->post('alamatKeluarga');
+        $kelurahanKeluarga          = $this->input->post('kelurahanKeluarga');
+        $kecamatanKeluarga          = $this->input->post('kecamatanKeluarga');
+        $kotakabupatenKeluarga      = $this->input->post('kotakabupatenKeluarga');
+        $provinsiKeluarga           = $this->input->post('provinsiKeluarga');
+        $kodePOSKeluarga            = $this->input->post('kodePOSKeluarga');
+        $nomorHPKeluarga            = $this->input->post('nomorHPKeluarga');
+
 
         if($this->upload->do_upload('fileKTP')){ //check if fileKTP upload
             $dataUpload = $this->upload->data();
@@ -97,6 +116,46 @@ class Pendaftaran extends CI_Controller{
             return; 
         }
 
+        if($this->upload->do_upload('ttdPendaftar')){ //check if ttdPendaftar upload
+            $dataUpload         = $this->upload->data();
+            $ttdPendaftar       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']   = true;
+            $response['message'] = 'Gagal Upload TTD Pendaftar';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcKTPAlmarhum')){ //check if file FC KTP Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKTPAlmarhum      = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KTP Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcKKAlmarhum')){ //check if file FC KK Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKKAlmarhum       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KK Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcFotoAlmarhum')){ //check if file FC Foto Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcFotoAlmarhum     = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Gagal Upload FC Foto Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
         $data = array(
             'IDUSERREGISTER'            => $idUserRegister,
             'EMAIL'                     => $email,
@@ -125,12 +184,59 @@ class Pendaftaran extends CI_Controller{
             'PEKERJAAN'                 => $pekerjaan,
             'RIWAYATPENYAKIT'           => $riwayatPenyakit,
             'STATUSPENDAFTARAN'         => $statusPendaftaran,
-            'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat
+            'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
+            'TTDPENDAFTAR'              => $ttdPendaftar,
+            'FCKTPALMARHUM'             => $fcKTPAlmarhum,
+            'FCKKALMARHUM'              => $fcKKAlmarhum,
+            'FCFOTOALMARHUM'            => $fcFotoAlmarhum
         );
 
         //check if inputan kosong
         if($idUserRegister != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
             $this->db->insert('PENDAFTARAN', $data);
+
+            //getKodePendaftaran
+            $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
+            foreach($dataKodePendaftaran as $dKodePendaftaran){
+                $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
+            }
+
+            //getCountTransaksi
+            $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+            $idTransaksi    = $countTransaksi + 1;
+            $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+            $idTrans        = 'TR'.''.$transId.'';
+
+            //dataKeluarga
+            $dataKeluarga = array(
+                'NAMALENGKAP'               => $namaLengkapKeluarga,
+                'ALAMAT'                    => $alamatKeluarga,
+                'KELURAHAN'                 => $kelurahanKeluarga,
+                'KECAMATAN'                 => $kecamatanKeluarga,
+                'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
+                'PROVINSI'                  => $provinsiKeluarga,
+                'KODEPOS'                   => $kodePOSKeluarga,
+                'NOMORHP'                   => $nomorHPKeluarga,
+                'KODEPENDAFTARAN'           => $kodePendaftaran
+            );
+
+            //insert data keluarga
+            $this->db->insert('DATA_KELUARGA', $dataKeluarga);
+
+            //dataTransaksi
+            $dataTransaksi = array(
+                'IDTRANSAKSI'           => $idTrans,
+                'IDPAKET'               => $idPaket,
+                'STATUSTRANSAKSI'       => 0,
+                'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
+                'SHEET'                 => $sheet,
+                'SHEETHARGA'            => $sheetHarga,
+                'WAKTU'                 => $waktu,
+                'KODEPENDAFTARAN'       => $kodePendaftaran
+            );
+
+            //insert data transaksi
+            $this->db->insert('TRANSAKSI', $dataTransaksi);
         
             if($this->db->affected_rows()>0){
                 require APPPATH . 'views/vendor/autoload.php';

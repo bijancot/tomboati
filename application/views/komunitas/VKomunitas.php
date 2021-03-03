@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i data-feather="users"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-users ml-2 fa-xs"></i></div>
                             Komunitas
                         </h1>
                         <div class="page-header-subtitle">Daftar Komunitas</div>
@@ -25,7 +25,7 @@
                     <?php
                     $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
                     $this->table->set_template($template);
-                    $this->table->set_heading('No', 'Judul News', 'Content News', 'Foto', 'Tanggal', 'Aksi');
+                    $this->table->set_heading('No', 'Judul Komunitas', 'Content Komunitas', 'Foto', 'Tanggal', 'Aksi');
                     $no = 1;
                     foreach ($komunitas as $row) {
                         $this->table->add_row(
@@ -54,13 +54,13 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="judulNews">Judul News</label>
+                                                    <label for="judulNews">Judul Komunitas</label>
                                                     <h5><?= $row->JUDULNEWS; ?></h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contentNews">Content News</label>
+                                            <label for="contentNews">Content Komunitas</label>
                                             <h5><?= $row->CONTENTNEWS; ?></h5>
                                         </div>
                                         <h5>Foto</h5>

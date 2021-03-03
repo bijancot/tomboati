@@ -6,7 +6,10 @@ class MUser extends CI_Model
 
     public function getUser()
     {
-        $query = $this->db->get('USER_REGISTER');
+        $this->db->select("*");
+        $this->db->from('USER_REGISTER');
+        $this->db->join('CHAT_ROOM', 'CHAT_ROOM.IDUSERREGISTER = USER_REGISTER.IDUSERREGISTER');
+        $query = $this->db->get();
      
         return $query->result();
     }
@@ -54,7 +57,10 @@ class MUser extends CI_Model
 
     public function totalUser()
     {
-        $query = $this->db->get('USER_REGISTER');
+        $this->db->from('USER_REGISTER');
+        $this->db->select('IDUSERREGISTER');
+        // $this->db->where('STATUS', 1);
+        $query = $this->db->get('');
         
         return $query->num_rows();
     }

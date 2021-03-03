@@ -14,7 +14,7 @@
                             <a href="<?= base_url(); ?>chat">
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
-                            <div class="page-header-icon"><i data-feather="message-circle"></i></div>
+                            <i class="page-header-icon fas fa-comment ml-2 fa-xs"></i>
                             Chat
                         </h1>
                         <div class="page-header-subtitle">Detail Chat</div>
@@ -33,7 +33,9 @@
                     <div id="wrapper">
                         <div class="scrollbar" id="style-3">
                             <div class="force-overflow">
+                            
                                 <div class="chat">
+                                    <?php if($countDetailChatRows != 0){ ?>
                                     <?php foreach($chat as $data){?>
                                     <?php 
                                          $orgDate = $data->CREATEDAT;  
@@ -79,6 +81,7 @@
                                     </div>
                                     <?php }}?>
                                     <br>
+                                    <?php }?>
                                 </div><br>
                             </div>
                         </div>
