@@ -30,12 +30,12 @@ class WisataHalal extends CI_Controller{
 
         if(isset($bulan)){
             if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+                $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN DESC')->result();
             }else{
-                $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+                $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN DESC')->result();
             }
         }else{
-            $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+            $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && TIPEWISATA = "'.$tipeWisata.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN DESC')->result();
         }
         
         if(count($data) > 0){

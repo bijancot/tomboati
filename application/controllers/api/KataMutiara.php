@@ -20,12 +20,12 @@ class KataMutiara extends CI_Controller{
 
         if(isset($bulan)){
             if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" && MONTH(WAKTU) = "'.$bulan.'"  ORDER BY WAKTU ASC')->result();
+                $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" && MONTH(WAKTU) = "'.$bulan.'"  ORDER BY WAKTU DESC')->result();
             }else{
-                $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" ORDER BY WAKTU ASC')->result();
+                $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" ORDER BY WAKTU DESC')->result();
             }
         }else{
-            $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" ORDER BY WAKTU ASC')->result();
+            $data = $this->db->query('SELECT * FROM KATA_MUTIARA WHERE WAKTU > "'.$hari.'" ORDER BY WAKTU DESC')->result();
         }
         
         if(count($data) > 0){

@@ -13,20 +13,9 @@ class Komunitas extends CI_Controller{
     public function komunitas_get(){
         $response       = [];
 
-        $bulan          = $this->input->get('bulan');
-        $hari           = date('Y-m-d');
-
         // echo $hari;
 
-        if(isset($bulan)){
-            if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" && MONTH(TANGGALNEWS) = "'.$bulan.'"  ORDER BY TANGGALNEWS ASC')->result();
-            }else{
-                $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
-            }
-        }else{
-            $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO WHERE TANGGALNEWS > "'.$hari.'" ORDER BY TANGGALNEWS ASC')->result();
-        }
+        $data = $this->db->query('SELECT * FROM KOMUNITAS_INFO ORDER BY TANGGALNEWS DESC')->result();
         
         if(count($data) > 0){
             $response['error']    = false;
