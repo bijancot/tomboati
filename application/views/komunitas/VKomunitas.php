@@ -45,7 +45,7 @@
                     ?>
                         <!-- Modal Detail -->
                         <div class="modal fade" id="detailKomunitas<?= $row->IDKOMUNITASINFO ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
@@ -54,14 +54,14 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="judulNews">Judul Komunitas</label>
-                                                    <h5><?= $row->JUDULNEWS; ?></h5>
+                                                    <h6 for="judulNews">Judul Komunitas</h6>
+                                                    <p><?= $row->JUDULNEWS; ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contentNews">Content Komunitas</label>
-                                            <h5><?= $row->CONTENTNEWS; ?></h5>
+                                            <h6 for="contentNews">Content Komunitas</h6>
+                                            <p><?= $row->CONTENTNEWS; ?></p>
                                         </div>
                                         <h5>Foto</h5>
                                         <div class="form-group">
@@ -145,7 +145,7 @@
                     targets: 0
                 },
                 {
-                    sWidth: '15%',
+                    sWidth: '13%',
                     targets: 5
                 }
             ],

@@ -42,8 +42,8 @@
                             $status,
                             $row->NAMAPAKET,
                             $row->NAMAMASKAPAI,
-                            $row->DURASIPAKET . ' hari',
-                            $row->KUOTA . ' orang',
+                            $row->DURASIPAKET . ' Hari',
+                            $row->KUOTA . ' Orang',
                             $row->CREATED_AT,
                             $verfikasi .
                                 '<button title="Detail Paket" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailPaketModal' . $row->IDPAKET . '"><i class="fa fa-ellipsis-h"></i>
@@ -56,7 +56,7 @@
                     ?>
                         <!-- Modal Detail -->
                         <div class="modal fade" id="detailPaketModal<?= $row->IDPAKET ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $row->NAMAPAKET; ?> </h5>
@@ -78,106 +78,107 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="namaPaket">Nama Paket Umroh <?= $tipe; ?></label>
-                                                    <h5><?= $row->NAMAPAKET; ?></h5>
+                                                    <h6 for="namaPaket">Nama Paket Umroh <?= $tipe; ?></h6>
+                                                    <p><?= $row->NAMAPAKET; ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="kuota">Kuota</label>
-                                                    <h5><?= $row->KUOTA; ?> orang</h5>
+                                                    <h6 for="kuota">Kuota</h6>
+                                                    <p class="font-weight-bold"><?= $row->KUOTA; ?> Orang</p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="maskapai">Maskapai</h6>
+                                                    <p><?= $row->NAMAMASKAPAI; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="durasiPaket">Durasi Paket</h6>
+                                                    <p><?= $row->DURASIPAKET; ?> Hari</p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="tanggalKeberangkatan">Tanggal Keberangkatan</h6>
+                                                    <p><?= $row->TANGGALKEBERANGKATAN; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="penerbangan">Penerbangan</h6>
+                                                    <p><?= $row->PENERBANGAN; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="ratingHotel">Rating Hotel</h6>
+                                                    <p><?= $row->RATINGHOTEL; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="namaHotelPertama">Nama Hotel Pertama</h6>
+                                                    <p><?= $row->NAMAHOTELA; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="namaHotelKedua">Nama Hotel Kedua</h6>
+                                                    <p><?= $row->NAMAHOTELB; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"></div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6  for="alamatHotelPertama">Alamat Hotel Pertama</h6>
+                                                    <p><?= $row->TEMPATHOTELA; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="alamatHotelKedua">Alamat Hotel Kedua</h6>
+                                                    <p><?= $row->TEMPATHOTELB; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="doubleSheet">Harga Double Sheet</h6>
+                                                    <p>Rp. <?= $row->DOUBLESHEET; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="tripleSheet">Harga Triple Sheet</h6>
+                                                    <p>Rp. <?= $row->TRIPLESHEET; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="quadSheet">Harga Quad Sheet</h6>
+                                                    <p>Rp. <?= $row->QUADSHEET; ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="maskapai">Maskapai</label>
-                                            <h5><?= $row->NAMAMASKAPAI; ?></h5>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="durasiPaket">Durasi Paket</label>
-                                                    <h5><?= $row->DURASIPAKET; ?> hari</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                    <h5><?= $row->TANGGALKEBERANGKATAN; ?></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="penerbangan">Penerbangan</label>
-                                                    <h5><?= $row->PENERBANGAN; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="ratingHotel">Rating Hotel</label>
-                                                    <h5><?= $row->RATINGHOTEL; ?></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="namaHotelPertama">Nama Hotel Pertama</label>
-                                                    <h5><?= $row->NAMAHOTELA; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="namaHotelKedua">Nama Hotel Kedua</label>
-                                                    <h5><?= $row->NAMAHOTELB; ?></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="alamatHotelPertama">Alamat Hotel Pertama</label>
-                                                    <h5><?= $row->TEMPATHOTELA; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="alamatHotelKedua">Alamat Hotel Kedua</label>
-                                                    <h5><?= $row->TEMPATHOTELB; ?></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="doubleSheet">Harga Double Sheet</label>
-                                                    <h5>Rp. <?= $row->DOUBLESHEET; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="tripleSheet">Harga Triple Sheet</label>
-                                                    <h5>Rp. <?= $row->TRIPLESHEET; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="quadSheet">Harga Quad Sheet</label>
-                                                    <h5>Rp. <?= $row->QUADSHEET; ?></h5>
-                                                </div>
-                                            </div>
+                                            <h6 for="biayaSudahTermasuk">Biaya Sudah Termasuk</h6>
+                                            <p><?= $row->BIAYASUDAHTERMASUK; ?></p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="biayaSudahTermasuk">Biaya Sudah Termasuk</label>
-                                            <h5><?= $row->BIAYASUDAHTERMASUK; ?></h5>
+                                            <h6 for="biayaBelumTermasuk">Biaya Belum Termasuk</h6>
+                                            <p><?= $row->BIAYABELUMTERMASUK; ?></p>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="biayaBelumTermasuk">Biaya Belum Termasuk</label>
-                                            <h5><?= $row->BIAYABELUMTERMASUK; ?></h5>
-                                        </div>
-                                        <h5>Gambar Paket</h5>
+                                        <h6>Gambar Paket</h6>
                                         <div class="form-group">
                                             <img src="<?= $row->IMAGEPAKET; ?>" width="200px">
                                         </div>

@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <i class="page-header-icon fas fa-user ml-2 fa-xs"></i>
+                            <i class="page-header-icon fas fa-user ml-2 fa-xs"></i>
                             <?= $title; ?>
                         </h1>
                         Daftar User
@@ -59,7 +59,7 @@
                             $kategori,
                             $row->CREATED_AT,
                             $verfikasi . '
-                        <button title="Detail User" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
+                        <button title="Detail User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
                         <a title="Chat User" href="' .  base_url("Chat/detailChat/" . $row->ID_CHAT_ROOM) . '" type="button" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-envelope"></i>
                         </a>
@@ -72,17 +72,17 @@
                     ?>
                         <!-- Modal Detail -->
                         <div class="modal fade" id="detailUser<?= $row->IDUSERREGISTER ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
                                         <?php if ($row->STATUS == 1) {
                                         ?>
-                                            <span class="badge badge-pill badge-success ml-1">Terverfikasi</span>
+                                            <span class="badge badge-pill badge-success mt-1">Terverfikasi</span>
                                         <?php
                                         } else {
                                         ?>
-                                            <span class="badge badge-pill badge-danger ml-1">Belum Terverifikasi</span>
+                                            <span class="badge badge-pill badge-danger mt-1">Belum Terverifikasi</span>
                                         <?php
                                         }
                                         ?>
@@ -94,28 +94,28 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="nomorKTP">Nomor KTP</label>
-                                                    <h5><?= $row->NOMORKTP; ?></h5>
+                                                    <h6 for="nomorKTP">Nomor KTP</h6>
+                                                    <p><?= $row->NOMORKTP; ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="namaLengkap">Nama Lengkap</label>
-                                                    <h5><?= $row->NAMALENGKAP; ?></h5>
+                                                    <h6 for="namaLengkap">Nama Lengkap</h6>
+                                                    <p><?= $row->NAMALENGKAP; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="email">Email</h6>
+                                                    <p><?= $row->EMAIL; ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="email">Email</label>
-                                                    <h5><?= $row->EMAIL; ?></h5>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="kategori">Kategori User</label>
-                                                    <H5>
+                                                    <h6 for="kategori">Kategori User</h6>
+                                                    <p>
                                                         <?php
                                                         if ($row->KATEGORI == 1) {
                                                             echo "Jamaah";
@@ -126,35 +126,41 @@
                                                         } else if ($row->KATEGORI == 4) {
                                                             echo "Jamaah 4";
                                                         }
-                                                        ?></H5>
+                                                        ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="kodeReferral">Referral</h6>
+                                                    <p><?= $row->KODEREFERRAL ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6 for="kodeReferralFrom">Referral dari</h6>
+                                                    <p><?= $row->KODEREFERRALFROM ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="kodeReferral">Referral</label>
-                                                    <h5><?= $row->KODEREFERRAL ?></h5>
+                                                    <h6 for="namaLengkap">Jumlah Poin</h6>
+                                                    <p><?= $row->POIN; ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="kodeReferralFrom">Referral dari</label>
-                                                    <h5><?= $row->KODEREFERRALFROM ?></h5>
+                                                    <h6>File KTP</h6>
+                                                    <img src="<?= $row->FILEKTP; ?>" width="200px">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="namaLengkap">Jumlah Poin</label>
-                                            <h5><?= $row->POIN; ?></h5>
-                                        </div>
-                                        <div class="form-group">
-                                            <h5>File KTP</h5>
-                                            <img src="<?= $row->FILEKTP; ?>" width="200px">
-                                        </div>
-                                        <div class="form-group">
-                                            <h5>File Foto</h5>
-                                            <img src="<?= $row->FOTO; ?>" width="200px">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <h6>File Foto</h6>
+                                                    <img src="<?= $row->FOTO; ?>" width="200px">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -285,7 +291,7 @@
                     sWidth: '12%',
                     targets: 4
                 }, {
-                    sWidth: '10%',
+                    sWidth: '8%',
                     targets: 5
                 }, {
                     sWidth: '10%',
