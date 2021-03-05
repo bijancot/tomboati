@@ -33,7 +33,7 @@
 
         .col-lg-13 {
             flex: 0 0 400px;
-            max-width: 400px;
+            max-width: 100%;
         }
     </style>
 </head>

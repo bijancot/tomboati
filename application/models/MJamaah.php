@@ -6,8 +6,11 @@ class MJamaah extends CI_Model
 
     public function getJamaah()
     {
-        $query = $this->db->get('PENDAFTARAN');
-     
+        $this->db->select('*');
+        $this->db->from('TRANSAKSI');
+        $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
+        $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
+        $query = $this->db->get();
         return $query->result();
     }
 

@@ -51,14 +51,14 @@
                                     <div class="modal-body">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="isiKatamutiara">Kata Mutiara</label>
-                                                <h5><?= $row->TEKSKATAMUTIARA; ?></h5>
+                                                <h6 for="isiKatamutiara">Kata Mutiara</h6>
+                                                <p><?= $row->TEKSKATAMUTIARA; ?></p>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="WAKTU">Tanggal Upload</label>
-                                                <h5><?= $row->WAKTU; ?></h5>
+                                                <h6 for="WAKTU">Tanggal Upload</h6>
+                                                <p><?= $row->WAKTU; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                     targets: 2
                 },
                 {
-                    sWidth: '15%',
+                    sWidth: '13%',
                     targets: 3
                 }
             ],

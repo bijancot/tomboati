@@ -46,7 +46,7 @@
                     ?>
                         <!-- Modal Detail -->
                         <div class="modal fade" id="detailNews<?= $row->IDNEWSINFO ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
@@ -55,28 +55,28 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="judulNews">Judul News</label>
-                                                    <h5><?= $row->JUDULNEWS; ?></h5>
+                                                    <h6 for="judulNews">Judul News</h6>
+                                                    <p><?= $row->JUDULNEWS; ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label for="deskripsiNews">Deskripsi News</label>
-                                                    <h5><?= $row->DESKRIPSINEWS; ?></h5>
+                                                    <h6 for="deskripsiNews">Deskripsi News</h6>
+                                                    <p><?= $row->DESKRIPSINEWS; ?></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contentNews">Isi News</label>
-                                            <h5><?= $row->CONTENTNEWS; ?></h5>
+                                            <h6 for="contentNews">Isi News</h6>
+                                            <p><?= $row->CONTENTNEWS; ?></p>
                                         </div>
-                                        <h5>Gambar News</h5>
+                                        <label>Gambar News</label>
                                         <div class="form-group">
                                             <img src="<?= $row->FOTO; ?>" width="200px">
                                         </div>
                                         <div class="form-group">
-                                            <label for="tanggalNews">Tanggal</label>
-                                            <h5><?= $row->TANGGALNEWS; ?></h5>
+                                            <h6 for="tanggalNews">Tanggal</h6>
+                                            <p><?= $row->TANGGALNEWS; ?></p>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -157,7 +157,7 @@
                     targets: 5
                 },
                 {
-                    sWidth: '15%',
+                    sWidth: '13%',
                     targets: 6
                 }
             ],
