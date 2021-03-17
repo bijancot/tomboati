@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <i class="page-header-icon fas fa-user ml-2 fa-xs"></i>
-                            <?= $title; ?>
+                            User
                         </h1>
                         Daftar User
                     </div>
@@ -75,14 +75,14 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail User </h5>
                                         <?php if ($row->STATUS == 1) {
                                         ?>
-                                            <span class="badge badge-pill badge-success mt-1">Terverfikasi</span>
+                                            <span class="badge badge-pill badge-success mt-1 ml-1">Terverfikasi</span>
                                         <?php
                                         } else {
                                         ?>
-                                            <span class="badge badge-pill badge-danger mt-1">Belum Terverifikasi</span>
+                                            <span class="badge badge-pill badge-danger mt-1 ml-1">Belum Terverifikasi</span>
                                         <?php
                                         }
                                         ?>
@@ -185,7 +185,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus User</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -205,7 +205,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Verifikasi <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Verifikasi User</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -225,7 +225,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi User</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

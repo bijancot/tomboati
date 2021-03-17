@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-route ml-2 fa-xs"></i></div>
-                            <?= $title; ?>
+                            Wisata Halal&nbsp;<?= $tipe; ?>
                         </h1>
                         Daftar Wisata Halal
                     </div>
@@ -62,11 +62,11 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Detail <?= $row->NAMAWISATA; ?> </h5>
                                         <?php if ($row->ISSHOW == 1) {
                                         ?>
-                                            <span class="badge badge-pill badge-success ml-1">Aktif</span>
+                                            <span class="badge badge-pill badge-success mt-1 ml-1">Aktif</span>
                                         <?php
                                         } else {
                                         ?>
-                                            <span class="badge badge-pill badge-danger ml-1">Non-Aktif</span>
+                                            <span class="badge badge-pill badge-danger mt-1 ml-1">Non-Aktif</span>
                                         <?php
                                         }
                                         ?>
@@ -205,7 +205,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Wisata Halal&nbsp;<?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -225,7 +225,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Aktifkan <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Aktifkan Wisata Halal&nbsp; <?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -245,7 +245,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Non-Aktifkan <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Non-Aktifkan Wisata Halal&nbsp; <?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

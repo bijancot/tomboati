@@ -9,7 +9,7 @@
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             <div class="page-header-icon"><i class="fas fa-plane ml-2 fa-xs"></i></div>
-                            <?= $title; ?>
+                            Maskapai
                         </h1>
                         Daftar Maskapai
                     </div>
@@ -47,7 +47,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Maskapai</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
