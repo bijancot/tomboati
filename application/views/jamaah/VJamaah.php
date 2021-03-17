@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-user-check ml-2 fa-xs"></i></div>
-                            <?= $title; ?>
+                           Jamaah
                         </h1>
                         Daftar Jamaah
                     </div>
@@ -71,7 +71,7 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Detail <?= $title; ?> </h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Detail Jamaah </h5>
                                                     <?php if ($data->STATUSPENDAFTARAN == 1) {
                                                     ?>
                                                         <span class="badge badge-pill badge-success ml-1">Terverfikasi</span>
@@ -293,7 +293,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Jamaah</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -314,7 +314,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Jamaah</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -336,6 +336,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script>
     Pusher.logToConsole = true;

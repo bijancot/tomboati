@@ -82,25 +82,30 @@
             </a>
         </nav>
     </div>
-
-    <a class="nav-link " href="<?php echo site_url('news'); ?>">
-        <i class="fa fa-newspaper ml-2 mr-3 fa-lg"></i>
-        News
+    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent">
+        <i class="fas fa-pager ml-2 mr-3 fa-lg"></i>
+        Content
+        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
-
-    <a class="nav-link " href="<?php echo site_url('Komunitas'); ?>">
-        <i class="fa fa-users ml-2 mr-3 fa-lg"></i>
-        Komunitas
-    </a>
-
-    <a class="nav-link " href="<?php echo site_url('KataMutiara'); ?>">
-        <i class="fa fa-book-open ml-2 mr-3 fa-lg"></i>
-        Kata-Kata Mutiara
-    </a>
-
+    <div class="collapse" id="collapseContent" data-parent="#accordionSidenav">
+        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+            <a class="nav-link " href="<?php echo site_url('news'); ?>">
+                <i class="fa fa-newspaper ml-2 mr-3 fa-lg"></i>
+                News
+            </a>
+            <a class="nav-link " href="<?php echo site_url('Komunitas'); ?>">
+                <i class="fa fa-users ml-2 mr-3 fa-lg"></i>
+                Komunitas
+            </a>
+            <a class="nav-link " href="<?php echo site_url('KataMutiara'); ?>">
+                <i class="fa fa-book-open ml-2 mr-3 fa-lg"></i>
+                Kata-Kata Mutiara
+            </a>
+        </nav>
+    </div>
     <a class="nav-link " href="<?php echo site_url('User'); ?>">
         <i class="fas fa-user-alt ml-2 mr-3 fa-lg"></i>
-         User
+        User
     </a>
 
     <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">

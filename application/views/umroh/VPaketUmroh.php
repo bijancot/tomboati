@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-mosque ml-2 fa-xs"></i></div>
-                            <?= $title; ?>
+                            Paket Umroh&nbsp;<?= $tipe; ?>
                         </h1>
                         Daftar Paket
                     </div>
@@ -59,14 +59,14 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detail <?= $row->NAMAPAKET; ?> </h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail Paket Umroh&nbsp;<?= $row->NAMAPAKET; ?> </h5>
                                         <?php if ($row->ISSHOW == 1) {
                                         ?>
-                                            <span class="badge badge-pill badge-success ml-1">Aktif</span>
+                                            <span class="badge badge-pill badge-success mt-1 ml-1">Aktif</span>
                                         <?php
                                         } else {
                                         ?>
-                                            <span class="badge badge-pill badge-danger ml-1">Non-Aktif</span>
+                                            <span class="badge badge-pill badge-danger mt-1 ml-1">Non-Aktif</span>
                                         <?php
                                         }
                                         ?>
@@ -206,7 +206,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Hapus <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Paket Umroh&nbsp;<?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -226,7 +226,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Aktifkan Paket <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Aktifkan Paket Umroh <?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -246,7 +246,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi <?= $title ?></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Paket Umroh <?= $tipe ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

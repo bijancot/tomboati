@@ -15,7 +15,7 @@
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             <i class="page-header-icon fas fa-comment ml-2 fa-xs"></i>
-                            Chat
+                            Detail Chat
                         </h1>
                         <div class="page-header-subtitle">Detail Chat</div>
                     </div>
