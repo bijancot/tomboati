@@ -12,9 +12,9 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-bullhorn ml-2 fa-xs"></i></div>
-                            <?= $title; ?>
+                            Pengumuman
                         </h1>
-                        Pengumuman
+                        Daftar Pengumuman
                     </div>
                 </div>
             </div>
