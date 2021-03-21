@@ -1,5 +1,5 @@
 <?php
-class Jamaah extends CI_Controller
+class Kloter extends CI_Controller
 {
     public function __construct()
     {
@@ -9,7 +9,7 @@ class Jamaah extends CI_Controller
         $this->load->library('table');
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('MNotifikasi');
-        $this->load->model('MJamaah');
+        $this->load->model('MKloter');
         
     }
 
@@ -20,19 +20,45 @@ class Jamaah extends CI_Controller
         $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
         $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
-        $dataJamaah             = $this->MJamaah->getJamaah();
+        $dataJamaah             = $this->MKloter->getKloterbyPaket();
         
-        $updateJamaah           = $this->MJamaah->updateJamaah();
+        $updateJamaah           = $this->MKloter->updateJamaah();
         
         $data = array(
-            'title'             => 'Jamaah | Tombo Ati',
+            'title'             => 'Kloter Paket | Tombo Ati',
             'jamaah'            => $dataJamaah,
             'countMessage'      => $countMessage,
             'dataNotifChat'     => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
-        $this->template->view('jamaah/VJamaah', $data);
+        $this->template->view('kloter/VKloter', $data);
+    }
+
+    public function aturKloter($IDPAKET)
+    {
+        //notifikasi
+        $countMessage           = $this->MNotifikasi->countMessage();
+        $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+        // Data utama Paket
+        $databyPaket            = $this->MKloter->getSelectKloterbyPaket($IDPAKET);
+        // Untuk data jamaah
+        $databyJamaah           = $this->MKloter->getSelectKloterbyJamaah($IDPAKET);
+        
+        $updateJamaah           = $this->MKloter->updateJamaah();
+        
+        $data = array(
+            'title'             => 'Jamaah | Tombo Ati',
+            'paket'             => $databyPaket,
+            'jamaah'            => $databyJamaah,
+            'countMessage'      => $countMessage,
+            'dataNotifChat'     => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
+        );
+
+        $this->template->view('kloter/VAturKloter', $data);
     }
 
     public function notifJamaah(){
@@ -41,9 +67,9 @@ class Jamaah extends CI_Controller
          $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
          $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
  
-         $dataJamaah             = $this->MJamaah->getJamaah();
+         $dataJamaah             = $this->MKloter->getJamaah();
          
-         $updateJamaah           = $this->MJamaah->updateJamaah();
+         $updateJamaah           = $this->MKloter->updateJamaah();
          
          $data = array(
              'title'             => 'Jamaah | Tombo Ati',
@@ -53,12 +79,12 @@ class Jamaah extends CI_Controller
              'countJamaahDaftar' => $countJamaahDaftar
          );
  
-         redirect('Jamaah');
+         redirect('Kloter');
     }
 
     public function aksiVerifikasiPendaftaran($kodePendaftaran){
         //verif
-        $this->MJamaah->verifPendaftaranJamaah($kodePendaftaran);
+        $this->MKloter->verifPendaftaranJamaah($kodePendaftaran);
         
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Jamaah berhasil diverifikasi! </div>');
 
@@ -78,12 +104,12 @@ class Jamaah extends CI_Controller
         );
 
         $this->load->view('notif/verifikasiPendaftaranJamaah', $dataNotif);
-        redirect('Jamaah');
+        redirect('Kloter');
     }
 
     public function aksiCabutVerifikasiPendaftaran($kodePendaftaran){
         //verif
-        $this->MJamaah->cabutPendaftaranJamaah($kodePendaftaran);
+        $this->MKloter->cabutPendaftaranJamaah($kodePendaftaran);
         
         // echo $this->db->last_query();
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Cabut verifikasi berhasil! </div>');
@@ -105,6 +131,6 @@ class Jamaah extends CI_Controller
 
         $this->load->view('notif/cabutVerifikasiPendaftaranJamaah', $dataNotif);
 
-        redirect('Jamaah');
+        redirect('Kloter');
     }
 }

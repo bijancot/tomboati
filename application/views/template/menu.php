@@ -113,6 +113,11 @@
         Jamaah
     </a>
 
+    <a class="nav-link " href="<?php echo site_url('Kloter'); ?>">
+        <i class="fas fa-users ml-2 mr-2 fa-lg"></i>
+        Kloter
+    </a>
+
     <a class="nav-link" href="<?php echo site_url('Pembayaran'); ?>">
         <i class="fas fa-dollar-sign ml-3 mr-3 fa-lg"></i>
         Pembayaran

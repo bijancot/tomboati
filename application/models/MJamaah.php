@@ -14,7 +14,7 @@ class MJamaah extends CI_Model
         return $query->result();
     }
 
-    public function udpateJamaah()
+    public function updateJamaah()
     {
         $this->db->set('ISSEEN', 1);
         $this->db->where('ISSEEN', 0);
