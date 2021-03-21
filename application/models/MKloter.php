@@ -1,17 +1,31 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MJamaah extends CI_Model
+class MKloter extends CI_Model
 {
 
-    public function getJamaah()
+    public function getKloterbyPaket()
     {
-        $this->db->select('*');
+        $this->db->select('*, count(*) as jumlah');
         $this->db->from('TRANSAKSI');
         $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
         $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
+        $this->db->where('STATUSPENDAFTARAN', 1);
+        $this->db->group_by('PAKET.IDMASTERPAKET');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function getSelectKloterbyPaket($IDMASTERPAKET){
+       
+        $this->db->select('*, count(*) as jumlah');
+        $this->db->from('TRANSAKSI');
+        $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
+        $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
+        $this->db->where('IDMASTERPAKET', $IDMASTERPAKET);
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
     public function updateJamaah()
