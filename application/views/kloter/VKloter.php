@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i class="fas fa-user-check ml-2 fa-xs"></i></div>
+                            <div class="page-header-icon"><i class="fas fa-users ml-2 fa-xs"></i></div>
                             Kloter Paket
                         </h1>
                         Daftar Jamaah berdasarkan Paket
@@ -41,7 +41,7 @@
                                     <td><?= date_format(new DateTime($data->TANGGALKEBERANGKATAN), 'd-M-Y'); ?></td>
                                     <td><?= $data->jumlah ?> Jamaah</td>
                                     <td>
-                                        <a title="Atur Kloter" href="<?= base_url('Kloter/aturKloter/' . $data->IDMASTERPAKET) ?>" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
+                                        <a title="Atur Kloter" href="<?= base_url('Kloter/aturKloter/' . $data->IDPAKET) ?>" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                                         </a>
                                     </td>
                                 </tr>

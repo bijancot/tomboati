@@ -6,23 +6,38 @@ class MKloter extends CI_Model
 
     public function getKloterbyPaket()
     {
-        $this->db->select('*, count(*) as jumlah');
+        $this->db->select('*, count(TRANSAKSI.IDPAKET) as jumlah');
         $this->db->from('TRANSAKSI');
         $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
         $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
         $this->db->where('STATUSPENDAFTARAN', 1);
-        $this->db->group_by('PAKET.IDMASTERPAKET');
+        $this->db->group_by('TRANSAKSI.IDPAKET');
         $query = $this->db->get();
         return $query->result();
     }
 
-    public function getSelectKloterbyPaket($IDMASTERPAKET){
+    public function getSelectKloterbyPaket($IDPAKET){
        
-        $this->db->select('*, count(*) as jumlah');
+        $this->db->select('*, count(TRANSAKSI.IDPAKET) as jumlah');
         $this->db->from('TRANSAKSI');
         $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
         $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
-        $this->db->where('IDMASTERPAKET', $IDMASTERPAKET);
+        $this->db->where('TRANSAKSI.IDPAKET', $IDPAKET);
+        $this->db->where('STATUSPENDAFTARAN', 1);
+        $this->db->group_by('TRANSAKSI.IDPAKET');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function getSelectKloterbyJamaah($IDPAKET){
+       
+        $this->db->select('*');
+        $this->db->from('TRANSAKSI');
+        $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
+        $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
+        $this->db->where('TRANSAKSI.IDPAKET', $IDPAKET);
+        $this->db->where('STATUSPENDAFTARAN', 1);
         $query = $this->db->get();
 
         return $query->result_array();

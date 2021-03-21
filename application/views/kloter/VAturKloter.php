@@ -30,7 +30,7 @@
                             <!-- Component Preview-->
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <?php foreach ($jamaah as $row) { ?>
+                                    <?php foreach ($paket as $row) { ?>
                                         <?= form_open_multipart('kloter/aksiAturKloter/' . $row['IDMASTERPAKET']) ?>
                                         <div class="row">
                                             <div class="col">
@@ -69,17 +69,18 @@
                                                     <label for="ketuaRombongan">Ketua Rombongan</label>
                                                     <select class="ketua-select2 form-control" id="ketuaRombongan" name="state">
                                                         <?php
-                                                    foreach($jamaah as $key){ ?>
-                                                        <option value="<?php echo $key['NAMALENGKAP']; ?>">
-                                                            <?php echo $key['NAMALENGKAP']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                        foreach($jamaah as $key){ ?>
+                                                            <option value="<?php echo $key['NAMALENGKAP']; ?>">
+                                                                <?php echo $key['NAMALENGKAP']; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        <?php } ?>
+                                        <div class="text-md-right">
+                                            <button type="submit" class="btn btn-primary "> Submit </button>
                                         </div>
-                                    <?php } ?>
-                                    <div class="text-md-right">
-                                        <button type="submit" class="btn btn-primary "> Submit </button>
                                     </div>
                                 </div>
                             </div>
@@ -88,35 +89,34 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<script>
-    $(document).ready(function() {
-        $('.ketua-select2').select2();
-    });
-</script>
-<script>
-    Pusher.logToConsole = true;
+    </body>
+    <script>
+        $(document).ready(function() {
+            $('.ketua-select2').select2();
+        });
+    </script>
+    <script>
+        Pusher.logToConsole = true;
 
-    var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
-        cluster: 'ap1',
-        forceTLS: true
-    });
+        var pusher = new Pusher('ee692ab95bb9aeaa1dcc', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(response) {
-        xhr = $.ajax({
-            method: 'POST',
-            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
-            success: function(response) {
-                $('.list-notifikasi').html(response);
-            }
-        })
-    });
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(response) {
+            xhr = $.ajax({
+                method: 'POST',
+                url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+                success: function(response) {
+                    $('.list-notifikasi').html(response);
+                }
+            })
+        });
 
-    $('.list-notifikasi').on('click', '.notifikasi', function(e) {
-        console.log("Clicked");
-    });
-</script>
+        $('.list-notifikasi').on('click', '.notifikasi', function(e) {
+            console.log("Clicked");
+        });
+    </script>
 
-</html>
+    </html>

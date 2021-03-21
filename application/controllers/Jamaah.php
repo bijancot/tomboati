@@ -22,7 +22,7 @@ class Jamaah extends CI_Controller
 
         $dataJamaah             = $this->MJamaah->getJamaah();
         
-        $updateJamaah           = $this->MJamaah->udpateJamaah();
+        $updateJamaah           = $this->MJamaah->updateJamaah();
         
         $data = array(
             'title'             => 'Jamaah | Tombo Ati',
@@ -43,7 +43,7 @@ class Jamaah extends CI_Controller
  
          $dataJamaah             = $this->MJamaah->getJamaah();
          
-         $updateJamaah           = $this->MJamaah->udpateJamaah();
+         $updateJamaah           = $this->MJamaah->updateJamaah();
          
          $data = array(
              'title'             => 'Jamaah | Tombo Ati',
