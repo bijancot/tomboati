@@ -44,8 +44,10 @@ class Kloter extends CI_Controller
 
         // Data utama Paket
         $databyPaket            = $this->MKloter->getSelectKloterbyPaket($IDPAKET);
-        // Untuk data jamaah
+        // Untuk data ketua
         $databyJamaah           = $this->MKloter->getSelectKloterbyJamaah($IDPAKET);
+        // Untuk data kloter
+        $databyKloter           = $this->MKloter->getSelectKloterbyKloter($IDPAKET);
         
         $updateJamaah           = $this->MKloter->updateJamaah();
         
@@ -53,12 +55,18 @@ class Kloter extends CI_Controller
             'title'             => 'Jamaah | Tombo Ati',
             'paket'             => $databyPaket,
             'jamaah'            => $databyJamaah,
+            'kloter'            => $databyKloter,
             'countMessage'      => $countMessage,
             'dataNotifChat'     => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('kloter/VAturKloter', $data);
+    }
+
+    public function aksiTambahKloter()
+    {
+
     }
 
     public function notifJamaah(){
