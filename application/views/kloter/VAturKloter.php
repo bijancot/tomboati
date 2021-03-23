@@ -66,8 +66,118 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
+                                                    <h4>Rombongan</h4>
+                                                    <button name="tambah" id="tambah" type="button" class="mb-2 btn btn-success tambah"><i class="fa fa-plus"></i> Tambah Kloter</button>
+                                                    <?php 
+                                                    ?>
+                                                    <div class="datatable">
+                                                        <?php
+                                                        $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
+                                                        $this->table->set_template($template);
+                                                        $this->table->set_heading('Kloter', 'Jumlah Orang', 'Aksi');
+
+                                                        foreach($kloter as $row){
+                                                            $this->table->add_row(
+                                                                $row['KLOTER'],
+                                                                $row['KLOTER'],
+                                                                '<button title="Detail Kloter" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailKloterModal' . $row["KLOTER"] . '"><i class="fa fa-ellipsis-h"></i>
+                                                                </button>
+                                                                <button title="Edit Kloter" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editKloterModal' . $row["KLOTER"] . '"><i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button title="Hapus Paket" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKloterModal' . $row["KLOTER"] . '"><i class="fa fa-trash"></i>
+                                                                </button>'
+                                                            );
+                                                            ?>
+                                                            <!-- Modal Detail -->
+                                                            <div class="modal fade" id="detailKloterModal<?= $row['KLOTER'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Detail Kloter &nbsp;<?= $row['KLOTER'] ?></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <h6 for="">Nama Lengkap</h6>
+                                                                                        <p><?= $row['NAMALENGKAP']; ?></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <h6 for="">Jenis Kelamin</h6>
+                                                                                        <p>
+                                                                                            <?php
+                                                                                            if($row['JENISKELAMIN'] == 1){
+                                                                                                echo "Laki-Laki";
+                                                                                            }else{
+                                                                                                echo "Perempuan";
+                                                                                            }
+                                                                                            ?>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <h6 for="">Tempat, Tanggal Lahir</h6>
+                                                                                        <p><?= $row['TEMPATLAHIR'].", " . $row['TANGGALLAHIR'] ?></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <h6 for="">Alamat</h6>
+                                                                                        <p><?= $row['ALAMAT']; ?></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <a href="<?= base_url('Kloter/aksiHapusKloter/' . $row['KLOTER']) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Modal Hapus -->
+                                                            <div class="modal fade" id="hapusKloterModal<?= $row['KLOTER']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Kloter &nbsp;<?= $row['KLOTER'] ?></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <h5>Apakah anda yakin akan menghapus <b> Kloter <?= $row['KLOTER'] ?> ? </b></h5>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <a href="<?= base_url('Kloter/aksiHapusKloter/' . $row['KLOTER']) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        echo $this->table->generate();
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
                                                     <label for="ketuaRombongan">Ketua Rombongan</label>
-                                                    <select class="ketua-select2 form-control" id="ketuaRombongan" name="state">
+                                                    <select class="ketua-select2 form-control" id="karomah" name="karomah">
                                                         <?php
                                                         foreach($jamaah as $key){ ?>
                                                             <option value="<?php echo $key['NAMALENGKAP']; ?>">
@@ -79,7 +189,7 @@
                                             </div>
                                         <?php } ?>
                                         <div class="text-md-right">
-                                            <button type="submit" class="btn btn-primary "> Submit </button>
+                                            <button type="submit" class="btn btn-primary "> Selesai </button>
                                         </div>
                                     </div>
                                 </div>
@@ -116,6 +226,17 @@
 
         $('.list-notifikasi').on('click', '.notifikasi', function(e) {
             console.log("Clicked");
+        });
+    </script>
+    <script>
+        $().ready(function() {
+            var table = $('#dataTable').DataTable({
+                ordering: false,
+                "order": [
+                [0, 'asc']
+                ],
+                fixedColumns: false
+            });
         });
     </script>
 
