@@ -47,9 +47,9 @@ class Pendaftaran extends CI_Controller{
         $statusPendaftaran          = 0;
         $isJamaahBerangkat          = 0;
         $ttdPendaftar               = null;
-        $fcKTPAlmarhum              = null;
-        $fcKKAlmarhum               = null;
-        $fcFotoAlmarhum             = null;
+        // $fcKTPAlmarhum              = null;
+        // $fcKKAlmarhum               = null;
+        // $fcFotoAlmarhum             = null;
         $kodePendaftaran            = null;
         $idPaket                    = $this->input->post('idPaket');
         $tanggalBerangkat           = $this->input->post('tanggalBerangkat');
@@ -126,35 +126,35 @@ class Pendaftaran extends CI_Controller{
             return; 
         }
 
-        if($this->upload->do_upload('fcKTPAlmarhum')){ //check if file FC KTP Almarhum upload
-            $dataUpload         = $this->upload->data();
-            $fcKTPAlmarhum      = base_url('images/pendaftaran/' . $dataUpload['file_name']);
-        }else{
-            $response['error']      = true;
-            $response['message']    = 'Gagal Upload FC KTP Almarhum';
-            $this->throw(200, $response);
-            return; 
-        }
+        // if($this->upload->do_upload('fcKTPAlmarhum')){ //check if file FC KTP Almarhum upload
+        //     $dataUpload         = $this->upload->data();
+        //     $fcKTPAlmarhum      = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        // }else{
+        //     $response['error']      = true;
+        //     $response['message']    = 'Gagal Upload FC KTP Almarhum';
+        //     $this->throw(200, $response);
+        //     return; 
+        // }
 
-        if($this->upload->do_upload('fcKKAlmarhum')){ //check if file FC KK Almarhum upload
-            $dataUpload         = $this->upload->data();
-            $fcKKAlmarhum       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
-        }else{
-            $response['error']      = true;
-            $response['message']    = 'Gagal Upload FC KK Almarhum';
-            $this->throw(200, $response);
-            return; 
-        }
+        // if($this->upload->do_upload('fcKKAlmarhum')){ //check if file FC KK Almarhum upload
+        //     $dataUpload         = $this->upload->data();
+        //     $fcKKAlmarhum       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        // }else{
+        //     $response['error']      = true;
+        //     $response['message']    = 'Gagal Upload FC KK Almarhum';
+        //     $this->throw(200, $response);
+        //     return; 
+        // }
 
-        if($this->upload->do_upload('fcFotoAlmarhum')){ //check if file FC Foto Almarhum upload
-            $dataUpload         = $this->upload->data();
-            $fcFotoAlmarhum     = base_url('images/pendaftaran/' . $dataUpload['file_name']);
-        }else{
-            $response['error']    = true;
-            $response['message'] = 'Gagal Upload FC Foto Almarhum';
-            $this->throw(200, $response);
-            return; 
-        }
+        // if($this->upload->do_upload('fcFotoAlmarhum')){ //check if file FC Foto Almarhum upload
+        //     $dataUpload         = $this->upload->data();
+        //     $fcFotoAlmarhum     = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        // }else{
+        //     $response['error']    = true;
+        //     $response['message'] = 'Gagal Upload FC Foto Almarhum';
+        //     $this->throw(200, $response);
+        //     return; 
+        // }
 
         $data = array(
             'IDUSERREGISTER'            => $idUserRegister,
@@ -186,9 +186,10 @@ class Pendaftaran extends CI_Controller{
             'STATUSPENDAFTARAN'         => $statusPendaftaran,
             'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
             'TTDPENDAFTAR'              => $ttdPendaftar,
-            'FCKTPALMARHUM'             => $fcKTPAlmarhum,
-            'FCKKALMARHUM'              => $fcKKAlmarhum,
-            'FCFOTOALMARHUM'            => $fcFotoAlmarhum
+            'CREATED_AT'                => date('Y-m-d H:i:s'),
+            // 'FCKTPALMARHUM'             => $fcKTPAlmarhum,
+            // 'FCKKALMARHUM'              => $fcKKAlmarhum,
+            // 'FCFOTOALMARHUM'            => $fcFotoAlmarhum
         );
 
         //check if inputan kosong
@@ -266,6 +267,112 @@ class Pendaftaran extends CI_Controller{
             return;
         }
         
+    }
+
+    // pendaftaran_post
+    public function pendaftaranBadalHaji(){ 
+        date_default_timezone_set('Asia/Jakarta');
+
+        $config = ['upload_path' => './images/pendaftaran/', 'allowed_types' => 'jpg|png|jpeg|pdf', 'max_size' => 1024];            
+        $this->upload->initialize($config);
+
+        $response = [];
+        
+        $idUserRegister             = $this->input->post('idUserRegister');
+        $fcKTPAlmarhum              = null;
+        $fcKKAlmarhum               = null;
+        $fcFotoAlmarhum             = null;
+        $idPaket                    = $this->input->post('idPaket');
+        
+        if($this->upload->do_upload('fcKTPAlmarhum')){ //check if file FC KTP Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKTPAlmarhum      = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KTP Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcKKAlmarhum')){ //check if file FC KK Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcKKAlmarhum       = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']      = true;
+            $response['message']    = 'Gagal Upload FC KK Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        if($this->upload->do_upload('fcFotoAlmarhum')){ //check if file FC Foto Almarhum upload
+            $dataUpload         = $this->upload->data();
+            $fcFotoAlmarhum     = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Gagal Upload FC Foto Almarhum';
+            $this->throw(200, $response);
+            return; 
+        }
+
+        $data = array(
+            'IDUSERREGISTER'            => $idUserRegister,
+            'FCKTPALMARHUM'             => $fcKTPAlmarhum,
+            'FCKKALMARHUM'              => $fcKKAlmarhum,
+            'FCFOTOALMARHUM'            => $fcFotoAlmarhum,
+            'CREATED_AT'                => date('Y-m-d H:i:s'),
+        );
+
+        $this->db->insert('PENDAFTARAN', $data);
+
+        //getKodePendaftaran
+        $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
+        foreach($dataKodePendaftaran as $dKodePendaftaran){
+            $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
+        }
+
+        //getCountTransaksi
+        $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+        $idTransaksi    = $countTransaksi + 1;
+        $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+        $idTrans        = 'TR'.''.$transId.'';
+
+        //dataTransaksi
+        $dataTransaksi = array(
+            'IDTRANSAKSI'           => $idTrans,
+            'IDPAKET'               => $idPaket,
+            'STATUSTRANSAKSI'       => 0,
+            'KODEPENDAFTARAN'       => $kodePendaftaran
+        );
+
+        //insert data transaksi
+        $this->db->insert('TRANSAKSI', $dataTransaksi);
+
+        if($this->db->affected_rows()>0){
+            require APPPATH . 'views/vendor/autoload.php';
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ee692ab95bb9aeaa1dcc',
+                'b062506e42b3a8c66368',
+                '1149993',
+                $options
+            );
+    
+            $response['statusDaftar'] = 'Sukses Notif';
+            $pusher->trigger('my-channel', 'my-event', $response);
+
+            $response['error']    = false;
+            $response['message'] = 'Sukses Daftar';
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Gagal Daftar';
+            $this->throw(200, $response);
+            return;
+        }
     }
 
     private function throw($statusCode, $response){
