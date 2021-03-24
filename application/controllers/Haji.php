@@ -206,9 +206,9 @@ class Haji extends CI_Controller
             $tipe = "Reguler";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
-            $tipe = "TanpaAntri";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
             $tipe = "Talangan";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
             $tipe = "Badal";
@@ -247,9 +247,9 @@ class Haji extends CI_Controller
             $tipe = "Reguler";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
             $tipe = "Plus";
-        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
-            $tipe = "TanpaAntri";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+            $tipe = "TanpaAntri";
+        }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
             $tipe = "Talangan";
         }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
             $tipe = "Badal";
@@ -389,9 +389,9 @@ public function aksiHapusPaket($idPaket)
         $tipe = "Reguler";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
         $tipe = "Plus";
-    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
-        $tipe = "TanpaAntri";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+        $tipe = "TanpaAntri";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
         $tipe = "Talangan";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
         $tipe = "Badal";
@@ -418,9 +418,9 @@ public function aksiAktifPaket($idPaket)
         $tipe = "Reguler";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
         $tipe = "Plus";
-    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
-        $tipe = "TanpaAntri";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+        $tipe = "TanpaAntri";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
         $tipe = "Talangan";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
         $tipe = "Badal";
@@ -444,9 +444,9 @@ public function aksiNonAktifPaket($idPaket)
         $tipe = "Reguler";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
         $tipe = "Plus";
-    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
-        $tipe = "TanpaAntri";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+        $tipe = "TanpaAntri";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
         $tipe = "Talangan";
     }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
         $tipe = "Badal";
