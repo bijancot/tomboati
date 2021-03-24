@@ -57,6 +57,54 @@ class Paket extends CI_Controller{
         
     }
 
+    // paket haji
+    public function paketHaji(){
+        $response       = [];
+        $idMasterPaket  = null;
+
+        $tipe           = $this->input->get('tipe');
+        $bulan          = $this->input->get('bulan');
+        $hari           = date('Y-m-d');
+        
+        if($tipe == "Plus"){
+            $idMasterPaket = "HAJ-PLS";
+        } else if($tipe == "Reguler"){
+            $idMasterPaket = "HAJ-REG";
+        } else if($tipe == "TanpaAntri"){
+            $idMasterPaket = "HAJ-TPA";
+        } else if($tipe == "Talangan"){
+            $idMasterPaket = "HAJ-TLN";
+        } else if($tipe == "Badal"){
+            $idMasterPaket = "HAJ-BDL";
+        }
+
+        // echo $hari;
+        
+        if(isset($bulan)){
+            if($bulan>0 && $bulan<12 ){
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+            }else{
+                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+            }
+        }else{
+            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+        }
+        
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $data;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
     // getPaketLimit
     public function getPaketLimit(){
         $response       = [];
