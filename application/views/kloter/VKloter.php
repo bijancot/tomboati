@@ -39,7 +39,7 @@
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $data->NAMAPAKET ?></td>
                                     <td><?= date_format(new DateTime($data->TANGGALKEBERANGKATAN), 'd-M-Y'); ?></td>
-                                    <td><?= $data->jumlah ?> Jamaah</td>
+                                    <td><?= $data->jumlah; ?> Jamaah</td>
                                     <td>
                                         <a title="Atur Kloter" href="<?= base_url('Kloter/aturKloter/' . $data->IDPAKET) ?>" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                                         </a>
