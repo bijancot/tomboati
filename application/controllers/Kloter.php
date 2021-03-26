@@ -21,14 +21,14 @@ class Kloter extends CI_Controller
         $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
         $dataJamaah             = $this->MKloter->getKloterbyPaket();
-        $countJamaah            = $this->MKloter->countKloterbyPaket();
+        // $countJamaah            = $this->MKloter->countKloterbyPaket();
         
         $updateJamaah           = $this->MKloter->updateJamaah();
         
         $data = array(
             'title'             => 'Kloter Paket | Tombo Ati',
             'jamaah'            => $dataJamaah,
-            'count'             => $countJamaah,
+            // 'count'             => $countJamaah,
             'countMessage'      => $countMessage,
             'dataNotifChat'     => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
