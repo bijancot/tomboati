@@ -80,16 +80,20 @@ class Paket extends CI_Controller{
 
         // echo $hari;
         
-        if(isset($bulan)){
-            if($bulan>0 && $bulan<12 ){
-                $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+        if($tipe == "Reguler" || $tipe == "Talangan" || $tipe == "Badal"){
+            $data = $this->db->query('SELECT * FROM PAKET WHERE IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1')->result();
+        }else{
+            if(isset($bulan)){
+                if($bulan>0 && $bulan<12 ){
+                    $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && MONTH(TANGGALKEBERANGKATAN) = "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+                }else{
+                    $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+                }
             }else{
                 $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
             }
-        }else{
-            $data = $this->db->query('SELECT * FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 ORDER BY TANGGALKEBERANGKATAN ASC')->result();
         }
-        
+
         if(count($data) > 0){
             $response['error']    = false;
             $response['message'] = 'Sukses Tampil Data';
@@ -192,6 +196,51 @@ class Paket extends CI_Controller{
         } else if($tipe == "VIP"){
             $idMasterPaket = "UMR-VIP";
         }
+
+        $namaBulan      = "";
+        $data = $this->db->query('SELECT TANGGALKEBERANGKATAN FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 GROUP BY MONTH(TANGGALKEBERANGKATAN) ORDER BY TANGGALKEBERANGKATAN ASC')->result();
+        $arr = array();
+
+        foreach($data as $d){
+            $dataMonth = $d->TANGGALKEBERANGKATAN;
+            $newDate = date("m", strtotime($dataMonth));  
+            $arr[] = $newDate;
+        }
+
+        $excludes = implode(',', $arr);
+        $explode = explode(',', $excludes);
+
+        $dataBulan = array(
+            'bulan' => $explode
+        );
+
+        if(count($data) > 0){
+            $response['error']    = false;
+            $response['message'] = 'Sukses Tampil Data';
+            $response['data']     = $dataBulan;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response['error']    = true;
+            $response['message'] = 'Data Promo Kosong';
+            $this->throw(200, $response);
+            return;
+        }
+        
+    }
+
+    public function getPaketHajiMonth(){
+        $response       = [];
+        $idMasterPaket  = null;
+        
+        $tipe           = $this->input->get('tipe');
+        $bulan          = date('Y-m-d');
+
+        if($tipe == "Plus"){
+            $idMasterPaket = "HAJ-PLS";
+        } else if($tipe == "TanpaAntri"){
+            $idMasterPaket = "HAJ-TPA";
+        } 
 
         $namaBulan      = "";
         $data = $this->db->query('SELECT TANGGALKEBERANGKATAN FROM PAKET JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$bulan.'" && IDMASTERPAKET = "'.$idMasterPaket.'" && ISSHOW = 1 GROUP BY MONTH(TANGGALKEBERANGKATAN) ORDER BY TANGGALKEBERANGKATAN ASC')->result();
