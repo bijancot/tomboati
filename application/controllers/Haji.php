@@ -135,27 +135,27 @@ class Haji extends CI_Controller
         // Badal, Reguler dan Talangan hanya nama dan gambar
         if($tipe == "Plus" || $tipe == "TanpaAntri"){
             $data = array(
-             'IDMASKAPAI' => $this->input->post('maskapai'),
-             'IDMASTERPAKET' => $idMasterPaket,
-             'NAMAPAKET' => $this->input->post('namaPaket'),
-             'DURASIPAKET' => $this->input->post('durasiPaket'),
-             'RATINGHOTEL' => $this->input->post('ratingHotel'),
-             'PENERBANGAN' => $this->input->post('penerbangan'),
-             'TANGGALKEBERANGKATAN' => $this->input->post('tanggalKeberangkatan'),
-             'NAMAHOTELA' => $this->input->post('namaHotelA'),
-             'NAMAHOTELB' => $this->input->post('namaHotelB'),
-             'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
-             'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
-             'DOUBLESHEET' => $this->input->post('doubleSheet'),
-             'TRIPLESHEET' => $this->input->post('tripleSheet'),
-             'QUADSHEET' => $this->input->post('quadSheet'),
-             'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
-             'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
-             'KUOTA' => $this->input->post('kuota'),
-             'IMAGEPAKET' => $imagePaket,
-             'ISSHOW' => $valIsShow,
-             'CREATED_AT' => date("Y-m-d h:i:sa")
-         );
+               'IDMASKAPAI' => $this->input->post('maskapai'),
+               'IDMASTERPAKET' => $idMasterPaket,
+               'NAMAPAKET' => $this->input->post('namaPaket'),
+               'DURASIPAKET' => $this->input->post('durasiPaket'),
+               'RATINGHOTEL' => $this->input->post('ratingHotel'),
+               'PENERBANGAN' => $this->input->post('penerbangan'),
+               'TANGGALKEBERANGKATAN' => $this->input->post('tanggalKeberangkatan'),
+               'NAMAHOTELA' => $this->input->post('namaHotelA'),
+               'NAMAHOTELB' => $this->input->post('namaHotelB'),
+               'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
+               'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
+               'DOUBLESHEET' => $this->input->post('doubleSheet'),
+               'TRIPLESHEET' => $this->input->post('tripleSheet'),
+               'QUADSHEET' => $this->input->post('quadSheet'),
+               'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
+               'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
+               'KUOTA' => $this->input->post('kuota'),
+               'IMAGEPAKET' => $imagePaket,
+               'ISSHOW' => $valIsShow,
+               'CREATED_AT' => date("Y-m-d h:i:sa")
+           );
 
         // print_r($data);
         //menangkap kembalian berupa id
@@ -177,12 +177,12 @@ class Haji extends CI_Controller
         }else{
             // Untuk haji badal, talangan, reguler
             $data = array(
-             'IDMASTERPAKET' => $idMasterPaket,
-             'NAMAPAKET' => $this->input->post('namaPaket'),
-             'IMAGEPAKET' => $imagePaket,
-             'ISSHOW' => $valIsShow,
-             'CREATED_AT' => date("Y-m-d h:i:sa")
-         );
+               'IDMASTERPAKET' => $idMasterPaket,
+               'NAMAPAKET' => $this->input->post('namaPaket'),
+               'IMAGEPAKET' => $imagePaket,
+               'ISSHOW' => $valIsShow,
+               'CREATED_AT' => date("Y-m-d h:i:sa")
+           );
 
             //memasukkan ke database
             $this->MPaket->savePaket($data);
@@ -295,17 +295,17 @@ class Haji extends CI_Controller
             $imagePaket = $dataPaket[0]['IMAGEPAKET'];
         }
         else{
-           delete_files($dataPaket[0]['IMAGEPAKET']); 
+         delete_files($dataPaket[0]['IMAGEPAKET']); 
             // unlink($dataPaket[0]['IMAGEPAKET']);die;     
-           $imagePaket = $this->upload_image()  ;
-       }
+         $imagePaket = $this->upload_image()  ;
+     }
 
-        $idMasterPaket = $this->input->post('idMasterPaket');
+     $idMasterPaket = $this->input->post('idMasterPaket');
         //pengecekan paket haji
         // Badal, Reguler dan Talangan hanya nama dan gambar
-       if($idMasterPaket == "HAJ-PLS" || $idMasterPaket == "TPA"){
+     if($idMasterPaket == "HAJ-PLS" || $idMasterPaket == "TPA"){
 
-           $data = array(
+         $data = array(
             'IDPAKET' => $idPaket,
             'IDMASKAPAI' => $this->input->post('maskapai'),
             'IDMASTERPAKET' => $idMasterPaket,
@@ -330,11 +330,11 @@ class Haji extends CI_Controller
 
         //dihapus dulu
         //delete itinerary
-        $this->MPaket->deleteIntenary($idPaket);
+         $this->MPaket->deleteIntenary($idPaket);
 
         //DETAIL ITINERARY
-           $detailKegiatan = $this->input->post('detailKegiatan');
-           for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
+         $detailKegiatan = $this->input->post('detailKegiatan');
+         for ($x = 0; $x < sizeof($detailKegiatan); $x++) {
             $dataItinerary = [
                 'IDPAKET' => $idPaket,
                 'HARIKE' => $x+1,
@@ -349,12 +349,12 @@ class Haji extends CI_Controller
     }else{
         // Untuk haji badal, talangan, reguler
         $data = array(
-         'IDMASTERPAKET' => $idMasterPaket,
-         'NAMAPAKET' => $this->input->post('namaPaket'),
-         'IMAGEPAKET' => $imagePaket,
-         'ISSHOW' => $valIsShow,
-         'CREATED_AT' => date("Y-m-d h:i:sa")
-        );
+           'IDMASTERPAKET' => $idMasterPaket,
+           'NAMAPAKET' => $this->input->post('namaPaket'),
+           'IMAGEPAKET' => $imagePaket,
+           'ISSHOW' => $valIsShow,
+           'CREATED_AT' => date("Y-m-d h:i:sa")
+       );
     }
         // untuk mengecek tipe dan dijadikan kondisi di model
     $tipe = null;
@@ -426,10 +426,35 @@ public function aksiAktifPaket($idPaket)
         $tipe = "Badal";
     }
 
-        //delete
     $this->MPaket->aktifPaket($idPaket);
 
-        //alert ketika sudah terhapus
+        //alert
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
+
+    redirect('Haji/paket/'.$tipe);
+}
+
+// Untuk yang tidak ada maskapai
+public function aksiKhususAktifPaket($idPaket)
+{
+    $dataPaket = $this->MPaket->getKhususSelectPaket($idPaket);
+
+        // untuk mengecek idMasterPaket
+    if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+        $tipe = "Reguler";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
+        $tipe = "Plus";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+        $tipe = "TanpaAntri";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+        $tipe = "Talangan";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+        $tipe = "Badal";
+    }
+
+    $this->MPaket->aktifPaket($idPaket);
+
+    //alert
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil diaktifkan! </div>');
 
     redirect('Haji/paket/'.$tipe);
@@ -438,6 +463,33 @@ public function aksiAktifPaket($idPaket)
 public function aksiNonAktifPaket($idPaket)
 {
     $dataPaket = $this->MPaket->getSelectPaket($idPaket);
+
+        // untuk mengecek idMasterPaket
+    if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){
+        $tipe = "Reguler";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-PLS"){
+        $tipe = "Plus";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TPA"){
+        $tipe = "TanpaAntri";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-TLN"){
+        $tipe = "Talangan";
+    }else if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-BDL"){
+        $tipe = "Badal";
+    }
+
+        //delete
+    $this->MPaket->nonAktifPaket($idPaket);
+
+        //alert ketika sudah terhapus
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Paket berhasil dinonaktifkan! </div>');
+
+    redirect('Haji/paket/'.$tipe);
+}
+
+// Ini untuk yang tidak ada maskapainya
+public function aksiKhususNonAktifPaket($idPaket)
+{
+    $dataPaket = $this->MPaket->getKhususSelectPaket($idPaket);
 
         // untuk mengecek idMasterPaket
     if($dataPaket[0]['IDMASTERPAKET'] == "HAJ-REG"){

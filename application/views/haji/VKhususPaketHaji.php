@@ -90,11 +90,11 @@
                                     <div class="modal-footer">
                                         <?php if ($row->ISSHOW == 1) {
                                         ?>
-                                            <a href="<?= base_url('Haji/aksiNonAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
+                                            <a href="<?= base_url('Haji/aksiKhususNonAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
                                         <?php
                                         } else {
                                         ?>
-                                            <a href="<?= base_url('Haji/aksiAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
+                                            <a href="<?= base_url('Haji/aksiKhususAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
                                         <?php
                                         }
                                         ?>
@@ -138,7 +138,7 @@
                                         <h5>Apakah anda yakin akan mengaktifkan <b> <?= $row->NAMAPAKET ?> ?</b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Haji/aksiAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
+                                        <a href="<?= base_url('Haji/aksiKhususAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Aktifkan</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                         <h5>Apakah anda yakin akan menonaktifkan <b> <?= $row->NAMAPAKET ?> ?</b></h5>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?= base_url('Haji/aksiNonAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
+                                        <a href="<?= base_url('Haji/aksiKhususNonAktifPaket/' . $row->IDPAKET) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Non-Aktifkan</a>
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                     </div>
                                 </div>
