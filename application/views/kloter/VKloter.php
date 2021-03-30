@@ -89,8 +89,8 @@
                 targets: 0
             },
             {
-                sWidth: '15%',
-                targets: 5
+                sWidth: '5%',
+                targets: 4
             }
             ],
             fixedColumns: false
