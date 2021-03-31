@@ -39,7 +39,7 @@
                                 <td>Rp. 1000000</td>
                                 <td>2021-02-10 10:14:21</td>
                                 <td>Rp. 10000</td>
-                                <td><img src="<?= base_url(); ?>assets/img/logo_tomboati.png" style="width:100px"></td>
+                                <td><img src="<?= base_url(); ?>images/users/350721_FOTO.jpeg" style="width:100px"></td>
                             </tr>
                         </tbody>
                     </table>
