@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-user-check ml-2 fa-xs"></i></div>
-                           Jamaah
+                            Jamaah
                         </h1>
                         Daftar Jamaah
                     </div>
@@ -24,12 +24,13 @@
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="4%">No</th>
                                 <th>Status Pendaftaran</th>
                                 <th>Status Berangkat</th>
+                                <th>Status Pembayaran</th>
                                 <th>Nama</th>
                                 <th>Nama Paket</th>
-                                <th>Aksi</th>
+                                <th width=10%>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,11 +52,18 @@
                                 } else {
                                     $berangkat = '<span class="badge badge-pill badge-danger">Belum Berangkat</span>';
                                 }
+
+                                if ($data->STATUSTRANSAKSI == 1) {
+                                    $pembayaran = '<span class="badge badge-pill badge-success">Sudah Bayar</span>';
+                                } else {
+                                    $pembayaran = '<span class="badge badge-pill badge-danger">Belum Bayar</span>';
+                                }
                                 ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $status ?></td>
                                     <td><?php echo $berangkat ?></td>
+                                    <td><?php echo $pembayaran ?></td>
                                     <td><?php echo $data->NAMALENGKAP ?></td>
                                     <td><?php echo $data->NAMAPAKET ?></td>
                                     <td>
@@ -64,6 +72,8 @@
                                         </button>
                                         <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target=""><i class="fa fa-trash"></i>
                                         </button>
+                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm" ><i class="fa fa-dollar-sign fa-fw"></i>
+                                        </a>
                                     </td>
 
                                     <!-- Modal Detail -->
@@ -368,15 +378,6 @@
             ordering: false,
             "order": [
                 [0, 'asc']
-            ],
-            columnDefs: [{
-                    sWidth: '5%',
-                    targets: 0
-                },
-                {
-                    sWidth: '15%',
-                    targets: 5
-                }
             ],
             fixedColumns: false
         });

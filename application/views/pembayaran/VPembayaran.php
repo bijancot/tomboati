@@ -25,14 +25,23 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>ID Pembayaran</th>
                                 <th>ID Transaksi</th>
                                 <th>Total Pembayaran</th>
-                                <th>Tanggal Jatuh Tempo</th>
+                                <th>Tanggal Pembayaran</th>
                                 <th>Sisa Pembayaran</th>
-                                <th>Aksi</th>
+                                <th>Bukti Pembayaran</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>31032021</td>
+                                <td>Rp. 1000000</td>
+                                <td>2021-02-10 10:14:21</td>
+                                <td>Rp. 10000</td>
+                                <td><img src="<?= base_url(); ?>images/users/350721_FOTO.jpeg" style="width:100px"></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -73,10 +82,6 @@
                     sWidth: '5%',
                     targets: 0
                 },
-                {
-                    sWidth: '10%',
-                    targets: 6
-                }
             ],
             fixedColumns: false
         });
