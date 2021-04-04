@@ -20,13 +20,15 @@ class Jamaah extends CI_Controller
         $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
         $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
 
-        $dataJamaah             = $this->MJamaah->getJamaah();
+        $dataJamaahUmroh             = $this->MJamaah->getJamaahUmroh();
+        $dataJamaahWisataHalal       = $this->MJamaah->getJamaahWisataHalal();
         
         $updateJamaah           = $this->MJamaah->updateJamaah();
         
         $data = array(
             'title'             => 'Jamaah | Tombo Ati',
-            'jamaah'            => $dataJamaah,
+            'jamaah'            => $dataJamaahUmroh,
+            'wisataHalal'       => $dataJamaahWisataHalal,
             'countMessage'      => $countMessage,
             'dataNotifChat'     => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
@@ -57,8 +59,11 @@ class Jamaah extends CI_Controller
     }
 
     public function aksiVerifikasiPendaftaran($kodePendaftaran){
-        //verif
+        //verif pendaftaran
         $this->MJamaah->verifPendaftaranJamaah($kodePendaftaran);
+
+        //verif transaksi
+        $this->MJamaah->verifTransaksiJamaah($kodePendaftaran);
         
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Jamaah berhasil diverifikasi! </div>');
 
@@ -82,8 +87,11 @@ class Jamaah extends CI_Controller
     }
 
     public function aksiCabutVerifikasiPendaftaran($kodePendaftaran){
-        //verif
+        //cabut pendaftaran
         $this->MJamaah->cabutPendaftaranJamaah($kodePendaftaran);
+
+        //cabut transaksi
+        $this->MJamaah->cabutTransaksiJamaah($kodePendaftaran);
         
         // echo $this->db->last_query();
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Cabut verifikasi berhasil! </div>');

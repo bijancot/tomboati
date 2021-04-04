@@ -186,6 +186,16 @@ class Haji extends CI_Controller
 
             //memasukkan ke database
             $this->MPaket->savePaket($data);
+
+            $query = $this->db->query('SELECT USERTOKEN FROM USER_REGISTER WHERE USERTOKEN IS NOT NULL')->result();
+
+            $dataPaketNotif = array(
+                'namaPaket' => $this->input->post('namaPaket'),
+                'dataToken' => $query
+            );
+            
+            $this->load->view('notif/paket', $dataPaketNotif);
+
         }
 
         //alert ketika sudah tersimpan
