@@ -12,7 +12,7 @@
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             <i class="page-header-icon fas fa-edit ml-2 fa-xs"></i>
-                            Atur Kloter
+                            Manajemen Kloter
                         </h1>
                     </div>
                 </div>
@@ -25,13 +25,14 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Form Atur Kloter</div>
+                        <div class="card-header">Detail Paket dan Kloter</div>
                         <div class="card-body">
                             <!-- Component Preview-->
+                            <?= $this->session->flashdata('message'); ?>
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
                                     <?php foreach ($paket as $row) { ?>
-                                        <form action="<?= base_url()?>kloter/aksiAturKloter" method="POST" id="saveKloterPaket"></form>
+                                        <h4>Paket</h4>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
@@ -66,281 +67,178 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <h4>Rombongan</h4>
-                                                    <button type="button" class="mb-2 btn btn-success" title="Tambah Kloter" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#tambahKloterModal"><i class="fa fa-plus"></i> Tambah Kloter</button>
+                                                    <h4>Kloter</h4>
+                                                    <a href="<?= base_url('Kloter/tambahKloter/'. $row['IDPAKET']) ?>" type="button" class="mb-2 btn btn-success" title="Tambah Kloter" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Kloter</a>
 
-                                                    <!-- Modal Tambah -->
-                                                    <div class="modal fade" id="tambahKloterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kloter</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="<?= base_url()?>Kloter/aksiTambahKloter/<?= $row['IDPAKET'] ?>" method="POST" id="addKloter"></form>
-                                                                    <h5>Silahkan Masukkan Kloter</h5>
-                                                                    <input name="idMasterPaket" class="form-control" type="hidden" value="<?= $row['IDMASTERPAKET'] ?>" form="addKloter" />
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                            <label for="kloter">Nama Kloter</label>
-                                                                            <div class="input-group mb-3">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text" id="basic-addon3"><?= $row['IDPAKET'].'-'.$row['IDMASTERPAKET'] ?></span>
-                                                                            </div>
-                                                                            <input name="kloter" class="form-control" id="kloter" type="text" placeholder="Masukkan Nama Kloter" required="" form="addKloter" />
-                                                                        </div>
+                                                <?php } ?>
+                                                <div class="datatable">
+                                                    <?php
+                                                    $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
+                                                    $this->table->set_template($template);
+                                                    $this->table->set_heading('Kloter', 'Ketua Rombongan' , 'Jumlah Jamaah', 'Aksi');
+
+                                                    foreach($kloter as $row){
+                                                        ?>
+                                                        <!-- Modal Detail -->
+                                                        <div class="modal fade" id="detailKloterModal<?= $row['KLOTER'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Detail Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
                                                                     </div>
-                                                                </div>
-                                                                <label>Nama Jamaah</label>
-                                                                <?php     
-                                                                $cek = 0;
-                                                                foreach($unkownKloter as $row){
-                                                                    $cek++;
-                                                                    ?>
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                          <div class="form-check">
-                                                                            <input type="checkbox" name="kodePendaftaranJamaah[]" class="form-check-input" id="check<?= $row['KODEPENDAFTARAN']; ?>" value="<?= $row['KODEPENDAFTARAN'] ?>" form="addKloter">
-                                                                            <label class="form-check-label" for="check<?= $row['KODEPENDAFTARAN'] ?>"><?= $row['NAMALENGKAP'] ?></label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <?php 
-                                                            } 
-                                                            if($cek == 0){
-                                                            // Kondisi
-                                                                echo '<p><b>Jamaah Sudah Masuk Kloter Semua</b></p>';
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <?php
-                                                        // kondisi
-                                                            if($cek != 0){
-                                                                ?>
-                                                                <button type="submit" class="btn btn-success" form="addKloter"><i class="fa fa-plus mr-1"></i>Tambah</button>
-                                                                <?php  
-                                                            }
-                                                            ?>
-                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="datatable">
-                                                <?php
-                                                $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">');
-                                                $this->table->set_template($template);
-                                                $this->table->set_heading('Kloter', 'Jumlah Orang', 'Aksi');
-
-                                                foreach($kloter as $row){
-                                                    $this->table->add_row(
-                                                        $row['KLOTER'],
-                                                        "Kosong",
-                                                        '<button title="Detail Kloter" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailKloterModal' . $row["KLOTER"] . '"><i class="fa fa-ellipsis-h"></i>
-                                                        </button>
-                                                        <button title="Edit Kloter" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editKloterModal' . $row["KLOTER"] . '"><i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button title="Hapus Kloter" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKloterModal' . $row["KLOTER"] . '"><i class="fa fa-trash"></i>
-                                                        </button>'
-                                                    );
-
-                                                    ?>
-                                                    <!-- Modal Detail -->
-                                                    <div class="modal fade" id="detailKloterModal<?= $row['KLOTER'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Detail Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <!-- Memanggil model -->
-                                                                    <?php
-                                                                    $CI =& get_instance();
-                                                                    $CI->load->model('MKloter');
-                                                                    $result = $CI->MKloter->getSelectKloter($row['IDPAKET'], $row['KLOTER']);
-                                                                    ?>
-                                                                    <?php     
-                                                                    foreach($result as $val){
-                                                                        // DATA YANG MASUK DI KLOTER
-                                                                        $checkedJamaah[] = $val['KODEPENDAFTARAN'];
+                                                                    <div class="modal-body">
+                                                                        <!-- Memanggil model -->
+                                                                        <?php
+                                                                        $CI =& get_instance();
+                                                                        $CI->load->model('MKloter');
+                                                                        $result = $CI->MKloter->getSelectKloter($row['IDPAKET'], $row['KLOTER']);
                                                                         ?>
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <div class="form-group">
-                                                                                    <h6 for="">Nama Lengkap</h6>
-                                                                                    <p><?= $val['NAMALENGKAP']; ?></p>
+                                                                        <?php     
+                                                                        $no = 1;
+                                                                        foreach($result as $val){
+                                                                            ?>
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <h6 for="">Jamaah ke <?= $no++; ?></h6>
+                                                                                        <p><?= $val['NAMALENGKAP']; ?></p>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col">
-                                                                                <div class="form-group">
-                                                                                    <h6 for="">Jenis Kelamin</h6>
-                                                                                    <p>
-                                                                                        <?php
-                                                                                        if($val['JENISKELAMIN'] == 1){
-                                                                                            echo "Laki-Laki";
-                                                                                        }else{
-                                                                                            echo "Perempuan";
-                                                                                        }
-                                                                                        ?>
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <div class="form-group">
-                                                                                    <h6 for="">Tempat, Tanggal Lahir</h6>
-                                                                                    <p><?= $val['TEMPATLAHIR'].", " . $val['TANGGALLAHIR'] ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <div class="form-group">
-                                                                                    <h6 for="">Alamat</h6>
-                                                                                    <p><?= $val['ALAMAT']; ?></p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <?php 
-                                                                    } 
-                                                                    ?>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                                                            <?php 
+                                                                        } 
+                                                                        ?>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href='<?= base_url("Kloter/editKloter/". $row['KLOTER'])?>' title="Edit Kloter" type="button" class="btn btn-warning"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <!-- Modal Edit -->
-                                                    <div class="modal fade" id="editKloterModal<?= $row['KLOTER'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="<?= base_url()?>Kloter/aksiEditKloter/<?= $row['KLOTER'] ?>" method="POST" id="editKloter"></form>
-                                                                    <h5>Silahkan Masukkan Kloter</h5>
-                                                                    <input name="idPaket" class="form-control" type="hidden" value="<?= $row['IDPAKET'] ?>" form="editKloter" />
-                                                                    <input name="idMasterPaket" class="form-control" type="hidden" value="<?= $row['IDMASTERPAKET'] ?>" form="editKloter" />
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                            <label for="kloter">Nama Kloter</label>
-                                                                            <div class="input-group mb-3">
-                                                                              <div class="input-group-prepend">
-                                                                                <span class="input-group-text" id="basic-addon3"><?= $row['IDPAKET'].'-'.$row['IDMASTERPAKET'] ?></span>
+                                                        <!-- Modal Karomah -->
+                                                        <div class="modal fade" id="karomahKloterModal<?= $row['KLOTER']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Pemilihan Karomah Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="<?= base_url()?>Kloter/aksiKaromahKloter/<?= $row['KLOTER'] ?>" method="POST" id="saveKloterPaket<?= $row['KLOTER'] ?>">
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group">
+                                                                                        <label for="ketuaRombongan">Ketua Rombongan</label><br>
+                                                                                        <select class="form-control" id="karomah<?= $row['KLOTER'] ?>" name="karomah<?= $row['KLOTER'] ?>" form="saveKloterPaket<?= $row['KLOTER'] ?>" style="width: 100%;">
+                                                                                            <option value="">- Pilih -</option>
+                                                                                            <?php
+                                                                                            $karomah = "-";
+                                                                                            $result = $CI->MKloter->getKaromah($row['KLOTER']);
+                                                                                            foreach($result as $key){
+                                                                                                if($key['ISKAROMAH'] == 1){
+                                                                                                    $karomah = $key['NAMALENGKAP'];
+                                                                                                }
+                                                                                                ?>
+                                                                                                <option value="<?php echo $key['KODEPENDAFTARAN']; ?>" <?php if($key['ISKAROMAH']=="1"){echo "selected";}?> ><?php echo $key['NAMALENGKAP']; ?></option>
+                                                                                            <?php } ?>
+                                                                                        </select>
+                                                                                        <!-- Selexct 2 -->
+                                                                                        <script>
+                                                                                            $(document).ready(function() {
+                                                                                                $('#karomah<?= $row['KLOTER']; ?>').select2();
+                                                                                            });
+                                                                                        </script>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                            <?php  
-                                                                            $sub_kloter = substr($row['KLOTER'],13);
-                                                                            ?>
-                                                                            <input name="kloter" class="form-control" id="kloter" type="text" placeholder="Masukkan Nama Kloter" required=""  value="<?= $sub_kloter ?>" form="editKloter" />
                                                                         </div>
-                                                                    </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-success" form="saveKloterPaket<?= $row['KLOTER'] ?>"><i class="fa fa-plus mr-1"></i>Tambah</button>
+                                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
-                                                                <?php  
-                                                                $edit = $CI->MKloter->getEditKloter($row['IDPAKET'], $row['KLOTER']);
-                                                                ?>
-                                                                <label>Nama Jamaah</label>
-                                                                <?php    
-                                                                foreach($edit as $check){
+                                                            </div>
+                                                        </div>
 
-                                                                    $checked = "";
-                                                                    if(in_array($check['KODEPENDAFTARAN'],$checkedJamaah)){
-                                                                        $checked = "checked";
-                                                                    }
-                                                                    ?>
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                          <div class="form-check">
-                                                                            <input type="checkbox" name="kodePendaftaranJamaah[]" class="form-check-input" id="check<?= $check['KODEPENDAFTARAN']; ?>" value="<?= $check['KODEPENDAFTARAN'] ?>" <?= $checked; ?> form="editKloter">
-                                                                            <label class="form-check-label" for="check<?= $check['KODEPENDAFTARAN'] ?>"><?= $check['NAMALENGKAP'] ?></label>
-                                                                        </div>
+                                                        <!-- Modal Hapus -->
+                                                        <div class="modal fade" id="hapusKloterModal<?= $row['KLOTER']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h5>Apakah anda yakin akan menghapus <b> Kloter <?= $row['KLOTER'] ?> ? </b></h5>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="<?= base_url('Kloter/aksiHapusKloter/' . $row['KLOTER']) ?>" type="button" class="btn btn-danger"><i class="false fa-trash mr-1"></i>Hapus</a>
+                                                                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                                                     </div>
                                                                 </div>
-                                                                <?php 
-                                                            }
-                                                            ?>
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-warning" form="editKloter"><i class="fa fa-edit mr-1"></i>Update</button>
-                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal Hapus -->
-                                            <div class="modal fade" id="hapusKloterModal<?= $row['KLOTER']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Kloter&nbsp;<?= $row['KLOTER'] ?></h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
+                                                        <?php
+                                                        $this->table->add_row(
+                                                            $row['KLOTER'],
+                                                            $karomah,
+                                                            ($no-1)." Jamaah",
+                                                            '<button title="Detail Kloter" type="button" class="btn btn-primary ml-1 btn-sm" data-toggle="modal" data-target="#detailKloterModal' . $row["KLOTER"] . '"><i class="fa fa-ellipsis-h"></i>
                                                             </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h5>Apakah anda yakin akan menghapus <b> Kloter <?= $row['KLOTER'] ?> ? </b></h5>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="<?= base_url('Kloter/aksiHapusKloter/'.$row['IDPAKET'].'/' . $row['KLOTER']) ?>" type="button" class="btn btn-danger"><i class="false fa-trash mr-1"></i>Hapus</a>
-                                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
-                                                        </div>
-                                                    </div>
+                                                            <button title="Karomah Kloter" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#karomahKloterModal' . $row["KLOTER"] . '"><i class="fa fa-plus"></i>
+                                                            </button>
+                                                            <a href='.base_url("Kloter/editKloter/". $row['KLOTER']).' title="Edit Kloter" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <button title="Hapus Kloter" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKloterModal' . $row["KLOTER"] . '"><i class="fa fa-trash"></i>
+                                                            </button>'
+                                                        );
+                                                    }
+                                                    echo $this->table->generate();
+                                                    ?>
                                                 </div>
                                             </div>
-                                            <?php
-                                        }
-                                        echo $this->table->generate();
-                                        ?>
+                                        </div>
+                                    </div>
+                                    <!-- untuk jamaah yang belum masuk kloter -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="datatableV1">
+                                                <h4>Jamaah Yang Belum Masuk Kloter</h4>
+                                                <?php
+                                                $template = array('table_open' => '<table class="table table-bordered table-hover" id="dataTableV1" width="100%" cellspacing="0">');
+                                                $this->table->set_template($template);
+                                                $this->table->set_heading('Nama Lengkap', 'Alamat');
+
+                                                foreach($unkownKloter as $row){
+                                                    $this->table->add_row(
+                                                        $row['NAMALENGKAP'],
+                                                        $row['ALAMAT']
+                                                    );
+                                                }
+                                                echo $this->table->generate();
+                                                ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="ketuaRombongan">Ketua Rombongan</label>
-                                    <select class="ketua-select2 form-control" id="karomah" name="karomah" form="saveKloterPaket">
-                                        <?php
-                                        foreach($jamaah as $key){ ?>
-                                            <option value="">- Pilih -</option>
-                                            <option name="kodePendaftaranKaromah" value="<?php echo $key['KODEPENDAFTARAN']; ?>" <?php if($row['ISKAROMAH']=="1"){echo "selected";}?> >
-                                                <?php echo $key['NAMALENGKAP']; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <div class="text-md-right">
-                            <button type="submit" class="btn btn-primary" form="saveKloterPaket"> Selesai </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
 </body>
-<script>
-    $(document).ready(function() {
-        $('.ketua-select2').select2();
-    });
-</script>
 <script>
     Pusher.logToConsole = true;
 
@@ -367,6 +265,13 @@
 <script>
     $().ready(function() {
         var table = $('#dataTable').DataTable({
+            ordering: false,
+            "order": [
+            [0, 'asc']
+            ],
+            fixedColumns: false
+        });
+        var table = $('#dataTableV1').DataTable({
             ordering: false,
             "order": [
             [0, 'asc']
