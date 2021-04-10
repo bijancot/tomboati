@@ -71,6 +71,21 @@ class MKloter extends CI_Model
         $query = $this->db->get();
 
         return $query->result_array();
+    }   
+
+     // INI UNTUK JAMAAH YANG SUDAH MEMPUNYAI KLOTER
+    public function getSelectKloter($IDPAKET, $KLOTER){
+
+        $this->db->select('*');
+        $this->db->from('TRANSAKSI');
+        $this->db->join('PAKET', 'TRANSAKSI.IDPAKET = PAKET.IDPAKET');
+        $this->db->join('PENDAFTARAN', 'TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN');
+        $this->db->where('TRANSAKSI.IDPAKET', $IDPAKET);
+        $this->db->where('STATUSPENDAFTARAN', 1);
+        $this->db->where('KLOTER', $KLOTER);
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
     public function getEditKloter($IDPAKET, $KLOTER){
