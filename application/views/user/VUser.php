@@ -5,10 +5,10 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <i class="page-header-icon fas fa-user ml-2 fa-xs"></i>
-                            User
+                            <i class="page-header-icon fas fa-user-tie ml-2 fa-xs"></i>
+                            Agen
                         </h1>
-                        Daftar User
+                        Daftar Agen
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('User/tambahUser/'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah User</a>
+                <a href="<?= base_url('User/tambahUser/'); ?>" class='btn btn-primary btn-sm' type='submit'><i class="fa fa-plus mr-1"></i>Tambah Agen</a>
             </div>
             <div class="card-body">
                 <div class="datatable">
@@ -32,23 +32,19 @@
                     foreach ($user as $row) {
 
                         if ($row->STATUS == 1) {
-                            $verfikasi = '<button title="Cabut Verifikasi User" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-times-circle"></i>
+                            $verfikasi = '<button title="Cabut Verifikasi Agen" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-times-circle"></i>
                         </button>';
                             $status = '<span class="badge badge-pill badge-success">Verified</span>';
                         } else {
-                            $verfikasi = '<button title="Verifikasi User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-check"></i>
+                            $verfikasi = '<button title="Verifikasi Agen" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verifikasiUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-check"></i>
                         </button>';
                             $status = '<span class="badge badge-pill badge-danger">Unverified</span>';
                         }
                         //untuk kategori user
                         if ($row->KATEGORI == 1) {
-                            $kategori = "Jamaah";
+                            $kategori = "Agen";
                         } else if ($row->KATEGORI == 2) {
                             $kategori = "Mitra";
-                        } else if ($row->KATEGORI == 3) {
-                            $kategori = "Agen";
-                        } else if ($row->KATEGORI == 4) {
-                            $kategori = "Jamaah 4";
                         }
                         $this->table->add_row(
                             $no++,
@@ -59,13 +55,13 @@
                             $kategori,
                             $row->CREATED_AT,
                             $verfikasi . '
-                        <button title="Detail User" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
+                        <button title="Detail Agen" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailUser' . $row->IDUSERREGISTER . '"><i class="fa fa-ellipsis-h"></i>
                         </button><br>
-                        <a title="Chat User" href="' .  base_url("Chat/detailChat/" . $row->ID_CHAT_ROOM) . '" type="button" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-envelope"></i>
+                        <a title="Chat Agen" href="' .  base_url("Chat/detailChat/" . $row->ID_CHAT_ROOM) . '" type="button" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-envelope"></i>
                         </a>
-                        <a title="Edit User" href="' .  base_url("User/editUser/" . $row->IDUSERREGISTER) . '" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
+                        <a title="Edit Agen" href="' .  base_url("User/editUser/" . $row->IDUSERREGISTER) . '" type="button" class="btn btn-warning mt-1 btn-sm"><i class="fa fa-edit"></i>
                         </a>
-                        <button title="Hapus User" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-trash"></i>
+                        <button title="Hapus Agen" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusUserModal' . $row->IDUSERREGISTER . '"><i class="fa fa-trash"></i>
                         </button>
                         '
                         );

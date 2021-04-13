@@ -5,11 +5,11 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                        <a href="<?= base_url('user'); ?>">
+                        <a onclick="history.back(-1)">
                             <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                         </a>
                         <i class="page-header-icon fas fa-edit ml-2 fa-xs"></i>
-                        Edit User
+                        Edit Agen
                         </h1>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Form Edit User</div>
+                        <div class="card-header">Form Edit Agen</div>
                         <div class="card-body">
                             <!-- Component Preview-->
                             <div class="sbp-preview">
@@ -53,7 +53,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="kategori">Kategori User</label>
+                                                <label for="kategori">Kategori</label>
                                                 <select id="kategori" class="form-control" name="kategori" required="">
                                                     <option value="">
                                                         Pilih Kategori
@@ -63,15 +63,9 @@
                                                     if ($row['KATEGORI'] == "1") {
                                                     echo 'selected="selected"';
                                                     }
-                                                    ?>>Jamaah</option>
+                                                    ?>>Agen</option>
                                                     <option value="2" <?php
                                                     if ($row['KATEGORI'] == "2") {
-                                                    echo 'selected="selected"';
-                                                    }
-                                                    ?>>Agen</option>
-                                                    <option value="3"
-                                                    <?php
-                                                    if ($row['KATEGORI'] == "3") {
                                                     echo 'selected="selected"';
                                                     }
                                                     ?>>Mitra</option>
