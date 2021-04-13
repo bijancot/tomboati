@@ -25,7 +25,7 @@ class User extends CI_Controller
         // echo $this->db->last_query();
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'Agen | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat,
@@ -45,13 +45,32 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'Agen | Tombo Ati',
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
         );
 
         $this->template->view('user/VTambahUser', $data);
+    }
+
+    public function tambahMitra()
+    {
+
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+        //parse
+        $data = array(
+            'title' => 'Mitra | Tombo Ati',
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
+        );
+
+        $this->template->view('user/VTambahMitra', $data);
     }
 
     public function aksiTambahUser(){
@@ -97,13 +116,33 @@ class User extends CI_Controller
 
         //parse
         $data = array(
-            'title' => 'User | Tombo Ati',
+            'title' => 'Agen | Tombo Ati',
             'user' => $dataUser,
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat,
             'countJamaahDaftar' => $countJamaahDaftar
         );
         $this->template->view('user/VEditUser', $data);
+    }
+
+    public function editMitra($idUser)
+    {
+        $dataUser = $this->MUser->getSelectUser($idUser);
+
+        //notifikasi pesan
+        $countMessage   = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+        //parse
+        $data = array(
+            'title' => 'Mitra | Tombo Ati',
+            'user' => $dataUser,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
+        );
+        $this->template->view('user/VEditMitra', $data);
     }
 
     public function aksiEditUser($idUser){        
@@ -287,5 +326,27 @@ class User extends CI_Controller
             $this->session->set_flashdata('gagal', 'Password Gagal Diubah');
             redirect('Admin/ChangePassword?idUserRegister='.$idUserRegister);
         }
+    }
+
+    public function mitra()
+    {
+        $dataUser = $this->MUser->getMitra();
+
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+        // echo $this->db->last_query();
+        //parse
+        $data = array(
+            'title' => 'Mitra | Tombo Ati',
+            'user' => $dataUser,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
+        );
+
+        $this->template->view('user/VMitra', $data);
     }
 }

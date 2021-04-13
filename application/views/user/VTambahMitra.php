@@ -9,7 +9,7 @@
                                 <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             <i class="page-header-icon fas fa-plus-circle ml-2 fa-xs"></i>
-                            Tambah Agen
+                            Tambah Mitra
                         </h1>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Form Tambah Agen</div>
+                        <div class="card-header">Form Tambah Mitra</div>
                         <div class="card-body">
                             <!-- Component Preview-->
                             <div class="sbp-preview">
@@ -52,8 +52,8 @@
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="kategori">Kategori User</label>
-                                                <span name="kategori" class="form-control" value="1" id="kategori" type="text" required="">Agen</span>
+                                                <label for="kategori">Kategori</label>
+                                                <span name="kategori" class="form-control" value="2" id="kategori" type="text" required="">Mitra</span>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nomorHP">Foto Agen</label>
+                                        <label for="nomorHP">Foto Mitra</label>
                                         <!-- wadah preview -->
                                         <img id="foto-preview" alt="image preview" />
                                         <div class="custom-file">

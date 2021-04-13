@@ -103,10 +103,23 @@
             </a>
         </nav>
     </div>
-    <a class="nav-link " href="<?php echo site_url('User'); ?>">
+    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
         <i class="fas fa-user-alt ml-2 mr-2 fa-lg fa-fw"></i>
         User
+        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
+    <div class="collapse" id="collapseUser" data-parent="#accordionSidenav">
+        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+            <a class="nav-link " href="<?php echo site_url('User'); ?>">
+                <i class="fas fa-user-tie ml-2 mr-2 fa-lg fa-fw"></i>
+                Agen
+            </a>
+            <a class="nav-link " href="<?php echo site_url('User/mitra'); ?>">
+                <i class="fas fa-handshake ml-2 mr-2 fa-lg fa-fw"></i>
+                Mitra
+            </a>
+        </nav>
+    </div>
 
     <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">
         <i class="fas fa-user-check ml-2 mr-2 fa-lg fa-fw"></i>

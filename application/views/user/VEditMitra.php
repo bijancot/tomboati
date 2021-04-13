@@ -9,7 +9,7 @@
                             <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                         </a>
                         <i class="page-header-icon fas fa-edit ml-2 fa-xs"></i>
-                        Edit Agen
+                        Edit Mitra
                         </h1>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Form Edit Agen</div>
+                        <div class="card-header">Form Edit Mitra</div>
                         <div class="card-body">
                             <!-- Component Preview-->
                             <div class="sbp-preview">
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nomorHP">Foto User</label>
+                                        <label for="nomorHP">Foto Mitra</label>
                                         <!-- wadah preview -->
                                         <img id="foto-preview-edit" src="<?= $row['FOTO']; ?>" alt="image preview"/>
                                         <div class="custom-file">
