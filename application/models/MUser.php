@@ -9,6 +9,18 @@ class MUser extends CI_Model
         $this->db->select("*");
         $this->db->from('USER_REGISTER');
         $this->db->join('CHAT_ROOM', 'CHAT_ROOM.IDUSERREGISTER = USER_REGISTER.IDUSERREGISTER');
+        $this->db->where('USER_REGISTER.KATEGORI', 1);
+        $query = $this->db->get();
+     
+        return $query->result();
+    }
+
+    public function getMitra()
+    {
+        $this->db->select("*");
+        $this->db->from('USER_REGISTER');
+        $this->db->join('CHAT_ROOM', 'CHAT_ROOM.IDUSERREGISTER = USER_REGISTER.IDUSERREGISTER');
+        $this->db->where('USER_REGISTER.KATEGORI', 2);
         $query = $this->db->get();
      
         return $query->result();
