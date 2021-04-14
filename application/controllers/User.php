@@ -80,7 +80,7 @@ class User extends CI_Controller
         $foto = $this->upload_foto();
 
         //generate acak
-        $kodeReferral = $this->generate_string(6);
+        $kodeReferral = $this->generate_string(8);
         $data = array(
                'NOMORKTP' => $this->input->post('nomorKTP'),
                'EMAIL' => $this->input->post('email'),
