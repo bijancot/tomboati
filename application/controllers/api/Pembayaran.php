@@ -101,7 +101,9 @@ class Pembayaran extends CI_Controller{
         );
         
         $this->db->insert('DETAIL_PEMBAYARAN', $dataDetailPembayaran);
-
+        
+        $dataPembayaran = $this->db->query('SELECT * FROM PEMBAYARAN WHERE IDPEMBAYARAN="'.$idPembayaran.'"')->result();
+        
         if($this->db->affected_rows()>0){
             require APPPATH . 'views/vendor/autoload.php';
             $options = array(
@@ -120,7 +122,7 @@ class Pembayaran extends CI_Controller{
 
             $response['error']    = false;
             $response['message'] = 'Sukses Bayar';
-            $response['data'] = $dataTransaksi;
+            $response['data'] = $dataPembayaran;
             $this->throw(200, $response);
             return;
         }
