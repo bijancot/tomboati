@@ -103,8 +103,24 @@ class Pembayaran extends CI_Controller{
         $this->db->insert('DETAIL_PEMBAYARAN', $dataDetailPembayaran);
 
         if($this->db->affected_rows()>0){
+            require APPPATH . 'views/vendor/autoload.php';
+            $options = array(
+                'cluster' => 'ap1',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                'ee692ab95bb9aeaa1dcc',
+                'b062506e42b3a8c66368',
+                '1149993',
+                $options
+            );
+    
+            $response['statusBayar'] = 'Sukses Notif';
+            $pusher->trigger('my-channel', 'my-event', $response);
+
             $response['error']    = false;
             $response['message'] = 'Sukses Bayar';
+            $response['data'] = $dataTransaksi;
             $this->throw(200, $response);
             return;
         }
@@ -148,6 +164,7 @@ class Pembayaran extends CI_Controller{
         } 
     }
 
+    
     private function throw($statusCode, $response){
         $this->output->set_status_header($statusCode)
         ->set_content_type('application/json')

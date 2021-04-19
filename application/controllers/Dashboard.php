@@ -14,12 +14,14 @@ class Dashboard extends CI_Controller
         $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
 
         $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+        $countJamaahBayar       = $this->MNotifikasi->countJamaahBayar();
 
         $data = array(
             'title' => 'Dashboard | Tombo Ati',
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat,
-            'countJamaahDaftar' => $countJamaahDaftar
+            'countJamaahDaftar' => $countJamaahDaftar,
+            'countJamaahBayar' => $countJamaahBayar
         );
 
         $data['totalUser']			= $this->MUser->totalUser();

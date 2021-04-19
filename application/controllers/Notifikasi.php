@@ -28,11 +28,13 @@ class Notifikasi extends CI_Controller {
     public function listNotifikasiJamaah()
 	{
         $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+        $countJamaahBayar       = $this->MNotifikasi->countJamaahBayar();
 
         $data = array(
-            'countJamaahDaftar' => $countJamaahDaftar
+            'countJamaahDaftar' => $countJamaahDaftar,
+            'countJamaahBayar' => $countJamaahBayar
         );
         
 		$this->load->view('template/header-notifJamaah', $data);
-	}
+    }
 }

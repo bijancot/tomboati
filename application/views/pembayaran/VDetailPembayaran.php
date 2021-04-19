@@ -5,8 +5,11 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
+                            <a href="<?= base_url(); ?>Pembayaran">
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
+                            </a>
                             <div class="page-header-icon"><i class="fas fa-dollar-sign ml-2 fa-xs"></i></div>
-                            Pembayaran
+                            Detail Pembayaran
                         </h1>
                         <div class="page-header-subtitle">Daftar Pembayaran</div>
                     </div>
@@ -26,11 +29,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>ID Transaksi</th>
-                                <th>Total Pembayaran</th>
+                                <th>Jumlah Pembayaran</th>
                                 <th>Tanggal Pembayaran</th>
-                                <th>Sisa Pembayaran</th>
+                                <th>Deskripsi</th>
                                 <th>Status Pembayaran</th>
+                                <th>Bukti Pembayaran</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -44,22 +47,25 @@
                             }
 
                             $no = 1; foreach($pembayaran as $data){ 
-
                             if ($data->STATUSPEMBAYARAN == 1) {
-                                $status = '<span class="badge badge-pill badge-success">Lunas</span>';
+                                $verfikasi = '<a title="Cabut Verifikasi Pembayaran" href="'.base_url('Pembayaran/aksiCabutVerifikasiPembayaran/'.$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN).'" class="btn btn-danger btn-sm"><i class="fa fa-times-circle"></i>
+                        </button>';
+                                $status = '<span class="badge badge-pill badge-success">Verified</span>';
                             } else {
-                                $status = '<span class="badge badge-pill badge-danger">Belum Lunas</span>';
+                                $verfikasi = '<a title="Verifikasi Pembayaran" href="'.base_url('Pembayaran/aksiVerifikasiPembayaran/'.$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN).'" class="btn btn-primary btn-sm" ><i class="fa fa-check"></i>
+                        </button>';
+                                $status = '<span class="badge badge-pill badge-danger">Unverified</span>';
                             }
                             ?>
                             <tr>
                                 <td><?php echo $no++?></td>
-                                <td><?php echo $data->IDTRANSAKSI; ?> </td>
-                                <td><?php echo harga($data->TOTALPEMBAYARAN); ?></td>
+                                <td><?php echo harga($data->JUMLAHPEMBAYARAN); ?></td>
                                 <td><?php echo $data->TANGGALPEMBAYARAN; ?></td>
-                                <td><?php echo harga($data->SISAPEMBAYARAN); ?></td>
+                                <td><?php echo $data->DESKRIPSI; ?></td>
                                 <td><?php echo $status; ?></td>
+                                <td><img src="<?php echo $data->BUKTIPEMBAYARAN; ?>" /></td>
                                 <td>
-                                    <a title="Detail Pembayaran" href="<?php echo site_url('Pembayaran/detailPembayaran')?>/<?php echo $data->IDPEMBAYARAN; ?>" class="btn btn-primary btn-sm"><i class="fa fa-ellipsis-h"></i></a>
+                                    <?php echo $verfikasi?>
                                 </td>
                             </tr>
                             <?php }?>

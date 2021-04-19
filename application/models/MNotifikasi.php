@@ -45,7 +45,18 @@ class MNotifikasi extends CI_Model
         $query = $this->db->get();
 
         return $query->num_rows();
-    }    
+    }   
+    
+    public function countJamaahBayar()
+    {
+        $this->db->select('*');
+        $this->db->from('DETAIL_PEMBAYARAN');
+        $this->db->where('ISSEEN', 0);   
+        
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }   
 
     public function dataJamaahDaftar()
     {
