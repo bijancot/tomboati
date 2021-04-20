@@ -211,6 +211,9 @@
 </head>
 
 <body class="nav-fixed">
+<?php 
+    $countJamaahBayar = $this->db->select('*')->from('DETAIL_PEMBAYARAN')->where('ISSEEN', 0)->get()->num_rows();
+?>
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
         <img style="width:3%" class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
         <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
