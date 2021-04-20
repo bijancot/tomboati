@@ -129,9 +129,9 @@ class Pembayaran extends CI_Controller{
     }
 
     public function getPembayaran(){
-        $idPembayaran = $this->input->get('idPembayaran');
+        $idTransaksi = $this->input->get('idTransaksi');
 
-        $data = $this->db->query('SELECT * FROM PEMBAYARAN WHERE IDPEMBAYARAN = "'.$idPembayaran.'"')->result();
+        $data = $this->db->query('SELECT * FROM PEMBAYARAN WHERE IDTRANSAKSI = "'.$idTransaksi.'"')->result();
         
         if(count($data) > 0){
             $response['error']    = false;
