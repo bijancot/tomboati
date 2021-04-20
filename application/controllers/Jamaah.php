@@ -43,7 +43,7 @@ class Jamaah extends CI_Controller
          $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
          $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
  
-         $dataJamaah             = $this->MJamaah->getJamaah();
+         $dataJamaah             = $this->MJamaah->getJamaahUmroh();
          
          $updateJamaah           = $this->MJamaah->updateJamaah();
          

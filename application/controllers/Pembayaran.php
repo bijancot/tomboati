@@ -85,7 +85,6 @@ class Pembayaran extends CI_Controller
         foreach($dataPembayaran as $data){
             $sisaPembayaran     = $data->JUMLAH;
             $totalPembayaran    = $data->TOTALPEMBAYARAN;
-
         }
 
         
@@ -119,28 +118,38 @@ class Pembayaran extends CI_Controller
     public function aksiCabutVerifikasiPembayaran($idPembayaran, $idDetailPembayaran){
         //verif pendaftaran
         $this->MPembayaran->cabutVerifDetailPembayaran($idDetailPembayaran);
+        
+        $dataPembayaran = $this->db->query('SELECT SUM(JUMLAHPEMBAYARAN) AS JUMLAH, TOTALPEMBAYARAN FROM DETAIL_PEMBAYARAN JOIN PEMBAYARAN ON PEMBAYARAN.IDPEMBAYARAN = DETAIL_PEMBAYARAN.IDPEMBAYARAN WHERE DETAIL_PEMBAYARAN.IDPEMBAYARAN = "'.$idPembayaran.'" AND DETAIL_PEMBAYARAN.STATUSPEMBAYARAN = 1')->result();
+        
+        foreach($dataPembayaran as $data){
+            $sisaPembayaran     = $data->JUMLAH;
+            $totalPembayaran    = $data->TOTALPEMBAYARAN;
 
+        }
+
+        
+        $sisa = $totalPembayaran - $sisaPembayaran;
+
+        $this->MPembayaran->updateSisaPembayaran($sisa, $idPembayaran);
         //verif transaksi
         // $this->MPembayaran->verifPembayaran($idPembayaran);
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Pembayaran berhasil dicabut verifikasi! </div>');
 
-        // $dataNotif = $this->db->query('SELECT USERTOKEN, PENDAFTARAN.NAMALENGKAP AS NAMALENGKAP FROM PENDAFTARAN JOIN USER_REGISTER ON USER_REGISTER.IDUSERREGISTER = PENDAFTARAN.IDUSERREGISTER WHERE KODEPENDAFTARAN ='.$kodePendaftaran)->result();
+        $dataNotif = $this->db->query('SELECT USERTOKEN FROM DETAIL_PEMBAYARAN JOIN PEMBAYARAN ON PEMBAYARAN.IDPEMBAYARAN = DETAIL_PEMBAYARAN.IDPEMBAYARAN JOIN TRANSAKSI ON TRANSAKSI.IDTRANSAKSI = PEMBAYARAN.IDTRANSAKSI JOIN PENDAFTARAN ON PENDAFTARAN.KODEPENDAFTARAN = TRANSAKSI.KODEPENDAFTARAN JOIN USER_REGISTER ON USER_REGISTER.IDUSERREGISTER = PENDAFTARAN.IDUSERREGISTER WHERE IDDETAILPEMBAYARAN = "'.$idDetailPembayaran.'"')->result();
 
-        // $token          = null;
-        // $namaLengkap    = null;
+        $token          = null;
 
-        // foreach ($dataNotif as $data) {
-        //     $token          = $data->USERTOKEN;
-        //     $namaLengkap    = $data->NAMALENGKAP;
-        // }
+        foreach ($dataNotif as $data) {
+            $token          = $data->USERTOKEN;
+        }
 
-        // $dataNotif = array(
-        //     'token'         => $token,
-        //     'namaLengkap'   => $namaLengkap
-        // );
+        $dataNotif = array(
+            'token'         => $token
+        );
 
-        // $this->load->view('notif/verifikasiPendaftaranJamaah', $dataNotif);
+        $this->load->view('notif/cabutVerifikasiPembayaranJamaah', $dataNotif);
+
         redirect('Pembayaran/detailPembayaran/'.$idPembayaran);
     }
 
