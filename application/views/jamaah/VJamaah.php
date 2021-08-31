@@ -72,7 +72,7 @@
                                         </button>
                                         <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-trash"></i>
                                         </button>
-                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm" ><i class="fa fa-dollar-sign fa-fw"></i>
+                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
                                     </td>
 
@@ -216,17 +216,20 @@
                                                             </div>
                                                         </div>
                                                         <div class="col">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->STATUSPERKAWINAN == 'Menikah') { ?>
+                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
                                                                     <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
                                                                 <?php } else { ?>
                                                                     -
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Akte Kelahiran</h6>
@@ -247,6 +250,8 @@
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>FC KTP Almarhum</h6>
@@ -257,8 +262,6 @@
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>FC KK Almarhum</h6>
@@ -340,8 +343,8 @@
                                         </div>
                                     </div>
 
-                                     <!-- Modal Hapus -->
-                                     <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
+                                    <!-- Modal Hapus -->
+                                    <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -401,7 +404,7 @@
                                         </button>
                                         <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-trash"></i>
                                         </button>
-                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm" ><i class="fa fa-dollar-sign fa-fw"></i>
+                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
                                     </td>
 
@@ -544,10 +547,13 @@
                                                                 <p><?= $data->KEWARGANEGARAAN ?></p>
                                                             </div>
                                                         </div>
+                                                        <div  class="col">
+                                                            
+                                                        </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->STATUSPERKAWINAN == 'Menikah') { ?>
+                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
                                                                     <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
                                                                 <?php } else { ?>
                                                                     -
@@ -669,8 +675,8 @@
                                         </div>
                                     </div>
 
-                                     <!-- Modal Hapus -->
-                                     <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
+                                    <!-- Modal Hapus -->
+                                    <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
