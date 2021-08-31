@@ -17,17 +17,28 @@
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(response) {
-        xhr = $.ajax({
-            method: 'POST',
-            url: "<?php echo base_url() ?>/Notifikasi/listNotifikasiJamaah",
-            success: function(response) {
-                $('.list-pemberitahuan').html(response);
-            }
-        })
+    channel.bind('my-event', function(data) {
+        console.log(data);
+        if (data.notif == "chat") {
+            xhr = $.ajax({
+                method: 'POST',
+                url: "<?php echo base_url() ?>/Notifikasi/listNotifikasi",
+                success: function(response) {
+                    $('.list-notif-chat').html(response);
+                }
+            })
+        }else if(data.notif == "jamaah"){
+            xhr = $.ajax({
+                method: 'POST',
+                url: "<?php echo base_url() ?>/Notifikasi/listNotifikasiJamaah",
+                success: function(response) {
+                    $('.list-notif-daftar').html(response);
+                }
+            })
+        }
     });
 
-    $('.list-pemberitahuan').on('click', '.notifikasi', function(e) {
-        console.log("Clicked");
-    });
+    // $('.list-pemberitahuan').on('click', '.notifikasi', function(e) {
+    //     console.log("Clicked");
+    // });
 </script>

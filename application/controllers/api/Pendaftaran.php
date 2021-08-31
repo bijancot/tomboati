@@ -252,8 +252,8 @@ class Pendaftaran extends CI_Controller{
                     $options
                 );
         
-                $response['statusDaftar'] = 'Sukses Notif';
-                $pusher->trigger('my-channel', 'my-event', $response);
+                $data['notif'] = 'jamaah';
+                $pusher->trigger('my-channel', 'my-event', $data);
     
                 $response['error']    = false;
                 $response['message'] = 'Sukses Daftar';
@@ -360,8 +360,8 @@ class Pendaftaran extends CI_Controller{
                 $options
             );
     
-            $response['statusDaftar'] = 'Sukses Notif';
-            $pusher->trigger('my-channel', 'my-event', $response);
+            $data['notif'] = 'jamaah';
+            $pusher->trigger('my-channel', 'my-event', $data);
 
             $response['error']    = false;
             $response['message'] = 'Sukses Daftar';
@@ -585,8 +585,8 @@ class Pendaftaran extends CI_Controller{
                     $options
                 );
         
-                $response['statusDaftar'] = 'Sukses Notif';
-                $pusher->trigger('my-channel', 'my-event', $response);
+                $data['notif'] = 'jamaah';
+                $pusher->trigger('my-channel', 'my-event', $data);
     
                 $response['error']    = false;
                 $response['message'] = 'Sukses Daftar';

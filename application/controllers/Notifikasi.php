@@ -22,7 +22,7 @@ class Notifikasi extends CI_Controller {
             'countMessage' => $countMessage,
             'dataNotifChat' => $dataNotifChat
         );
-		$this->load->view('template/header-notif', $data);
+		$this->load->view('template/header-notif-chat', $data);
     }
     
     public function listNotifikasiJamaah()
@@ -35,6 +35,6 @@ class Notifikasi extends CI_Controller {
             'countJamaahBayar' => $countJamaahBayar
         );
         
-		$this->load->view('template/header-notifJamaah', $data);
+		$this->load->view('template/header-notif-daftar', $data);
     }
 }

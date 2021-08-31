@@ -219,7 +219,7 @@
         <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2 ml-0" id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
-            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-pemberitahuan">
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notif-daftar">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell"></i>&nbsp;
                     <span class="badge badge-danger bg-danger"><?php echo ($countJamaahDaftar+$countJamaahBayar); ?></span>
@@ -256,7 +256,7 @@
                     <?php }?>                    
                 </div>
             </li>
-            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notifikasi">
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notif-chat">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-envelope"></i>&nbsp;
                     <span class="badge badge-primary bg-primary"><?php echo $countMessage; ?></span>

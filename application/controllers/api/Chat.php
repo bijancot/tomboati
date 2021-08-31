@@ -53,8 +53,8 @@ class Chat extends CI_Controller{
                 $options
             );
     
-            $response['status'] = 'Sukses Notif';
-            $pusher->trigger('my-channel', 'my-event', $response);
+            $data['notif'] = 'chat';
+            $pusher->trigger('my-channel', 'my-event', $data);
 
             $response['error']    = false;
             $response['message'] = 'Terkirim';
