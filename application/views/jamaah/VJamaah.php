@@ -72,7 +72,7 @@
                                         </button>
                                         <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-trash"></i>
                                         </button>
-                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm" ><i class="fa fa-dollar-sign fa-fw"></i>
+                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
                                     </td>
 
@@ -215,18 +215,18 @@
                                                                 <p><?= $data->KEWARGANEGARAAN ?></p>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->STATUSPERKAWINAN == 'Menikah') { ?>
+                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
                                                                     <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
                                                                 <?php } else { ?>
                                                                     -
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Akte Kelahiran</h6>
@@ -247,6 +247,8 @@
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>FC KTP Almarhum</h6>
@@ -257,8 +259,6 @@
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>FC KK Almarhum</h6>
@@ -309,7 +309,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin mencabut verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> </b> ? </b></h5>
+                                                    <p>Apakah anda yakin mencabut verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> </b> ? </b></h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
@@ -330,7 +330,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> ? </b></h5>
+                                                    <p>Apakah anda yakin verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> ? </b></p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
@@ -340,8 +340,8 @@
                                         </div>
                                     </div>
 
-                                     <!-- Modal Hapus -->
-                                     <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
+                                    <!-- Modal Hapus -->
+                                    <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -351,7 +351,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
+                                                    <p>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiHapusJamaah/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
@@ -401,7 +401,7 @@
                                         </button>
                                         <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-trash"></i>
                                         </button>
-                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm" ><i class="fa fa-dollar-sign fa-fw"></i>
+                                        <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
                                     </td>
 
@@ -547,7 +547,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->STATUSPERKAWINAN == 'Menikah') { ?>
+                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
                                                                     <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
                                                                 <?php } else { ?>
                                                                     -
@@ -638,7 +638,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin mencabut verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> </b> ? </b></h5>
+                                                    <p>Apakah anda yakin mencabut verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> </b> ? </b></h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
@@ -659,7 +659,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> ? </b></h5>
+                                                    <p>Apakah anda yakin verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> ? </b></p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
@@ -669,8 +669,8 @@
                                         </div>
                                     </div>
 
-                                     <!-- Modal Hapus -->
-                                     <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
+                                    <!-- Modal Hapus -->
+                                    <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -680,7 +680,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
+                                                    <p>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a href="<?= base_url('Jamaah/aksiHapusJamaah/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
