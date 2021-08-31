@@ -34,7 +34,7 @@
                                 <th>Deskripsi</th>
                                 <th>Status Pembayaran</th>
                                 <th>Bukti Pembayaran</th>
-                                <th>Aksi</th>
+                                <th width="10%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,10 +63,10 @@
                                 <td><?php echo $data->TANGGALPEMBAYARAN; ?></td>
                                 <td><?php echo $data->DESKRIPSI; ?></td>
                                 <td><?php echo $status; ?></td>
-                                <td><img src="<?php echo $data->BUKTIPEMBAYARAN; ?>" /></td>
+                                <td><img width=100px src="<?php echo $data->BUKTIPEMBAYARAN; ?>" /></td>
                                 <td>
-                                    <?php echo $verfikasi?><br>
-                                    <button title="Detail Pembayaran" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailPembayaranModal<?php echo $data->IDDETAILPEMBAYARAN?>"><i class="fa fa-ellipsis-h"></i>
+                                    <?php echo $verfikasi?>
+                                    <button title="Detail Pembayaran" type="button" class="btn btn-primary btn-sm ml-1" data-toggle="modal" data-target="#detailPembayaranModal<?php echo $data->IDDETAILPEMBAYARAN?>"><i class="fa fa-ellipsis-h"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -209,6 +209,10 @@
                     sWidth: '5%',
                     targets: 0
                 },
+                {
+        "targets": 5,
+        "className": "text-center",
+   }
             ],
             fixedColumns: false
         });
