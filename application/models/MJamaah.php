@@ -60,4 +60,9 @@ class MJamaah extends CI_Model
         $this->db->where('KODEPENDAFTARAN', $kodePendaftaran);
         return $this->db->update('TRANSAKSI');
     }
+
+    public function deleteJamaah($kodePendaftaran){
+        $this->db->where('KODEPENDAFTARAN', $kodePendaftaran);
+        return $this->db->delete('TRANSAKSI');
+    }
 }
