@@ -215,6 +215,9 @@
                                                                 <p><?= $data->KEWARGANEGARAAN ?></p>
                                                             </div>
                                                         </div>
+                                                        <div class="col">
+
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
@@ -543,6 +546,9 @@
                                                                 <h6>Kewarganegaraan</h6>
                                                                 <p><?= $data->KEWARGANEGARAAN ?></p>
                                                             </div>
+                                                        </div>
+                                                        <div  class="col">
+                                                            
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
