@@ -30,13 +30,13 @@ class MPaket extends CI_Model
         $this->db->insert('PAKET', $data);
         return $this->db->insert_id();
     }
-
+    
     public function getSelectPaket($idPaket)
     {
         $this->db->select('*');
         $this->db->from('PAKET');
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
-        $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI');
+        $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI','left');
         $this->db->where('PAKET.IDPAKET', $idPaket);
         $query = $this->db->get();
 
