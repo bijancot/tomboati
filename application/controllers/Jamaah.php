@@ -116,10 +116,10 @@ class Jamaah extends CI_Controller
         redirect('Jamaah');
     }
 
-    public function aksiHapusJamaah($kodePendaftaran)
+    public function aksiHapusJamaah($idTransaksi)
     { 
         //delete
-        $this->MJamaah->deleteJamaah($kodePendaftaran);
+        $this->MJamaah->deleteJamaah($idTransaksi);
         
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Jamaah berhasil dihapus! </div>');
