@@ -6,7 +6,7 @@ class MPaket extends CI_Model
 
     public function getPaket($idMasterPaket)
     {
-        $this->db->select('*');
+        $this->db->select('PAKET.*, MASTER_PAKET.*, MASKAPAI.NAMAMASKAPAI, MASKAPAI.IMAGEMASKAPAI');
         $this->db->from('PAKET');
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI');
@@ -33,7 +33,7 @@ class MPaket extends CI_Model
     
     public function getSelectPaket($idPaket)
     {
-        $this->db->select('*');
+        $this->db->select('PAKET.*, MASTER_PAKET.*, MASKAPAI.NAMAMASKAPAI, MASKAPAI.IMAGEMASKAPAI');
         $this->db->from('PAKET');
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI','left');
