@@ -146,9 +146,9 @@ class Haji extends CI_Controller
                'NAMAHOTELB' => $this->input->post('namaHotelB'),
                'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
                'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
-               'DOUBLESHEET' => $this->input->post('doubleSheet'),
-               'TRIPLESHEET' => $this->input->post('tripleSheet'),
-               'QUADSHEET' => $this->input->post('quadSheet'),
+               'DOUBLESHEET' => str_replace('.', '',$this->input->post('doubleSheet')),
+               'TRIPLESHEET' => str_replace('.', '',$this->input->post('tripleSheet')),
+               'QUADSHEET' => str_replace('.', '',$this->input->post('quadSheet')),
                'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
                'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
                'KUOTA' => $this->input->post('kuota'),
@@ -328,9 +328,9 @@ class Haji extends CI_Controller
             'NAMAHOTELB' => $this->input->post('namaHotelB'),
             'TEMPATHOTELA' => $this->input->post('tempatHotelA'),
             'TEMPATHOTELB' => $this->input->post('tempatHotelB'),
-            'DOUBLESHEET' => $this->input->post('doubleSheet'),
-            'TRIPLESHEET' => $this->input->post('tripleSheet'),
-            'QUADSHEET' => $this->input->post('quadSheet'),
+            'DOUBLESHEET' => str_replace('.', '',$this->input->post('doubleSheet')),
+            'TRIPLESHEET' => str_replace('.', '',$this->input->post('tripleSheet')),
+            'QUADSHEET' => str_replace('.', '',$this->input->post('quadSheet')),
             'BIAYASUDAHTERMASUK' => $this->input->post('biayaSudahTermasuk'),
             'BIAYABELUMTERMASUK' => $this->input->post('biayaBelumTermasuk'),
             'KUOTA' => $this->input->post('kuota'),
@@ -380,8 +380,6 @@ class Haji extends CI_Controller
     }else if($data['IDMASTERPAKET'] == "HAJ-BDL"){
         $tipe = "Badal";
     }
-
-        var_dump($data);
 
     $this->MPaket->updatePaket($data);
 
