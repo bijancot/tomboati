@@ -105,7 +105,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <h6 for="tanggalKeberangkatan">Tanggal Keberangkatan</h6>
-                                                    <p><?= $row->TANGGALKEBERANGKATAN; ?></p>
+                                                    <p><?= tanggal_indonesia($row->TANGGALKEBERANGKATAN); ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -154,19 +154,19 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <h6 for="doubleSheet">Harga Double Sheet</h6>
-                                                    <p>Rp. <?= $row->DOUBLESHEET; ?></p>
+                                                    <p>Rp. <?= rupiah($row->DOUBLESHEET); ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <h6 for="tripleSheet">Harga Triple Sheet</h6>
-                                                    <p>Rp. <?= $row->TRIPLESHEET; ?></p>
+                                                    <p>Rp. <?= rupiah($row->TRIPLESHEET); ?></p>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <h6 for="quadSheet">Harga Quad Sheet</h6>
-                                                    <p>Rp. <?= $row->QUADSHEET; ?></p>
+                                                    <p>Rp. <?= rupiah($row->QUADSHEET); ?></p>
                                                 </div>
                                             </div>
                                         </div>

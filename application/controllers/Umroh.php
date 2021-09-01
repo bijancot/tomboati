@@ -6,6 +6,8 @@ class Umroh extends CI_Controller
         parent::__construct();
         $this->load->helper('form');
         $this->load->helper('file');
+        $this->load->helper('rupiah_helper');
+        $this->load->helper('tanggal_helper');
         $this->load->library('table');
         $this->load->library('upload');
         date_default_timezone_set('Asia/Jakarta');

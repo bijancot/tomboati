@@ -6,7 +6,7 @@ class MWisataHalal extends CI_Model
 
     public function getWisataHalal($kodeTipe)
     {
-        $this->db->select('*');
+        $this->db->select('WISATA_HALAL.*, MASKAPAI.NAMAMASKAPAI, MASKAPAI.IMAGEMASKAPAI');
         $this->db->from('WISATA_HALAL');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI');
         $this->db->where('WISATA_HALAL.TIPEWISATA', $kodeTipe);
@@ -29,7 +29,7 @@ class MWisataHalal extends CI_Model
     }
 
     public function getSelectWisataHalal($idWisata){
-        $this->db->select('*');
+        $this->db->select('WISATA_HALAL.*, MASKAPAI.NAMAMASKAPAI, MASKAPAI.IMAGEMASKAPAI');
         $this->db->from('WISATA_HALAL');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI');
         $this->db->where('WISATA_HALAL.IDWISATAHALAL', $idWisata);
