@@ -123,19 +123,19 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="doubleSheet">Harga Double Sheet</label>
-                                                <input name="doubleSheet" class="form-control" id="doubleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                <input name="doubleSheet" class="form-control" id="doubleSheet" type="text" placeholder="Masukkan Harga" required="" />
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="tripleSheet">Harga Triple Sheet</label>
-                                                <input name="tripleSheet" class="form-control" id="tripleSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                <input name="tripleSheet" class="form-control" id="tripleSheet" type="text" placeholder="Masukkan Harga" required="" />
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="quadSheet">Harga Quad Sheet</label>
-                                                <input name="quadSheet" class="form-control" id="quadSheet" type="number" placeholder="Masukkan Harga" required="" />
+                                                <input name="quadSheet" class="form-control" id="quadSheet" type="text" placeholder="Masukkan Harga" required="" />
                                             </div>
                                         </div>
                                     </div>
@@ -205,6 +205,12 @@
             });
     </script>
     <script type="text/javascript">
+        $(document).ready(function(){
+        // 3 digit angka
+        $('#doubleSheet').mask('#.##0', {reverse: true});
+        $('#tripleSheet').mask('#.##0', {reverse: true});
+        $('#quadSheet').mask('#.##0', {reverse: true});
+        });
         //datepicker
         $('#tanggalKeberangkatan').datepicker({
             format: 'yyyy-mm-dd',

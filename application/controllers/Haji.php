@@ -313,7 +313,7 @@ class Haji extends CI_Controller
      $idMasterPaket = $this->input->post('idMasterPaket');
         //pengecekan paket haji
         // Badal, Reguler dan Talangan hanya nama dan gambar
-     if($idMasterPaket == "HAJ-PLS" || $idMasterPaket == "TPA"){
+     if($idMasterPaket == "HAJ-PLS" || $idMasterPaket == "HAJ-TPA"){
 
          $data = array(
             'IDPAKET' => $idPaket,
@@ -359,11 +359,12 @@ class Haji extends CI_Controller
     }else{
         // Untuk haji badal, talangan, reguler
         $data = array(
-           'IDMASTERPAKET' => $idMasterPaket,
-           'NAMAPAKET' => $this->input->post('namaPaket'),
-           'IMAGEPAKET' => $imagePaket,
-           'ISSHOW' => $valIsShow,
-           'CREATED_AT' => date("Y-m-d h:i:sa")
+            'IDPAKET' => $idPaket,
+            'IDMASTERPAKET' => $idMasterPaket,
+            'NAMAPAKET' => $this->input->post('namaPaket'),
+            'IMAGEPAKET' => $imagePaket,
+            'ISSHOW' => $valIsShow,
+            'CREATED_AT' => date("Y-m-d h:i:sa")
        );
     }
         // untuk mengecek tipe dan dijadikan kondisi di model
@@ -380,7 +381,7 @@ class Haji extends CI_Controller
         $tipe = "Badal";
     }
 
-        // var_dump($data);
+        var_dump($data);
 
     $this->MPaket->updatePaket($data);
 
@@ -389,6 +390,7 @@ class Haji extends CI_Controller
 
     redirect('Haji/paket/'.$tipe);
 }
+
 
 public function aksiHapusPaket($idPaket)
 {
