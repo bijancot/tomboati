@@ -55,21 +55,39 @@ class WisataHalal extends CI_Controller{
 
     // getWisataHalalLimit
     public function getWisataHalalLimit(){
+        $hari           = date('Y-m-d');
         $response       = [];
         
-        $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE ISSHOW = 1 ORDER BY WISATA_HALAL.CREATED_AT DESC LIMIT 3')->result();
+        $data = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && ISSHOW = 1 ORDER BY WISATA_HALAL.CREATED_AT DESC')->result();
         
-        if(count($data) > 0){
-            $response['error']    = false;
-            $response['message'] = 'Sukses Tampil Data';
-            $response['data']     = $data;
-            $this->throw(200, $response);
-            return;
+        if(count($data) < 3){
+            if(count($data) > 0){
+                $response['error']    = false;
+                $response['message'] = 'Sukses Tampil Data';
+                $response['data']     = $data;
+                $this->throw(200, $response);
+                return;
+            }else{
+                $response['error']    = true;
+                $response['message'] = 'Data Promo Kosong';
+                $this->throw(200, $response);
+                return;
+            }
         }else{
-            $response['error']    = true;
-            $response['message'] = 'Data Wisata Halal Kosong';
-            $this->throw(200, $response);
-            return;
+            $dataLimit = $this->db->query('SELECT * FROM WISATA_HALAL JOIN MASKAPAI ON MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI WHERE TANGGALKEBERANGKATAN > "'.$hari.'" && ISSHOW = 1 ORDER BY WISATA_HALAL.CREATED_AT DESC LIMIT 3')->result();
+        
+            if(count($dataLimit) > 0){
+                $response['error']    = false;
+                $response['message'] = 'Sukses Tampil Data';
+                $response['data']     = $dataLimit;
+                $this->throw(200, $response);
+                return;
+            }else{
+                $response['error']    = true;
+                $response['message'] = 'Data Promo Kosong';
+                $this->throw(200, $response);
+                return;
+            }
         }
         
     }

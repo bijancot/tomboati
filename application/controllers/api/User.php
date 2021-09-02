@@ -478,6 +478,58 @@ class User extends CI_Controller{
         }
     }
 
+    public function userRegisterbyNumber(){
+        $response = [];
+
+        $nomorHP = $this->input->post('nomorHP');
+
+        $getAllDataRegister = $this->db->get_where('USER_REGISTER', array('NOMORHP' => $nomorHP))->result();
+
+        if(count($getAllDataRegister) == 0){
+            $this->db->insert('USER_REGISTER', array('NOMORHP' => $nomorHP));
+            
+            $getAllDataRegister = $this->db->get_where('USER_REGISTER', array('NOMORHP' => $nomorHP))->result();
+
+            if($this->db->affected_rows() >= 0){
+                $response["error"]  = false;
+                $response["message"] = "Sukses Register";
+                $response["data"] = $getAllDataRegister;
+                $this->throw(200, $response);
+                return;
+            }else{
+                $response["error"]  = true;
+                $response["message"] = "Gagal Register";
+                $this->throw(200, $response);
+                return;
+            }
+        }else{
+            $response["error"]  = true;
+            $response["message"] = "Gagal, Nomor HP sudah terdaftar";
+            $this->throw(200, $response);
+            return;
+        }
+    }
+
+    public function loginByNumber(){
+        $response = [];
+
+        $nomorHP = $this->input->post('nomorHP');
+
+        $data = $this->db->get_where('USER_REGISTER', array('NOMORHP' => $nomorHP))->result();
+        if($data != null){
+            $response["error"]  = false;
+            $response["message"] = "Sukses Login";
+            $response["data"]   = $data;
+            $this->throw(200, $response);
+            return;
+        }else{
+            $response["error"]  = true;
+            $response["message"] = "Gagal Login";
+            $this->throw(200, $response);
+            return;
+        }
+    }
+
     private function throw($statusCode, $response){
         $this->output->set_status_header($statusCode)
         ->set_content_type('application/json')
