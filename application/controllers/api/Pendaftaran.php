@@ -200,10 +200,14 @@ class Pendaftaran extends CI_Controller{
             }
 
             //getCountTransaksi
-            $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
-            $idTransaksi    = $countTransaksi + 1;
-            $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
-            $idTrans        = 'TR'.''.$transId.'';
+            $countTransaksi = $this->db->query('SELECT max(IDTRANSAKSI) AS IDTRANS FROM TRANSAKSI')->result();
+            foreach($countTransaksi as $getIdTrans){
+                $getIdTransaksi = $getIdTrans->IDTRANS;
+            }
+
+            // $idTransaksi    = $getIdTransaksi + 1;
+            // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+            $idTrans        = 'TR'.''.date('YmdHis').'';
 
             //dataKeluarga
             $dataKeluarga = array(
@@ -328,10 +332,10 @@ class Pendaftaran extends CI_Controller{
         }
 
         //getCountTransaksi
-        $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
-        $idTransaksi    = $countTransaksi + 1;
-        $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
-        $idTrans        = 'TR'.''.$transId.'';
+        // $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+        // $idTransaksi    = $countTransaksi + 1;
+        // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+        $idTrans        = 'TR'.''.date('YmdHis').'';
 
         //dataTransaksi
         $dataTransaksi = array(
@@ -533,10 +537,10 @@ class Pendaftaran extends CI_Controller{
             }
 
             //getCountTransaksi
-            $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
-            $idTransaksi    = $countTransaksi + 1;
-            $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
-            $idTrans        = 'TR'.''.$transId.'';
+            // $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+            // $idTransaksi    = $countTransaksi + 1;
+            // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+            $idTrans        = 'TR'.''.date('YmdHis').'';
 
             //dataKeluarga
             $dataKeluarga = array(
@@ -597,6 +601,10 @@ class Pendaftaran extends CI_Controller{
             return;
         }
         
+    }
+
+    public function getRandomId(){
+
     }
 
     private function throw($statusCode, $response){
