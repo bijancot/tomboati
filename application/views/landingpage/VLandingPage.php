@@ -61,8 +61,8 @@
             <div class="row">
                 <div class="col">
                     <div class="pt-3">
-                        <img class="img-size-1 mb-3" src="<?= base_url('images/landingPage/1.png') ?>" alt="tombo ati" />
-                        <img class="img-size-1" src="<?= base_url('images/landingPage/2.png') ?>" alt="tombo ati" />
+                        <img class="img-size-1 mb-3" src="<?= base_url('images/landingPage/1.PNG') ?>" alt="tombo ati" />
+                        <img class="img-size-1" src="<?= base_url('images/landingPage/2.PNG') ?>" alt="tombo ati" />
                     </div>
                 </div>
                 <div class="col align-self-center">
