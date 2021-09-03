@@ -6,7 +6,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <a href="<?= base_url(); ?>Pembayaran">
-                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-ardata-left"></i></button>
+                                <button class="btn btn-yellow btn-icon mr-2 my-1" type="button"><i class="fas fa-arrow-left"></i></button>
                             </a>
                             <div class="page-header-icon"><i class="fas fa-dollar-sign ml-2 fa-xs"></i></div>
                             Detail Pembayaran
