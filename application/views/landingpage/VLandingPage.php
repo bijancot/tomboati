@@ -15,7 +15,7 @@
     <!-- Style -->
     <style>
         header {
-            background: #C8B093;
+            background: #FFF;
             padding-left: 20px;
             position: relative;
             z-index: 10;
@@ -23,7 +23,8 @@
         }
 
         .all-wrap {
-            background: #FFF;
+            height: 100%;
+            background: #C8B093;
         }
 
         .img-size-1{
@@ -55,7 +56,7 @@
         <div class="container">
             <div class="row">
                 <!-- IMAGE -->
-                <div class="col-12 col-md-8 mt-3 align-self-center">
+                <div class="col-12 col-md-8 mt-2 align-self-center">
                     <div class="row">
                         <div class="col">
                             <img class="img-size-1 mb-3" src="<?= base_url('images/landingPage/1.png') ?>" alt="tombo ati" />
