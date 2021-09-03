@@ -223,10 +223,10 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
-                                                                    <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
-                                                                <?php } else { ?>
+                                                                <?php if ($data->FILEBUKUNIKAH == '') { ?>
                                                                     -
+                                                                <?php } else { ?>
+                                                                    <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
@@ -366,7 +366,7 @@
 
                                 </tr>
                             <?php } ?>
-                            <?php $no = 1;
+                            <?php 
                             foreach ($wisataHalal as $data) { ?>
                                 <?php
                                 if ($data->STATUSPENDAFTARAN == 1) {
