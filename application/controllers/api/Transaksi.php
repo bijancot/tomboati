@@ -12,9 +12,12 @@ class Transaksi extends CI_Controller{
     public function pesananUmrohHaji(){ 
         $idUserRegister        = $this->input->get('idUserRegister');
         
-        $data = $this->db->query('SELECT TRANSAKSI.*, PAKET.NAMAPAKET FROM PENDAFTARAN JOIN TRANSAKSI ON TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN 
-        JOIN PAKET ON PAKET.IDPAKET = TRANSAKSI.IDPAKET
-        WHERE IDUSERREGISTER = "'.$idUserRegister.'" AND STATUSTRANSAKSI = 1')->result();
+        $data = $this->db->query('SELECT T.*, PAKET.NAMAPAKET
+        FROM TRANSAKSI T
+        JOIN PENDAFTARAN D ON T.KODEPENDAFTARAN = D.KODEPENDAFTARAN
+        JOIN PAKET ON PAKET.IDPAKET = T.IDPAKET
+        LEFT JOIN PEMBAYARAN P ON T.IDTRANSAKSI = P.IDTRANSAKSI
+        WHERE IDUSERREGISTER = "'.$idUserRegister.'" AND P.IDPEMBAYARAN IS NULL AND STATUSTRANSAKSI = 1')->result();
 
         if($this->db->affected_rows()>0){
             $response['error']      = false;
@@ -29,9 +32,12 @@ class Transaksi extends CI_Controller{
     public function pesananWisataHalal(){ 
         $idUserRegister        = $this->input->get('idUserRegister');
         
-        $data = $this->db->query('SELECT TRANSAKSI.*, WISATA_HALAL.NAMAWISATA FROM PENDAFTARAN JOIN TRANSAKSI ON TRANSAKSI.KODEPENDAFTARAN = PENDAFTARAN.KODEPENDAFTARAN 
-        JOIN WISATA_HALAL ON WISATA_HALAL.IDWISATAHALAL = TRANSAKSI.IDWISATAHALAL
-        WHERE IDUSERREGISTER = "'.$idUserRegister.'" AND STATUSTRANSAKSI = 1')->result();
+        $data = $this->db->query('SELECT T.*, WISATA_HALAL.NAMAWISATA 
+        FROM TRANSAKSI T 
+        JOIN PENDAFTARAN D ON T.KODEPENDAFTARAN = D.KODEPENDAFTARAN 
+        JOIN WISATA_HALAL ON WISATA_HALAL.IDWISATAHALAL = T.IDWISATAHALAL
+        LEFT JOIN PEMBAYARAN P ON T.IDTRANSAKSI = P.IDTRANSAKSI
+        WHERE IDUSERREGISTER = "'.$idUserRegister.'" AND P.IDPEMBAYARAN IS NULL AND STATUSTRANSAKSI = 1 ')->result();
 
         if($this->db->affected_rows()>0){
             $response['error']      = false;
