@@ -459,16 +459,6 @@ class Pendaftaran extends CI_Controller{
             return; 
         }
 
-        if($this->upload->do_upload('fileBukuNikah')){ //check if fileBukuNikah upload
-            $dataUpload     = $this->upload->data();
-            $fileBukuNikah  = base_url('images/pendaftaran/' . $dataUpload['file_name']);
-        }else{
-            $response['error']    = true;
-            $response['message'] = 'Gagal Upload File Buku Nikah';
-            $this->throw(200, $response);
-            return; 
-        }
-
         if($this->upload->do_upload('fileAkteKelahiran')){ //check if fileAkteKelahiran upload
             $dataUpload         = $this->upload->data();
             $fileAkteKelahiran  = base_url('images/pendaftaran/' . $dataUpload['file_name']);
@@ -489,41 +479,75 @@ class Pendaftaran extends CI_Controller{
             return; 
         }
 
-        $data = array(
-            'IDUSERREGISTER'            => $idUserRegister,
-            'EMAIL'                     => $email,
-            'FILEKTP'                   => $fileKTP,
-            'FILEKK'                    => $fileKK,
-            'NAMALENGKAP'               => $namaLengkap,
-            'NOMORPASPOR'               => $nomorPaspor,
-            'FILEPASPOR'                => $filePaspor,
-            'TEMPATDIKELUARKAN'         => $tempatDikeluarkan,
-            'TANGGALPENERBITANPASPOR'   => $tanggalPenerbitanPaspor,
-            'TANGGALBERAKHIRPASPOR'     => $tanggalBerakhirPaspor,
-            'TEMPATLAHIR'               => $tempatLahir,
-            'TANGGALLAHIR'              => $tanggalLahir,
-            'JENISKELAMIN'              => $jenisKelamin,
-            'STATUSPERKAWINAN'          => $statusPerkawinan,
-            'KEWARGANEGARAAN'           => $kewarganegaraan,
-            'ALAMAT'                    => $alamat,
-            'KELURAHAN'                 => $kelurahan,
-            'KECAMATAN'                 => $kecamatan,
-            'KOTAKABUPATEN'             => $kotakabupaten,
-            'PROVINSI'                  => $provinsi,
-            'KODEPOS'                   => $kodePOS,
-            'NOMORHP'                   => $nomorHP,
-            'FILEBUKUNIKAH'             => $fileBukuNikah,
-            'FILEAKTEKELAHIRAN'         => $fileAkteKelahiran,
-            'PEKERJAAN'                 => $pekerjaan,
-            'RIWAYATPENYAKIT'           => $riwayatPenyakit,
-            'STATUSPENDAFTARAN'         => $statusPendaftaran,
-            'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
-            'TTDPENDAFTAR'              => $ttdPendaftar,
-            'CREATED_AT'                => date('Y-m-d H:i:s'),
-            // 'FCKTPALMARHUM'             => $fcKTPAlmarhum,
-            // 'FCKKALMARHUM'              => $fcKKAlmarhum,
-            // 'FCFOTOALMARHUM'            => $fcFotoAlmarhum
-        );
+        if($this->upload->do_upload('fileBukuNikah')){ //check if fileBukuNikah upload
+            $dataUpload     = $this->upload->data();
+            $fileBukuNikah  = base_url('images/pendaftaran/' . $dataUpload['file_name']);
+
+            $data = array(
+                'IDUSERREGISTER'            => $idUserRegister,
+                'EMAIL'                     => $email,
+                'FILEKTP'                   => $fileKTP,
+                'FILEKK'                    => $fileKK,
+                'NAMALENGKAP'               => $namaLengkap,
+                'NOMORPASPOR'               => $nomorPaspor,
+                'FILEPASPOR'                => $filePaspor,
+                'TEMPATDIKELUARKAN'         => $tempatDikeluarkan,
+                'TANGGALPENERBITANPASPOR'   => $tanggalPenerbitanPaspor,
+                'TANGGALBERAKHIRPASPOR'     => $tanggalBerakhirPaspor,
+                'TEMPATLAHIR'               => $tempatLahir,
+                'TANGGALLAHIR'              => $tanggalLahir,
+                'JENISKELAMIN'              => $jenisKelamin,
+                'STATUSPERKAWINAN'          => $statusPerkawinan,
+                'KEWARGANEGARAAN'           => $kewarganegaraan,
+                'ALAMAT'                    => $alamat,
+                'KELURAHAN'                 => $kelurahan,
+                'KECAMATAN'                 => $kecamatan,
+                'KOTAKABUPATEN'             => $kotakabupaten,
+                'PROVINSI'                  => $provinsi,
+                'KODEPOS'                   => $kodePOS,
+                'NOMORHP'                   => $nomorHP,
+                'FILEBUKUNIKAH'             => $fileBukuNikah,
+                'FILEAKTEKELAHIRAN'         => $fileAkteKelahiran,
+                'PEKERJAAN'                 => $pekerjaan,
+                'RIWAYATPENYAKIT'           => $riwayatPenyakit,
+                'STATUSPENDAFTARAN'         => $statusPendaftaran,
+                'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
+                'TTDPENDAFTAR'              => $ttdPendaftar,
+                'CREATED_AT'                => date('Y-m-d H:i:s'),
+            );
+        }else{
+            $data = array(
+                'IDUSERREGISTER'            => $idUserRegister,
+                'EMAIL'                     => $email,
+                'FILEKTP'                   => $fileKTP,
+                'FILEKK'                    => $fileKK,
+                'NAMALENGKAP'               => $namaLengkap,
+                'NOMORPASPOR'               => $nomorPaspor,
+                'FILEPASPOR'                => $filePaspor,
+                'TEMPATDIKELUARKAN'         => $tempatDikeluarkan,
+                'TANGGALPENERBITANPASPOR'   => $tanggalPenerbitanPaspor,
+                'TANGGALBERAKHIRPASPOR'     => $tanggalBerakhirPaspor,
+                'TEMPATLAHIR'               => $tempatLahir,
+                'TANGGALLAHIR'              => $tanggalLahir,
+                'JENISKELAMIN'              => $jenisKelamin,
+                'STATUSPERKAWINAN'          => $statusPerkawinan,
+                'KEWARGANEGARAAN'           => $kewarganegaraan,
+                'ALAMAT'                    => $alamat,
+                'KELURAHAN'                 => $kelurahan,
+                'KECAMATAN'                 => $kecamatan,
+                'KOTAKABUPATEN'             => $kotakabupaten,
+                'PROVINSI'                  => $provinsi,
+                'KODEPOS'                   => $kodePOS,
+                'NOMORHP'                   => $nomorHP,
+                'FILEAKTEKELAHIRAN'         => $fileAkteKelahiran,
+                'PEKERJAAN'                 => $pekerjaan,
+                'RIWAYATPENYAKIT'           => $riwayatPenyakit,
+                'STATUSPENDAFTARAN'         => $statusPendaftaran,
+                'ISJAMAAHBERANGKAT'         => $isJamaahBerangkat,
+                'TTDPENDAFTAR'              => $ttdPendaftar,
+                'CREATED_AT'                => date('Y-m-d H:i:s'),
+            );
+        }
 
         //check if inputan kosong
         if($idUserRegister != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
