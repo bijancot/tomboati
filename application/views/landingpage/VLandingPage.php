@@ -61,12 +61,12 @@
             <div class="row">
                 <div class="col">
                     <div class="pt-3">
-                        <img class="img-size-1 mb-3" src="<?= base_url('images/landingPage/1.PNG') ?>" alt="tombo ati" />
-                        <img class="img-size-1" src="<?= base_url('images/landingPage/2.PNG') ?>" alt="tombo ati" />
+                        <img class="img-size-1 mb-3" src="<?= base_url('images/landingPage/tombo1.PNG') ?>" alt="tombo ati" />
+                        <img class="img-size-1" src="<?= base_url('images/landingPage/tombo2.PNG') ?>" alt="tombo ati" />
                     </div>
                 </div>
                 <div class="col align-self-center">
-                    <img class="img-fluid" src="<?= base_url('images/landingPage/3(2).png') ?>" alt="tombo ati" />
+                    <img class="img-fluid" src="<?= base_url('images/landingPage/tombo3(2).PNG') ?>" alt="tombo ati" />
                 </div>
                 <div class="col align-self-center border-left-1">
                     <h1 class="text-center">Segera Download Aplikasi Tombo Ati <br> Dengan SCAN QR CODE ini</h1>
