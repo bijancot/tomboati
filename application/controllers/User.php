@@ -349,4 +349,26 @@ class User extends CI_Controller
 
         $this->template->view('user/VMitra', $data);
     }
+
+    public function userRegister()
+    {
+        $dataUser = $this->MUser->getMitra();
+
+        //notifikasi
+        $countMessage    = $this->MNotifikasi->countMessage();
+        $dataNotifChat   = $this->MNotifikasi->dataNotifChat();
+        $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+        // echo $this->db->last_query();
+        //parse
+        $data = array(
+            'title' => 'User Register | Tombo Ati',
+            'user' => $dataUser,
+            'countMessage' => $countMessage,
+            'dataNotifChat' => $dataNotifChat,
+            'countJamaahDaftar' => $countJamaahDaftar
+        );
+
+        $this->template->view('user/VRegisterUser', $data);
+    }
 }

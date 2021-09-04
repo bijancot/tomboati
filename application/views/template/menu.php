@@ -103,12 +103,30 @@
             </a>
         </nav>
     </div>
-    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-        <i class="fas fa-user-alt ml-2 mr-2 fa-lg fa-fw"></i>
-        User
+
+    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseJamaah" aria-expanded="false" aria-controls="collapseUser">
+        <i class="fas fa-user-check ml-2 mr-2 fa-lg fa-fw"></i>
+        Jamaah
         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
-    <div class="collapse" id="collapseUser" data-parent="#accordionSidenav">
+    <div class="collapse" id="collapseJamaah" data-parent="#accordionSidenav">
+        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+            <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">
+                <i class="fas fa-mosque ml-2 mr-2 fa-lg fa-fw"></i>
+                Umroh Haji
+            </a>
+            <a class="nav-link " href="<?php echo site_url('Jamaah/WisataHalal'); ?>">
+                <i class="fas fa-route ml-2 mr-2 fa-lg fa-fw"></i>
+                Wisata Halal
+            </a>
+        </nav>
+    </div>
+
+    <a class="nav-link" href="<?php echo site_url('User/userRegister'); ?>" >
+        <i class="fas fa-user-alt ml-2 mr-2 fa-lg fa-fw"></i>
+        User
+    </a>
+    <!-- <div class="collapse" id="collapseUser" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
             <a class="nav-link " href="<?php echo site_url('User'); ?>">
                 <i class="fas fa-user-tie ml-2 mr-2 fa-lg fa-fw"></i>
@@ -119,13 +137,8 @@
                 Mitra
             </a>
         </nav>
-    </div>
-
-    <a class="nav-link " href="<?php echo site_url('Jamaah'); ?>">
-        <i class="fas fa-user-check ml-2 mr-2 fa-lg fa-fw"></i>
-        Jamaah
-    </a>
-
+    </div> -->
+    
     <a class="nav-link " href="<?php echo site_url('Kloter'); ?>">
         <i class="fas fa-users ml-2 mr-2 fa-lg fa-fw"></i>
         Kloter
