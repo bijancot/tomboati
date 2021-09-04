@@ -5,10 +5,10 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
-                            <div class="page-header-icon"><i class="fas fa-mosque ml-2 fa-xs"></i></div>
-                            Jamaah
+                            <div class="page-header-icon"><i class="fas fa-route ml-2 fa-xs"></i></div>
+                            Jamaah Wisata Halal
                         </h1>
-                        Daftar Jamaah
+                        Daftar Jamaah Wisata Halal
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                         </thead>
                         <tbody>
                             <?php $no = 1;
-                            foreach ($jamaah as $data) { ?>
+                            foreach ($wisataHalal as $data) { ?>
                                 <?php
                                 if ($data->STATUSPENDAFTARAN == 1) {
                                     $verfikasi = '<button title="Cabut Verifikasi Pendaftaran" type="button" class="btn btn-danger btn-sm mt-1" data-toggle="modal" data-target="#cabutVerifikasiPendaftaranModal' . $data->KODEPENDAFTARAN . '"><i class="fa fa-times-circle"></i>
@@ -65,23 +65,23 @@
                                     <td><?php echo $berangkat ?></td>
                                     <td><?php echo $pembayaran ?></td>
                                     <td><?php echo $data->NAMALENGKAP ?></td>
-                                    <td><?php echo $data->NAMAPAKET ?></td>
+                                    <td><?php echo $data->NAMAWISATA ?></td>
                                     <td>
                                         <?php echo $verfikasi ?>
-                                        <button title="Detail Jamaah" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-ellipsis-h"></i>
+                                        <button title="Detail Jamaah" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailJamaahWH<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-ellipsis-h"></i>
                                         </button>
-                                        <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->IDTRANSAKSI ?>"><i class="fa fa-trash"></i>
+                                        <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaahWH<?= $data->IDTRANSAKSI ?>"><i class="fa fa-trash"></i>
                                         </button>
                                         <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
                                     </td>
 
                                     <!-- Modal Detail -->
-                                    <div class="modal fade" id="detailJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="detailJamaahWH<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Detail Jamaah </h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Detail Jamaah Wisata Halal</h5>
                                                     <?php if ($data->STATUSPENDAFTARAN == 1) {
                                                     ?>
                                                         <span class="badge badge-pill badge-success ml-1">Terverfikasi</span>
@@ -216,17 +216,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="col">
+                                                            <div class="form-group">
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <h6>File Buku Nikah</h6>
-                                                                <?php if ($data->FILEBUKUNIKAH == '') { ?>
-                                                                    -
-                                                                <?php } else { ?>
+                                                                <?php if ($data->STATUSPERKAWINAN == 'Kawin') { ?>
                                                                     <img src="<?= $data->FILEBUKUNIKAH; ?>" width="200px">
+                                                                <?php } else { ?>
+                                                                    -
                                                                 <?php } ?>
                                                             </div>
                                                         </div>
@@ -287,11 +289,11 @@
                                                 <div class="modal-footer">
                                                     <?php if ($data->STATUSPENDAFTARAN == 1) {
                                                     ?>
-                                                        <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                                        <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaranWH/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                                        <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaranWH/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
                                                     <?php
                                                     }
                                                     ?>
@@ -315,7 +317,7 @@
                                                     <h5>Apakah anda yakin mencabut verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> </b> ? </b></h5>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                                    <a href="<?= base_url('Jamaah/aksiCabutVerifikasiPendaftaranWH/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
                                                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                                 </div>
                                             </div>
@@ -327,7 +329,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Verifikasi Jamaah</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Jamaah</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -336,7 +338,7 @@
                                                     <h5>Apakah anda yakin verifikasi pendaftaran <b> <?= $data->NAMALENGKAP ?> ? </b></h5>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaran/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                                    <a href="<?= base_url('Jamaah/aksiVerifikasiPendaftaranWH/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
                                                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                                 </div>
                                             </div>
@@ -344,7 +346,7 @@
                                     </div>
 
                                     <!-- Modal Hapus -->
-                                    <div class="modal" id="hapusJamaah<?= $data->IDTRANSAKSI ?>" tabindex="-1" role="dialog">
+                                    <div class="modal" id="hapusJamaahWH<?= $data->IDTRANSAKSI ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -357,13 +359,12 @@
                                                     <h5>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="<?= base_url('Jamaah/aksiHapusJamaah/' . $data->IDTRANSAKSI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                                    <a href="<?= base_url('Jamaah/aksiHapusJamaahWH/' . $data->IDTRANSAKSI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
                                                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </tr>
                             <?php } ?>
                         </tbody>
