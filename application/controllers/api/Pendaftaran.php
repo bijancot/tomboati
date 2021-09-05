@@ -192,7 +192,7 @@ class Pendaftaran extends CI_Controller{
         );
 
         //check if inputan kosong
-        if($idUserRegister != "" && $$nomorKTP != ""  && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
+        if($idUserRegister != "" && $nomorKTP != ""  && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
             $this->db->insert('PENDAFTARAN', $data);
 
             //getKodePendaftaran
