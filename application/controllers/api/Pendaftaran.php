@@ -19,6 +19,7 @@ class Pendaftaran extends CI_Controller{
         $response = [];
         
         $idUserRegister             = $this->input->post('idUserRegister');
+        $nomorKTP                   = $this->input->post('nomorKTP');
         $email                      = $this->input->post('email');
         $fileKTP                    = null;
         $fileKK                     = null;
@@ -155,6 +156,7 @@ class Pendaftaran extends CI_Controller{
 
         $data = array(
             'IDUSERREGISTER'            => $idUserRegister,
+            'NOMORKTP'                  => $nomorKTP,
             'EMAIL'                     => $email,
             'FILEKTP'                   => $fileKTP,
             'FILEKK'                    => $fileKK,
@@ -190,7 +192,7 @@ class Pendaftaran extends CI_Controller{
         );
 
         //check if inputan kosong
-        if($idUserRegister != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
+        if($idUserRegister != "" && $$nomorKTP != ""  && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
             $this->db->insert('PENDAFTARAN', $data);
 
             //getKodePendaftaran
@@ -386,6 +388,7 @@ class Pendaftaran extends CI_Controller{
         $response = [];
         
         $idUserRegister             = $this->input->post('idUserRegister');
+        $nomorKTP                   = $this->input->post('nomorKtp');
         $email                      = $this->input->post('email');
         $fileKTP                    = null;
         $fileKK                     = null;
@@ -492,6 +495,7 @@ class Pendaftaran extends CI_Controller{
 
         $data = array(
             'IDUSERREGISTER'            => $idUserRegister,
+            'NOMORKTP'                  => $nomorKTP,
             'EMAIL'                     => $email,
             'FILEKTP'                   => $fileKTP,
             'FILEKK'                    => $fileKK,
@@ -527,7 +531,7 @@ class Pendaftaran extends CI_Controller{
         );
 
         //check if inputan kosong
-        if($idUserRegister != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
+        if($idUserRegister != "" && $nomorKTP != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
             $this->db->insert('PENDAFTARAN', $data);
 
             //getKodePendaftaran
