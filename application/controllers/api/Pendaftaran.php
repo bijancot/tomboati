@@ -388,7 +388,7 @@ class Pendaftaran extends CI_Controller{
         $response = [];
         
         $idUserRegister             = $this->input->post('idUserRegister');
-        $nomorKTP                   = $this->input->post('nomorKtp');
+        $nomorKTP                   = $this->input->post('nomorKTP');
         $email                      = $this->input->post('email');
         $fileKTP                    = null;
         $fileKK                     = null;
