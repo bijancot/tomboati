@@ -39,8 +39,10 @@ class MNotifikasi extends CI_Model
     public function countJamaahDaftar()
     {
         $this->db->select('*');
-        $this->db->from('PENDAFTARAN');
-        $this->db->where('ISSEEN', 0);   
+        $this->db->from('TRANSAKSI');
+        $this->db->join('PENDAFTARAN', 'PENDAFTARAN.KODEPENDAFTARAN = TRANSAKSI.KODEPENDAFTARAN');
+        $this->db->where('PENDAFTARAN.ISSEEN', 0);   
+        $this->db->where('IDWISATAHALAL', NULL);
         
         $query = $this->db->get();
 

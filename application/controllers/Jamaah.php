@@ -55,6 +55,27 @@ class Jamaah extends CI_Controller
         redirect('Jamaah');
    }
 
+   public function notifJamaahWisataHalal(){
+    //notifikasi
+    $countMessage           = $this->MNotifikasi->countMessage();
+    $dataNotifChat          = $this->MNotifikasi->dataNotifChat();
+    $countJamaahDaftar      = $this->MNotifikasi->countJamaahDaftar();
+
+    $dataJamaah             = $this->MJamaah->getJamaahUmroh();
+    
+    $updateJamaah           = $this->MJamaah->updateJamaah();
+    
+    $data = array(
+        'title'             => 'Jamaah | Tombo Ati',
+        'jamaah'            => $dataJamaah,
+        'countMessage'      => $countMessage,
+        'dataNotifChat'     => $dataNotifChat,
+        'countJamaahDaftar' => $countJamaahDaftar
+    );
+
+    redirect('Jamaah/WisataHalal');
+}
+
     public function aksiVerifikasiPendaftaran($kodePendaftaran)
     {
         //verif pendaftaran
