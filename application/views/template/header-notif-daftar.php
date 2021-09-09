@@ -1,6 +1,16 @@
+<?php 
+    $this->db->select('*');
+    $this->db->from('TRANSAKSI');
+    $this->db->join('PENDAFTARAN', 'PENDAFTARAN.KODEPENDAFTARAN = TRANSAKSI.KODEPENDAFTARAN');
+    $this->db->where('PENDAFTARAN.ISSEEN', 0);   
+    $this->db->where('IDWISATAHALAL is NOT NULL', NULL, FALSE);
+
+    $countJamaahDaftarWisataHalal = $this->db->get()->num_rows();
+
+?>
 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-bell"></i>&nbsp;
-    <span class="badge badge-danger bg-danger"><?php echo ($countJamaahDaftar+$countJamaahBayar); ?></span>
+    <span class="badge badge-danger bg-danger"><?php echo ($countJamaahDaftar+$countJamaahBayar+$countJamaahDaftarWisataHalal); ?></span>
 </a>
 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
     <h6 class="dropdown-header dropdown-notifications-header">
@@ -10,7 +20,7 @@
     <?php
     $countBayar = $this->db->select('*')->from('DETAIL_PEMBAYARAN')->where('ISSEEN', 0)->get()->num_rows();
     
-    if ($countJamaahDaftar == 0 && $countBayar == 0) {
+    if ($countJamaahDaftar == 0 && $countBayar == 0 && $countJamaahDaftarWisataHalal == 0) {
     ?>
         <a class="dropdown-item dropdown-notifications-item notifikasi">
             Tidak Ada Pemberitahuan
@@ -22,6 +32,15 @@
             <div class="dropdown-notifications-item-content">
                 <div class="dropdown-notifications-item-content-text">Pendaftaran Jamaah</div>
                     <div class="dropdown-notifications-item-content-details">Terdapat <?php echo $countJamaahDaftar?> pendaftaran jamaah baru</div>
+            </div>
+        </a>
+
+        <?php }else if($countJamaahDaftarWisataHalal > 0 ){ ?>
+        <a class="dropdown-item dropdown-notifications-item notifikasi" href="<?php echo site_url('Jamaah/notifJamaahWisataHalal'); ?>">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;
+            <div class="dropdown-notifications-item-content">
+                <div class="dropdown-notifications-item-content-text">Pendaftaran Wisata Halal</div>
+                    <div class="dropdown-notifications-item-content-details">Terdapat <?php echo $countJamaahDaftarWisataHalal?> pendaftaran jamaah baru</div>
             </div>
         </a>
         
