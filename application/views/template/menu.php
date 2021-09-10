@@ -122,10 +122,10 @@
         </nav>
     </div>
 
-    <a class="nav-link" href="<?php echo site_url('User/userRegister'); ?>" >
+    <!-- <a class="nav-link" href="<?php echo site_url('User/userRegister'); ?>" >
         <i class="fas fa-user-alt ml-2 mr-2 fa-lg fa-fw"></i>
         User
-    </a>
+    </a> -->
     <!-- <div class="collapse" id="collapseUser" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
             <a class="nav-link " href="<?php echo site_url('User'); ?>">

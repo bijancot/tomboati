@@ -64,8 +64,26 @@ class MJamaah extends CI_Model
     public function deleteJamaah($idTransaksi){
         $this->db->where('IDTRANSAKSI', $idTransaksi);
         return $this->db->delete('TRANSAKSI');
-        // $this->db->where('');
-        // $this->db->where('IDTRANSAKSI', $idTransaksi);
-        // $this->db->delete(array(''));
+      
+    }
+
+    public function totalJamaah()
+    {
+        $this->db->from('TRANSAKSI');
+        $this->db->select('IDTRANSAKSI');
+        // $this->db->where('STATUS', 1);
+        $query = $this->db->get('');
+        
+        return $query->num_rows();
+    }
+
+    public function totalChat()
+    {
+        $this->db->from('CHAT_ROOM');
+        $this->db->select('ID_CHAT_ROOM');
+        // $this->db->where('STATUS', 1);
+        $query = $this->db->get('');
+        
+        return $query->num_rows();
     }
 }

@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('MNotifikasi');
+        $this->load->model('MJamaah');
     }
 
     public function index()
@@ -24,10 +25,10 @@ class Dashboard extends CI_Controller
             'countJamaahBayar' => $countJamaahBayar
         );
 
-        $data['totalUser']			= $this->MUser->totalUser();
+        $data['totalJamaah']		= $this->MJamaah->totalJamaah();
         $data['totalPaketAktif']	= $this->MPaket->totalPaketAktif();
         $data['totalPaketNonaktif']	= $this->MPaket->totalPaketNonaktif();
-        
+        $data['totalChat']		= $this->MJamaah->totalChat();
         //Change this 
         $this->template->view('admin/VDashboard', $data);
     }
