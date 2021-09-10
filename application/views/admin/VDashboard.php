@@ -25,7 +25,7 @@
                             <div class="col-xl-8 col-xxl-12">
                                 <div class="text-center px-4 mb-4 mb-xl-0 mb-xxl-4">
                                     <h1 class="text-primary">Selamat Datang !</h1>
-                                    <p class="text-gray-700 mb-0">Ayo Waktunya Kerja !</p>
+                                    <p class="text-gray-700 mb-0">Baitullah Dekat Di Hati !</p>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +37,8 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Jumlah User</div>
-                                <div class="text-lg font-weight-bold"><?php echo $totalUser; ?> User</div>
+                                <div class="text-white-75 small">Jumlah Jamaah</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalJamaah; ?> Jamaah</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="user"></i>
                         </div>
@@ -77,9 +77,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Pesan</div>
-                                <div class="text-lg font-weight-bold">0</div>
+                                <div class="text-lg font-weight-bold"><?php echo $totalChat; ?> Chat</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
+                            <i class="feather-xl text-white-50" data-feather="inbox"></i>
                         </div>
                     </div>
                 </div>
