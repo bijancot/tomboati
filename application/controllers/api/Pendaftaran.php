@@ -193,76 +193,86 @@ class Pendaftaran extends CI_Controller{
 
         //check if inputan kosong
         if($idUserRegister != "" && $nomorKTP != ""  && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
-            $this->db->insert('PENDAFTARAN', $data);
+            $get_noktp_on_id_paket = $this->db->select('*')->from('TRANSAKSI')->join('PENDAFTARAN','PENDAFTARAN.KODEPENDAFTARAN = TRANSAKSI.KODEPENDAFTARAN')->where('NOMORKTP', $nomorKTP)->where('IDPAKET', $idPaket)->get()->num_rows();
+            
+            if($get_noktp_on_id_paket == 0){
+                $this->db->insert('PENDAFTARAN', $data);
 
-            //getKodePendaftaran
-            $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
-            foreach($dataKodePendaftaran as $dKodePendaftaran){
-                $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
-            }
-
-            //getCountTransaksi
-            $countTransaksi = $this->db->query('SELECT max(IDTRANSAKSI) AS IDTRANS FROM TRANSAKSI')->result();
-            foreach($countTransaksi as $getIdTrans){
-                $getIdTransaksi = $getIdTrans->IDTRANS;
-            }
-
-            // $idTransaksi    = $getIdTransaksi + 1;
-            // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
-            $idTrans        = 'TR'.''.date('YmdHis').'';
-
-            //dataKeluarga
-            $dataKeluarga = array(
-                'NAMALENGKAP'               => $namaLengkapKeluarga,
-                'ALAMAT'                    => $alamatKeluarga,
-                'KELURAHAN'                 => $kelurahanKeluarga,
-                'KECAMATAN'                 => $kecamatanKeluarga,
-                'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
-                'PROVINSI'                  => $provinsiKeluarga,
-                'KODEPOS'                   => $kodePOSKeluarga,
-                'NOMORHP'                   => $nomorHPKeluarga,
-                'KODEPENDAFTARAN'           => $kodePendaftaran
-            );
-
-            //insert data keluarga
-            $this->db->insert('DATA_KELUARGA', $dataKeluarga);
-
-            //dataTransaksi
-            $dataTransaksi = array(
-                'IDTRANSAKSI'           => $idTrans,
-                'IDPAKET'               => $idPaket,
-                'STATUSTRANSAKSI'       => 0,
-                'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
-                'SHEET'                 => $sheet,
-                'SHEETHARGA'            => $sheetHarga,
-                'WAKTU'                 => $waktu,
-                'KODEPENDAFTARAN'       => $kodePendaftaran
-            );
-
-            //insert data transaksi
-            $this->db->insert('TRANSAKSI', $dataTransaksi);
-        
-            if($this->db->affected_rows()>0){
-                require APPPATH . 'views/vendor/autoload.php';
-                $options = array(
-                    'cluster' => 'ap1',
-                    'useTLS' => true
-                );
-                $pusher = new Pusher\Pusher(
-                    'ee692ab95bb9aeaa1dcc',
-                    'b062506e42b3a8c66368',
-                    '1149993',
-                    $options
-                );
-        
-                $data['notif'] = 'jamaah';
-                $pusher->trigger('my-channel', 'my-event', $data);
+                //getKodePendaftaran
+                $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
+                foreach($dataKodePendaftaran as $dKodePendaftaran){
+                    $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
+                }
     
-                $response['error']    = false;
-                $response['message'] = 'Sukses Daftar';
+                //getCountTransaksi
+                $countTransaksi = $this->db->query('SELECT max(IDTRANSAKSI) AS IDTRANS FROM TRANSAKSI')->result();
+                foreach($countTransaksi as $getIdTrans){
+                    $getIdTransaksi = $getIdTrans->IDTRANS;
+                }
+    
+                // $idTransaksi    = $getIdTransaksi + 1;
+                // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+                $idTrans        = 'TR'.''.date('YmdHis').'';
+    
+                //dataKeluarga
+                $dataKeluarga = array(
+                    'NAMALENGKAP'               => $namaLengkapKeluarga,
+                    'ALAMAT'                    => $alamatKeluarga,
+                    'KELURAHAN'                 => $kelurahanKeluarga,
+                    'KECAMATAN'                 => $kecamatanKeluarga,
+                    'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
+                    'PROVINSI'                  => $provinsiKeluarga,
+                    'KODEPOS'                   => $kodePOSKeluarga,
+                    'NOMORHP'                   => $nomorHPKeluarga,
+                    'KODEPENDAFTARAN'           => $kodePendaftaran
+                );
+    
+                //insert data keluarga
+                $this->db->insert('DATA_KELUARGA', $dataKeluarga);
+    
+                //dataTransaksi
+                $dataTransaksi = array(
+                    'IDTRANSAKSI'           => $idTrans,
+                    'IDPAKET'               => $idPaket,
+                    'STATUSTRANSAKSI'       => 0,
+                    'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
+                    'SHEET'                 => $sheet,
+                    'SHEETHARGA'            => $sheetHarga,
+                    'WAKTU'                 => $waktu,
+                    'KODEPENDAFTARAN'       => $kodePendaftaran
+                );
+    
+                //insert data transaksi
+                $this->db->insert('TRANSAKSI', $dataTransaksi);
+            
+                if($this->db->affected_rows()>0){
+                    require APPPATH . 'views/vendor/autoload.php';
+                    $options = array(
+                        'cluster' => 'ap1',
+                        'useTLS' => true
+                    );
+                    $pusher = new Pusher\Pusher(
+                        'ee692ab95bb9aeaa1dcc',
+                        'b062506e42b3a8c66368',
+                        '1149993',
+                        $options
+                    );
+            
+                    $data['notif'] = 'jamaah';
+                    $pusher->trigger('my-channel', 'my-event', $data);
+        
+                    $response['error']    = false;
+                    $response['message'] = 'Sukses Daftar';
+                    $this->throw(200, $response);
+                    return;
+                }
+            }else{
+                $response['error']    = true;
+                $response['message'] = 'No KTP sudah pernah digunakan pada paket yang sama';
                 $this->throw(200, $response);
                 return;
             }
+            
         }else{
             $response['error']    = true;
             $response['message'] = 'Terdapat Data Kosong';
@@ -532,69 +542,78 @@ class Pendaftaran extends CI_Controller{
 
         //check if inputan kosong
         if($idUserRegister != "" && $nomorKTP != "" && $email != "" && $fileKTP != null && $fileKK != null && $namaLengkap != "" && $nomorPaspor != "" && $filePaspor != null && $tempatDikeluarkan != "" && $tanggalPenerbitanPaspor != "" && $tanggalBerakhirPaspor != "" && $tempatLahir != "" && $tanggalLahir != "" && $jenisKelamin != "" && $statusPerkawinan != "" && $kewarganegaraan != "" && $alamat != "" && $kelurahan != "" && $kecamatan != "" && $kotakabupaten != "" && $provinsi != "" && $kodePOS != "" && $nomorHP != "" && $fileAkteKelahiran != null && $pekerjaan != "" && $riwayatPenyakit != "" ){
-            $this->db->insert('PENDAFTARAN', $data);
+            $get_noktp_on_id_wisata_halal = $this->db->select('*')->from('TRANSAKSI')->join('PENDAFTARAN','PENDAFTARAN.KODEPENDAFTARAN = TRANSAKSI.KODEPENDAFTARAN')->where('NOMORKTP', $nomorKTP)->where('IDWISATAHALAL', $idWisataHalal)->get()->num_rows();
+            
+            if($get_noktp_on_id_wisata_halal == 0){
+                $this->db->insert('PENDAFTARAN', $data);
 
-            //getKodePendaftaran
-            $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
-            foreach($dataKodePendaftaran as $dKodePendaftaran){
-                $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
-            }
-
-            //getCountTransaksi
-            // $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
-            // $idTransaksi    = $countTransaksi + 1;
-            // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
-            $idTrans        = 'TR'.''.date('YmdHis').'';
-
-            //dataKeluarga
-            $dataKeluarga = array(
-                'NAMALENGKAP'               => $namaLengkapKeluarga,
-                'ALAMAT'                    => $alamatKeluarga,
-                'KELURAHAN'                 => $kelurahanKeluarga,
-                'KECAMATAN'                 => $kecamatanKeluarga,
-                'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
-                'PROVINSI'                  => $provinsiKeluarga,
-                'KODEPOS'                   => $kodePOSKeluarga,
-                'NOMORHP'                   => $nomorHPKeluarga,
-                'KODEPENDAFTARAN'           => $kodePendaftaran
-            );
-
-            //insert data keluarga
-            $this->db->insert('DATA_KELUARGA', $dataKeluarga);
-
-            //dataTransaksi
-            $dataTransaksi = array(
-                'IDTRANSAKSI'           => $idTrans,
-                'IDWISATAHALAL'         => $idWisataHalal,
-                'STATUSTRANSAKSI'       => 0,
-                'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
-                'SHEET'                 => $sheet,
-                'SHEETHARGA'            => $sheetHarga,
-                'WAKTU'                 => $waktu,
-                'KODEPENDAFTARAN'       => $kodePendaftaran
-            );
-
-            //insert data transaksi
-            $this->db->insert('TRANSAKSI', $dataTransaksi);
-        
-            if($this->db->affected_rows()>0){
-                require APPPATH . 'views/vendor/autoload.php';
-                $options = array(
-                    'cluster' => 'ap1',
-                    'useTLS' => true
-                );
-                $pusher = new Pusher\Pusher(
-                    'ee692ab95bb9aeaa1dcc',
-                    'b062506e42b3a8c66368',
-                    '1149993',
-                    $options
-                );
-        
-                $data['notif'] = 'jamaah';
-                $pusher->trigger('my-channel', 'my-event', $data);
+                //getKodePendaftaran
+                $dataKodePendaftaran = $this->db->get_where('PENDAFTARAN', $data)->result();
+                foreach($dataKodePendaftaran as $dKodePendaftaran){
+                    $kodePendaftaran = $dKodePendaftaran->KODEPENDAFTARAN;
+                }
     
-                $response['error']    = false;
-                $response['message'] = 'Sukses Daftar';
+                //getCountTransaksi
+                // $countTransaksi = $this->db->get('TRANSAKSI')->num_rows();
+                // $idTransaksi    = $countTransaksi + 1;
+                // $transId        = str_pad($idTransaksi, 6, '0', STR_PAD_LEFT);
+                $idTrans        = 'TR'.''.date('YmdHis').'';
+    
+                //dataKeluarga
+                $dataKeluarga = array(
+                    'NAMALENGKAP'               => $namaLengkapKeluarga,
+                    'ALAMAT'                    => $alamatKeluarga,
+                    'KELURAHAN'                 => $kelurahanKeluarga,
+                    'KECAMATAN'                 => $kecamatanKeluarga,
+                    'KOTAKABUPATEN'             => $kotakabupatenKeluarga,
+                    'PROVINSI'                  => $provinsiKeluarga,
+                    'KODEPOS'                   => $kodePOSKeluarga,
+                    'NOMORHP'                   => $nomorHPKeluarga,
+                    'KODEPENDAFTARAN'           => $kodePendaftaran
+                );
+    
+                //insert data keluarga
+                $this->db->insert('DATA_KELUARGA', $dataKeluarga);
+    
+                //dataTransaksi
+                $dataTransaksi = array(
+                    'IDTRANSAKSI'           => $idTrans,
+                    'IDWISATAHALAL'         => $idWisataHalal,
+                    'STATUSTRANSAKSI'       => 0,
+                    'TANGGALKEBERANGKAT'    => $tanggalBerangkat,
+                    'SHEET'                 => $sheet,
+                    'SHEETHARGA'            => $sheetHarga,
+                    'WAKTU'                 => $waktu,
+                    'KODEPENDAFTARAN'       => $kodePendaftaran
+                );
+    
+                //insert data transaksi
+                $this->db->insert('TRANSAKSI', $dataTransaksi);
+            
+                if($this->db->affected_rows()>0){
+                    require APPPATH . 'views/vendor/autoload.php';
+                    $options = array(
+                        'cluster' => 'ap1',
+                        'useTLS' => true
+                    );
+                    $pusher = new Pusher\Pusher(
+                        'ee692ab95bb9aeaa1dcc',
+                        'b062506e42b3a8c66368',
+                        '1149993',
+                        $options
+                    );
+            
+                    $data['notif'] = 'jamaah';
+                    $pusher->trigger('my-channel', 'my-event', $data);
+        
+                    $response['error']    = false;
+                    $response['message'] = 'Sukses Daftar';
+                    $this->throw(200, $response);
+                    return;
+                }
+            }else{
+                $response['error']    = true;
+                $response['message'] = 'No KTP sudah pernah digunakan pada paket yang sama';
                 $this->throw(200, $response);
                 return;
             }
