@@ -231,10 +231,10 @@ class Jamaah extends CI_Controller
         redirect('Jamaah/WisataHalal');
     }
 
-    public function aksiHapusJamaahWH($idTransaksi)
+    public function aksiHapusJamaahWH($kodePendaftaran)
     {
         //delete
-        $this->MJamaah->deleteJamaah($idTransaksi);
+        $this->MJamaah->deleteJamaah($kodePendaftaran);
 
         //alert ketika sudah terhapus
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Jamaah berhasil dihapus! </div>');

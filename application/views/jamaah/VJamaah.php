@@ -70,7 +70,7 @@
                                         <?php echo $verfikasi ?>
                                         <button title="Detail Jamaah" type="button" class="btn btn-primary mt-1 btn-sm" data-toggle="modal" data-target="#detailJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-ellipsis-h"></i>
                                         </button>
-                                        <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->IDTRANSAKSI ?>"><i class="fa fa-trash"></i>
+                                        <button title="Hapus Jamaah" type="button" class="btn btn-danger mt-1 btn-sm" data-toggle="modal" data-target="#hapusJamaah<?= $data->KODEPENDAFTARAN ?>"><i class="fa fa-trash"></i>
                                         </button>
                                         <a title="Detail Pembayaran" type="button" href="<?php echo site_url('Pembayaran'); ?>" class="btn btn-primary mt-1 btn-sm"><i class="fa fa-dollar-sign fa-fw"></i>
                                         </a>
@@ -344,7 +344,7 @@
                                     </div>
 
                                     <!-- Modal Hapus -->
-                                    <div class="modal" id="hapusJamaah<?= $data->IDTRANSAKSI ?>" tabindex="-1" role="dialog">
+                                    <div class="modal" id="hapusJamaah<?= $data->KODEPENDAFTARAN ?>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -357,7 +357,7 @@
                                                     <h5>Apakah anda yakin ingin menghapus jamaah <b> <?= $data->NAMALENGKAP ?> ?</h5>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="<?= base_url('Jamaah/aksiHapusJamaah/' . $data->IDTRANSAKSI) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
+                                                    <a href="<?= base_url('Jamaah/aksiHapusJamaah/' . $data->KODEPENDAFTARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</a>
                                                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                                 </div>
                                             </div>
