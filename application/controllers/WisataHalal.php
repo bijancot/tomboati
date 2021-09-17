@@ -244,7 +244,7 @@ class WisataHalal extends CI_Controller
         $tipe = null;
         if($kodeTipe == "1"){
             $tipe = "Internasional";
-        }else if($kodeTipe = "2"){
+        }else if($kodeTipe == "2"){
             $tipe = "Nasional";
         }else if($kodeTipe == "3"){
             $tipe = "ZiarahWali";
@@ -256,7 +256,7 @@ class WisataHalal extends CI_Controller
 
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Wisata Halal berhasil diperbarui! </div>');
-
+        
         redirect('WisataHalal/paket/'.$tipe);
     }
 

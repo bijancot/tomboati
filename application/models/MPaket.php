@@ -11,6 +11,7 @@ class MPaket extends CI_Model
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = PAKET.IDMASKAPAI');
         $this->db->where('MASTER_PAKET.IDMASTERPAKET', $idMasterPaket);
+        $this->db->order_by('PAKET.CREATED_AT', 'DESC');
         $query = $this->db->get();
 
         return $query->result();
@@ -97,6 +98,7 @@ class MPaket extends CI_Model
         $this->db->from('PAKET');
         $this->db->join('MASTER_PAKET', 'MASTER_PAKET.IDMASTERPAKET = PAKET.IDMASTERPAKET');
         $this->db->where('MASTER_PAKET.IDMASTERPAKET', $idMasterPaket);
+        $this->db->order_by('PAKET.CREATED_AT', 'DESC');
         $query = $this->db->get();
 
         return $query->result();

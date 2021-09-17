@@ -10,6 +10,7 @@ class MWisataHalal extends CI_Model
         $this->db->from('WISATA_HALAL');
         $this->db->join('MASKAPAI', 'MASKAPAI.IDMASKAPAI = WISATA_HALAL.IDMASKAPAI');
         $this->db->where('WISATA_HALAL.TIPEWISATA', $kodeTipe);
+        $this->db->order_by('WISATA_HALAL.CREATED_AT', 'DESC');
         $query = $this->db->get();
 
         return $query->result();
