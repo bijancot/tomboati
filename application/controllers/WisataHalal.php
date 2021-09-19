@@ -134,6 +134,15 @@ class WisataHalal extends CI_Controller
             $this->MWisataHalal->saveItinerary($dataItinerary);
         }
 
+        $query = $this->db->query('SELECT USERTOKEN FROM USER_REGISTER WHERE USERTOKEN IS NOT NULL')->result();
+
+        $dataPaketNotif = array(
+            'namaPaket' => $this->input->post('namaWisata'),
+            'dataToken' => $query
+        );
+        
+        $this->load->view('notif/wisatahalal', $dataPaketNotif);
+
         //alert ketika sudah tersimpan
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Wisata Halal berhasil ditambahkan! </div>');
 
