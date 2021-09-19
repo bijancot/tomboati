@@ -67,13 +67,13 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="durasiWisata">Durasi Paket (hari)</label>
-                                                <input name="durasiWisata" class="form-control" id="durasiWisata" type="number" placeholder="Masukkan Durasi" />
+                                                <input name="durasiWisata" class="form-control" id="durasiWisata" type="number" placeholder="Masukkan Durasi" required/>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" />
+                                                <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" required/>
                                             </div>
                                         </div>
                                     </div>

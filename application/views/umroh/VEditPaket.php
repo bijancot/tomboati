@@ -77,13 +77,13 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="durasiPaket">Durasi Paket</label>
-                                                    <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" value="<?= $row['DURASIPAKET']; ?>" />
+                                                    <input name="durasiPaket" class="form-control" id="durasiPaket" type="number" placeholder="Masukkan Durasi" value="<?= $row['DURASIPAKET']; ?>" required/>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                    <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" value="<?= $row['TANGGALKEBERANGKATAN']; ?>" />
+                                                    <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" value="<?= $row['TANGGALKEBERANGKATAN']; ?>" required/>
                                                 </div>
                                             </div>
                                         </div>

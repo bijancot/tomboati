@@ -6,7 +6,10 @@ class MKomunitas extends CI_Model
 
     public function getKomunitas()
     {
-        $query = $this->db->get('KOMUNITAS_INFO');
+        $this->db->select('*');
+        $this->db->from('KOMUNITAS_INFO');
+        $this->db->order_by('KOMUNITAS_INFO.TANGGALNEWS', 'DESC');
+        $query = $this->db->get();
 
         return $query->result();
     }

@@ -6,7 +6,11 @@ class MMaskapai extends CI_Model
 
     public function getMaskapai()
     {
-        $query = $this->db->get('MASKAPAI');
+        $this->db->select('*');
+        $this->db->from('MASKAPAI');
+        $this->db->order_by('MASKAPAI.CREATED_AT', 'DESC');
+        
+        $query = $this->db->get();
 
         return $query->result();
     }

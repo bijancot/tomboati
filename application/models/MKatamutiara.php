@@ -6,7 +6,10 @@ class MKatamutiara extends CI_Model
 
     public function getKatamutiara()
     {
-        $query = $this->db->get('KATA_MUTIARA');
+        $this->db->select('*');
+        $this->db->from('KATA_MUTIARA');
+        $this->db->order_by('KATA_MUTIARA.WAKTU', 'DESC');
+        $query = $this->db->get();
 
         return $query->result();
     }

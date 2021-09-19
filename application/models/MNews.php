@@ -6,7 +6,10 @@ class MNews extends CI_Model
 
     public function getNews()
     {
-        $query = $this->db->get('NEWS_INFO');
+        $this->db->select('*');
+        $this->db->from('NEWS_INFO');
+        $this->db->order_by('NEWS_INFO.TANGGALNEWS', 'DESC');
+        $query = $this->db->get();
 
         return $query->result();
     }
