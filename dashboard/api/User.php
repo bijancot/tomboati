@@ -36,7 +36,7 @@ function registerMitra_post()
 
                 if ($fileSize < 2000000) {
                     move_uploaded_file($tempPath, $upload_path . $file_foto_ktp);
-                    $file_foto_ktp_db = 'https://dash-tombo.bgskr-project.my.id/dashboard/upload/users/'.$file_foto_ktp;
+                    $file_foto_ktp_db = 'https://tomboatitour.biz/dashboard/upload/users/'.$file_foto_ktp;
                 } else {
                     $errorMSG = json_encode(array("message" => "File KTP maksimal 2MB", "status" => false));
                     echo $errorMSG;
@@ -67,7 +67,7 @@ function registerMitra_post()
 
             if ($fileSize < 2000000) {
                 move_uploaded_file($tempPath, $upload_path . $file_foto_profil);
-                $file_foto_profil_db = 'https://dash-tombo.bgskr-project.my.id/dashboard/upload/users/'.$file_foto_profil;
+                $file_foto_profil_db = 'https://tomboatitour.biz/dashboard/upload/users/'.$file_foto_profil;
             } else {
                 $errorMSG = json_encode(array("message" => "File Foto Profil maksimal 2MB", "status" => false));
                 echo $errorMSG;
@@ -99,7 +99,7 @@ function registerMitra_post()
 
             if ($fileSize < 2000000) {
                 move_uploaded_file($tempPath, $upload_path . $file_bukti_bayar);
-                $file_bukti_bayar_db = 'https://dash-tombo.bgskr-project.my.id/dashboard/upload/users/'.$file_bukti_bayar;
+                $file_bukti_bayar_db = 'https://tomboatitour.biz/dashboard/upload/users/'.$file_bukti_bayar;
             } else {
                 $errorMSG = json_encode(array("message" => "File Bukti Bayar maksimal 2MB", "status" => false));
                 echo $errorMSG;

@@ -263,7 +263,7 @@
                                          </div>
                                      </a>
                                  <?php } else { ?>
-                                     <a class="badge badge-white bg-white" href="https://dash-tombo.bgskr-project.my.id/dashboard/VPermintaanMitra.php">
+                                     <a class="badge badge-white bg-white" href="VPermintaanMitra.php">
                                          <div class="dropdown-notifications-item-content">
                                              <div class="text-left text-bold fs-14">Permintaan Mitra Baru</div>
                                              <div class="text-left fs-12">Terdapat <?php echo $get_rows_paket_user ?> Permintaan Mitra Baru</div>
