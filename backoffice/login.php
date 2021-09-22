@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <!-- Login form-->
                                         <form action="" method="POST">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="email">Email</label>
+                                                <label class="small mb-1" for="username">Username</label>
                                                 <input type="text" class="form-control py-4" name="username" placeholder="Masukkan Username" required />
                                             </div>
                                             <div class="form-group">

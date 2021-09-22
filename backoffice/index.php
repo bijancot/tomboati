@@ -260,7 +260,7 @@ $qr_code = $row['qr_code'];
     <div class="header-4-3 mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #bb9661;">
         <a href="#">
-          <img style=" width: 70px;" src="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" alt="" />
+          <img style=" width: 70px;" src="../assets/img/logo_tomboati.png" alt="" />
         </a>
 
         <?php
@@ -355,7 +355,7 @@ $qr_code = $row['qr_code'];
             // jika belum login akan diarahkan download aplikasi
             if (cek_login($mysqli) == false) {
               //isi qrcode jika di scan
-              $codeContents = 'https://tomboati.bgskr-project.my.id/';
+              $codeContents = 'https://tomboatitour.biz/apps';
 
               //simpan file kedalam temp 
               QRcode::png($codeContents, $tempdir . 'qrcode_aplikasitombo.png', QR_ECLEVEL_L, 10, 4);
@@ -373,7 +373,7 @@ $qr_code = $row['qr_code'];
               // jika sudah login akan diarahkan referral
             } else {
               //isi qrcode jika di scan
-              $codeContents = $base_url.'referral/'.$username;
+              $codeContents = 'https://tomboatitour.biz/referral/'.$username;
 
               // jika belum punya qr code
               if ($qr_code == "") {
@@ -418,7 +418,7 @@ $qr_code = $row['qr_code'];
   <section class="h-100 w-100" style="
         box-sizing: border-box;
         background-color: #fff;
-        background: url(https://tomboati.bgskr-project.my.id/assets/img/bg-green-idfitri.svg)
+        background: url(../assets/img/bg-green-idfitri.svg)
           no-repeat fixed;
         background-size: cover;
       ">
