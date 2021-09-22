@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+include('config2.php');
 include('fungsi.php');
 
 if(isset($_POST['update-profile'])){
@@ -21,7 +22,10 @@ header("Location: admin-profile-edit.php?userid='.$username.'&?error=2&name=$nam
 } else {
 
 $query = mysqli_query($koneksi, "UPDATE mebers SET name='$name', email='$email', hphone='$hp', ktp='$ktp' WHERE userid='$username'")or die(mysql_error());
-if ($query){
+$query2 = mysqli_query($koneksi2, "UPDATE USER_REGISTER SET NAMALENGKAP='$name', EMAIL='$email', NOMORHP='$hp', NOMORKTP='$ktp' WHERE USERNAME='$username' ");
+
+
+if ($query && $query2){
 header('location:admin-profile-edit.php?userid='.$username.'&error=6');	
 }
 }

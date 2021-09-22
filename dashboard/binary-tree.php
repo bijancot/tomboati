@@ -41,7 +41,8 @@ $urutan = $_GET['urutan'];
                     ?>
                   <table id="example" class="table table-hover table-bordered" width="100%">
                   <thead>
- <iframe src="../member/binary-tree.php?useridx=<? echo $row[userid]; ?>" height="80%" width="100%" frameborder="0" Scrollbars="yes"></iframe> 
+ <!-- <iframe src="../member/binary-tree.php?useridx=<? echo $row[userid]; ?>" height="80%" width="100%" frameborder="0" Scrollbars="yes"></iframe>  -->
+ <iframe src="binary-tree.php?useridx=<? echo $row['userid']; ?>" height="80%" width="100%" frameborder="0" Scrollbars="yes"></iframe> 
                   </thead>
                    </table>
                   </div>
