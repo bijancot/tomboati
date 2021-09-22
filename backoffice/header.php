@@ -85,14 +85,19 @@
     $query_wd2=mysqli_fetch_array($query_wd);
     $wd_total=$query_wd2['total_wd'];
     
-    $tampil_ref=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' ");
+    // referral diri sendiri
+    $tampil_ref=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]'");
     $total_ref=mysqli_num_rows($tampil_ref);
+    
+    // ini yang digunakan untuk hak register
+    $tampil_ref_hr=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND is_hr = 2");
+    $total_ref_hr=mysqli_num_rows($tampil_ref_hr);
     
     $tampil_ref_reseller=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND paket='RESELLER'");
     $total_ref_reseller=mysqli_num_rows($tampil_ref_reseller);
     
     $sum=$bonus_sponsor_total+$bonus_titik_total-$wd_total;
-    $sum_register=$point_total-$total_ref;
+    $sum_register=$point_total-$total_ref_hr;
     
     // echo 'UserIDMu'.$row['userid'];
     //notifikasi
@@ -266,7 +271,7 @@
      <meta name="keywords" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" type="image/x-icon" />
+     <link rel="icon" href="../assets/img/logo_tomboati.png" type="image/x-icon" />
 
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 

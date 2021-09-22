@@ -6,5 +6,5 @@ $code = $_GET['code'];
 $query = "DELETE FROM hm2_pending_deposits WHERE code='$code'";
 $result = mysqli_query($koneksi, $query);
 
-echo "<script type='text/javascript'>document.location.href = 'topup-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'topup-history.php';</script>";
 ?>

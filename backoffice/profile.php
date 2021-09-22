@@ -25,7 +25,7 @@ $email = $_POST['email'];
 $ktp = $_POST['ktp'];
 $npwp = $_POST['npwp'];
 $query = mysqli_query($koneksi, "UPDATE mebers SET email='$email', hphone='$hphone', ktp='$ktp', npwp='$npwp' WHERE id='$id' ")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'profile?status=PROFILE UPDATED';</script>";
+echo "<script type='text/javascript'>document.location.href = 'profile.php?status=PROFILE UPDATED';</script>";
 	exit();	
 }
 
@@ -37,7 +37,7 @@ $propinsi = $_POST['propinsi'];
 $kode_pos = $_POST['kode_pos'];
 $country = $_POST['country'];
 $query = mysqli_query($koneksi, "UPDATE mebers SET address='$address', kecamatan='$kecamatan', kota='$kota', propinsi='$propinsi', kode_pos='$kode_pos', country='$country' WHERE id='$id' ")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'profile?status=ADDRESS UPDATED';</script>";
+echo "<script type='text/javascript'>document.location.href = 'profile.php?status=ADDRESS UPDATED';</script>";
 	exit();	
 }
 
@@ -48,7 +48,7 @@ $rekening = $_POST['rekening'];
 $bank = $_POST['bank'];
 $cabang = $_POST['cabang'];
 $query = mysqli_query($koneksi, "UPDATE mebers SET cabang='$cabang', rekening='$rekening', bank='$bank', cabang='$cabang' WHERE id='$id' ")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'profile?status=BANK UPDATED';</script>";
+echo "<script type='text/javascript'>document.location.href = 'profile.php?status=BANK UPDATED';</script>";
 	exit();	
 }
 
@@ -59,10 +59,10 @@ $passwcode=MD5($password_new);
 
 if($password_old==$passw){
 $query = mysqli_query($koneksi, "UPDATE mebers SET passw='$password_new', passenc='$passwcode' WHERE id='$id' ")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'logout';</script>";
+echo "<script type='text/javascript'>document.location.href = 'logout.php';</script>";
 	exit();	
 } else {
-echo "<script type='text/javascript'>document.location.href = 'profile?status=PASSWORD LAMA SALAH';</script>";
+echo "<script type='text/javascript'>document.location.href = 'profile.php?status=PASSWORD LAMA SALAH';</script>";
 	exit();	
 }
 }
@@ -83,7 +83,7 @@ echo "<script type='text/javascript'>document.location.href = 'profile?status=PA
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -91,7 +91,7 @@ echo "<script type='text/javascript'>document.location.href = 'profile?status=PA
                                             </li>
                                         </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

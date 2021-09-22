@@ -17,11 +17,11 @@ $amount = $_POST['amount'];
 $amount2 = number_format($amount,0,",",".");
 
 if ($amount > $sum) {
-echo "<script type='text/javascript'>document.location.href = 'ro-history?status=SALDO TIDAK CUKUP';</script>";
+echo "<script type='text/javascript'>document.location.href = 'wd-request.php?status=SALDO TIDAK CUKUP';</script>";
 } else {
 $insert = mysqli_query($koneksi, "INSERT INTO hm2_history (user_id, amount, type, description, date)
 VALUES('$id', '$amount', 'withdraw_pending', 'Withdrawal on process', now())") or die(mysqli_error());
-echo "<script type='text/javascript'>document.location.href = 'wd-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'wd-history.php';</script>";
 }
 }
 ?>
@@ -42,7 +42,7 @@ echo "<script type='text/javascript'>document.location.href = 'wd-history';</scr
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -50,7 +50,7 @@ echo "<script type='text/javascript'>document.location.href = 'wd-history';</scr
                                             </li>
                                        </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@ echo "<script type='text/javascript'>document.location.href = 'wd-history';</scr
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label"></label>
                               <div class="col-sm-10">
-	                              <a href="index" class="btn btn-sm btn-danger"><< Back </a>&nbsp;&nbsp;
+	                              <a href="dashboard.php" class="btn btn-sm btn-danger"><< Back </a>&nbsp;&nbsp;
                                   <?php echo $button; ?>
                               </div>
                           </div>
