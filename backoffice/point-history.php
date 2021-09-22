@@ -19,7 +19,7 @@ include 'header.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -27,7 +27,7 @@ include 'header.php';
                                             </li>
                                        </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@ $class='btn btn-sm btn-danger';
 $class2='btn btn-sm btn-primary';
 } else if ($data['status']=='pending'){
 $status='<a href="#" class="btn btn-sm btn-warning">pending</a>';
-$tindakan='<a href="#" class="btn btn-sm btn-warning">on process</a> <a href="upload-process-point?code='.$data['code'].'" class="btn btn-sm btn-primary">upload</a>';
+$tindakan='<a href="#" class="btn btn-sm btn-warning">on process</a> <a href="upload-process-point.php?code='.$data['code'].'" class="btn btn-sm btn-primary">upload</a>';
 $delete='';
 $class='';
 $class2='';
@@ -108,8 +108,8 @@ else {
                     <td><center><?php echo $data['gateway'];?></center></td>
                     <td><center><?php echo $photo; ?></center></td>
                     <td><center>
-<a href="point-process?code=<?php echo $data['code'];?>" class="<?php echo $class2;?>"><?php echo $tindakan;?></a>
-<a href="point-delete?code=<?php echo $data['code'];?>" class="<?php echo $class;?>"><?php echo $delete;?></a>
+<a href="point-process.php?code=<?php echo $data['code'];?>" class="<?php echo $class2;?>"><?php echo $tindakan;?></a>
+<a href="point-delete.php?code=<?php echo $data['code'];?>" class="<?php echo $class;?>"><?php echo $delete;?></a>
 </center></td>
                                                     </tr>
                  <?php   

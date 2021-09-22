@@ -21,14 +21,14 @@ $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline
 $total_upline = mysqli_num_rows($sql_upline);
 if ($total_upline == 0) {
     echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
-    echo "<script type='text/javascript'>document.location.href = 'register?error=Username Upline tidak Ditemukan';</script>";
+    echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
 } else {
     // update data ke database
     if (mysqli_query($koneksi, "update mebers set upline='$upline' where id='$id'")) {
         // echo "BERHASIL";
 
         echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
-        echo "<script type='text/javascript'>document.location.href = 'register';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
     
         // kirim email
         

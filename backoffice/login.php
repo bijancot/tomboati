@@ -53,12 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="description" content />
     <meta name="author" content />
     <title>Login | Tombo Ati</title>
-    <link href="https://tomboati.bgskr-project.my.id/assets/css/styles.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo_tomboati.png" />
     <style>
         .bg-login {
             background-color: transparent;
-            background: url('https://tomboati.bgskr-project.my.id/assets/img/bg-green-idfitri.svg') no-repeat center center fixed;
+            background: url('../assets/img/bg-green-idfitri.svg') no-repeat center center fixed;
             height: 100%;
             background-size: cover;
             -webkit-background-size: cover;

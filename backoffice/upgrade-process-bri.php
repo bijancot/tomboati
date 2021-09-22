@@ -43,7 +43,7 @@ $userid = $row['userid'];
 $message = $_POST['message'];
 
 $query = mysqli_query($koneksi, "INSERT hm2_pending_deposits SET user_id='$id', amount='900000', status='pending', message='$message', gateway='BRI', unik='$unik', code='$code', type='upgrade', date=now()")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'topup-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'topup-history.php';</script>";
     }
 
             ?>
@@ -62,7 +62,7 @@ echo "<script type='text/javascript'>document.location.href = 'topup-history';</
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -70,7 +70,7 @@ echo "<script type='text/javascript'>document.location.href = 'topup-history';</
                                             </li>
                                         </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

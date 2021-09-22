@@ -33,14 +33,14 @@ $userid = $row['userid'];
 $amount = $_POST['amount'];
 
 $insert = mysqli_query($koneksi, "INSERT INTO hm2_pending_deposits (user_id, amount, unik, code, type, date) VALUES('$id', '$amount', '$unik', '$code', 'upgrade', now())");
-echo "<script type='text/javascript'>document.location.href = 'topup-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'topup-history.php';</script>";
     }
 
 $query1 = mysqli_query($koneksi, "SELECT * FROM hm2_pending_deposits WHERE user_id = '$id' ");
 $data = mysqli_fetch_assoc($query1);
 
 if ($data['user_id']==$id){
-$tindakan='<a href="topup-history" class="btn btn-sm btn-warning">proses pembayaran</a>';
+$tindakan='<a href="topup-history.php" class="btn btn-sm btn-warning">proses pembayaran</a>';
 } else {
 $tindakan='<input type="submit" name="topup" value="next"  class="btn btn-sm btn-primary"/>';
 }
@@ -60,7 +60,7 @@ $tindakan='<input type="submit" name="topup" value="next"  class="btn btn-sm btn
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -68,7 +68,7 @@ $tindakan='<input type="submit" name="topup" value="next"  class="btn btn-sm btn
                                             </li>
                                         </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

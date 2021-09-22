@@ -111,7 +111,7 @@ include 'header.php';
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="state">
                                                 <h6>Hadiah Poin</h6>
-                                                <h2><?php echo $bonus_point_total;?></h2>
+                                                <h2><?php echo round($bonus_point_total,2);?></h2>
                                             </div>
                                             <div class="icon">
                                                 <i class="ik ik-thumbs-up"></i>
@@ -191,8 +191,8 @@ include 'header.php';
 <?php
 $status = $data_deposit['status'];
 if($status=='new'){
-$statusx="<a href=\"point-process?code=$data_deposit[code]\" class=\"btn btn-sm btn-success\">process <i class=\"fa fa-arrow-circle-right\"></i></a> 
-<a href=\"point-delete?hapus=yes&code=$data_deposit[code]\" class=\"btn btn-sm btn-warning\">cancel <i class=\"fa fa-arrow-circle-right\"></i></a>"
+$statusx="<a href=\"point-process.php?code=$data_deposit[code]\" class=\"btn btn-sm btn-success\">process <i class=\"fa fa-arrow-circle-right\"></i></a> 
+<a href=\"point-delete.php?hapus=yes&code=$data_deposit[code]\" class=\"btn btn-sm btn-warning\">cancel <i class=\"fa fa-arrow-circle-right\"></i></a>"
 ;} 
 if($status=='processed'){
 $statusx="<a href=\"#\" class=\"btn btn-sm btn-warning\">processed <i class=\"fa fa-arrow-circle-right\"></i></a>";}
@@ -254,8 +254,8 @@ $statusx="<a href=\"#\" class=\"btn btn-sm btn-info\">pending <i class=\"fa fa-a
 <?php
 $status = $data_deposit['status'];
 if($status=='new'){
-$statusx="<a href=\"point-process?code=$data_deposit[code]\" class=\"btn btn-sm btn-success\">process <i class=\"fa fa-arrow-circle-right\"></i></a> 
-<a href=\"point-delete?hapus=yes&code=$data_deposit[code]\" class=\"btn btn-sm btn-warning\">cancel <i class=\"fa fa-arrow-circle-right\"></i></a>"
+$statusx="<a href=\"point-process.php?code=$data_deposit[code]\" class=\"btn btn-sm btn-success\">process <i class=\"fa fa-arrow-circle-right\"></i></a> 
+<a href=\"point-delete.php?hapus=yes&code=$data_deposit[code]\" class=\"btn btn-sm btn-warning\">cancel <i class=\"fa fa-arrow-circle-right\"></i></a>"
 ;} 
 if($status=='processed'){
 $statusx="<a href=\"#\" class=\"btn btn-sm btn-warning\">processed <i class=\"fa fa-arrow-circle-right\"></i></a>";}

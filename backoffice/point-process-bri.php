@@ -21,7 +21,7 @@ $amount = $_POST['amount'];
 $code = $_POST['code'];
 
 $query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET unik='$unik', status='pending', amount='$transfer', message='$message', gateway='BRI', date=now() WHERE code='$code' AND user_id='$id' ")or die(mysql_error());
-echo "<script type='text/javascript'>document.location.href = 'point-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'point-history.php';</script>";
     }
 
             ?>
@@ -40,7 +40,7 @@ echo "<script type='text/javascript'>document.location.href = 'point-history';</
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -48,7 +48,7 @@ echo "<script type='text/javascript'>document.location.href = 'point-history';</
                                             </li>
                                         </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

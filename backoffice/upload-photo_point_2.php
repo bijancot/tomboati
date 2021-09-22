@@ -42,7 +42,7 @@ private $type = array("jpg","jpeg","gif","png"),$width = 250,$height = 250,$info
  }
  
  if(@imagecopyresampled($image, $im, 0, 0, 0, 0, $this->width, $this->height, $imwidth, $imheight)) {
- echo "<script type='text/javascript'>document.location.href = 'point-history';</script>";
+ echo "<script type='text/javascript'>document.location.href = 'point-history.php';</script>";
 }
 
  if($ext == "jpg" || $ext == "jpeg") {

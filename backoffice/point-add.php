@@ -34,7 +34,7 @@ $jumlah = $_POST['jumlah'];
 $amount = 100000;
 
 $insert = mysqli_query($koneksi, "INSERT INTO hm2_pending_deposits (user_id, jumlah, amount, unik, code, type, date) VALUES('$id', '$jumlah', '$jumlah*$amount', '$unik', '$code', 'point', now())");
-echo "<script type='text/javascript'>document.location.href = 'point-history';</script>";
+echo "<script type='text/javascript'>document.location.href = 'point-history.php';</script>";
     }
 
 ?>
@@ -53,7 +53,7 @@ echo "<script type='text/javascript'>document.location.href = 'point-history';</
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -61,7 +61,7 @@ echo "<script type='text/javascript'>document.location.href = 'point-history';</
                                             </li>
                                         </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

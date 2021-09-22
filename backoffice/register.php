@@ -103,10 +103,10 @@ if (isset($_POST['button'])) {
 
     if ($total_upline == 0) {
         echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
-        echo "<script type='text/javascript'>document.location.href = 'register?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
     } else if ($total_username !== 0) {
         echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
-        echo "<script type='text/javascript'>document.location.href = 'register?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
     } else {
         
         echo "MASUK DEK";
@@ -316,7 +316,7 @@ VALUES
         echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
         
         // header("Location: register.php?error=SUCCESS");
-        echo "<script type='text/javascript'>document.location.href = 'register?error=SUCCESS';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php?error=SUCCESS';</script>";
     
     }
 }
@@ -324,7 +324,7 @@ VALUES
 if ($sum_register > 0) {
     $status = '<button class="btn btn-success" name="button" type="submit">Next</button> <input type="reset" class="btn btn-danger" name="reset" value="Reset">';
 } else {
-    $status = '<a href="point-add"><button class="btn btn-success">Saldo Point Register Tidak Cukup</button></a>';
+    $status = '<a class="btn btn-success" href="point-add.php">Saldo Point Register Tidak Cukup</a>';
 }
 
 mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND sponsor='$row[userid]' AND paket='MITRA'");

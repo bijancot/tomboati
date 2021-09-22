@@ -19,15 +19,15 @@ include 'header.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
-                                                <a href="index"><i class="ik ik-home"></i></a>
+                                                 <a href="index"><i class="ik ik-home"></i></a> 
                                             </li>
                                        </ol>
                                     </nav>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
