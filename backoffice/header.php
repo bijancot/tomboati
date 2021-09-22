@@ -325,7 +325,7 @@
                                     <p> Tidak Ada Pemberitahuan</p>
                                  </a>
                                  <?php }else{?>
-                                 <a class="dropdown-item notification-dropdown badge text-left" href="https://dash-tombo.bgskr-project.my.id/backoffice/register.php">
+                                 <a class="dropdown-item notification-dropdown badge text-left" href="register.php">
                                      <div class="dropdown-notifications-item-content">
                                          <p class="dropdown-item-content-text notification-dropdown lg">Mitra Baru</h3>
                                          <div class="dropdown-item-content-details notification-dropdown">Terdapat <?php echo $get_rows_paket_user ?> Mitra Baru</div>
