@@ -50,8 +50,8 @@ $total_point=mysqli_num_rows($tampil_point);
                                 <div class="icon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
-                                <a href="admin-all-member-on.php" class="small-box-footer">
-                                    Mitra List <span class="glyphicon glyphicon-chevron-right"></span>
+                                <a href="VPenggunaBaru.php" class="small-box-footer">
+                                    User List <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>
                         </div><!-- ./col -->
@@ -139,7 +139,8 @@ $total_point=mysqli_num_rows($tampil_point);
                                 <div class="icon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
-                                <a href="../wallet/wallet-report.php" class="small-box-footer">
+                                <!-- <a href="../wallet/wallet-report.php" class="small-box-footer"> -->
+                                <a href="wallet-report.php" class="small-box-footer">
                                     History Mutasi <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>
@@ -178,7 +179,8 @@ $total_point=mysqli_num_rows($tampil_point);
                                 <div class="icon">
                                     <span class="glyphicon glyphicon-stats"></span>
                                 </div>
-                                <a href="../wallet/withdrawal-processed.php" class="small-box-footer">
+                                <!-- <a href="../wallet/withdrawal-processed.php" class="small-box-footer"> -->
+                                <a href="withdrawal-processed.php" class="small-box-footer">
                                     Record Withdrawal <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>
@@ -197,7 +199,8 @@ $total_point=mysqli_num_rows($tampil_point);
                                 <div class="icon">
                                     <span class="glyphicon glyphicon-signal"></span>
                                 </div>
-                                <a href="../wallet/pin-order.php" class="small-box-footer">
+                                <!-- <a href="../wallet/pin-order.php" class="small-box-footer"> -->
+                                <a href="pin-order.php" class="small-box-footer">
                                     Order PIN Aktivasi<span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>

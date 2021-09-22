@@ -233,7 +233,7 @@
      <!-- header logo: style can be found in header.less -->
      <header class="header">
          <a href="index.php" class="logo">
-             Mitra Area
+             Admin Area
          </a>
          <nav class="navbar navbar-static-top" role="navigation">
              <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
