@@ -1,0 +1,33 @@
+.modal-header {
+    padding: 12px 18px;
+    background-color: #3C8DBC;
+    color: white;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #FFFFFF;
+    color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.mr-3,
+    .mx-3 {
+        margin-right: 0.7rem !important;
+    }
+
+    .mb-4,
+    .my-4 {
+        margin-bottom: 2rem !important;
+    }
