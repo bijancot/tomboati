@@ -76,6 +76,7 @@ function pendaftaranMitra(){
       }
   }
 
+  $idUserRegisterLogin  = $_GET['idUserRegister'];
   $nomorKTP             = $_POST['nomorKTP'];
   $email                = $_POST['email'];
   $name                 = $_POST['namaLengkap'];
@@ -91,28 +92,55 @@ function pendaftaranMitra(){
   $msg                  = null;
   
   $get_data_username                  = $connect->query("SELECT * FROM mebers WHERE userid = '".$username."' "); 
-  
+  $get_status_user                    = $connect->query("SELECT * FROM mebers WHERE id = '".$idUserRegisterLogin."' "); 
+
   $get_rows_username                  = mysqli_num_rows($get_data_username); 
-  
   
   if($get_rows_username == null){
 
-    //insert into mebers
-    mysqli_query($connect, "INSERT INTO mebers(paket, timer, ktp, email, name, propinsi, kota, kecamatan, address, kode_pos, country, userid, passw, fotoktp, hphone, sponsor) 
-    VALUES('MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', 'company')");
-  
-    //get_data_after_insert_db_dashboard_tombo
-    $get_data_after_insert_db_dashboard_tombo = $connect->query("SELECT * FROM mebers WHERE userid = '".$username."' "); 
-                
-    $idUserRegister = null;
-    while($row = mysqli_fetch_array($get_data_after_insert_db_dashboard_tombo)){
-        $idUserRegister = $row['id'];
+    $status_user_login  = null;
+    $username_login     = null;
+
+    while($row = mysqli_fetch_array($get_status_user)){
+        $status_user_login  = $row['paket'];
+        $username_login     = $row['userid'];
     }
 
-    //insert into user_register
-    mysqli_query($connect2, "INSERT INTO USER_REGISTER(KODEREFERRAL, STATUS_USER, CREATED_AT, NOMORKTP, EMAIL, NAMALENGKAP, PROVINSI, KOTA, KECAMATAN, ALAMAT, KODEPOS, NEGARA, USERNAME, PASSWORD, FILEKTP, NOMORHP, IDUSERREGISTER) 
-    VALUES('company', 'MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', '$idUserRegister')");
-  
+    if($status_user_login == 'MITRA'){
+        //insert into mebers
+        mysqli_query($connect, "INSERT INTO mebers(paket, timer, ktp, email, name, propinsi, kota, kecamatan, address, kode_pos, country, userid, passw, fotoktp, hphone, sponsor) 
+        VALUES('MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', '$username_login')");
+
+        //get_data_after_insert_db_dashboard_tombo
+        $get_data_after_insert_db_dashboard_tombo = $connect->query("SELECT * FROM mebers WHERE userid = '".$username."' "); 
+                    
+        $idUserRegister = null;
+        while($row = mysqli_fetch_array($get_data_after_insert_db_dashboard_tombo)){
+            $idUserRegister = $row['id'];
+        }
+
+        //insert into user_register
+        mysqli_query($connect2, "INSERT INTO USER_REGISTER(KODEREFERRAL, STATUS_USER, CREATED_AT, NOMORKTP, EMAIL, NAMALENGKAP, PROVINSI, KOTA, KECAMATAN, ALAMAT, KODEPOS, NEGARA, USERNAME, PASSWORD, FILEKTP, NOMORHP, IDUSERREGISTER) 
+        VALUES('$username_login', 'MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', '$idUserRegister')");
+    }else{
+        //insert into mebers
+        mysqli_query($connect, "INSERT INTO mebers(paket, timer, ktp, email, name, propinsi, kota, kecamatan, address, kode_pos, country, userid, passw, fotoktp, hphone, sponsor) 
+        VALUES('MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', 'company')");
+
+        //get_data_after_insert_db_dashboard_tombo
+        $get_data_after_insert_db_dashboard_tombo = $connect->query("SELECT * FROM mebers WHERE userid = '".$username."' "); 
+                    
+        $idUserRegister = null;
+        while($row = mysqli_fetch_array($get_data_after_insert_db_dashboard_tombo)){
+            $idUserRegister = $row['id'];
+        }
+
+        //insert into user_register
+        mysqli_query($connect2, "INSERT INTO USER_REGISTER(KODEREFERRAL, STATUS_USER, CREATED_AT, NOMORKTP, EMAIL, NAMALENGKAP, PROVINSI, KOTA, KECAMATAN, ALAMAT, KODEPOS, NEGARA, USERNAME, PASSWORD, FILEKTP, NOMORHP, IDUSERREGISTER) 
+        VALUES('company', 'MITRA', '$createdAt', '$nomorKTP', '$email', '$name','$provinsi','$kota','$kecamatan','$address','$kodePos', '$country','$username', '$password', '$file_foto_ktp_db', '$nomorHP', '$idUserRegister')");
+    }
+
+    
     //insert chat_room tomboati
     mysqli_query($connect2, "INSERT INTO CHAT_ROOM(IDUSERREGISTER) VALUES('$idUserRegister')");
     
@@ -254,7 +282,8 @@ function pendaftaranMitra(){
     $response=array(
       'error'                     => false,
       'message'                   =>'Sukses Register Mitra',
-      'email'                     => $msg
+      'email'                     => $msg,
+      'status_user'               => $status_user_login
     );
 
   }else{
