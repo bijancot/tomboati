@@ -179,6 +179,7 @@ include 'header.php';
                         <th><center>Nominal</i></center></th>
                         <th><center>Gateway</i></center></th>
                         <th><center>Code Trx</i></center></th>
+                        <th><center>Status</i></center></th>
                                         </tr>
                                     </thead>
                      <?php 
@@ -242,6 +243,7 @@ $statusx="<a href=\"#\" class=\"btn btn-sm btn-info\">pending <i class=\"fa fa-a
                         <th><center>Gateway</i></center></th>
                         <th><center>Date</i></center></th>
                         <th><center>Code Trx</i></center></th>
+                        <th><center>Status</i></center></th>
                                         </tr>
                                     </thead>
                      <?php 
