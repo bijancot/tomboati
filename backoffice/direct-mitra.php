@@ -209,7 +209,7 @@ include 'header.php';
                                                             <div class="col">Foto KTP</div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col"><img src="<?php echo $base_url.$data['fotoktp']; ?>" style="width: 200px; height: 70px;"></div>
+                                                            <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="width: 200px; height: 100px;"></div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
