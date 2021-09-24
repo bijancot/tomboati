@@ -61,7 +61,7 @@ include 'header.php';
                             }
 
 
-                            $query1 = "SELECT * FROM mebers WHERE userid like '%" . $cari . "%' ORDER BY id DESC limit $default_index, $default_batas";
+                            $query1 = "SELECT * FROM mebers WHERE userid like '%" . $cari . "%' ORDER BY timer DESC limit $default_index, $default_batas";
                             $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
                             $total_baris = mysqli_num_rows($tampil);
 

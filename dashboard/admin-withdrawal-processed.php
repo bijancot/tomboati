@@ -61,13 +61,13 @@ include 'header.php';
 ?>
                     <tbody>
                     <tr>
-                    <td><left><?php echo $no; ?>.</center></td>
-                    <td><left><?php echo $data_user['userid']; ?></center></td>
-                    <td><left><?php echo $data_user['name']; ?></center></td>
+                    <td><center><?php echo $no; ?>.</center></td>
+                    <td><center><?php echo $data_user['userid']; ?></center></td>
+                    <td><center><?php echo $data_user['name']; ?></center></td>
                     <td align="right"><?php echo number_format(ltrim($data['amount'],'-'), 0, ', ', '.');?></td>
-                    <td><left><?php echo $data['description'];?></center></td>
-                    <td><left><?php echo $data['date']; ?></center></td>
-                    <td><left><?php echo $data['type']; ?></center></td>
+                    <td><center><?php echo $data['description'];?></center></td>
+                    <td><center><?php echo $data['date']; ?></center></td>
+                    <td><center><?php echo $data['type']; ?></center></td>
                    </tr>
 </div>
                  <?php   

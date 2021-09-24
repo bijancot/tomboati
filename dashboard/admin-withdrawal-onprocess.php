@@ -62,12 +62,12 @@ include 'header.php';
 ?>
                     <tbody>
                     <tr>
-                    <td><left><?php echo $no; ?>.</center></td>
-                    <td><left><?php echo $data_user['userid']; ?></center></td>
-                    <td><left><?php echo $data_user['name']; ?></center></td>
+                    <td><center><?php echo $no; ?>.</center></td>
+                    <td><center><?php echo $data_user['userid']; ?></center></td>
+                    <td><center><?php echo $data_user['name']; ?></center></td>
                     <td align="right"><?php echo $data['amount'];?></td>
-                    <td><left><?php echo $data['description'];?></center></td>
-                    <td><left><?php echo $data['date']; ?></center></td>
+                    <td><center><?php echo $data['description'];?></center></td>
+                    <td><center><?php echo $data['date']; ?></center></td>
                      <td><center><a href="admin-update-wd-1.php?id=<?php echo $data['id']; ?>" class="btn btn-sm btn-warning">Process <i class="fa fa-arrow-circle-right"></i></a></center></td>
                    </tr>
 </div>

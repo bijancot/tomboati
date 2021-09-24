@@ -13,6 +13,6 @@ $gateway = $_POST['gateway'];
 
 $query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET amount='$amount', jumlah='$jumlah', status='processed' WHERE id='$id' ") or die(mysql_error());
 
-header('location:admin-all-deposit-processed.php');
+header('location:admin-all-point-new.php');
 }
 ?>
