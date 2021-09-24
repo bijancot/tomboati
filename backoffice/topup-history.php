@@ -42,7 +42,7 @@ include 'header.php';
                                         <div class="table-responsive">
                     <?php
                     $kodeku = $_SESSION['id'];
-                    $query1="select * from hm2_pending_deposits WHERE user_id='$row[id]' AND type='upgrade' ORDER BY id DESC";
+                    $query1="select * from hm2_pending_deposits WHERE user_id='$row[id]' AND type='upgrade' ORDER BY date DESC";
                     $hasil=mysqli_query($koneksi, $query1) or die(mysqli_error());
                     ?>
 

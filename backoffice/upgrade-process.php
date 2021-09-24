@@ -76,10 +76,9 @@ window.location=document.getElementById("link").value
 
 <select id="link" onchange="go()" class="form-control">
 <option value="">------------------------</option>
-<option value="upgrade-process-mandiri"> Bank Mandiri 144-00-159-77-298</option>
-<option value="upgrade-process-bca"> Bank BCA 440-031-5758</option>
-<option value="upgrade-process-bri"> BRI 0429-01-000-592-560</option>
- -->
+<option value="upgrade-process-mandiri.php"> Bank Mandiri 144-00-159-77-298</option>
+<option value="upgrade-process-bca.php"> Bank BCA 440-031-5758</option>
+<option value="upgrade-process-bri.php"> BRI 0429-01-000-592-560</option>
 </select>
                                                 </div>
                                             </div>

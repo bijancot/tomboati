@@ -39,7 +39,7 @@ $nilai_transfer=$data['amount']+$data['unik'];
                                 <div class="card" style="min-height: 484px;">
                                     <div class="card-header"><h3>Upload Bukti Transfer</h3></div>
                                     <div class="card-body">
-                                        <form class="forms-sample" action="upload-photo1" enctype="multipart/form-data" method="post">
+                                        <form class="forms-sample" action="upload-photo1.php" enctype="multipart/form-data" method="post">
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username</label>
                                                 <div class="col-sm-9">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'header.php';
-            $query = mysqli_query($koneksi, "SELECT * FROM product_order WHERE userid='$row[userid]' ");
+            $query = mysqli_query($koneksi, "SELECT * FROM product_order WHERE userid='$row[userid]' ORDER BY tanggal DESC");
             $data  = mysqli_fetch_array($query);
 
                     $kodeku = $_SESSION['id'];
@@ -48,7 +48,7 @@ include 'header.php';
                                     <div class="card-body p-0 table-border-style">
                                         <div class="table-responsive">
                     <?php
-                    $query1="select * from hm2_history where user_id='$row[id]' and type='withdraw_pending' ";
+                    $query1="select * from hm2_history where user_id='$row[id]' and type='withdraw_pending' ORDER BY date DESC";
                     $tampil=mysqli_query($koneksi, $query1) or die(mysqli_error());
                     ?>
 
@@ -114,7 +114,7 @@ include 'header.php';
                                     <div class="card-body p-0 table-border-style">
                                         <div class="table-responsive">
                     <?php
-                    $query1="select * from hm2_history where user_id='$row[id]' and type='withdrawal' ";
+                    $query1="select * from hm2_history where user_id='$row[id]' and type='withdrawal' ORDER BY date DESC";
                     $tampil=mysqli_query($koneksi, $query1) or die(mysqli_error());
                     ?>
 
