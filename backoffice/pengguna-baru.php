@@ -40,7 +40,7 @@ include 'header.php';
                         <div class="card-body p-0 table-border-style">
                             <div class="table-responsive">
                                 <?php
-                                $query1 = "select * from mebers where paket = 'USER' AND sponsor='$username'";
+                                $query1 = "select * from mebers where paket = 'USER' AND sponsor='$username' ORDER BY timer DESC";
 
                     //             if (isset($_POST['qcari'])) {
                     //                 $qcari = $_POST['qcari'];

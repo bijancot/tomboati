@@ -122,18 +122,22 @@ if (isset($_POST['button'])) {
         if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
             if ($ukuran < 1044070) {
                 move_uploaded_file($file_tmp, 'img/foto-ktp/' . $newfilename);
-                $fotoktp = 'img/foto-ktp/' . $newfilename;
+                $fotoktp = $base_url.'img/foto-ktp/' . $newfilename;
             } else {
                 echo '<script type="text/javascript">alert("UKURAN FILE TERLALU BESAR");</script>';
+                echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
             }
         } else {
             echo '<script type="text/javascript>alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN");</script>';
+            echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
         }
 
+        // photo username
+        $photo = $base_url.'gambar_customer/users.png';
         $insert = mysqli_query($koneksi, "INSERT INTO mebers 
-(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, timer)
+(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, photo, is_hr, timer)
 VALUES
-('$username', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$rekening', '$atasnama', '$unik_password', now())") or die(mysqli_error());
+('$username', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$rekening', '$atasnama', '$unik_password','$photo', '1', now())") or die(mysqli_error());
 
         //Kirim Email
 
@@ -375,7 +379,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                             <div class="card-body p-0 table-border-style">
                                 <div class="card-body ">
                                     <?php
-                                    $query1 = "select * from mebers where sponsor ='$username' AND paket = 'MITRA' AND upline IS NULL";
+                                    $query1 = "select * from mebers where sponsor ='$username' AND paket = 'MITRA' AND upline IS NULL ORDER BY timer DESC";
                                     $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
                                     ?>
 

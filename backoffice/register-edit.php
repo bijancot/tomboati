@@ -24,7 +24,7 @@ if ($total_upline == 0) {
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
 } else {
     // update data ke database
-    if (mysqli_query($koneksi, "update mebers set upline='$upline' where id='$id'")) {
+    if (mysqli_query($koneksi, "update mebers set upline='$upline', is_hr = '2' where id='$id'")) {
         // echo "BERHASIL";
 
         echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
