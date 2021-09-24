@@ -16,8 +16,9 @@ $email = $_POST['email'];
 $unik_password = $_POST['passw'];
 $upline = $_POST['upline'];
 
+$username = $_POST['username'];
 
-$sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$userid'");
+$sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
 $total_upline = mysqli_num_rows($sql_upline);
 if ($total_upline == 0) {
     echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';

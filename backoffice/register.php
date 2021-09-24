@@ -94,7 +94,7 @@ if (isset($_POST['button'])) {
     $g10 = $row['g9'];
 
     // Pengecekan Upline
-    $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$userid'");
+    $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
     $total_upline = mysqli_num_rows($sql_upline);
 
     // Pengecekan Username
@@ -134,9 +134,9 @@ if (isset($_POST['button'])) {
         // photo username
         $photo = $base_url.'gambar_customer/users.png';
         $insert = mysqli_query($koneksi, "INSERT INTO mebers 
-(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, photo, is_hr, timer)
+(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, photo, is_hr, usertoken, timer)
 VALUES
-('$username', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$rekening', '$atasnama', '$unik_password','$photo', '1', now())") or die(mysqli_error());
+('$username', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$rekening', '$atasnama', '$unik_password','$photo', '1', 'tokenTomboAti', now())") or die(mysqli_error());
 
         //Kirim Email
 
@@ -591,6 +591,8 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <input type="hidden" name="name" value="<?php echo $data['name']; ?>">
                                                                     <input type="hidden" name="email" value="<?php echo $data['email']; ?>">
                                                                     <input type="hidden" name="passw" value="<?php echo $data['passw']; ?>">
+                                                                    <!-- username mitra -->
+                                                                    <input type="hidden" name="username" value="<?php echo $username; ?>">
                                                                     <div class="row py-2">
                                                                         <div class="col-4">ID Link</div>
                                                                         <div class="col-1 text-left">:</div>
