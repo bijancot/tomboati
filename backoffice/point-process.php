@@ -84,9 +84,9 @@ window.location=document.getElementById("link").value
 
 <select id="link" onchange="go()" class="form-control">
 <option value="">------------------------</option>
-<option value="point-process-mandiri?code=<?php echo $data['code'];?>"> Bank Mandiri 144-00-159-77-298</option>
-<option value="point-process-bca?code=<?php echo $data['code'];?>"> Bank BCA 440-031-5758</option>
-<option value="point-process-bri?code=<?php echo $data['code'];?>"> BRI 0429-01-000-592-560</option>
+<option value="point-process-mandiri.php?code=<?php echo $data['code'];?>"> Bank Mandiri 144-00-159-77-298</option>
+<option value="point-process-bca.php?code=<?php echo $data['code'];?>"> Bank BCA 440-031-5758</option>
+<option value="point-process-bri.php?code=<?php echo $data['code'];?>"> BRI 0429-01-000-592-560</option>
 </select>
                                                 </div>
                                             </div>
