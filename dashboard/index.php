@@ -24,7 +24,7 @@ include 'header.php';
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
 <?php 
-$tampil_user=mysqli_query($koneksi, "select * from mebers WHERE paket='USER' order by id desc");
+$tampil_user=mysqli_query($koneksi, "select * from mebers WHERE paket IN('USER', 'MiTRA') order by id desc");
 $total_user=mysqli_num_rows($tampil_user);
 
 $tampil_reseller=mysqli_query($koneksi, "select * from mebers WHERE paket='RESELLER' order by id desc");
@@ -67,7 +67,7 @@ $total_point=mysqli_num_rows($tampil_point);
                                     </p>
                                 </div>
                                 <div class="icon">
-                                    <span class="glyphicon glyphicon"></span>
+                                    <span class="glyphicon glyphicon-user"></span>
                                 </div>
                                 <a href="admin-all-member-on.php" class="small-box-footer">
                                     Mitra List<span class="glyphicon glyphicon-chevron-right"></span>
