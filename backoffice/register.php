@@ -94,17 +94,16 @@ if (isset($_POST['button'])) {
     $g10 = $row['g9'];
 
     // Pengecekan Upline
-    $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline'");
+    $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$userid'");
     $total_upline = mysqli_num_rows($sql_upline);
 
     // Pengecekan Username
     $sql_username = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$userid'");
     $total_username = mysqli_num_rows($sql_username);
-
     if ($total_upline == 0) {
         echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
-    } else if ($total_username !== 0) {
+    }else if ($total_username !== 0) {
         echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
     } else {
@@ -542,7 +541,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="col">Foto KTP</div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col"><img src="<?php echo $base_url.$data['fotoktp']; ?>" style="width: 200px; height: 70px;"></div>
+                                                                    <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="width: 200px; height: 100px;"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -595,7 +594,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="row py-2">
                                                                         <div class="col-4">ID Link</div>
                                                                         <div class="col-1 text-left">:</div>
-                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" class="form-control" placeholder="ID Link" />
+                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" class="form-control" placeholder="ID Link" id="idUserEdit"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -636,7 +635,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="upline" type="text" class="form-control" id="exampleInputUsername2" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
+                                                    <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -776,6 +775,24 @@ include 'footer.php';
 <script>
      $(function() {
         $('#userid').on('keypress', function(e) {
+            if (e.which == 32){
+                console.log('Space Detected');
+                return false;
+            }
+        });
+});
+
+$(function() {
+        $('#idUserEdit').on('keypress', function(e) {
+            if (e.which == 32){
+                console.log('Space Detected');
+                return false;
+            }
+        });
+});
+
+$(function() {
+        $('#idLink').on('keypress', function(e) {
             if (e.which == 32){
                 console.log('Space Detected');
                 return false;
