@@ -378,7 +378,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                             <div class="card-body p-0 table-border-style">
                                 <div class="card-body ">
                                     <?php
-                                    $query1 = "select * from mebers where sponsor ='$username' AND paket = 'MITRA' AND upline IS NULL ORDER BY timer DESC";
+                                    $query1 = "select * from mebers where sponsor ='$username' AND (paket = 'MITRA' || paket = 'RESELLER') AND upline IS NULL ORDER BY timer DESC";
                                     $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
                                     ?>
 
