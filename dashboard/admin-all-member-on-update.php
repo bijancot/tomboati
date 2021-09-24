@@ -55,7 +55,7 @@ if(isset($_GET['halaman']))
     $default_index = ($_GET['halaman']-1) * $default_batas;
 }
 
-    $query1 = "SELECT * FROM generasi WHERE updatex='0' ORDER BY id ASC limit $default_index, $default_batas";
+    $query1 = "SELECT * FROM generasi WHERE updatex='0' ORDER BY timer DESCc limit $default_index, $default_batas";
     $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
     $total_baris = mysqli_num_rows($tampil);
 
