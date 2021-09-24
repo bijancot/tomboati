@@ -32,8 +32,11 @@ $id = $_SESSION['id'];
 $userid = $row['userid'];
 $jumlah = $_POST['jumlah'];
 $amount = 100000;
+$jumlah_amount = $jumlah*$amount;
 
-$insert = mysqli_query($koneksi, "INSERT INTO hm2_pending_deposits (user_id, jumlah, amount, unik, code, type, date) VALUES('$id', '$jumlah', '$jumlah*$amount', '$unik', '$code', 'point', now())");
+$insert = mysqli_query($koneksi, 
+"INSERT INTO hm2_pending_deposits (user_id, jumlah, amount, unik, code, type, date) 
+VALUES('$id', '$jumlah', '$jumlah_amount', '$unik', '$code', 'point', now())");
 echo "<script type='text/javascript'>document.location.href = 'point-history.php';</script>";
     }
 
