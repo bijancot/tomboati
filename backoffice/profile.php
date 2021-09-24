@@ -141,38 +141,38 @@ echo "<script type='text/javascript'>document.location.href = 'profile.php?statu
                                                     <div class="col-md-6"><h2><font color="green"><b><?php echo $_GET['status']; ?></font></b></h2>
                                         <form class="forms-sample" action="" method="post">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Username</label>
+                                                <div class="col-sm-8">
                                                     <input name="userid" type="text" class="form-control" id="exampleInputUsername2" placeholder="Username" value="<?php echo $row['userid'];?>" readonly />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Nama</label>
+                                                <div class="col-sm-8">
                                                     <input name="name" type="text" class="form-control" id="exampleInputUsername2" placeholder="name" value="<?php echo $row['name'];?>" readonly />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">HP</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">HP</label>
+                                                <div class="col-sm-8">
                                                     <input name="hphone" type="text" class="form-control" id="exampleInputUsername2" placeholder="hphone" value="<?php echo $row['hphone'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Email</label>
+                                                <div class="col-sm-8">
                                                     <input name="email" type="email" class="form-control" id="exampleInputUsername2" placeholder="email" value="<?php echo $row['email'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">KTP</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">KTP</label>
+                                                <div class="col-sm-8">
                                                     <input name="ktp" type="number" class="form-control" id="exampleInputUsername2" placeholder="" value="<?php echo $row['ktp'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">NPWP</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">NPWP</label>
+                                                <div class="col-sm-8">
                                                     <input name="npwp" type="number" class="form-control" id="exampleInputUsername2" placeholder="" value="<?php echo $row['npwp'];?>" required />
                                                 </div>
                                             </div>
@@ -196,38 +196,38 @@ echo "<script type='text/javascript'>document.location.href = 'profile.php?statu
                                                     <div class="col-md-6"><h2><font color="green"><b><?php echo $_GET['status']; ?></font></b></h2>
                                         <form class="forms-sample" action="" method="post">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Alamat</label>
+                                                <div class="col-sm-8">
                                                     <input name="address" type="text" class="form-control" id="exampleInputUsername2" placeholder="Alamat" value="<?php echo $row['address'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kecamatan</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Kecamatan</label>
+                                                <div class="col-sm-8">
                                                     <input name="kecamatan" type="text" class="form-control" id="exampleInputUsername2" placeholder="Kecamatan" value="<?php echo $row['kecamatan'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kota</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Kota</label>
+                                                <div class="col-sm-8">
                                                     <input name="kota" type="text" class="form-control" id="exampleInputUsername2" placeholder="Kota" value="<?php echo $row['kota'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Propinsi</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Propinsi</label>
+                                                <div class="col-sm-8">
                                                     <input name="propinsi" type="text" class="form-control" id="exampleInputUsername2" placeholder="Propinsi" value="<?php echo $row['propinsi'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kodepos</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Kodepos</label>
+                                                <div class="col-sm-8">
                                                     <input name="kode_pos" type="number" class="form-control" id="exampleInputUsername2" placeholder="Kodepos" value="<?php echo $row['kode_pos'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Negara</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Negara</label>
+                                                <div class="col-sm-8">
                                                     <input name="country" type="text" class="form-control" id="exampleInputUsername2" placeholder="Negara" value="<?php echo $row['country'];?>" required />
                                                 </div>
                                             </div>
@@ -249,8 +249,8 @@ echo "<script type='text/javascript'>document.location.href = 'profile.php?statu
                                                     <div class="col-md-6"><h2><font color="green"><b><?php echo $_GET['status']; ?></font></b></h2>
                                         <form class="forms-sample" action="" method="post">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Bank</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Bank</label>
+                                                <div class="col-sm-8">
 <select name="bank" class="form-control" required >
 <option value="<?php echo $row['bank'];?>"><?php echo $row['bank'];?></option>
 
@@ -295,20 +295,20 @@ echo "<script type='text/javascript'>document.location.href = 'profile.php?statu
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cabang</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Cabang</label>
+                                                <div class="col-sm-8">
                                                     <input name="cabang" type="text" class="form-control" id="exampleInputUsername2" placeholder="Cabang" value="<?php echo $row['cabang'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Rekening</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Rekening</label>
+                                                <div class="col-sm-8">
                                                     <input name="rekening" type="text" class="form-control" id="exampleInputUsername2" placeholder="Account" value="<?php echo $row['rekening'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Account Name</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Account Name</label>
+                                                <div class="col-sm-8">
                                                     <input name="atasnama" type="text" class="form-control" id="exampleInputUsername2" placeholder="Account Name" value="<?php echo $row['atasnama'];?>" readonly />
                                                 </div>
                                             </div>
@@ -327,14 +327,14 @@ echo "<script type='text/javascript'>document.location.href = 'profile.php?statu
                                                     <div class="col-md-6">
                                         <form class="forms-sample" action="" method="post">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Password Baru</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Password Baru</label>
+                                                <div class="col-sm-8">
                                                     <input name="password_new" type="password" class="form-control" id="exampleInputUsername2" placeholder="Password Baru" value="" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Password Lama</label>
-                                                <div class="col-sm-9">
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label">Password Lama</label>
+                                                <div class="col-sm-8">
                                                     <input name="password_old" type="password" class="form-control" id="exampleInputUsername2" placeholder="Username" value="" required />
                                                 </div>
                                             </div>

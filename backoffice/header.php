@@ -90,7 +90,9 @@
     $total_ref=mysqli_num_rows($tampil_ref);
     
     // ini yang digunakan untuk hak register
-    $tampil_ref_hr=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND is_hr = 2");
+    // 1 = daftar di website, 2 = daftar di aplikasi
+    // ketika daftar di website berkurang poin nya
+    $tampil_ref_hr=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND is_hr = 1");
     $total_ref_hr=mysqli_num_rows($tampil_ref_hr);
     
     $tampil_ref_reseller=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND paket='RESELLER'");
@@ -266,7 +268,7 @@
      </style>
      <meta charset="utf-8">
      <meta http-equiv="x-ua-compatible" content="ie=edge">
-     <title>Dashboard | Tombo Ati</title>
+     <title>Mitra | Tombo Ati</title>
      <meta name="description" content="">
      <meta name="keywords" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1">
