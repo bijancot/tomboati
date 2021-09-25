@@ -93,20 +93,22 @@ if (isset($_POST['button'])) {
     $g9 = $row['g8'];
     $g10 = $row['g9'];
 
-    // Pengecekan Upline
+    // Pengecekan Upline harus ada dengan sponsor anda
     $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
     $total_upline = mysqli_num_rows($sql_upline);
 
     // Pengecekan Username
     $sql_username = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$userid'");
     $total_username = mysqli_num_rows($sql_username);
-    if ($total_upline == 0) {
+    // jika total upline 0 berarti upline tidak ada
+    // jika total upline ada 1 berarti userid ada
+    if (($total_upline == 0) && ($username != $upline)) {
         echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
-    }else if ($total_username !== 0) {
+    }else if ($total_username != 0) {
         echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
-    } else {
+            } else {
         
         echo "MASUK DEK";
         // UPLOAD FOTO KTP
@@ -319,7 +321,7 @@ VALUES
         echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
         
         // header("Location: register.php?error=SUCCESS");
-        echo "<script type='text/javascript'>document.location.href = 'register.php?error=SUCCESS';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
     
     }
 }

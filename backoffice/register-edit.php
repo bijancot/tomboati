@@ -23,7 +23,10 @@ $total_upline = mysqli_num_rows($sql_upline);
 if ($total_upline == 0) {
     echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
-} else {
+}else if($upline == $userid){
+    echo '<script type="text/javascript">alert("Upline Tidak Boleh Sama Dengan Username '.$name.' sendiri");</script>';
+    echo "<script type='text/javascript'>document.location.href = 'register.php?error=Upline Tidak Boleh Sama dengan Username Anda';</script>";
+}else {
     // update data ke database
     if (mysqli_query($koneksi, "update mebers set upline='$upline', is_hr = '2' where id='$id'")) {
         // echo "BERHASIL";
