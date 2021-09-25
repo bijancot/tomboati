@@ -105,7 +105,8 @@ include 'header.php';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="widget">
                                     <div class="widget-body">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -122,7 +123,8 @@ include 'header.php';
                                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="widget">
                                     <div class="widget-body">
