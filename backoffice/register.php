@@ -569,6 +569,11 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                 <div class="modal-body">
                                                                     <p>Memberikan ID Link untuk :</p>
                                                                     <div class="row py-2">
+                                                                        <div class="col-4">Username</div>
+                                                                        <div class="col-1 text-left">:</div>
+                                                                        <div class="col-7 text-left text-bold"><?php echo $data['userid']; ?></div>
+                                                                    </div>
+                                                                    <div class="row py-2">
                                                                         <div class="col-4">Nama</div>
                                                                         <div class="col-1 text-left">:</div>
                                                                         <div class="col-7 text-left text-bold"><?php echo $data['name']; ?></div>
