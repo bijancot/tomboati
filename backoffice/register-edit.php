@@ -20,7 +20,7 @@ $username = $_POST['username'];
 
 $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
 $total_upline = mysqli_num_rows($sql_upline);
-if ($total_upline == 0) {
+if (($total_upline == 0) && ($username != $upline)) {
     echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
 }else if($upline == $userid){
