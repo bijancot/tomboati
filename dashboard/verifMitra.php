@@ -135,7 +135,7 @@ try {
       <p>Password = <b>$password</b> </p>
       <p>&nbsp;</p>
       <p>Berikut link untuk menuju ke halaman landing page. Login menggunakan Username dan Password anda</p> 
-      https://dash-tombo.bgskr-project.my.id/backoffice/
+      https://tomboatitour.biz/backoffice/
       
       <p>&nbsp;</p>
       <p>Terima Kasih, </p>
