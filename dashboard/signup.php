@@ -29,6 +29,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Sign Up | Tombo Ati</title>
+<link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />
+    
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

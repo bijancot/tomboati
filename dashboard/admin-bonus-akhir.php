@@ -155,7 +155,7 @@ $hal2 = $_GET['halaman']+1;
 if ($batas!='') {$batas2 = $_GET['batas'];} else {$batas2 = $default_batas;}
  echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-bonus-akhir?halaman=$hal1&batas=$batas2\">Previous</a></li>
+<li class=\"page-item\"><a href=\"admin-bonus-akhir.php?halaman=$hal1&batas=$batas2\">Previous</a></li>
 </ul>";
 
 for($i=1;$i<=$jmlhalaman;$i++)
@@ -165,11 +165,11 @@ if ($i != $halaman){
 
  echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-bonus-akhir?halaman=$i&batas=$batas2\">$i</a></li>
+<li class=\"page-item\"><a href=\"admin-bonus-akhir.php?halaman=$i&batas=$batas2\">$i</a></li>
 </ul>";
 }
 else{ 
- echo " <ul class=\"pagination\"><li class=\"page-item active\"><a href=\"admin-bonus-akhir?halaman=$i&batas=$batas2\">$i</a></li></ul>"; 
+ echo " <ul class=\"pagination\"><li class=\"page-item active\"><a href=\"admin-bonus-akhir.php?halaman=$i&batas=$batas2\">$i</a></li></ul>"; 
 }
  echo " 
 <ul class=\"pagination\">

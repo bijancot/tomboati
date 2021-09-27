@@ -33,7 +33,7 @@ include 'header.php';
 
                             <div class="panel panel-success">
                         <div class="panel-heading">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> History Order Pin [<a href="excel/export_excel_pin_order">Export to Excel</a>]</h3> 
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> History Order Pin [<a href="excel/export_excel_pin_order.php">Export to Excel</a>]</h3> 
                         </div>
                         <div class="panel-body">
                        <div class="table-responsive">

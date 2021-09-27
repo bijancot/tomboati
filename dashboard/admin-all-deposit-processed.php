@@ -116,7 +116,7 @@ include 'header.php';
 
                   $dataphoto = $data_deposit['photo'];
                   if ($dataphoto != '') {
-                    $photo = "<a href=\"https://tomboatitour.com/backoffice/$dataphoto\" target=\"_blank\"><img src=\"https://tomboatitour.com/backoffice/$dataphoto\" width=\"15%\">";
+                    $photo = "<a href=\"https://tomboatitour.biz/backoffice/$dataphoto\" target=\"_blank\"><img src=\"https://tomboatitour.biz/backoffice/$dataphoto\" width=\"15%\">";
                   } else {
                     $photo = "";
                   }

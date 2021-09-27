@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])){
         <meta charset="UTF-8">
         <title>Detail Produk | Tombo Ati</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link rel="icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" type="image/x-icon" 
+        <link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />
         <link href="../dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->

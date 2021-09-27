@@ -162,7 +162,7 @@ if ($i != $halaman){
 
  echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-bonus-upline?halaman=$i&batas=$batas2\">$i</a></li>
+<li class=\"page-item\"><a href=\"admin-bonus-upline.php?halaman=$i&batas=$batas2\">$i</a></li>
 </ul>";
 }
 else{ 

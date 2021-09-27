@@ -29,7 +29,7 @@ $insert = mysqli_query($koneksi, "INSERT INTO order_pin
 VALUES
 ('$nama', '$email', '$sponsor', now() )") or die(mysqli_error());
 
-header("Location:../info");
+header("Location:../info.php");
 }
 ?>
 
@@ -37,10 +37,10 @@ header("Location:../info");
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Register | Tombo Ati</title>
+	<link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />
 	<meta name="robots" content="noindex" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.icoxx"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -69,7 +69,7 @@ header("Location:../info");
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="" method="post">
 					<span class="login100-form-logo">
-						<img src="images/logosvarga.pngxx" width="70">
+						<img src="images/logosvarga.png" width="70">
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
