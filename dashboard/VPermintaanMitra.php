@@ -281,7 +281,7 @@ include 'config2.php';
 <li class=\"page-item\"><a href=\"VPermintaanMitra.php?halaman=$hal2&batas=$batas2\">Next</a></li>
 </ul>";
 
-                            echo "<p>Total Record : <b>$jmldata</b> Member</p>";
+                            echo "<p>Total Record : <b>$jmldata</b> Mitra</p>";
                             ?>
                             <!-- </div>-->
                     </div>
