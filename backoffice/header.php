@@ -98,7 +98,7 @@
     $tampil_ref_reseller=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND paket='RESELLER'");
     $total_ref_reseller=mysqli_num_rows($tampil_ref_reseller);
     
-    $sum=$bonus_sponsor_total+$bonus_titik_total-$wd_total;
+    $sum=$bonus_sponsor_total-$wd_total;
     $sum_register=$point_total-$total_ref_hr;
     
     // echo 'UserIDMu'.$row['userid'];

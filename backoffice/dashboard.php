@@ -73,7 +73,7 @@ include 'header.php';
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="state">
                                                 <h6>Total Fee</h6>
-                                                <h2><?php echo number_format($bonus_sponsor_total+$bonus_titik_total,0,",",".");?></h2>
+                                                <h2><?php echo number_format($bonus_sponsor_total,0,",",".");?></h2>
                                             </div>
                                             <div class="icon">
                                                 <i class="ik ik-message-square"></i>
