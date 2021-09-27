@@ -28,7 +28,7 @@ include 'header.php';
                         <div class="col-lg-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-usd"></i> Bonus Pasangan [<a href="excel/export_excel_bonuspasangan.php">Export to Excel</a>]</h3> 
+                        <h3 class="panel-title"><i class="fa fa-usd"></i> Bonus Pasangan</h3> 
                         </div>
                         <div class="panel-body">
                        <!-- <div class="table-responsive"> -->
@@ -177,7 +177,7 @@ else{
 </ul>";
 
 echo "<p>Total Record : <b>$jmldata</b> Mitra</p>";
-echo "<p><a href=\"excel/export_excel_bonuspasangan.php\"><b><h3>Export to Excel</a></b></h3></p>";
+// echo "<p><a href=\"excel/export_excel_bonuspasangan.php\"><b><h3>Export to Excel</a></b></h3></p>";
 ?>
                   <!-- </div>-->
               </div> 
