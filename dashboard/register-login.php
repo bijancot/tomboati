@@ -11,9 +11,9 @@ $row_login = mysqli_fetch_assoc($sql_login);
 $user_email=$row_login['email'];
 
 if($user_email==""){
-header('location:register-login?error=EMAIL BELUM TERDAFTAR');	
+header('location:register-login.php?error=EMAIL BELUM TERDAFTAR');	
 } else {
-header('location:../info/index.html');	}
+header('location:../info/index.php');	}
 ;}
 
 ?>
@@ -22,7 +22,7 @@ header('location:../info/index.html');	}
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Register Login | Tombo Ati</title>
-	
+	<link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />       
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>

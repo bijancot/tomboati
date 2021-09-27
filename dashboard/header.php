@@ -148,7 +148,7 @@
      <meta charset="UTF-8">
      <meta name="robots" content="noindex" />
      <!-- <title>Tombo Ati</title> -->
-     <link rel="icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" type="image/x-icon" />
+     <link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />
      <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
      <link href="dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
