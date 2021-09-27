@@ -42,7 +42,7 @@ include 'header.php';
                                         <div class="table-responsive">
                     <?php
 $urutan = $_GET['urutan'];
-                    $query1="select * from bonus_titik where userid='$row[userid]' AND level<='6' order by id $urutan ";
+                    $query1="select * from bonus_titik where userid='$row[userid]' AND level<='6' group by userid order by id $urutan ";
                     $tampil1=mysqli_query($koneksi, "select * from bonus_titik WHERE userid='$row[userid]' AND level<='6' ");
                     $dept2=mysqli_num_rows($tampil1);
                     $dept_sponsor=$dept2*100000;
@@ -62,7 +62,7 @@ $urutan = $_GET['urutan'];
                         <th><center>Username</center></th>
                         <th><center>Nama Jamaah</center></th>
                         <th><center>Membership </center></th>
-                        <th><center>Level </center></th>
+                        <th><center>Bonus Total </center></th>
                         <th><center>Status </center></th>
                                                     </tr>
                                                 </thead>
@@ -82,7 +82,7 @@ $data_nama=mysqli_fetch_array($tampil_nama);
                     <td><left><?php echo $data['bonusfrom'];?></left></td>
                     <td><left><?php echo $data_nama['name'];?></left></td>
                     <td align='right'><?php echo $data_nama['paket'];?></td>
-                    <td align='right'><?php echo $data['level'];?></td>
+                    <td align='right'>Rp. <?php echo number_format($bonus_titik_total, 0, ",", "."); ?></td>
 
 
 <?php
