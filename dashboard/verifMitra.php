@@ -39,13 +39,13 @@ require_once "vendor/phpmailer/src/SMTP.php";
 $email = $_POST['email'];
 $name = $_POST['name'];
 $userid = $_POST['userid'];
+$email_penerima = $email;
+$penerima_nama = $name;
 
 $from_name = "Admin Tombo Ati";
 $user_email = "tomboatitour@gmail.com";
 $pass_email = "Bismillah5758";
 
-$email_penerima = $email;
-$penerima_nama = $name;
 
 $mail = new PHPMailer(true);
 
