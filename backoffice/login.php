@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="author" content />
     <title>Login | Tombo Ati</title>
     <link href="../assets/css/styles.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="../assets/img/logo_tomboati.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo_tomboati_fix.jpg" />
     <style>
         .bg-login {
             background-color: transparent;
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="card shadow-lg border-0 rounded-lg ">
                                     <div class="card-header justify-content-center">
                                         <div class="strong form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <img style="width:12%" src="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png">
+                                            <img style="width:12%" src="https://tomboatitour.biz/assets/img/logo_tomboati_fix.jpg">
                                             TomboAti
                                         </div>
                                         <h3 class="font-weight-light my-4 text-md-center">Login</h3>
