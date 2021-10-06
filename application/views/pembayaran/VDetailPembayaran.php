@@ -148,7 +148,7 @@
                                             
                                             <div class="form-group">
                                                 <h6>Bukti Pembayaran</h6>
-                                                <img src="<?= $data->BUKTIPEMBAYARAN; ?>" width="200px">
+                                                <img class="img-responsive center-block d-block mx-auto" src="<?= $data->BUKTIPEMBAYARAN; ?>"  >
                                             </div>
                                         </div>
                                         <div class="modal-footer">

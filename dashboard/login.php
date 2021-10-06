@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	<title>Login | Tombo Ati</title>
 	<meta name="robots" content="noindex" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati_fix.jpg" type="image/x-icon" />
+	<link rel="icon" href="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png" type="image/x-icon" />
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.icoxx"/>
 <!--===============================================================================================-->

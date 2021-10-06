@@ -8,7 +8,7 @@
     <meta name="description" content="Tombo Ati Project" />
     <meta name="author" content />
     <title><?= $title; ?></title>
-    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
     <link href="<?= base_url(); ?>assets/css/styles.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -215,7 +215,7 @@
     $countJamaahBayar = $this->db->select('*')->from('DETAIL_PEMBAYARAN')->where('ISSEEN', 0)->get()->num_rows();
 ?>
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <img style="width:3%" class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg"></img>
+        <img style="width:3%" class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
         <a class="navbar-brand" href="<?php echo site_url('Dashboard'); ?>"> Tombo Ati </a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2 ml-0" id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
