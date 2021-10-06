@@ -112,27 +112,27 @@ if (isset($_POST['button'])) {
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor';</script>";
     } else {
         echo "MASUK DEK";
-        // // UPLOAD FOTO KTP
-        // $ekstensi_diperbolehkan    = array('PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg');
-        // $nama = $_FILES['fotoktp']['name'];
-        // $temp = explode('.', $nama);
-        // $ekstensi = strtolower(end($temp));
-        // $newfilename = round(microtime(true)) . '.' . end($temp);
-        // $ukuran    = $_FILES['fotoktp']['size'];
-        // $file_tmp = $_FILES['fotoktp']['tmp_name'];
+        // UPLOAD FOTO KTP
+        $ekstensi_diperbolehkan    = array('PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg');
+        $nama = $_FILES['fotoktp']['name'];
+        $temp = explode('.', $nama);
+        $ekstensi = strtolower(end($temp));
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $ukuran    = $_FILES['fotoktp']['size'];
+        $file_tmp = $_FILES['fotoktp']['tmp_name'];
 
-        // if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-        //     if ($ukuran < 1044070) {
-        //         move_uploaded_file($file_tmp, 'img/foto-ktp/' . $newfilename);
-        //         $fotoktp = $base_url . 'img/foto-ktp/' . $newfilename;
-        //     } else {
-        //         echo '<script type="text/javascript">alert("UKURAN FILE TERLALU BESAR");</script>';
-        //         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
-        //     }
-        // } else {
-        //     echo '<script type="text/javascript>alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN");</script>';
-        //     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
-        // }
+        if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+            if ($ukuran < 1044070) {
+                move_uploaded_file($file_tmp, 'img/foto-ktp/' . $newfilename);
+                $fotoktp = $base_url . 'img/foto-ktp/' . $newfilename;
+            } else {
+                echo '<script type="text/javascript">alert("UKURAN FILE TERLALU BESAR");</script>';
+                echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
+            }
+        } else {
+            echo '<script type="text/javascript>alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN");</script>';
+            echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
+        }
 
         // photo username
 
