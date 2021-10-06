@@ -1,14 +1,12 @@
 <?php
-define("HOST", "tomboati.bgskr-project.my.id");
-define("USER", "tomboati");
-define("PASSWORD", "1sampaitombo");
-define("DATABASE", "tomboati");
+$hostname = "tomboati.bgskr-project.my.id";
+$database = "tomboati";
+$username = "tomboati";
+$password = "1sampaitombo";
+$koneksi_tombo =  mysqli_connect($hostname, $username, $password, $database);
 
-$mysqli_tombo = new mysqli(HOST, USER, PASSWORD, DATABASE);
-$koneksi_tombo = new mysqli(HOST, USER, PASSWORD, DATABASE);
-// mengecek koneksi
 if (!$koneksi_tombo) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+    die("Koneksi Tidak Berhasil: " . mysqli_connect_error());
 }
-// echo "Koneksi berhasil";
+
 ?>

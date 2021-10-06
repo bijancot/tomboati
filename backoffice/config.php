@@ -1,9 +1,9 @@
 <?php
-define("HOST", "dash-tombo.bgskr-project.my.id");
-define("USER", "dash_tombo");
-define("PASSWORD", "1sampaitombo");
-define("DATABASE", "dash_tombo");
+$hostname = "dash-tombo.bgskr-project.my.id";
+$database = "dash_tombo";
+$username = "dash_tombo";
+$password = "1sampaitombo";
 
-$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
-$koneksi = new mysqli(HOST, USER, PASSWORD, DATABASE);
+$mysqli =  mysqli_connect($hostname, $username, $password, $database);
+$koneksi =  mysqli_connect($hostname, $username, $password, $database);
 ?>
