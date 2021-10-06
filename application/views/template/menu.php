@@ -154,10 +154,10 @@
         Chat
     </a>
 
-    <a class="nav-link " href="<?php echo site_url('Pengumuman'); ?>">
+    <!-- <a class="nav-link " href="<?php echo site_url('Pengumuman'); ?>">
         <i class="fas fa-bullhorn ml-2 mr-2 fa-lg fa-fw"></i>
         Pengumuman
-    </a>
+    </a> -->
 </div>
 <div class="sidenav-footer">
     <div class="sidenav-footer-content">
