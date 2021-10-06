@@ -30,7 +30,7 @@ $qr_code = $row['qr_code'];
   <title>My Referral | Tombo Ati</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
   
-  <link rel="icon" href="../assets/img/logo_tomboati.png" type="image/x-icon" />
+  <link rel="icon" href="../assets/img/logo_tomboati_fix.jpg" type="image/x-icon" />
 </head>
 
 <body>
@@ -260,7 +260,7 @@ $qr_code = $row['qr_code'];
     <div class="header-4-3 mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #bb9661;">
         <a href="#">
-          <img style=" width: 70px;" src="../assets/img/logo_tomboati.png" alt="" />
+          <img style=" width: 70px;" src="../assets/img/logo_tomboati_fix.jpg" alt="" />
         </a>
 
         <?php

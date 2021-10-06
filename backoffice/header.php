@@ -62,48 +62,48 @@
     // $sum = $bonus_sponsor_total + $bonus_titik_total - $wd_total;
     // $sum_register = $point_total - $total_ref;
 
-    $tampil_deposit=mysqli_query($koneksi, "select * FROM hm2_pending_deposits WHERE user_id='$row[id]' AND type='upgrade' ");
-    $total_deposit=mysqli_num_rows($tampil_deposit);
-    
-    $query_total = mysqli_query($koneksi,"SELECT SUM(bonus) as 'bonus_total_sponsor' FROM bonus_sponsor WHERE userid='$row[userid]' ");
-    $query_total2=mysqli_fetch_array($query_total);
-    $bonus_sponsor_total=$query_total2['bonus_total_sponsor'];
-    
-    $query_titik = mysqli_query($koneksi,"SELECT SUM(bonus) as 'bonus_total_titik' FROM bonus_titik WHERE userid='$row[userid]' ");
-    $querytitik=mysqli_fetch_array($query_titik);
-    $bonus_titik_total=$querytitik['bonus_total_titik'];
-    
-    $query_point = mysqli_query($koneksi,"SELECT SUM(point) as 'bonus_total_point' FROM bonus_titik WHERE userid='$row[userid]' ");
-    $querypoint=mysqli_fetch_array($query_point);
-    $bonus_point_total=$querypoint['bonus_total_point'];
-    
-    $query_point = mysqli_query($koneksi,"SELECT SUM(jumlah) as 'total_point' FROM hm2_pending_deposits WHERE status='processed' AND type='point' AND user_id='$row[id]' ");
-    $query_total2=mysqli_fetch_array($query_point);
-    $point_total=$query_total2['total_point'];
-    
-    $query_wd = mysqli_query($koneksi,"SELECT SUM(amount) as 'total_wd' FROM hm2_history WHERE user_id='$row[id]' ");
-    $query_wd2=mysqli_fetch_array($query_wd);
-    $wd_total=$query_wd2['total_wd'];
-    
+    $tampil_deposit = mysqli_query($koneksi, "select * FROM hm2_pending_deposits WHERE user_id='$row[id]' AND type='upgrade' ");
+    $total_deposit = mysqli_num_rows($tampil_deposit);
+
+    $query_total = mysqli_query($koneksi, "SELECT SUM(bonus) as 'bonus_total_sponsor' FROM bonus_sponsor WHERE userid='$row[userid]' ");
+    $query_total2 = mysqli_fetch_array($query_total);
+    $bonus_sponsor_total = $query_total2['bonus_total_sponsor'];
+
+    $query_titik = mysqli_query($koneksi, "SELECT SUM(bonus) as 'bonus_total_titik' FROM bonus_titik WHERE userid='$row[userid]' ");
+    $querytitik = mysqli_fetch_array($query_titik);
+    $bonus_titik_total = $querytitik['bonus_total_titik'];
+
+    $query_point = mysqli_query($koneksi, "SELECT SUM(point) as 'bonus_total_point' FROM bonus_titik WHERE userid='$row[userid]' ");
+    $querypoint = mysqli_fetch_array($query_point);
+    $bonus_point_total = $querypoint['bonus_total_point'];
+
+    $query_point = mysqli_query($koneksi, "SELECT SUM(jumlah) as 'total_point' FROM hm2_pending_deposits WHERE status='processed' AND type='point' AND user_id='$row[id]' ");
+    $query_total2 = mysqli_fetch_array($query_point);
+    $point_total = $query_total2['total_point'];
+
+    $query_wd = mysqli_query($koneksi, "SELECT SUM(amount) as 'total_wd' FROM hm2_history WHERE user_id='$row[id]' ");
+    $query_wd2 = mysqli_fetch_array($query_wd);
+    $wd_total = $query_wd2['total_wd'];
+
     // referral diri sendiri
-    $tampil_ref=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]'");
-    $total_ref=mysqli_num_rows($tampil_ref);
-    
+    $tampil_ref = mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]'");
+    $total_ref = mysqli_num_rows($tampil_ref);
+
     // ini yang digunakan untuk hak register
     // 1 = daftar di website, 2 = daftar di aplikasi
     // ketika daftar di website berkurang poin nya
-    $tampil_ref_hr=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND is_hr = 1");
-    $total_ref_hr=mysqli_num_rows($tampil_ref_hr);
-    
-    $tampil_ref_reseller=mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND paket='RESELLER'");
-    $total_ref_reseller=mysqli_num_rows($tampil_ref_reseller);
-    
-    $sum=$bonus_sponsor_total-$wd_total;
-    $sum_register=$point_total-$total_ref_hr;
-    
+    $tampil_ref_hr = mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND is_hr = 1");
+    $total_ref_hr = mysqli_num_rows($tampil_ref_hr);
+
+    $tampil_ref_reseller = mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]' AND paket='RESELLER'");
+    $total_ref_reseller = mysqli_num_rows($tampil_ref_reseller);
+
+    $sum = $bonus_sponsor_total - $wd_total;
+    $sum_register = $point_total - $total_ref_hr;
+
     // echo 'UserIDMu'.$row['userid'];
     //notifikasi
-    $get_all_data_register_paket_user = mysqli_query($koneksi, "SELECT * FROM mebers WHERE sponsor='$row[userid]' AND paket='MITRA' AND is_seen_notifikasi_mitra = 0");    
+    $get_all_data_register_paket_user = mysqli_query($koneksi, "SELECT * FROM mebers WHERE sponsor='$row[userid]' AND paket='MITRA' AND is_seen_notifikasi_mitra = 0");
     $get_rows_paket_user = mysqli_num_rows($get_all_data_register_paket_user);
 
     date_default_timezone_set('Asia/Jakarta')
@@ -273,7 +273,7 @@
      <meta name="keywords" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="icon" href="../assets/img/logo_tomboati.png" type="image/x-icon" />
+     <link rel="icon" href="../assets/img/logo_tomboati_fix.jpg" type="image/x-icon" />
 
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -290,6 +290,8 @@
      <link rel="stylesheet" href="plugins/owl.carousel/dist/assets/owl.carousel.min.css">
      <link rel="stylesheet" href="plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
      <link rel="stylesheet" href="dist/css/theme.min.css">
+     <!-- IMPORT SELECT2 -->
+     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
      <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
  </head>
 
@@ -318,27 +320,27 @@
                          <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notif-daftar">
                              <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                  <i class="fas fa-bell"></i>&nbsp;
-                                 <span class="badge badge-warning bg-primary"><?php echo $get_rows_paket_user?></span>
+                                 <span class="badge badge-warning bg-primary"><?php echo $get_rows_paket_user ?></span>
                              </a>
                              <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
                                  <h6 class="dropdown-header dropdown-notifications-header text-center ">
                                      <i class="fas fa-bell mr-2 "></i>
                                      Pemberitahuan
                                  </h6>
-                                 <?php 
-                                    if($get_rows_paket_user == 0){
-                                 ?>
-                                 <a class="dropdown-item dropdown-notifications-item badge">
-                                    <p> Tidak Ada Pemberitahuan</p>
-                                 </a>
-                                 <?php }else{?>
-                                 <a class="dropdown-item notification-dropdown badge text-left" href="register.php">
-                                     <div class="dropdown-notifications-item-content">
-                                         <p class="dropdown-item-content-text notification-dropdown lg">Mitra Baru</h3>
-                                         <div class="dropdown-item-content-details notification-dropdown">Terdapat <?php echo $get_rows_paket_user ?> Mitra Baru</div>
-                                     </div>
-                                 </a>
-                                 <?php }?>
+                                 <?php
+                                    if ($get_rows_paket_user == 0) {
+                                    ?>
+                                     <a class="dropdown-item dropdown-notifications-item badge">
+                                         <p> Tidak Ada Pemberitahuan</p>
+                                     </a>
+                                 <?php } else { ?>
+                                     <a class="dropdown-item notification-dropdown badge text-left" href="register.php">
+                                         <div class="dropdown-notifications-item-content">
+                                             <p class="dropdown-item-content-text notification-dropdown lg">Mitra Baru</h3>
+                                             <div class="dropdown-item-content-details notification-dropdown">Terdapat <?php echo $get_rows_paket_user ?> Mitra Baru</div>
+                                         </div>
+                                     </a>
+                                 <?php } ?>
                                  <a class="dropdown-item dropdown-notifications-footer text-center" href="#!">Lihat Semua</a>
                              </div>
                          </li>
@@ -392,7 +394,7 @@
                              <div class="nav-item">
                                  <a href="index.php"><i class="ik ik-link"></i><span>My Referral</span></a>
                              </div>
-                             
+
                              <div class="nav-lavel">Freelance</div>
 
                              <div class="nav-item">
@@ -428,11 +430,13 @@
                              <div class="nav-item has-sub">
                                  <a href="#"><i class="">Rp.</i><span>Topup</span></a>
                                  <div class="submenu-content">
-<?php
-if ($total_deposit==0){$menu_popup="<a href=\"upgrade-process.php\" class=\"menu-item\">Topup</a>";}
-echo $menu_popup;
-?>
-<a href="topup-history.php" class="menu-item">History</a>
+                                     <?php
+                                        if ($total_deposit == 0) {
+                                            $menu_popup = "<a href=\"upgrade-process.php\" class=\"menu-item\">Topup</a>";
+                                        }
+                                        echo $menu_popup;
+                                        ?>
+                                     <a href="topup-history.php" class="menu-item">History</a>
                                  </div>
                              </div>
 

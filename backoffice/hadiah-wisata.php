@@ -62,7 +62,7 @@ $urutan = $_GET['urutan'];
                         <th><center>Username</center></th>
                         <th><center>Nama Jamaah</center></th>
                         <th><center>Membership </center></th>
-                        <th><center>Bonus Total </center></th>
+                        <!-- <th><center>Bonus Total </center></th> -->
                         <th><center>Status </center></th>
                                                     </tr>
                                                 </thead>
@@ -82,7 +82,7 @@ $data_nama=mysqli_fetch_array($tampil_nama);
                     <td><left><?php echo $data['bonusfrom'];?></left></td>
                     <td><left><?php echo $data_nama['name'];?></left></td>
                     <td align='right'><?php echo $data_nama['paket'];?></td>
-                    <td align='right'>Rp. <?php echo number_format($bonus_titik_total, 0, ",", "."); ?></td>
+                    <!-- <td align='right'>Rp. <?php echo number_format($bonus_titik_total, 0, ",", "."); ?></td> -->
 
 
 <?php

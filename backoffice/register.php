@@ -6,6 +6,8 @@ use PHPMailer\PHPMailer\Exception;
 
 session_start();
 include 'header.php';
+// config tombo (Db)
+include('config-tombo.php');
 
 $query_point = mysqli_query($koneksi, "SELECT SUM(jumlah) as 'total_point' FROM hm2_pending_deposits WHERE status='processed' AND type='point' AND user_id='$row[id]' ");
 $query_total2 = mysqli_fetch_array($query_point);
@@ -105,11 +107,10 @@ if (isset($_POST['button'])) {
     if (($total_upline == 0) && ($username != $upline)) {
         echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
-    }else if ($total_username != 0) {
+    } else if ($total_username != 0) {
         echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline';</script>";
-            } else {
-        
+    } else {
         echo "MASUK DEK";
         // UPLOAD FOTO KTP
         $ekstensi_diperbolehkan    = array('PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg');
@@ -123,7 +124,7 @@ if (isset($_POST['button'])) {
         if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
             if ($ukuran < 1044070) {
                 move_uploaded_file($file_tmp, 'img/foto-ktp/' . $newfilename);
-                $fotoktp = $base_url.'img/foto-ktp/' . $newfilename;
+                $fotoktp = $base_url . 'img/foto-ktp/' . $newfilename;
             } else {
                 echo '<script type="text/javascript">alert("UKURAN FILE TERLALU BESAR");</script>';
                 echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
@@ -134,7 +135,7 @@ if (isset($_POST['button'])) {
         }
 
         // photo username
-        $photo = $base_url.'gambar_customer/users.png';
+        $photo = $base_url . 'gambar_customer/users.png';
         $insert = mysqli_query($koneksi, "INSERT INTO mebers 
 (sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, photo, is_hr, usertoken, timer)
 VALUES
@@ -319,17 +320,21 @@ VALUES
         $_POST = array(); // lets pretend nothing was posted
 
         echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
-        
+
         // header("Location: register.php?error=SUCCESS");
         echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
-    
     }
 }
 
 if ($sum_register > 0) {
     $status = '<button class="btn btn-success" name="button" type="submit">Next</button> <input type="reset" class="btn btn-danger" name="reset" value="Reset">';
 } else {
-    $status = '<a class="btn btn-success" href="point-add.php">Saldo Point Register Tidak Cukup</a>';
+    // pengecekan username
+    if ($username == "company") {
+        $status = '<button class="btn btn-success" name="button" type="submit">Next</button> <input type="reset" class="btn btn-danger" name="reset" value="Reset">';
+    } else {
+        $status = '<a class="btn btn-success" href="point-add.php">Saldo Point Register Tidak Cukup</a>';
+    }
 }
 
 mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND sponsor='$row[userid]' AND paket='MITRA'");
@@ -339,6 +344,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
 </div>
 </div>
 </div>
+
 <div class="main-content">
     <div class="container-fluid">
         <div class="page-header">
@@ -603,7 +609,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="row py-2">
                                                                         <div class="col-4">ID Link</div>
                                                                         <div class="col-1 text-left">:</div>
-                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" class="form-control" placeholder="ID Link" id="idUserEdit"/>
+                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" class="form-control" placeholder="ID Link" id="idUserEdit" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -629,7 +635,17 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                             <div class="card-body">
                                 <div class="state">
                                     <h6>Poin Register</h6>
-                                    <h2><?php echo number_format($sum_register, 0, ',', '.'); ?></h2>
+                                    <?php
+                                    if ($username == "company") {
+                                    ?>
+                                        <h2>Tidak terbatas</h2>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <h2><?php echo number_format($sum_register, 0, ',', '.'); ?></h2>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
 
                                 <div class="row">
@@ -685,27 +701,30 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat<span class="text-danger">*</span></label>
+                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Propinsi<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="address" type="text" class="form-control" id="exampleInputUsername2" placeholder="Alamat" value="<?php echo $_GET['address']; ?>" required />
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kecamatan<span class="text-danger">*</span></label>
-                                                <div class="col-sm-9">
-                                                    <input name="kecamatan" type="text" class="form-control" id="exampleInputUsername2" placeholder="Kecamatan" value="<?php echo $_GET['kecamatan']; ?>" required />
+                                                    <!-- <input name="propinsi" type="text" class="form-control" id="exampleInputUsername2" placeholder="Propinsi" value="<?php echo $_GET['propinsi']; ?>" required /> -->
+                                                    <select class="select2-data-array browser-default" id="select2-provinsi" name="propinsi" required></select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kota<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="kota" type="text" class="form-control" id="exampleInputUsername2" placeholder="Kota" value="<?php echo $_GET['kota']; ?>" required />
+                                                    <!-- <input name="kota" type="text" class="form-control" id="kota" placeholder="Kota" value="<?php echo $_GET['kota']; ?>" required /> -->
+                                                    <select class="select2-data-array browser-default" id="select2-kabupaten" name="kota" required></select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Propinsi<span class="text-danger">*</span></label>
+                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kecamatan<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="propinsi" type="text" class="form-control" id="exampleInputUsername2" placeholder="Propinsi" value="<?php echo $_GET['propinsi']; ?>" required />
+                                                    <!-- <input name="kecamatan" type="text" class="form-control" id="kecamatan" placeholder="Kecamatan" value="<?php echo $_GET['kecamatan']; ?>" required /> -->
+                                                    <select class="select2-data-array browser-default" id="select2-kecamatan" name="kecamatan" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat<span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input name="address" type="text" class="form-control" id="exampleInputUsername2" placeholder="Alamat" value="<?php echo $_GET['address']; ?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -782,30 +801,153 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
 include 'footer.php';
 ?>
 <script>
-     $(function() {
+    var urlProvinsi = "https://ibnux.github.io/data-indonesia/propinsi.json";
+    var urlKabupaten = "https://ibnux.github.io/data-indonesia/kabupaten/";
+    var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan/";
+
+    console.log('url: ' + urlProvinsi);
+    $.getJSON(urlProvinsi, function(res) {
+        console.log("INSIDE FUNC");
+        //console.log(res);
+
+        var data = $.map(res, function(obj) {
+            obj.text = obj.nama
+
+            return obj;
+        });
+        //console.log(data);
+        loadProvinsi(data);
+    });
+
+    function fetchDataKabupaten(idProvinsi) {
+        let url = urlKabupaten + idProvinsi + ".json";
+        console.log('url kab : ' + url);
+        $.getJSON(url, function(res) {
+            console.log("INSIDE fetchDataKabupaten");
+            //console.log(res);
+
+            var data = $.map(res, function(obj) {
+                obj.text = obj.nama
+
+                return obj;
+            });
+            //console.log(data);
+            loadKabupaten(data);
+        });
+    }
+
+    function fetchDataKecamatan(idKabupaten) {
+        let url = urlKecamatan + idKabupaten + ".json";
+        console.log('url kec : ' + url);
+        $.getJSON(url, function(res) {
+            console.log("INSIDE fetchDataKecamatan");
+            //console.log(res);
+
+            var data = $.map(res, function(obj) {
+                obj.text = obj.nama
+
+                return obj;
+            });
+            //console.log(data);
+            loadKecamatan(data);
+        });
+    }
+
+    function loadProvinsi(data) {
+        console.log('loadProvinsi');
+        $("#select2-provinsi").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
+
+    function loadKabupaten(data) {
+        console.log('loadKabupaten');
+        $("#select2-kabupaten").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
+
+    function loadKecamatan(data) {
+        console.log('loadKecamatan');
+        $("#select2-kecamatan").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
+
+    function clearOptions(id) {
+        console.log("on clearOptions");
+
+        //$('#' + id).val(null);
+        $('#' + id).empty().trigger('change');
+    }
+
+    var selectProv = $('#select2-provinsi');
+    $(selectProv).change(function() {
+        console.log("on change selectProv");
+
+        var value = $(selectProv).val();
+        var text = $('#select2-provinsi :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+
+        clearOptions('select2-kabupaten');
+        dataKabupaten = fetchDataKabupaten(value);
+        loadKabupaten(dataKabupaten);
+
+    });
+
+    var selectKab = $('#select2-kabupaten');
+    $(selectKab).change(function() {
+        console.log("on change selectKab");
+
+        var value = $(this).val();
+        var text = $('#select2-kabupaten :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+
+        clearOptions('select2-kecamatan');
+        dataKecamatan = fetchDataKecamatan(value);
+        loadKecamatan(dataKecamatan);
+    });
+
+    var selectKec = $('#select2-kecamatan');
+    $(selectKec).change(function() {
+        console.log("on change selectKec");
+
+        var value = $(this).val();
+        var text = $('#select2-kecamatan :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+    });
+
+    // SPASI DI USERNAME
+    $(function() {
         $('#userid').on('keypress', function(e) {
-            if (e.which == 32){
+            if (e.which == 32) {
                 console.log('Space Detected');
                 return false;
             }
         });
-});
+    });
 
-$(function() {
+    $(function() {
         $('#idUserEdit').on('keypress', function(e) {
-            if (e.which == 32){
+            if (e.which == 32) {
                 console.log('Space Detected');
                 return false;
             }
         });
-});
+    });
 
-$(function() {
+    $(function() {
         $('#idLink').on('keypress', function(e) {
-            if (e.which == 32){
+            if (e.which == 32) {
                 console.log('Space Detected');
                 return false;
             }
         });
-});
+    });
 </script>
