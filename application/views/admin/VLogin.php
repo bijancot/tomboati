@@ -10,7 +10,7 @@
     <title>Login | Tombo Ati</title>
     <link href="<?= base_url(); ?>assets/css/styles.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
     <style>
         .bg-login {
             background-color: transparent;
@@ -50,7 +50,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg ">
                                     <div class="card-header justify-content-center">
                                         <div class="strong form-group d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <img style="width:15%" src="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg">
+                                            <img style="width:15%" src="<?= base_url(); ?>assets/img/logo_tomboati.png">
                                             TomboAti
                                         </div>
                                         <h3 class="font-weight-light my-4 text-md-center">Login</h3>

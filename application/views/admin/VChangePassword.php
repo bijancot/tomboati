@@ -7,7 +7,7 @@
     <title><?= $title; ?></title>
     <link href="<?= base_url(); ?>assets/css/styles.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo_tomboati.png" />
 
     <!-- Plugin JS -->
     <script src="<?= base_url(); ?>assets/js/plugin/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
 
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <img style="width:3%" class="navbar-brand-img ml-3 image" src="<?= base_url(); ?>assets/img/logo_tomboati_fix.jpg"></img>
+        <img style="width:3%" class="navbar-brand-img ml-3 image" src="<?= base_url(); ?>assets/img/logo_tomboati.png"></img>
         <a class="navbar-brand"> Tombo Ati </a>
     </nav>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-9">
