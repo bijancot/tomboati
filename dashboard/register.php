@@ -37,7 +37,7 @@ header("Location:../info.php");
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Register | Tombo Ati</title>
-	<link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati.png" type="image/x-icon" />
+	<link rel="icon" href="https://tomboatitour.biz/assets/img/logo_tomboati_fix.jpg" type="image/x-icon" />
 	<meta name="robots" content="noindex" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
