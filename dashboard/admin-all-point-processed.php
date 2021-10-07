@@ -186,7 +186,7 @@ include 'header.php';
                   </div>
                   <div class="modal-body">
                     <center>
-                      <img src="https://tomboatitour.biz/backoffice/<?php echo $data_deposit['photo']; ?>" width="400px" height="400px">
+                      <img src="https://tomboatitour.biz/backoffice/<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
                     </center>
                   </div>
                   <div class="modal-footer">

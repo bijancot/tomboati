@@ -92,12 +92,12 @@ if ($_POST['rowid']) {
             <tr>
                 <td>Foto Profil</td>
                 <td>:</td>
-                <td><?= "<img src='" . $baris['photo'] . "'style='width:200px; height:100px;'>" ?></td>
+                <td><?= "<img src='" . $baris['photo'] . "'style='max-width:350px; min-width : 200px;'>" ?></td>
             </tr>
             <tr>
                 <td>Foto KTP</td>
                 <td>:</td>
-                <td><?= "<img src='" . $baris['fotoktp'] . "'style='width:200px; height:100px;'>" ?></td>
+                <td><?= "<img src='" . $baris['fotoktp'] . "'style='max-width:350px; min-width : 200px;'>" ?></td>
             </tr>
         </table>
 <?php
