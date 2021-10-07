@@ -38,136 +38,159 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                            function harga($angka){
-	
-                                $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+                            <?php
+                            function harga($angka)
+                            {
+
+                                $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
                                 return $hasil_rupiah;
-                            
                             }
 
-                            $no = 1; foreach($pembayaran as $data){ 
-                            if ($data->STATUSPEMBAYARAN == 1) {
-                                $verfikasi = '<button title="Cabut Verifikasi Pembayaran" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiPembayaranModal' . $data->IDDETAILPEMBAYARAN.'"><i class="fa fa-times-circle"></i>
-                                </button>';    
-                            $status = '<span class="badge badge-pill badge-success">Verified</span>';
-                            } else {
-                                $verfikasi = '<button title="Verifikasi Pembayaran" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#verifikasiPembayaranModal' . $data->IDDETAILPEMBAYARAN.'"><i class="fa fa-check"></i>
+                            $no = 1;
+                            foreach ($pembayaran as $data) {
+                                if ($data->STATUSPEMBAYARAN == 1) {
+                                    $verfikasi = '<button title="Cabut Verifikasi Pembayaran" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cabutVerifikasiPembayaranModal' . $data->IDDETAILPEMBAYARAN . '"><i class="fa fa-times-circle"></i>
                                 </button>';
-                                $status = '<span class="badge badge-pill badge-danger">Unverified</span>';
-                            }
+                                    $status = '<span class="badge badge-pill badge-success">Verified</span>';
+                                } else {
+                                    $verfikasi = '<button title="Verifikasi Pembayaran" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#verifikasiPembayaranModal' . $data->IDDETAILPEMBAYARAN . '"><i class="fa fa-check"></i>
+                                </button>';
+                                    $status = '<span class="badge badge-pill badge-danger">Unverified</span>';
+                                }
                             ?>
-                            <tr>
-                                <td><?php echo $no++?></td>
-                                <td><?php echo harga($data->JUMLAHPEMBAYARAN); ?></td>
-                                <td><?php echo $data->TANGGALPEMBAYARAN; ?></td>
-                                <td><?php echo $data->DESKRIPSI; ?></td>
-                                <td><?php echo $status; ?></td>
-                                <td><img width=100px src="<?php echo $data->BUKTIPEMBAYARAN; ?>" /></td>
-                                <td>
-                                    <?php echo $verfikasi?>
-                                    <button title="Detail Pembayaran" type="button" class="btn btn-primary btn-sm ml-1" data-toggle="modal" data-target="#detailPembayaranModal<?php echo $data->IDDETAILPEMBAYARAN?>"><i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            
-                            <!-- Modal Verifikasi -->
-                            <div class="modal fade" id="verifikasiPembayaranModal<?= $data->IDDETAILPEMBAYARAN; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Verifikasi Pembayaran</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>Apakah anda yakin menverifikasi <b> <?= $data->IDDETAILPEMBAYARAN ?> </b> </h5>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="<?= base_url('Pembayaran/aksiVerifikasiPembayaran/' .$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
-                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal Cabut Verifikasi -->
-                            <div class="modal fade" id="cabutVerifikasiPembayaranModal<?= $data->IDDETAILPEMBAYARAN; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Pembayaran</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>Apakah anda yakin mencabut verifikasi <b> <?= $data->IDDETAILPEMBAYARAN ?> </b> </h5>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="<?= base_url('Pembayaran/aksiCabutVerifikasiPembayaran/' .$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
-                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <tr>
+                                    <td><?php echo $no++ ?></td>
+                                    <td><?php echo harga($data->JUMLAHPEMBAYARAN); ?></td>
+                                    <td><?php echo $data->TANGGALPEMBAYARAN; ?></td>
+                                    <td><?php echo $data->DESKRIPSI; ?></td>
+                                    <td><?php echo $status; ?></td>
+                                    <td>
+                                        <a data-target='#bukti<?= $data->IDDETAILPEMBAYARAN ?>' type="button" data-toggle="modal"><img style="width: 100px; height: 100px;" src="<?php echo $data->BUKTIPEMBAYARAN; ?> " class="img-thumbnail" /></a>
+                                    </td>
+                                    <td>
+                                        <?php echo $verfikasi ?>
+                                        <button title="Detail Pembayaran" type="button" class="btn btn-primary btn-sm ml-1" data-toggle="modal" data-target="#detailPembayaranModal<?php echo $data->IDDETAILPEMBAYARAN ?>"><i class="fa fa-ellipsis-h"></i>
+                                        </button>
+                                    </td>
+                                </tr>
 
-                            <!-- Modal Detail -->
-                            <div class="modal fade" id="detailPembayaranModal<?= $data->IDDETAILPEMBAYARAN ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Pembayaran </h5>
-                                            <?php if ($data->STATUSPEMBAYARAN == 1) {
-                                            ?>
-                                                <span class="badge badge-pill badge-success mt-1 ml-1">Terverfikasi</span>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <span class="badge badge-pill badge-danger mt-1 ml-1">Belum Terverifikasi</span>
-                                            <?php
-                                            }
-                                            ?>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <h6 for="nomorKTP">Jumlah Pembayaran</h6>
-                                                <p><?= harga($data->JUMLAHPEMBAYARAN); ?></p>
+                                <!-- Modal Verifikasi -->
+                                <div class="modal fade" id="verifikasiPembayaranModal<?= $data->IDDETAILPEMBAYARAN; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Verifikasi Pembayaran</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                            <div class="form-group">
-                                                <h6 for="namaLengkap">Tanggal Pembayaran</h6>
-                                                <p><?= $data->TANGGALPEMBAYARAN; ?></p>
+                                            <div class="modal-body">
+                                                <h5>Apakah anda yakin menverifikasi <b> <?= $data->IDDETAILPEMBAYARAN ?> </b> </h5>
                                             </div>
-                                            <div class="form-group">
-                                                <h6 for="email">Deskripsi</h6>
-                                                <p><?= $data->DESKRIPSI; ?></p>
+                                            <div class="modal-footer">
+                                                <a href="<?= base_url('Pembayaran/aksiVerifikasiPembayaran/' . $data->IDPEMBAYARAN . '/' . $data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                                <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                                             </div>
-                                            
-                                            <div class="form-group">
-                                                <h6>Bukti Pembayaran</h6>
-                                                <img class="img-responsive center-block d-block mx-auto" src="<?= $data->BUKTIPEMBAYARAN; ?>"  >
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <?php if ($data->STATUSPEMBAYARAN == 1) {
-                                            ?>
-                                                <a href="<?= base_url('Pembayaran/aksiCabutVerifikasiPembayaran/' .$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <a href="<?= base_url('Pembayaran/aksiVerifikasiPembayaran/' .$data->IDPEMBAYARAN.'/'.$data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
-                                            <?php
-                                            }
-                                            ?>
-                                            <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <?php }?>
+                                <!-- Modal Cabut Verifikasi -->
+                                <div class="modal fade" id="cabutVerifikasiPembayaranModal<?= $data->IDDETAILPEMBAYARAN; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Cabut Verifikasi Pembayaran</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Apakah anda yakin mencabut verifikasi <b> <?= $data->IDDETAILPEMBAYARAN ?> </b> </h5>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="<?= base_url('Pembayaran/aksiCabutVerifikasiPembayaran/' . $data->IDPEMBAYARAN . '/' . $data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                                <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Detail -->
+                                <div class="modal fade" id="detailPembayaranModal<?= $data->IDDETAILPEMBAYARAN ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Pembayaran </h5>
+                                                <?php if ($data->STATUSPEMBAYARAN == 1) {
+                                                ?>
+                                                    <span class="badge badge-pill badge-success mt-1 ml-1">Terverfikasi</span>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <span class="badge badge-pill badge-danger mt-1 ml-1">Belum Terverifikasi</span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <h6 for="nomorKTP">Jumlah Pembayaran</h6>
+                                                    <p><?= harga($data->JUMLAHPEMBAYARAN); ?></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6 for="namaLengkap">Tanggal Pembayaran</h6>
+                                                    <p><?= $data->TANGGALPEMBAYARAN; ?></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6 for="email">Deskripsi</h6>
+                                                    <p><?= $data->DESKRIPSI; ?></p>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h6>Bukti Pembayaran</h6>
+                                                    <img class="img-responsive center-block d-block mx-auto" src="<?= $data->BUKTIPEMBAYARAN; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <?php if ($data->STATUSPEMBAYARAN == 1) {
+                                                ?>
+                                                    <a href="<?= base_url('Pembayaran/aksiCabutVerifikasiPembayaran/' . $data->IDPEMBAYARAN . '/' . $data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Unverified</a>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <a href="<?= base_url('Pembayaran/aksiVerifikasiPembayaran/' . $data->IDPEMBAYARAN . '/' . $data->IDDETAILPEMBAYARAN) ?>" type="button" class="btn btn-success"><i class="fa fa-check mr-1"></i>Verifikasi</a>
+                                                <?php
+                                                }
+                                                ?>
+                                                <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="bukti<?= $data->IDDETAILPEMBAYARAN ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Bukti Pembayaran</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img style="max-width: 700px; min-width: 200px;" class="rounded mx-auto d-block" src="<?php echo $data->BUKTIPEMBAYARAN; ?>" >
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -210,9 +233,9 @@
                     targets: 0
                 },
                 {
-        "targets": 5,
-        "className": "text-center",
-   }
+                    "targets": 5,
+                    "className": "text-center",
+                }
             ],
             fixedColumns: false
         });
