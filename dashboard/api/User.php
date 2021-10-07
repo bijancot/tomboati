@@ -307,3 +307,104 @@ function logout_post()
     header('Content-Type: application/json');
     echo json_encode($response);
 }
+
+function ubah_data_profil(){
+    
+    global $connect, $connect2;
+    $response           = [];
+
+    $idUserRegister = $_GET['idUserRegister'];
+    $nama           = $_POST['nama'];
+    $provinsi       = $_POST['provinsi'];
+    $kota           = $_POST['kota'];
+    $kecamatan      = $_POST['kecamatan'];
+    $address        = $_POST['address'];
+    $kodePos        = $_POST['kodePos'];
+    $country        = $_POST['country'];
+    $email          = $_POST['email'];
+
+    if($idUserRegister != '' &&  $nama != '' && $provinsi != '' && $kota != '' && $kecamatan != '' && $address != '' && $kodePos != '' && $country != '' && $email != ''){ 
+        $get_id                  = $connect->query("SELECT * FROM mebers WHERE id = '".$idUserRegister."' "); 
+        $get_rows_id             = mysqli_num_rows($get_id);
+
+        if($get_rows_id > 0){
+            mysqli_query($connect, "UPDATE mebers SET country='$country', name='$nama', propinsi='$provinsi', kota='$kota', kecamatan='$kecamatan', address='$address', kode_pos='$kodePos', email='$email' WHERE id='$idUserRegister' ");
+                    
+            // //db tomboati
+            mysqli_query($connect2, "UPDATE USER_REGISTER SET NEGARA='$country', NAMALENGKAP='$nama', PROVINSI='$provinsi', KOTA='$kota', KECAMATAN='$kecamatan', ALAMAT='$address', KODEPOS='$kodePos', EMAIL='$email' WHERE IDUSERREGISTER='$idUserRegister' ");
+    
+            $response = array(
+                'error'     => false,
+                'message'   => 'Sukses Update Profil'
+            );   
+        }else{
+            $response = array(
+                'error'     => true,
+                'message'   => 'Gagal Update Profil'
+            ); 
+        }
+
+       
+    }else{
+        $response = array(
+            'error'     => true,
+            'message'   => 'Terdapat data kosong'
+        );
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
+
+function ubah_foto_profil(){
+    
+    global $connect, $connect2;
+    $response           = [];
+
+    $idUserRegister = $_GET['idUserRegister'];
+
+    $randProfil     = rand();
+    $fotoprofil     = $_FILES['fotoprofil']['name'];
+    $tempPath       = $_FILES['fotoprofil']['tmp_name'];
+    $fileSize       = $_FILES['fotoprofil']['size'];
+
+    if (empty($fotoprofil)) {
+        $errorMSG = json_encode(array("message" => "File Foto Profil Kosong", "error" => true));
+        echo $errorMSG;
+    } else {
+        $upload_path = '../upload/users/'; // set upload folder path 
+
+        $fileExt = strtolower(pathinfo($fotoprofil, PATHINFO_EXTENSION));
+        $valid_extensions = array('jpeg', 'jpg', 'png');
+
+        if (in_array($fileExt, $valid_extensions)) {
+            $file_foto_profil = $randProfil.'_'.$fotoprofil;
+
+            if ($fileSize < 2000000) {
+                move_uploaded_file($tempPath, $upload_path . $file_foto_profil);
+                $file_foto_profil_db = 'https://tomboatitour.biz/dashboard/upload/users/'.$file_foto_profil;
+            } else {
+                $errorMSG = json_encode(array("message" => "File Foto Profil maksimal 2MB", "status" => false));
+                echo $errorMSG;
+            }
+            
+        } else {
+            $errorMSG = json_encode(array("message" => "Format Foto Profil  JPG, JPEG & PNG", "status" => false));
+            echo $errorMSG;
+        }
+    }
+    
+    mysqli_query($connect, "UPDATE mebers SET photo='$file_foto_profil_db' WHERE id='$idUserRegister' ");
+            
+    // //db tomboati
+    mysqli_query($connect2, "UPDATE USER_REGISTER SET FOTO='$file_foto_profil_db' WHERE IDUSERREGISTER='$idUserRegister' ");
+
+    $response = array(
+        'error'         => false,
+        'message'       => 'Sukses Update Foto Profil',
+        'file_foto'     => $file_foto_profil_db
+    );  
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
