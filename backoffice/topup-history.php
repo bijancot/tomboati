@@ -115,7 +115,7 @@ include 'header.php';
                                                     </div>
                                                     <div class="modal-body">
                                                         <center>
-                                                        <img src="<?php echo $base_url . $dataphoto ?>" width="400px" height="400px">
+                                                        <img src="<?php echo $dataphoto ?>" style="max-width='400px'">
                                                         </center>
                                                     </div>
                                                     <div class="modal-footer">

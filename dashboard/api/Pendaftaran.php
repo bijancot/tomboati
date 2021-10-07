@@ -146,8 +146,8 @@ function pendaftaranMitra(){
     
     
     $from_name    = "Admin Tombo Ati";
-    $user_email   = "adm.tomboati@gmail.com";
-    $pass_email   = "TomboAti123";
+    $user_email   = "tomboatitour@gmail.com";
+    $pass_email   = "Bismillah5758";
 
     $email_penerima = $email;
     $penerima_nama = $name;

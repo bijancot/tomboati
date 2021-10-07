@@ -75,7 +75,7 @@ $nilai_transfer=$data['amount']+$data['unik'];
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Bukti Transfer</label>
                                                 <div class="col-sm-9">
-                                                    <img src="https://tomboatitour.com/backoffice/<?php echo $data['photo']; ?>" class="img-rounded" width="150" height="200" style="border: 2px solid #666;" /><br>
+                                                    <img src="<?php echo $data['photo']; ?>" class="img-rounded" width="150" height="200" style="border: 2px solid #666;" /><br>
                                                 </div>
                                                 <div class="col-sm-9"><br><br>
                                                     <input name="file" type="file" id="file" class="form-control" required />

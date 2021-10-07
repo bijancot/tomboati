@@ -78,6 +78,7 @@ if (isset($_POST['button'])) {
     $kode_pos = $_POST['kode_pos'];
     $country = $_POST['country'];
     $bank = $_POST['bank'];
+    $cabang = $_POST['cabang'];
     $rekening = $_POST['rekening'];
     $atasnama = $_POST['atasnama'];
     $username = $row['userid'];
@@ -106,12 +107,12 @@ if (isset($_POST['button'])) {
     // jika total upline ada 1 berarti userid ada
     if (($total_upline == 0) && ($username != $upline)) {
         echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
-        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else if ($total_username != 0) {
         echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
-        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor';</script>";
+        echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else {
-        echo "MASUK DEK";
+        // echo "MASUK DEK";
         // UPLOAD FOTO KTP
         $ekstensi_diperbolehkan    = array('PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg');
         $nama = $_FILES['fotoktp']['name'];
@@ -138,17 +139,22 @@ if (isset($_POST['button'])) {
 
         $photo = $base_url . 'gambar_customer/users.png';
         $insert_dash = mysqli_query($koneksi, "INSERT INTO mebers 
-(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, rekening, atasnama, passw, photo, is_hr, usertoken, timer)
+(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, photo, is_hr, usertoken, timer)
 VALUES
-('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$rekening', '$atasnama', '$unik_password','$photo', '1', 'tokenTomboAti', now())") or die(mysqli_error());
+('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password','$photo', '1', 'tokenTomboAti', now())") or die(mysqli_error());
 
-// config tombo (Db)
-require_once 'config-tombo.php';
+        // config tombo (Db)
+        require_once 'config-tombo.php';
         $insert_tombo = mysqli_query($koneksi_tombo, "INSERT INTO USER_REGISTER 
-        (STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, NEGARA, KOTA, CREATED_AT)
+        (STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
         VALUES
-        ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$hphone', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
+        ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$hphone', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
 
+        if ($insert_tombo) {
+            $last_id = mysqli_insert_id($koneksi_tombo);
+            echo ($last_id);
+            mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$last_id')");
+        }
         //Kirim Email
 
         //         $newuser_msg = " 
@@ -195,12 +201,12 @@ require_once 'config-tombo.php';
         // $name = $_POST['name'];
         // $userid = $_POST['userid'];
 
-        $from_name = "Admin Tombo Ati";
-        $user_email = "adm.tomboati@gmail.com";
-        $pass_email = "TomboAti123";
-
         $email_penerima = $email;
         $penerima_nama = $name;
+
+        $from_name = "Admin Tombo Ati";
+        $user_email = "tomboatitour@gmail.com";
+        $pass_email = "Bismillah5758";
 
         $mail = new PHPMailer(true);
 
@@ -279,7 +285,7 @@ require_once 'config-tombo.php';
 
           <body>
             <header>
-              <img width='100px;' src='https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png'>
+              <img width='100px;' src='https://tomboatitour.biz/assets/img/logo_tomboati.png'>
             </header>
 
             <article>
@@ -382,15 +388,15 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                 <div class="card">
                     <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Permintaan Mitra</a>
+                            <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#permintaan-mitra" role="tab" aria-controls="pills-timeline" aria-selected="true">Permintaan Mitra</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="false">Form Register</a>
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#form-register" role="tab" aria-controls="pills-profile" aria-selected="false">Form Register</a>
                         </li>
                     </ul>
                     <!-- Permintaan -->
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
+                        <div class="tab-pane fade show active" id="permintaan-mitra" role="tabpanel" aria-labelledby="pills-timeline-tab">
                             <div class="card-body p-0 table-border-style">
                                 <div class="card-body ">
                                     <?php
@@ -509,14 +515,9 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="col-7 text-left text-bold"><?php echo $data['ktp']; ?></div>
                                                                 </div>
                                                                 <div class="row py-2">
-                                                                    <div class="col-4">Alamat</div>
+                                                                    <div class="col-4">Provinsi</div>
                                                                     <div class="col-1 text-left">:</div>
-                                                                    <div class="col-7 text-left text-bold"><?php echo $data['address']; ?></div>
-                                                                </div>
-                                                                <div class="row py-2">
-                                                                    <div class="col-4">Kecamatan</div>
-                                                                    <div class="col-1 text-left">:</div>
-                                                                    <div class="col-7 text-left text-bold"><?php echo $data['kecamatan']; ?></div>
+                                                                    <div class="col-7 text-left text-bold"><?php echo $data['propinsi']; ?></div>
                                                                 </div>
                                                                 <div class="row py-2">
                                                                     <div class="col-4">Kota / Kabupaten</div>
@@ -524,9 +525,14 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="col-7 text-left text-bold"><?php echo $data['kota']; ?></div>
                                                                 </div>
                                                                 <div class="row py-2">
-                                                                    <div class="col-4">Provinsi</div>
+                                                                    <div class="col-4">Kecamatan</div>
                                                                     <div class="col-1 text-left">:</div>
-                                                                    <div class="col-7 text-left text-bold"><?php echo $data['propinsi']; ?></div>
+                                                                    <div class="col-7 text-left text-bold"><?php echo $data['kecamatan']; ?></div>
+                                                                </div>
+                                                                <div class="row py-2">
+                                                                    <div class="col-4">Alamat</div>
+                                                                    <div class="col-1 text-left">:</div>
+                                                                    <div class="col-7 text-left text-bold"><?php echo $data['address']; ?></div>
                                                                 </div>
                                                                 <div class="row py-2">
                                                                     <div class="col-4">Kode Pos</div>
@@ -544,6 +550,11 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="col-7 text-left text-bold"><?php echo $data['bank']; ?></div>
                                                                 </div>
                                                                 <div class="row py-2">
+                                                                    <div class="col-4">Cabang</div>
+                                                                    <div class="col-1 text-left">:</div>
+                                                                    <div class="col-7 text-left text-bold"><?php echo $data['cabang']; ?></div>
+                                                                </div>
+                                                                <div class="row py-2">
                                                                     <div class="col-4">Rekening</div>
                                                                     <div class="col-1 text-left">:</div>
                                                                     <div class="col-7 text-left text-bold"><?php echo $data['rekening']; ?></div>
@@ -557,7 +568,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                                     <div class="col">Foto KTP</div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="width: 200px; height: 100px;"></div>
+                                                                    <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="max-width: 200px;"></div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -639,7 +650,7 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="last-month" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="tab-pane fade" id="form-register" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="card-body">
                                 <div class="state">
                                     <h6>Poin Register</h6>
@@ -662,11 +673,11 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Freelance<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <?php if($username == "company"){ ?>
+                                                    <?php if ($username == "company") { ?>
                                                         <input name="sponsor" type="text" class="form-control" id="sponsor" placeholder="Sponsor" value="<?php echo $_GET['sponsor']; ?>" required />
-                                                    <?php }else{ ?>
+                                                    <?php } else { ?>
                                                         <input name="sponsor" type="text" class="form-control" id="sponsor" placeholder="Sponsor" value="<?php echo $row['userid']; ?>" readonly />
-                                                        <?php } ?>                                                                                                             
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -722,21 +733,21 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Propinsi<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
                                                     <input name="propinsi" type="hidden" class="form-control" id="propinsi" />
-                                                    <select class="select2-data-array browser-default" id="select2-propinsi" required></select>
+                                                    <select class="select2-data-array browser-default form-control" id="select2-propinsi" required></select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kota<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
                                                     <input name="kota" type="hidden" class="form-control" id="kota" />
-                                                    <select class="select2-data-array browser-default" id="select2-kota" required></select>
+                                                    <select class="select2-data-array browser-default form-control" id="select2-kota" required></select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kecamatan<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
                                                     <input name="kecamatan" type="hidden" class="form-control" id="kecamatan" />
-                                                    <select class="select2-data-array browser-default" id="select2-kecamatan" required></select>
+                                                    <select class="select2-data-array browser-default form-control" id="select2-kecamatan" required></select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -755,6 +766,12 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Bank</label>
                                                 <div class="col-sm-9">
                                                     <input name="bank" type="text" class="form-control" id="exampleInputUsername2" placeholder="Bank" value="<?php echo $_GET['bank']; ?>" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cabang</label>
+                                                <div class="col-sm-9">
+                                                    <input name="cabang" type="text" class="form-control" id="exampleInputUsername2" placeholder="Cabang" value="<?php echo $_GET['cabang']; ?>" />
                                                 </div>
                                             </div>
                                             <div class="form-group row">

@@ -44,7 +44,7 @@
     
     <body>
         <header>
-            <img width="100px;" src="https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png">
+            <img width="100px;" src="https://tomboatitour.biz/assets/img/logo_tomboati.png">
         </header>
         <article>
             <p><strong>Reset Password</strong></p>

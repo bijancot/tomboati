@@ -422,8 +422,8 @@ class User extends CI_Controller{
 		$config['protocol'] = 'smtp';
 		
 		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
-		$config['smtp_user'] = 'adm.tomboati@gmail.com';
-		$config['smtp_pass'] = 'TomboAti123';
+		$config['smtp_user'] = 'tomboatitour@gmail.com';
+		$config['smtp_pass'] = 'Bismillah5758';
 		$config['smtp_port'] = 465; 
 		$config['smtp_timeout'] = 15;
 		$config['wordwrap'] = TRUE;
@@ -439,7 +439,7 @@ class User extends CI_Controller{
 
 		$this->email->initialize($config);
 		
-		$this->email->from('adm.tomboati@gmail.com', 'Admin Tombo Ati'); 
+		$this->email->from('tomboatitour@gmail.com', 'Admin Tombo Ati'); 
 		$this->email->to($email); 
 		$this->email->subject('Reset Password');
 		$msg =  $this->load->view('template/email',$dataEmail,true);
