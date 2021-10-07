@@ -43,12 +43,13 @@ if (($total_upline == 0) && ($username != $upline)) {
         require_once "plugins/phpmailer/src/POP3.php";
         require_once "plugins/phpmailer/src/SMTP.php";
 
-        $from_name = "Admin Tombo Ati";
-        $user_email = "adm.tomboati@gmail.com";
-        $pass_email = "TomboAti123";
-
         $email_penerima = $email;
         $penerima_nama = $name;
+
+        $from_name = "Admin Tombo Ati";
+        $user_email = "tomboatitour@gmail.com";
+        $pass_email = "Bismillah5758";
+
 
         $mail = new PHPMailer(true);
 
@@ -127,7 +128,7 @@ if (($total_upline == 0) && ($username != $upline)) {
           
           <body>
             <header>
-              <img width='100px;' src='https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png'>
+              <img width='100px;' src='https://tomboatitour.biz/assets/img/logo_tomboati.png'>
             </header>
         
             <article>

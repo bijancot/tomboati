@@ -116,7 +116,7 @@ try {
   </head>
   <body>
     <header>
-      <img width='100px;' src='https://tomboati.bgskr-project.my.id/assets/img/logo_tomboati.png'>
+      <img width='100px;' src='https://tomboatitour.biz/assets/img/logo_tomboati.png'>
     </header>
 
     <article>
@@ -127,7 +127,7 @@ try {
     <p>Password = <b>$password</b> </p>
     <p>&nbsp;</p>
     <p>Berikut link untuk menuju ke halaman landing page referral Anda.</p> 
-    https://dash-tombo.bgskr-project.my.id/backoffice/
+    https://tomboatitour.biz/backoffice/
     
     <br><br>
     <p>Terima Kasih, </p>

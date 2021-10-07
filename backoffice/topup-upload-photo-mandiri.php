@@ -2,6 +2,7 @@
 session_start();
 include('header.php');
 require_once "topup-upload-photo-mandiri2.php"; 
+require_once "fungsi.php";
 
 if(isset($_FILES['file'])) {
 $origname = $_FILES['file']['name'];
@@ -23,7 +24,9 @@ if (!is_dir($dir))
 $uploader = new uploader($_FILES['file'],$dir.'/',$uplaodfile);
 $uploader->upload();
 $ok = $uploader->getInfo();
-$query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET unik='$unik', status='pending', message='$message', gateway='MANDIRI', photo='gambar_pin/$uplaodfile', date=now() WHERE code='$code' AND user_id='$id' ")or die(mysql_error());
+$path_photo = $base_url . 'gambar_pin/'.$uplaodfile;
+
+$query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET unik='$unik', status='pending', message='$message', gateway='MANDIRI', photo='$path_photo', date=now() WHERE code='$code' AND user_id='$id' ")or die(mysql_error());
 
 if(!empty($ok))
 {

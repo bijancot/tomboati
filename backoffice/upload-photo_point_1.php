@@ -3,6 +3,7 @@ ini_set('display_errors',0);
 session_start();
 include('header.php');
 require_once "upload-photo_point_2.php"; 
+require_once "fungsi.php";
 
 if(isset($_FILES['file'])) {
 $origname = $_FILES['file']['name'];
@@ -21,7 +22,9 @@ if (!is_dir($dir))
 $uploader = new uploader($_FILES['file'],$dir.'/',$uplaodfile);
 $uploader->upload();
 $ok = $uploader->getInfo();
-$query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET photo='gambar_transfer/$uplaodfile' WHERE code='$code'")or die(mysql_error());
+$path_photo = $base_url . 'gambar_transfer/'.$uplaodfile;
+
+$query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET photo='$path_photo' WHERE code='$code'")or die(mysql_error());
 
 if(!empty($ok))
 {
