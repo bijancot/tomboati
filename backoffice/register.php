@@ -95,7 +95,6 @@ if (isset($_POST['button'])) {
     $g9 = $row['g8'];
     $g10 = $row['g9'];
 
-
     // Pengecekan Upline harus ada dengan sponsor anda
     $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
     $total_upline = mysqli_num_rows($sql_upline);
@@ -351,7 +350,6 @@ if ($sum_register > 0) {
     }
 }
 
-mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND sponsor='$row[userid]' AND paket='MITRA'");
 
 
 ?>
@@ -368,6 +366,9 @@ mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' AND spons
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
                             <h5>Register Mitra</h5>
+                            <?php 
+                                mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA'");
+                            ?>
                         </div>
                     </div>
                 </div>
