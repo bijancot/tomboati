@@ -122,35 +122,26 @@ function registerMitra_post()
     $createdAt      = date('Y-m-d H:i:s');
     
     if($idUserRegister != '' &&  $ktp != '' && $email != '' && $username != '' && $bank != '' && $rekening != '' && $atasnama != '' && $cabang != '' ){ 
-        $get_data_email                     = $connect->query("SELECT * FROM mebers WHERE email = '".$email."' ");   
         $get_data_username                  = $connect->query("SELECT * FROM mebers WHERE userid = '".$username."' "); 
 
-        $get_rows_email                     = mysqli_num_rows($get_data_email); 
         $get_rows_username                  = mysqli_num_rows($get_data_username); 
         
-        if($get_rows_email == null){
-            if($get_rows_username == null){
-                //db dashboard tombo
+        if($get_rows_username == null){
+            //db dashboard tombo
 
-                mysqli_query($connect, "UPDATE mebers SET paket='BARU', ktp='$ktp', email='$email', userid='$username', bank='$bank', rekening='$rekening', atasnama='$atasnama', cabang='$cabang' , bukti_bayar='$file_bukti_bayar_db', photo='$file_foto_profil_db', fotoktp='$file_foto_ktp_db', timer='$createdAt' WHERE id='$idUserRegister' ");
-                            
-                // //db tomboati
-                mysqli_query($connect2, "UPDATE USER_REGISTER SET STATUS_USER='BARU', NOMORKTP='$ktp', EMAIL='$email', USERNAME='$username', BANK='$bank', REKENING='$rekening', ATASNAMA='$atasnama', CABANG='$cabang', BUKTIBAYAR='$file_bukti_bayar_db', FOTO='$file_foto_profil_db', FILEKTP='$file_foto_ktp_db', UPDATED_AT='$createdAt' WHERE IDUSERREGISTER='$idUserRegister' ");
+            mysqli_query($connect, "UPDATE mebers SET paket='BARU', ktp='$ktp', email='$email', userid='$username', bank='$bank', rekening='$rekening', atasnama='$atasnama', cabang='$cabang' , bukti_bayar='$file_bukti_bayar_db', photo='$file_foto_profil_db', fotoktp='$file_foto_ktp_db', timer='$createdAt' WHERE id='$idUserRegister' ");
+                        
+            // //db tomboati
+            mysqli_query($connect2, "UPDATE USER_REGISTER SET STATUS_USER='BARU', NOMORKTP='$ktp', EMAIL='$email', USERNAME='$username', BANK='$bank', REKENING='$rekening', ATASNAMA='$atasnama', CABANG='$cabang', BUKTIBAYAR='$file_bukti_bayar_db', FOTO='$file_foto_profil_db', FILEKTP='$file_foto_ktp_db', UPDATED_AT='$createdAt' WHERE IDUSERREGISTER='$idUserRegister' ");
 
-                $response = array(
-                    'error'     => false,
-                    'message'   => 'Sukses Register'
-                );
-            }else{
-                $response = array(
-                    'error'     => true,
-                    'message'   => 'Username sudah terdaftar sebelumnya'
-                );
-            }
+            $response = array(
+                'error'     => false,
+                'message'   => 'Sukses Register'
+            );
         }else{
             $response = array(
                 'error'     => true,
-                'message'   => 'Email sudah terdaftar sebelumnya'
+                'message'   => 'Username sudah terdaftar sebelumnya'
             );
         }
     }else{
@@ -214,7 +205,7 @@ function login_post()
 
     $data = [];
 
-    $get_all_data_register = $connect->query("SELECT * FROM mebers WHERE userid ='" . $username . "' AND passw='" . $password . "' AND paket='MITRA' ");
+    $get_all_data_register = $connect->query("SELECT * FROM mebers WHERE (userid ='" . $username . "' AND passw='" . $password . "') AND (paket='MITRA' OR paket='RESELLER') ");
     $get_rows = mysqli_num_rows($get_all_data_register);
 
 
