@@ -41,4 +41,9 @@ class Admin extends CI_Controller
 
         $this->load->view('admin/VChangePassword', $data);
     }
+
+    public function PrivacyPolicy()
+    {
+        $this->load->view('admin/VPrivacyPolicy.html');
+    }
 }

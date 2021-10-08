@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 //download
 $route['apps'] = 'ShareApk';
+$route['privacy'] = 'Admin/PrivacyPolicy';
