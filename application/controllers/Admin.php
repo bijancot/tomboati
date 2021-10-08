@@ -44,6 +44,6 @@ class Admin extends CI_Controller
 
     public function PrivacyPolicy()
     {
-        $this->load->view('admin/VPrivacyPolicy.html');
+        $this->load->view('VPrivacyPolicy.html');
     }
 }
