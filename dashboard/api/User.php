@@ -328,14 +328,10 @@ function ubah_data_profil(){
         $get_rows_id             = mysqli_num_rows($get_id);
 
         if($get_rows_id > 0){
-            $query1 = mysqli_query($connect, "UPDATE mebers SET country='$country', name='$nama', propinsi='$provinsi', kota='$kota', kecamatan='$kecamatan', address='$address', kode_pos='$kodePos', email='$email' WHERE id='$idUserRegister' ");
+            mysqli_query($connect, "UPDATE mebers SET country='$country', name='$nama', propinsi='$provinsi', kota='$kota', kecamatan='$kecamatan', address='$address', kode_pos='$kodePos', email='$email' WHERE id='$idUserRegister' ");
                     
             // //db tomboati
-            $query2 = mysqli_query($connect2, "UPDATE USER_REGISTER SET NEGARA='$country', NAMALENGKAP='$nama', PROVINSI='$provinsi', KOTA='$kota', KECAMATAN='$kecamatan', ALAMAT='$address', KODEPOS='$kodePos', EMAIL='$email' WHERE IDUSERREGISTER='$idUserRegister' ");
-    
-            
-    echo var_dump($query1);
-    echo var_dump($query2);
+            mysqli_query($connect2, "UPDATE USER_REGISTER SET NEGARA='$country', NAMALENGKAP='$nama', PROVINSI='$provinsi', KOTA='$kota', KECAMATAN='$kecamatan', ALAMAT='$address', KODEPOS='$kodePos', EMAIL='$email' WHERE IDUSERREGISTER='$idUserRegister' ");
     
             $response = array(
                 'error'     => false,
@@ -355,8 +351,6 @@ function ubah_data_profil(){
             'message'   => 'Terdapat data kosong'
         );
     }
-
-    echo var_dump($response);
 
     header('Content-Type: application/json');
     echo json_encode($response);
