@@ -103,7 +103,7 @@
 
     // echo 'UserIDMu'.$row['userid'];
     //notifikasi
-    $get_all_data_register_paket_user = mysqli_query($koneksi, "SELECT * FROM mebers WHERE sponsor='$row[userid]' AND paket='MITRA' AND is_seen_notifikasi_mitra = 0");
+    $get_all_data_register_paket_user = mysqli_query($koneksi, "SELECT * FROM mebers WHERE sponsor='$row[userid]' AND paket='MITRA' AND is_seen_notifikasi_mitra = 0 AND upline is null");
     $get_rows_paket_user = mysqli_num_rows($get_all_data_register_paket_user);
 
     date_default_timezone_set('Asia/Jakarta')
@@ -250,6 +250,12 @@
              color: #fff;
          }
 
+         .bg-danger{background-color:#dc3545!important}
+         a.bg-danger:focus,
+         a.bg-danger:hover,
+         button.bg-danger:focus,
+         button.bg-danger:hover{background-color:#bd2130!important}
+         
          @media (min-width: 576px) {
              .dropdown-notifications {
                  position: relative;
@@ -320,7 +326,7 @@
                          <li class="nav-item dropdown no-caret mr-3 dropdown-notifications list-notif-daftar">
                              <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                  <i class="fas fa-bell"></i>&nbsp;
-                                 <span class="badge badge-warning bg-primary"><?php echo $get_rows_paket_user ?></span>
+                                 <span class="badge badge-warning bg-danger"><?php if ($get_rows_paket_user != 0) echo '!'?></span>
                              </a>
                              <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
                                  <h6 class="dropdown-header dropdown-notifications-header text-center ">
@@ -337,7 +343,7 @@
                                      <a class="dropdown-item notification-dropdown badge text-left" href="register.php">
                                          <div class="dropdown-notifications-item-content">
                                              <p class="dropdown-item-content-text notification-dropdown lg">Mitra Baru</h3>
-                                             <div class="dropdown-item-content-details notification-dropdown">Terdapat <?php echo $get_rows_paket_user ?> Mitra Baru</div>
+                                             <div class="dropdown-item-content-details notification-dropdown">Terdapat Mitra Baru</div>
                                          </div>
                                      </a>
                                  <?php } ?>
