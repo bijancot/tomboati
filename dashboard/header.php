@@ -144,6 +144,13 @@
              -ms-overflow-style: none;
              scrollbar-width: none;
          }
+
+         .bg-danger{background-color:#dc3545!important}
+         a.bg-danger:focus,
+         a.bg-danger:hover,
+         button.bg-danger:focus,
+         button.bg-danger:hover{background-color:#bd2130!important}
+         
      </style>
      <meta charset="UTF-8">
      <meta name="robots" content="noindex" />
@@ -248,7 +255,7 @@
                      <li class="dropdown user user-menu">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                              <i class="glyphicon glyphicon-bell"></i>
-                             <span class="badge badge-danger bg-danger "><?php echo $get_rows_paket_user ?></span>
+                             <span class="badge badge-danger bg-danger "><?php if ($get_rows_paket_user != 0) echo '!'?></span>
                              <span> <i class="caret"></i></span>
                          </a>
                          <ul class="dropdown-menu text-white notif myDropDown">
@@ -266,7 +273,7 @@
                                      <a class="badge badge-white bg-white" href="VPermintaanMitra.php">
                                          <div class="dropdown-notifications-item-content">
                                              <div class="text-left text-bold fs-14">Permintaan Mitra Baru</div>
-                                             <div class="text-left fs-12">Terdapat <?php echo $get_rows_paket_user ?> Permintaan Mitra Baru</div>
+                                             <div class="text-left fs-12">Terdapat Permintaan Mitra Baru</div>
                                          </div>
                                      </a>
                                  <?php } ?>

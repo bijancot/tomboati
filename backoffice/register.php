@@ -367,7 +367,7 @@ if ($sum_register > 0) {
                         <div class="d-inline">
                             <h5>Register Mitra</h5>
                             <?php 
-                                mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA'");
+                                mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA' AND upline is null");
                             ?>
                         </div>
                     </div>
