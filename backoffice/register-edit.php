@@ -1,8 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 <?php
 //Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 
 include('config.php');
 include('fungsi.php');
@@ -21,21 +25,26 @@ $username = $_POST['username'];
 $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
 $total_upline = mysqli_num_rows($sql_upline);
 if (($total_upline == 0) && ($username != $upline)) {
-    echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
+    // echo '<script type="text/javascript">Swal.fire("Gagal!", "Upline tidak Ditemukan!", "error");</script>';
+    
+    $_SESSION["uplinenotfound"] = 'Upline tidak Ditemukan';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
-}else if($upline == $userid){
-    echo '<script type="text/javascript">alert("Upline Tidak Boleh Sama Dengan Username '.$name.' sendiri");</script>';
+} else if ($upline == $userid) {
+    // echo '<script type="text/javascript">Swal.fire("Gagal!", "Username sudah Digunakan!", "error");</script>';
+  
+    $_SESSION["usernameexist"] = 'Username sudah Digunakan';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Upline Tidak Boleh Sama dengan Username Anda';</script>";
-}else {
+} else {
     // update data ke database
     if (mysqli_query($koneksi, "update mebers set upline='$upline', is_hr = '2' where id='$id'")) {
         // echo "BERHASIL";
 
-        echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
+        $_SESSION["berhasil"] = 'Pendaftaran mitra berhasil!';
+        // echo '<script type="text/javascript">swal.fire("Berhasil!", "Pendaftaran mitra berhasil!", "success");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
-    
+
         // kirim email
-        
+
         //Load Composer's autoloader
         require_once "plugins/phpmailer/src/PHPMailer.php";
         require_once "plugins/phpmailer/src/Exception.php";
@@ -172,10 +181,10 @@ if (($total_upline == 0) && ($username != $upline)) {
             $msg_gagal = "Gagal mengirim email. Mailer Error: {$mail->ErrorInfo}";
             echo $msg_gagal;
         }
-        
-        
+
+
         // header("Location: register.php?error=SUCCESS");
-        
+
     } else {
         echo "GAGAL";
     }

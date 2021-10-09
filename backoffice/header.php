@@ -86,7 +86,7 @@
     $wd_total = $query_wd2['total_wd'];
 
     // referral diri sendiri
-    $tampil_ref = mysqli_query($koneksi, "select * from mebers where sponsor='$row[userid]'");
+    $tampil_ref = mysqli_query($koneksi, "select * from mebers where (paket = 'MITRA' || paket = 'RESELLER') && sponsor='$row[userid]'");
     $total_ref = mysqli_num_rows($tampil_ref);
 
     // ini yang digunakan untuk hak register
@@ -298,6 +298,7 @@
      <link rel="stylesheet" href="dist/css/theme.min.css">
      <!-- IMPORT SELECT2 -->
      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
      <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
  </head>
 

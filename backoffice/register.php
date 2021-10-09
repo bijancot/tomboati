@@ -105,10 +105,12 @@ if (isset($_POST['button'])) {
     // jika total upline 0 berarti upline tidak ada
     // jika total upline ada 1 berarti userid ada
     if (($total_upline == 0) && ($username != $upline)) {
-        echo '<script type="text/javascript">alert("Username Upline Tidak Ditemukan");</script>';
+
+        $_SESSION["uplinenotfound"] = 'Upline tidak Ditemukan';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else if ($total_username != 0) {
-        echo '<script type="text/javascript">alert("Username Sudah Digunakan");</script>';
+
+        $_SESSION["usernameexist"] = 'Username sudah Digunakan';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else {
         // echo "MASUK DEK";
@@ -126,12 +128,15 @@ if (isset($_POST['button'])) {
                 move_uploaded_file($file_tmp, 'img/foto-ktp/' . $newfilename);
                 $fotoktp = $base_url . 'img/foto-ktp/' . $newfilename;
             } else {
-                echo '<script type="text/javascript">alert("UKURAN FILE TERLALU BESAR");</script>';
-                echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
+
+                $_SESSION["imagebig"] = 'Ukuran File Gambar Terlalu Besar!';
+                // echo '<script type="text/javascript">swal("Gagal!", "Ukuran File Gambar Terlalu Besar!", "error");</script>';
+                echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
             }
         } else {
-            echo '<script type="text/javascript>alert("EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN");</script>';
-            echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ukuran file gambar terlalu besar';</script>";
+            $_SESSION["imagenotcorrect"] = 'Ekstensi File Gambar Tidak Diperbolehkan!';
+            // echo '<script type="text/javascript>swal("Gagal!", "Ekstensi File Gambar Tidak Diperbolehkan!", "error");</script>';
+            echo "<script type='text/javascript'>document.location.href = 'register.php?error=Ekstensi file gambar tidak boleh&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
         }
 
         // photo username
@@ -332,7 +337,8 @@ VALUES
         $_GET = array(); // lets pretend nothing was posted
         $_POST = array(); // lets pretend nothing was posted
 
-        echo '<script type="text/javascript">alert("Pendaftaran Mitra Berhasil");</script>';
+        $_SESSION["berhasil"] = 'Pendaftaran mitra berhasil!';
+        // echo '<script type="text/javascript">swal("Berhasil!", "Pendaftaran mitra berhasil!", "success");</script>';
 
         // header("Location: register.php?error=SUCCESS");
         echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
@@ -366,8 +372,8 @@ if ($sum_register > 0) {
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
                             <h5>Register Mitra</h5>
-                            <?php 
-                                mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA' AND upline is null");
+                            <?php
+                            mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA' AND upline is null");
                             ?>
                         </div>
                     </div>
@@ -453,7 +459,7 @@ if ($sum_register > 0) {
                                                     </td>
                                                     <td>
                                                         <left>
-                                                            <img src="gambar_customer/users.png" class="img-circle" alt="User Image" style="border: 2px solid #3C8DBC;" width="50" height="50" /> <?php echo $data['userid']; ?>
+                                                            <?php echo $data['userid']; ?>
                                                         </left>
                                                     </td>
                                                     <td>
@@ -830,6 +836,46 @@ if ($sum_register > 0) {
 <?php
 include 'footer.php';
 ?>
+
+<!-- ALERT -->
+<!-- jika upline tidak ada -->
+<?php if (@$_SESSION['uplinenotfound']) { ?>
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['uplinenotfound']; ?>", "error");
+    </script>
+<?php unset($_SESSION['uplinenotfound']);
+    // jika username sudah digunakan
+} else if (@$_SESSION['usernameexist']) { ?>
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['usernameexist']; ?>", "error");
+    </script>
+<?php unset($_SESSION['usernameexist']);
+    // file gambar terlalu besar
+} else if (@$_SESSION['imagebig']) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagebig']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagebig']);
+    // jika file gambar tidak sesuai
+} else if (@$_SESSION['imagenotcorrect']) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrect']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagenotcorrect']);
+    // jika berhasil
+} else if (@$_SESSION['berhasil']) { ?>
+
+    <script>
+        swal("Berhasil!", "<?php echo $_SESSION['berhasil']; ?>", "success");
+    </script>
+<?php unset($_SESSION['berhasil']);
+} ?>
+
+
 <script>
     var urlPropinsi = "https://ibnux.github.io/data-indonesia/propinsi.json";
     var urlKota = "https://ibnux.github.io/data-indonesia/kabupaten/";

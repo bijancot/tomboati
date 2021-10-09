@@ -95,7 +95,7 @@ include 'header.php';
                                                 </td>
                                                 <td>
                                                     <left>
-                                                       <img src="gambar_customer/users.png" class="img-circle" alt="User Image" style="border: 2px solid #3C8DBC;" width="50" height="50" /> <?php echo $data['userid']; ?>
+                                                       <?php echo $data['userid']; ?>
                                                     </left>
                                                 </td>
                                                 <td>
