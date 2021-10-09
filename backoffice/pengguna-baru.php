@@ -61,7 +61,7 @@ include 'header.php';
                                                 <center>Tanggal </i></center>
                                             </th>
                                             <th>
-                                                <center>Username </i></center>
+                                                <center>No. HP </i></center>
                                             </th>
                                             <th>
                                                 <center>KTP</center>
@@ -74,9 +74,6 @@ include 'header.php';
                                             </th>
                                             <th>
                                                 <center>Sponsor </i></center>
-                                            </th>
-                                            <th>
-                                                <center>No. HP </i></center>
                                             </th>
                                         </tr>
                                     </thead>
@@ -94,9 +91,7 @@ include 'header.php';
                                                     <center><?php echo $data['timer']; ?></center>
                                                 </td>
                                                 <td>
-                                                    <left>
-                                                       <?php echo $data['userid']; ?>
-                                                    </left>
+                                                    <right><?php echo $data['hphone']; ?><br><?php echo $data['right']; ?></right>
                                                 </td>
                                                 <td>
                                                     <center><?php echo $data['ktp']; ?></center>
@@ -109,9 +104,6 @@ include 'header.php';
                                                 </td>
                                                 <td>
                                                     <center><?php echo $data['sponsor']; ?></center>
-                                                </td>
-                                                <td>
-                                                    <right><?php echo $data['hphone']; ?><br><?php echo $data['right']; ?></right>
                                                 </td>
                                             </tr>
                                         <?php

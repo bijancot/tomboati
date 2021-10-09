@@ -31,7 +31,6 @@ if (($total_upline == 0) && ($username != $upline)) {
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
 } else if ($upline == $userid) {
     // echo '<script type="text/javascript">Swal.fire("Gagal!", "Username sudah Digunakan!", "error");</script>';
-  
     $_SESSION["usernameexist"] = 'Username sudah Digunakan';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Upline Tidak Boleh Sama dengan Username Anda';</script>";
 } else {
