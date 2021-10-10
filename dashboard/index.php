@@ -28,7 +28,7 @@ include 'header.php';
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <?php
-                $tampil_user = mysqli_query($koneksi, "select * from mebers WHERE paket IN('USER', 'MiTRA','RESELLER') order by id desc");
+                $tampil_user = mysqli_query($koneksi, "select * from mebers WHERE paket IN('USER','BARU','MiTRA','RESELLER') order by id desc");
                 $total_user = mysqli_num_rows($tampil_user);
 
                 $tampil_reseller = mysqli_query($koneksi, "select * from mebers WHERE paket='RESELLER' order by id desc");

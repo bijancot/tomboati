@@ -7,6 +7,12 @@ include 'header.php';
     <title>Pengguna Baru | Tombo Ati</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="modalstyle.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        .mrg-3{
+            margin-right: 10px;
+        }   
+    </style>
 </head>
 
 <!-- Right side column. Contains the navbar and content of the page -->
@@ -98,6 +104,18 @@ include 'header.php';
                                             $rowsponsor = mysqli_fetch_assoc($sqlsponsor);
                                             $sqlupline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid = '$data[upline]' ");
                                             $rowupline = mysqli_fetch_assoc($sqlupline);
+
+                                            $tampil_refferal = mysqli_query($koneksi, "select * from mebers WHERE sponsor = '$rowsponsor[userid]'");
+                                            $total_refferal = mysqli_num_rows($tampil_refferal);
+
+                                            if ($data['is_wa'] == null) {
+                                                $kirim = '<a type="button" class="btn btn-success btn-xl m-l-5 m-t-5" data-toggle="modal" data-target="#modalWA' . $data['id'] . '"><i class="fab fa-whatsapp
+                                                ">&nbsp Chat</i>
+                                                </a>';
+                                            } else {
+                                                $kirim = '<button hidden type="button" id="hidebutton" class="btn btn-success hidebutton btn-xl m-l-5 m-t-5"><i class="fab fa-whatsapp">&nbsp Done</i>
+                                                </button>';
+                                            }
                                         ?> -->
                                 <tbody>
                                     <tr>
@@ -118,10 +136,40 @@ include 'header.php';
                                         </td>
                                         <td>
                                             <center>
-                                                <?php echo "<a href='#myModal' class='btn btn-info btn-sm' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3'></i>Detail</a>"; ?>
-                                            </center>
+                                                <?php echo "<a href='#myModal' class='btn btn-info btn-sm m-l-5 m-t-5' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3'></i>Detail</a>"; ?>
+                                                <?php echo $kirim; ?>
+                                               </center>
                                         </td>
                                     </tr>
+                        </div>
+
+                        <!-- modal Kirim wa -->
+                        <div class="modal fade" id="modalWA<?= $data['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="exampleModalLabel">Kirim Chat Whatsapp</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Apakah anda yakin ingin mengirim pesan via Whatsapp kepada nomor <b> <?php echo $rowsponsor['hphone']; ?></b> ?</p>
+                                    </div>
+                                    <div class="modal-footer mb-4">
+                                        <form action="update-statuswa.php" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+                                            <!-- <button type="submit" class="btn kirimwa btn-success"><i class="fab fa-whatsapp mr-3 "></i>Kirim</button> -->
+                                            <a type="submit" class="btn btn-success" href="https://web.whatsapp.com/send?phone='.<?php echo $rowsponsor['hphone']; ?>.'&text=Selamat <?php echo $rowsponsor['name']; ?>%0A
+Anda telah mendapatkan pendaftar baru pada aplikasi Tombo Ati Tour 	%26 Travel dengan No.HP : <?php echo $data['hphone']; ?> %0a %0A
+Silahkan melakukan sosialisasi terhadap pengguna baru dengan klik https://wa.me/<?php echo $data['hphone']; ?> %0a %0A
+Jumlah pendaftar referral Anda : <?php echo number_format($total_refferal, 0, ",", "."); ?> %0a %0A
+Terima kasih sudah bergabung bersama Tombo Ati Tour %26 Travel" target="_blank"><i class="fab fa-whatsapp mr-3"></i>Kirim</a>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- <?php
                                             $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
@@ -151,6 +199,8 @@ include 'header.php';
                             </div>
                         </div>
                         <!-- end modal -->
+
+
                         <form method="get">
                             <div class="form-group row">
                                 <div class="col-sm-3">
@@ -242,5 +292,14 @@ include 'header.php';
                     });
                 });
             </script>
+
+            <script>
+                var divsToHide = document.getElementsByClassName("hidebutton");
+                for (var i = 0; i < divsToHide.length; i++) {
+                    divsToHide[i].style.visibility = "hidden";
+                    // divsToHide[i].style.display = "none";
+                }
+            </script>
+            
 
             <?php include 'footer.php'; ?>
