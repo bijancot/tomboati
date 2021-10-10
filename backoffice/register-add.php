@@ -107,6 +107,11 @@ if (isset($_POST['button'])) {
     $g9 = $row['g8'];
     $g10 = $row['g9'];
 
+
+    // upline yang diisi hanya boleh dengan username yang sudah ada uplinenya
+    // $sql_upline_kosong = mysqli_query($koneksi, "SELECT upline FROM mebers WHERE userid = '$upline' ");
+    // $row_upline_kosong = mysqli_fetch_assoc($sql_upline_kosong);
+
     // Pengecekan Upline harus ada dengan sponsor anda
     $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
     $total_upline = mysqli_num_rows($sql_upline);
@@ -122,6 +127,9 @@ if (isset($_POST['button'])) {
     } else if ($total_username != 0) {
         $_SESSION["usernameexist"] = 'Username sudah Digunakan';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
+    // } else if($row_upline_kosong['upline'] == NULL){
+    //     $_SESSION["emptyupline"] = 'Username Masih Tidak Memiliki Sponsor';
+    //     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Masih Tidak Memiliki Sponsor&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else {
         // echo "MASUK DEK";
         // UPLOAD FOTO KTP
@@ -166,7 +174,7 @@ VALUES
 
         if ($insert_tombo) {
             $last_id = mysqli_insert_id($koneksi_tombo);
-            echo ($last_id);
+            // echo ($last_id);
             mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$last_id')");
         }
         //Kirim Email

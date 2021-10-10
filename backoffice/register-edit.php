@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+// ini_set('display_errors', 'off');
 
 include('config.php');
 include('fungsi.php');
@@ -22,17 +23,23 @@ $upline = $_POST['upline'];
 
 $username = $_POST['username'];
 
+// upline yang diisi hanya boleh dengan username yang sudah ada uplinenya
+// $sql_upline_kosong = mysqli_query($koneksi, "SELECT upline FROM mebers WHERE userid = '$upline' ");
+// $row_upline_kosong = mysqli_fetch_assoc($sql_upline_kosong);
+
 $sql_upline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid='$upline' && sponsor='$username'");
 $total_upline = mysqli_num_rows($sql_upline);
 if (($total_upline == 0) && ($username != $upline)) {
     // echo '<script type="text/javascript">Swal.fire("Gagal!", "Upline tidak Ditemukan!", "error");</script>';
-    
     $_SESSION["uplinenotfound"] = 'Upline tidak Ditemukan';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Upline tidak Ditemukan';</script>";
 } else if ($upline == $userid) {
     // echo '<script type="text/javascript">Swal.fire("Gagal!", "Username sudah Digunakan!", "error");</script>';
     $_SESSION["usernameexist"] = 'Username sudah Digunakan';
     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Upline Tidak Boleh Sama dengan Username Anda';</script>";
+// } else if($row_upline_kosong['upline'] == NULL){
+//     $_SESSION["emptyupline"] = 'Username Masih Tidak Memiliki Sponsor';
+//     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Masih Tidak Memiliki Sponsor';</script>";
 } else {
     // update data ke database
     if (mysqli_query($koneksi, "update mebers set upline='$upline', is_hr = '2' where id='$id'")) {
