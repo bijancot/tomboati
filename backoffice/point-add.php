@@ -85,6 +85,7 @@ echo "<script type='text/javascript'>document.location.href = 'point-history.php
                                                 <div class="col-sm-9">
 <select name="jumlah" class="form-control" required>
 <option value=""> --------------- </option>
+<option value="1">1 Point</option>
 <option value="10">10 Point</option>
 <option value="20">20 Point</option>
 <option value="30">30 Point</option>

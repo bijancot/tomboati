@@ -80,7 +80,7 @@ echo "<script type='text/javascript'>document.location.href = 'topup-history.php
                                     <div class="card-header"><h3> TOPUP PROCESS</h3></div>
                                     <div class="card-body">
                                         <form class="forms-sample" action="" method="post">
-                                  <input name="id" type="hidden" id="id" class="form-control" value="<?php echo $_SESSION[id];?>" readonly="readonly" autofocus="on" />
+                                  <input name="id" type="hidden" id="id" class="form-control" value="<?php echo $_SESSION['id'];?>" readonly="readonly" autofocus="on" />
 
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username</label>

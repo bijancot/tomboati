@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include 'header.php';
 
@@ -348,7 +348,7 @@ if ($sum_register > 0) {
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
+                                                    <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" <?php if ($username != "company") { ?> required <?php } ?> />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -366,7 +366,25 @@ if ($sum_register > 0) {
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">HP<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="hphone" type="text" class="form-control" id="exampleInputUsername2" placeholder="hphone" value="<?php echo $_GET['hphone']; ?>" required />
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <div class="input-group mb-0">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">+62</div>
+                                                                </div>
+                                                                <input name="hphone" type="text" class="form-control" id="exampleInputUsername2" placeholder="821432423623" value="<?php echo $_GET['hphone']; ?>" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="input-group mb-0">
+                                                            <span class="mt-2 ml-2 m-2">Contoh</span>
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">+62</div>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="856527300012" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
