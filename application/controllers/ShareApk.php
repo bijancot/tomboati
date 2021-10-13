@@ -12,6 +12,7 @@ class ShareApk extends CI_Controller
 
     public function index()
     {
-        force_download('assets/tomboati.apk', NULL);
+        redirect('https://play.google.com/store/apps/details?id=com.tomboati.tour');
+        // force_download('https://play.google.com/store/apps/details?id=com.tomboati.tour', NULL);
     }
 }
