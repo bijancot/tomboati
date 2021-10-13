@@ -408,3 +408,36 @@ function ubah_foto_profil(){
     header('Content-Type: application/json');
     echo json_encode($response);
 }
+
+function poin(){
+    global $connect, $connect2;
+    $response           = [];
+    $poin               = 0;
+
+    $username           = $_GET['userid'];
+    $get_data_poin      = mysqli_query($connect, "SELECT * FROM bonus_titik WHERE userid = '".$username."' "); 
+
+    $get_rows_poin      = mysqli_num_rows($get_data_poin); 
+        
+    if($get_rows_poin != null){
+        while($row_tomboati=mysqli_fetch_array($get_data_poin)){
+            $poin = $row_tomboati['point'];
+        }
+
+        $response = array(
+            'error'         => false,
+            'message'       => 'Sukses Tampil Poin',
+            'poin'          => $poin
+        ); 
+    }else{
+        $response = array(
+            'error'         => true,
+            'message'       => 'User id tidak ditemukan',
+            'poin'          => $poin
+        ); 
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
+
+}
