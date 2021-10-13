@@ -127,9 +127,9 @@ if (isset($_POST['button'])) {
     } else if ($total_username != 0) {
         $_SESSION["usernameexist"] = 'Username sudah Digunakan';
         echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Sudah Digunakan&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
-    // } else if($row_upline_kosong['upline'] == NULL){
-    //     $_SESSION["emptyupline"] = 'Username Masih Tidak Memiliki Sponsor';
-    //     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Masih Tidak Memiliki Sponsor&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
+        // } else if($row_upline_kosong['upline'] == NULL){
+        //     $_SESSION["emptyupline"] = 'Username Masih Tidak Memiliki Sponsor';
+        //     echo "<script type='text/javascript'>document.location.href = 'register.php?error=Username Masih Tidak Memiliki Sponsor&name=$name&userid=$userid&email=$email&hphone=$hphone&ktp=$ktp&fotoktp=$fotoktp&address=$address&kecamatan=$kecamatan&kota=$kota&propinsi=$propinsi&kode_pos=$kode_pos&country=$country&bank=$bank&rekening=$rekening&atasnama=$atasnama&upline=$upline&sponsor=$sponsor&cabang=$cabang';</script>";
     } else {
         // echo "MASUK DEK";
         // UPLOAD FOTO KTP
@@ -159,18 +159,26 @@ if (isset($_POST['button'])) {
 
         // photo username
 
+        if ($sponsor == 'company') {
+            $is_hr = 2;
+        } else {
+            $is_hr = 1;
+        }
+
+        $no_hp = "62".$hphone;
+
         $photo = $base_url . 'gambar_customer/users.png';
         $insert_dash = mysqli_query($koneksi, "INSERT INTO mebers 
 (sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, photo, is_hr, usertoken, timer)
 VALUES
-('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$hphone', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password','$photo', '1', 'tokenTomboAti', now())") or die(mysqli_error());
+('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$no_hp', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password','$photo', '$is_hr', 'tokenTomboAti', now())") or die(mysqli_error());
 
         // config tombo (Db)
         require_once 'config-tombo.php';
         $insert_tombo = mysqli_query($koneksi_tombo, "INSERT INTO USER_REGISTER 
         (STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
         VALUES
-        ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$hphone', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
+        ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$no_hp', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
 
         if ($insert_tombo) {
             $last_id = mysqli_insert_id($koneksi_tombo);

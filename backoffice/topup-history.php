@@ -87,7 +87,11 @@ include 'header.php';
                                         $class2 = 'btn btn-sm btn-primary';
                                     } else if ($data['status'] == 'pending') {
                                         $status = '<a href="#" class="btn btn-sm btn-warning">pending</a>';
-                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning">on process</a> <a href="upload-process.php?code=' . $data['code'] . '" class="btn btn-sm btn-primary">upload</a>';
+                                        if($data['gateway'] == "TUNAI"){
+                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning">on process</a>';
+                                        }else{
+                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning">on process</a><a href="upload-process.php?code=' . $data['code'] . '" class="btn btn-sm btn-primary">upload</a>';
+                                        }
                                         $delete = '';
                                         $class = '';
                                         $class2 = '';
@@ -127,7 +131,7 @@ include 'header.php';
                                         </div>
                                         <?php
                                     } else {
-                                        $photo = "";
+                                        $photo = "-";
                                     }
 
                                 ?>

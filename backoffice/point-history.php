@@ -106,7 +106,8 @@ include 'header.php';
                                     $dataphoto = $data['photo'];
 
                                     if ($dataphoto != '') {
-                                        $photo = "<button type='button' class='btn btn-light' data-toggle='modal' data-target='#buktiTransfer$dataid'><img src=\"img/widget/receipt.svg\" style='width:20px;'></button>";
+                                        $photo = "<button class='btn btn-sm btn-light ml-1' data-toggle='modal' data-target='#buktiTransfer$dataid'><i class='fa fa-file-invoice-dollar fa-2x' style='margin-top: -4px'></i></button>";
+                                        
                                 ?>
                                         <!-- Modal Bukti Transfer -->
                                         <div class="modal fade" id="buktiTransfer<?php echo $dataid; ?>" role="dialog">
@@ -132,7 +133,7 @@ include 'header.php';
                                         </div>
                                     <?php
                                     } else {
-                                        $photo = "";
+                                        $photo = "-";
                                     }
 
                                     ?>
