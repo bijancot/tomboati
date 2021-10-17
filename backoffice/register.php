@@ -249,6 +249,7 @@ if ($sum_register > 0) {
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
+                                                                <a href="downloadBuktiBayar.php?file=<?=$data['bukti_bayar']?>" class="btn btn-primary"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
