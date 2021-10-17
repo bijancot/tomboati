@@ -49,7 +49,7 @@ include 'header.php';
 	                where nama_bank like '%$qcari%'
 	                or nasabah like '%$qcari%'  ";
                             }
-                            $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
+                            $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error($koneksi));
                             ?>
 
                             <table class="table table-hover" border="0">
@@ -210,6 +210,16 @@ include 'header.php';
                                                         </div>
                                                         <div class="row">
                                                             <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="max-width: 200px;"></div>
+                                                        </div>
+                                                        <div class="row py-2">
+                                                            <div class="col">Bukti Bayar</div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <?php if ($data['bukti_bayar']) { ?>
+                                                                <div class="col"><img src="<?php echo $data['bukti_bayar']; ?>" style="max-width: 200px;"></div>
+                                                            <?php } else { ?>
+                                                                <div class="col"><h5>Tidak Ditemukan</h5></div>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
