@@ -7,7 +7,7 @@ include 'header.php';
   <title>Deposit Processed | Tombo Ati</title>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="modalstyle.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
 <!-- Right side column. Contains the navbar and content of the page -->
@@ -164,8 +164,8 @@ include 'header.php';
 
                     </tr>
             </div>
-             <!-- modal detail -->
-             <div class="modal fade" id="modalBukti<?= $data_deposit['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+            <!-- modal detail -->
+            <div class="modal fade" id="modalBukti<?= $data_deposit['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -176,10 +176,11 @@ include 'header.php';
                   </div>
                   <div class="modal-body">
                     <center>
-                      <img src="https://tomboatitour.biz/backoffice/<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
+                      <img src="<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
                     </center>
                   </div>
                   <div class="modal-footer">
+                    <a href="downloadBuktiBayar.php?file=<?= $data['photo'] ?>" class="btn btn-primary mb-4"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                     <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
                   </div>
                 </div>

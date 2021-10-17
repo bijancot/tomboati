@@ -354,6 +354,7 @@ include 'header.php';
                                         </center>
                                     </div>
                                     <div class="modal-footer">
+                                        <a href="downloadBuktiBayar.php?file=<?= $data['bukti_bayar'] ?>" class="btn btn-primary"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                                         <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
                                     </div>
                                 </div>
