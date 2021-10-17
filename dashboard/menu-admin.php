@@ -22,6 +22,7 @@
              <li><a href="VPenggunaBaru.php"><i class="fa fa-angle-double-right"></i> Pengguna Baru</a></li>
              <li><a href="VPermintaanMitra.php"><i class="fa fa-angle-double-right"></i> Permintaan Mitra</a></li>
              <li><a href="admin-all-member-on.php"><i class="fa fa-angle-double-right"></i> Mitra</a></li>
+             <li><a href="VReseller.php"><i class="fa fa-angle-double-right"></i> Reseller</a></li>
          </ul>
      </li>
 
