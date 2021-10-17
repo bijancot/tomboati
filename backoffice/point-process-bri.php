@@ -6,7 +6,11 @@ include('header.php');
             $data  = mysqli_fetch_array($query);
 $unik=$data['unik'];
 $jumlah=$data['jumlah'];
-$transfer=$jumlah / 2 * 100000 + $data['unik'];
+if ($jumlah > 1) {
+    $transfer = $jumlah / 2 * 100000 + $data['unik'];
+} else {
+    $transfer = $jumlah * 100000 + $data['unik'];
+}
 
 if(isset($_POST['topup'])){
 

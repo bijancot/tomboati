@@ -65,8 +65,8 @@ if ($sum_register > 0) {
                             <div class="card-body p-0 table-border-style">
                                 <div class="card-body ">
                                     <?php
-                                    $query1 = "select * from mebers where sponsor ='$username' AND (paket = 'MITRA' || paket = 'RESELLER') AND upline IS NULL ORDER BY timer DESC";
-                                    $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
+                                    $query1 = "select * from mebers where sponsor ='$username' AND (paket = 'MITRA' || paket = 'RESELLER') AND (upline IS NULL || upline = '') ORDER BY timer DESC";
+                                    $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error($koneksi));
                                     ?>
 
                                     <table class="table table-hover" border="0">
@@ -235,6 +235,18 @@ if ($sum_register > 0) {
                                                                 <div class="row">
                                                                     <div class="col"><img src="<?php echo $data['fotoktp']; ?>" style="max-width: 200px;"></div>
                                                                 </div>
+                                                                <div class="row py-2">
+                                                                    <div class="col">Bukti Bayar</div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <?php if ($data['bukti_bayar']) { ?>
+                                                                        <div class="col"><img src="<?php echo $data['bukti_bayar']; ?>" style="max-width: 200px;"></div>
+                                                                    <?php } else { ?>
+                                                                        <div class="col">
+                                                                            <h5>Tidak Ditemukan</h5>
+                                                                        </div>
+                                                                    <?php } ?>
+                                                                </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -346,10 +358,17 @@ if ($sum_register > 0) {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link<span class="text-danger">*</span></label>
-                                                <div class="col-sm-9">
-                                                    <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" <?php if ($username != "company") { ?> required <?php } ?> />
-                                                </div>
+                                                <?php if ($username == "company") { ?>
+                                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link</label>
+                                                    <div class="col-sm-9">
+                                                        <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" />
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link<span class="text-danger">*</span></label>
+                                                    <div class="col-sm-9">
+                                                        <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username<span class="text-danger">*</span></label>
@@ -377,7 +396,7 @@ if ($sum_register > 0) {
                                                         </div>
                                                         <div class="col">
                                                             <div class="input-group mb-0">
-                                                            <span class="mt-2 ml-2 m-2">Contoh</span>
+                                                                <span class="mt-2 ml-2 m-2">Contoh</span>
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text">+62</div>
                                                                 </div>
@@ -400,7 +419,7 @@ if ($sum_register > 0) {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="foto-KTP" class="col-sm-3 col-form-label">Foto KTP<br><small>Maksimal 5 MB</small><span class="text-danger">*</span></label>
+                                                <label for="foto-KTP" class="col-sm-3 col-form-label">Foto KTP<span class="text-danger">*</span><br><small class="text-danger">Maksimal 5 MB</small></label>
                                                 <div class="col-sm-9">
                                                     <input name="fotoktp" type="file" class="form-control-file" id="foto-KTP" value="<?php echo $_GET['fotoktp']; ?>" required />
                                                     <small> Format : .jpg .jpeg .png </small>
@@ -443,6 +462,13 @@ if ($sum_register > 0) {
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Kodepos<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
                                                     <input name="kode_pos" type="number" class="form-control" id="exampleInputUsername2" placeholder="Kodepos" value="<?php echo $_GET['kode_pos']; ?>" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="bukti-bayar" class="col-sm-3 col-form-label">Bukti Bayar<br><small class="text-danger">Maksimal 5 MB</small></label>
+                                                <div class="col-sm-9">
+                                                    <input name="buktibayar" type="file" class="form-control-file" id="bukti-bayar" value="<?php echo $_GET['bukti_bayar']; ?>" />
+                                                    <small> Format : .jpg .jpeg .png </small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -520,33 +546,51 @@ include 'footer.php';
         swal("Gagal!", "<?php echo $_SESSION['uplinenotfound']; ?>", "error");
     </script>
 <?php unset($_SESSION['uplinenotfound']);
-    // jika username sudah digunakan
 } ?>
+<!-- jika username sudah digunakan -->
 <?php if (isset($_SESSION['usernameexist'])) { ?>
     <script>
         swal("Gagal!", "<?php echo $_SESSION['usernameexist']; ?>", "error");
     </script>
 <?php unset($_SESSION['usernameexist']);
-    // file gambar terlalu besar
 } ?>
-<?php if (isset($_SESSION['imagebig'])) { ?>
+<!-- file gambar terlalu besar -->
+<?php if (isset($_SESSION['imagebigktp'])) { ?>
 
     <script>
-        swal("Gagal!", "<?php echo $_SESSION['imagebig']; ?>", "error");
+        swal("Gagal!", "<?php echo $_SESSION['imagebigktp']; ?>", "error");
     </script>
 
-<?php unset($_SESSION['imagebig']);
-    // jika file gambar tidak sesuai
+<?php unset($_SESSION['imagebigktp']);
 } ?>
-<?php if (isset($_SESSION['imagenotcorrect'])) { ?>
+<!-- jika file gambar tidak sesuai -->
+<?php if (isset($_SESSION['imagenotcorrectktp'])) { ?>
 
     <script>
-        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrect']; ?>", "error");
+        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectktp']; ?>", "error");
     </script>
 
-<?php unset($_SESSION['imagenotcorrect']);
-    // jika berhasil
+<?php unset($_SESSION['imagenotcorrectktp']);
 } ?>
+<!-- file gambar terlalu besar -->
+<?php if (isset($_SESSION['imagebigbayar'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagebigbayar']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagebigbayar']);
+} ?>
+<!-- jika file gambar tidak sesuai -->
+<?php if (isset($_SESSION['imagenotcorrectbayar'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectbayar']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagenotcorrectbayar']);
+} ?>
+<!--  jika berhasil -->
 <?php if (isset($_SESSION['berhasil'])) { ?>
 
     <script>
