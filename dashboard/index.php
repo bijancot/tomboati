@@ -92,7 +92,7 @@ include 'header.php';
                     <div class="icon">
                         <span class="glyphicon glyphicon"></span>
                     </div>
-                    <a href="admin-all-point-new.php" class="small-box-footer">
+                    <a href="VReseller.php" class="small-box-footer">
                         Reseller List <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                 </div>

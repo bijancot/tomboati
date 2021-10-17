@@ -4,7 +4,7 @@ include 'header.php';
 ?>
 
 <head>
-  <title>Mitra | Tombo Ati</title>
+  <title>Cari Reseller | Tombo Ati</title>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="modalstyle.css">
 </head>
@@ -29,7 +29,7 @@ include 'header.php';
       <div class="col-lg-12">
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-user mr-3"></i>Mitra [<a href="excel/export_excel_members.php">Export to Excel</a>]</h3>
+            <h3 class="panel-title"><i class="fa fa-user mr-3"></i>Reseller</h3>
           </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -55,13 +55,19 @@ include 'header.php';
                 $default_index = ($_GET['halaman'] - 1) * $default_batas;
               }
 
-              $query1 = "SELECT * FROM mebers WHERE paket IN('MiTRA') ORDER BY timer DESC limit $default_index, $default_batas";
+              if (isset($_GET['cari'])) {
+                $cari = $_GET['cari'];
+                echo "<b>Hasil pencarian : " . $cari . "</b>";
+              }
+
+
+              $query1 = "SELECT * FROM mebers WHERE userid like '%" . $cari . "%' ORDER BY timer DESC limit $default_index, $default_batas";
               $tampil = mysqli_query($koneksi, $query1) or die(mysqli_error());
               $total_baris = mysqli_num_rows($tampil);
 
 
               ?>
-              <form action="admin-all-member-search.php" method="get">
+              <form action="VSearchReseller.php" method="get">
                 <label></label>
                 <input type="text" name="cari">
                 <input type="submit" value="Search">
@@ -86,7 +92,7 @@ include 'header.php';
                       <center>Referral </i></center>
                     </th>
                     <th>
-                      <center>ID Link </i></center>
+                      <center>ID Link</i></center>
                     </th>
                     <th>
                       <center>Contact </center>
@@ -106,8 +112,6 @@ include 'header.php';
 
                   $sqlsponsor = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid = '$data[sponsor]' ");
                   $rowsponsor = mysqli_fetch_assoc($sqlsponsor);
-                  $sqlupline = mysqli_query($koneksi, "SELECT * FROM mebers WHERE userid = '$data[upline]' ");
-                  $rowupline = mysqli_fetch_assoc($sqlupline);
                 ?>
                   <tbody>
                     <tr>
@@ -147,7 +151,7 @@ include 'header.php';
                       </td>
                       <td>
                         <left><a href="admin-profile-edit.php?userid=<?php echo $data['userid']; ?>" class="btn btn-sm btn-warning m-l-5 m-t-5"><i class="fa fa-arrow-circle-right mr-3"></i>Edit</a></left>
-                        <right><?php echo "<a href='#myModal' class='btn btn-info btn-sm m-l-5 m-t-5' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3 '></i>Detail</a>"; ?></right>
+                        <right><?php echo "<a href='#myModal' class='btn btn-info btn-sm m-l-5 m-t-5' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3'></i>Detail</a>"; ?></right>
                       </td>
                     </tr>
             </div>
@@ -157,8 +161,7 @@ include 'header.php';
 
 
           ?>
-          </tbody>
-          </table>
+
           <!-- modal detail -->
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -167,7 +170,7 @@ include 'header.php';
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <h4 class="modal-title" id="myModal">Detail Mitra</h4>
+                  <h4 class="modal-title" id="myModal">Detail Reseller</h4>
                 </div>
                 <div class="modal-body">
                   <div class="fetched-data"></div>
@@ -178,7 +181,10 @@ include 'header.php';
               </div>
             </div>
           </div>
-          <!-- end modal -->
+          <!-- modal end -->
+          </tbody>
+          </table>
+
           <form method="get">
             <div class="form-group row">
               <div class="col-sm-3">
@@ -204,7 +210,7 @@ include 'header.php';
 
 
 
-            $query2 = mysqli_query($koneksi, "select * from mebers WHERE paket='MITRA'");
+            $query2 = mysqli_query($koneksi, "select * from mebers");
             $jmldata = mysqli_num_rows($query2);
             $jmlhalaman = ceil($jmldata / $default_batas);
             $hal1 = $_GET['halaman'] - 1;
@@ -216,7 +222,7 @@ include 'header.php';
             }
             echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-all-member-on.php?halaman=$hal1&batas=$batas2\">Previous</a></li>
+<li class=\"page-item\"><a href=\"VReseller.php?halaman=$hal1&batas=$batas2\">Previous</a></li>
 </ul>";
 
             for ($i = 1; $i <= $jmlhalaman; $i++)
@@ -226,18 +232,17 @@ include 'header.php';
 
                 echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-all-member-on.php?halaman=$i&batas=$batas2\">$i</a></li>
+<li class=\"page-item\"><a href=\"VReseller.php?halaman=$i&batas=$batas2\">$i</a></li>
 </ul>";
               } else {
-                echo " <ul class=\"pagination\"><li class=\"page-item active\"><a href=\"admin-all-member-on.php?halaman=$i&batas=$batas2\">$i</a></li></ul>";
+                echo " <ul class=\"pagination\"><li class=\"page-item active\"><a href=\"VReseller.php?halaman=$i&batas=$batas2\">$i</a></li></ul>";
               }
             echo " 
 <ul class=\"pagination\">
-<li class=\"page-item\"><a href=\"admin-all-member-on.php?halaman=$hal2&batas=$batas2\">Next</a></li>
+<li class=\"page-item\"><a href=\"VReseller.php?halaman=$hal2&batas=$batas2\">Next</a></li>
 </ul>";
 
-            echo "<p>Total Record : <b>$jmldata</b> Mitra</p>";
-
+            echo "<p>Total Record : <b>$jmldata</b> Reseller</p>";
             ?>
             <!-- </div>-->
           </div>
@@ -273,5 +278,4 @@ include 'header.php';
           });
         });
       </script>
-
       <?php include 'footer.php'; ?>
