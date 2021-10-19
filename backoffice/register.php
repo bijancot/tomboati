@@ -30,6 +30,7 @@ if ($sum_register > 0) {
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
                             <h5>Register Mitra</h5>
+                            <h2>TESTING</h2>
                             <?php
                             mysqli_query($koneksi, "UPDATE mebers SET is_seen_notifikasi_mitra='1' WHERE sponsor='$row[userid]' AND paket='MITRA' AND upline is null");
                             ?>
