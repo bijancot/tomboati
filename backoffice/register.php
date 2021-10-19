@@ -534,8 +534,6 @@ if ($sum_register > 0) {
     </div>
 </div>
 
-</div>
-</div>
 <?php
 include 'footer.php';
 ?>
