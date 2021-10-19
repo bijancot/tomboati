@@ -502,7 +502,7 @@ if ($sum_register > 0) {
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
+                        <!-- <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                             <div class="col-md-6">
                                 <form class="forms-sample" action="" method="post">
                                     <div class="form-group row">
@@ -526,16 +526,9 @@ if ($sum_register > 0) {
                                     <button class="btn btn-success" type="submit">Update Profile</button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- </div>
-</div> -->
 
 
 <!-- ALERT -->
