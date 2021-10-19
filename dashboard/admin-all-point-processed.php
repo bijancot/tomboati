@@ -186,7 +186,7 @@ include 'header.php';
                   </div>
                   <div class="modal-body">
                     <center>
-                      <img src="<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
+                      <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px" >
                     </center>
                   </div>
                   <div class="modal-footer">
