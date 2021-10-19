@@ -529,233 +529,280 @@ if ($sum_register > 0) {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer apakah bisa terpanggil dengan ini -->
+<!-- Tanggal 21 Sep 2021 tidak bisa -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')
+</script>
+<script src="plugins/popper.js/dist/umd/popper.min.js"></script>
+<script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+<script src="plugins/screenfull/dist/screenfull.js"></script>
+<script src="plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+<script src="plugins/moment/moment.js"></script>
+<script src="plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="plugins/d3/dist/d3.min.js"></script>
+<script src="plugins/c3/c3.min.js"></script>
+<script src="js/tables.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/charts.js"></script>
+<script src="dist/js/theme.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+
+</html>
+
+<!-- ALERT -->
+<!-- jika upline tidak ada -->
+<?php if (isset($_SESSION['uplinenotfound'])) { ?>
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['uplinenotfound']; ?>", "error");
+    </script>
+<?php unset($_SESSION['uplinenotfound']);
+} ?>
+<!-- jika username sudah digunakan -->
+<?php if (isset($_SESSION['usernameexist'])) { ?>
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['usernameexist']; ?>", "error");
+    </script>
+<?php unset($_SESSION['usernameexist']);
+} ?>
+<!-- file gambar terlalu besar -->
+<?php if (isset($_SESSION['imagebigktp'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagebigktp']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagebigktp']);
+} ?>
+<!-- jika file gambar tidak sesuai -->
+<?php if (isset($_SESSION['imagenotcorrectktp'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectktp']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagenotcorrectktp']);
+} ?>
+<!-- file gambar terlalu besar -->
+<?php if (isset($_SESSION['imagebigbayar'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagebigbayar']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagebigbayar']);
+} ?>
+<!-- jika file gambar tidak sesuai -->
+<?php if (isset($_SESSION['imagenotcorrectbayar'])) { ?>
+
+    <script>
+        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectbayar']; ?>", "error");
+    </script>
+
+<?php unset($_SESSION['imagenotcorrectbayar']);
+} ?>
+<!--  jika berhasil -->
+<?php if (isset($_SESSION['berhasil'])) { ?>
+
+    <script>
+        swal("Berhasil!", "<?php echo $_SESSION['berhasil']; ?>", "success");
+    </script>
+<?php unset($_SESSION['berhasil']);
+} ?>
 
 
-                <?php
-                include 'footer.php';
-                ?>
+<script>
+    var urlPropinsi = "https://ibnux.github.io/data-indonesia/propinsi.json";
+    var urlKota = "https://ibnux.github.io/data-indonesia/kabupaten/";
+    var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan/";
 
-                <!-- ALERT -->
-                <!-- jika upline tidak ada -->
-                <?php if (isset($_SESSION['uplinenotfound'])) { ?>
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['uplinenotfound']; ?>", "error");
-                    </script>
-                <?php unset($_SESSION['uplinenotfound']);
-                } ?>
-                <!-- jika username sudah digunakan -->
-                <?php if (isset($_SESSION['usernameexist'])) { ?>
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['usernameexist']; ?>", "error");
-                    </script>
-                <?php unset($_SESSION['usernameexist']);
-                } ?>
-                <!-- file gambar terlalu besar -->
-                <?php if (isset($_SESSION['imagebigktp'])) { ?>
+    console.log('url: ' + urlPropinsi);
+    $.getJSON(urlPropinsi, function(res) {
+        console.log("INSIDE FUNC");
+        //console.log(res);
 
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['imagebigktp']; ?>", "error");
-                    </script>
+        var data = $.map(res, function(obj) {
+            obj.text = obj.nama
 
-                <?php unset($_SESSION['imagebigktp']);
-                } ?>
-                <!-- jika file gambar tidak sesuai -->
-                <?php if (isset($_SESSION['imagenotcorrectktp'])) { ?>
+            return obj;
+        });
+        //console.log(data);
+        loadPropinsi(data);
+    });
 
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectktp']; ?>", "error");
-                    </script>
+    function fetchDataKota(idPropinsi) {
+        let url = urlKota + idPropinsi + ".json";
+        console.log('url kota : ' + url);
+        $.getJSON(url, function(res) {
+            console.log("INSIDE fetchDataKota");
+            //console.log(res);
 
-                <?php unset($_SESSION['imagenotcorrectktp']);
-                } ?>
-                <!-- file gambar terlalu besar -->
-                <?php if (isset($_SESSION['imagebigbayar'])) { ?>
+            var data = $.map(res, function(obj) {
+                obj.text = obj.nama
 
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['imagebigbayar']; ?>", "error");
-                    </script>
+                return obj;
+            });
+            //console.log(data);
+            loadKota(data);
+        });
+    }
 
-                <?php unset($_SESSION['imagebigbayar']);
-                } ?>
-                <!-- jika file gambar tidak sesuai -->
-                <?php if (isset($_SESSION['imagenotcorrectbayar'])) { ?>
+    function fetchDataKecamatan(idKota) {
+        let url = urlKecamatan + idKota + ".json";
+        console.log('url kec : ' + url);
+        $.getJSON(url, function(res) {
+            console.log("INSIDE fetchDataKecamatan");
+            //console.log(res);
 
-                    <script>
-                        swal("Gagal!", "<?php echo $_SESSION['imagenotcorrectbayar']; ?>", "error");
-                    </script>
+            var data = $.map(res, function(obj) {
+                obj.text = obj.nama
 
-                <?php unset($_SESSION['imagenotcorrectbayar']);
-                } ?>
-                <!--  jika berhasil -->
-                <?php if (isset($_SESSION['berhasil'])) { ?>
+                return obj;
+            });
+            //console.log(data);
+            loadKecamatan(data);
+        });
+    }
 
-                    <script>
-                        swal("Berhasil!", "<?php echo $_SESSION['berhasil']; ?>", "success");
-                    </script>
-                <?php unset($_SESSION['berhasil']);
-                } ?>
+    function loadPropinsi(data) {
+        console.log('loadPropinsi');
+        $("#select2-propinsi").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
 
+    function loadKota(data) {
+        console.log('loadKota');
+        $("#select2-kota").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
 
-                <script>
-                    var urlPropinsi = "https://ibnux.github.io/data-indonesia/propinsi.json";
-                    var urlKota = "https://ibnux.github.io/data-indonesia/kabupaten/";
-                    var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan/";
+    function loadKecamatan(data) {
+        console.log('loadKecamatan');
+        $("#select2-kecamatan").select2({
+            dropdownAutoWidth: true,
+            width: '100%',
+            data: data
+        })
+    };
 
-                    console.log('url: ' + urlPropinsi);
-                    $.getJSON(urlPropinsi, function(res) {
-                        console.log("INSIDE FUNC");
-                        //console.log(res);
+    function clearOptions(id) {
+        console.log("on clearOptions");
 
-                        var data = $.map(res, function(obj) {
-                            obj.text = obj.nama
+        //$('#' + id).val(null);
+        $('#' + id).empty().trigger('change');
+    }
 
-                            return obj;
-                        });
-                        //console.log(data);
-                        loadPropinsi(data);
-                    });
+    var selectProv = $('#select2-propinsi');
+    $(selectProv).change(function() {
+        console.log("on change selectProv");
 
-                    function fetchDataKota(idPropinsi) {
-                        let url = urlKota + idPropinsi + ".json";
-                        console.log('url kota : ' + url);
-                        $.getJSON(url, function(res) {
-                            console.log("INSIDE fetchDataKota");
-                            //console.log(res);
+        var value = $(selectProv).val();
+        var text = $('#select2-propinsi :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+        $('#propinsi').val(text);
 
-                            var data = $.map(res, function(obj) {
-                                obj.text = obj.nama
+        clearOptions('select2-kota');
+        dataKota = fetchDataKota(value);
+        loadKota(dataKota);
 
-                                return obj;
-                            });
-                            //console.log(data);
-                            loadKota(data);
-                        });
-                    }
+    });
 
-                    function fetchDataKecamatan(idKota) {
-                        let url = urlKecamatan + idKota + ".json";
-                        console.log('url kec : ' + url);
-                        $.getJSON(url, function(res) {
-                            console.log("INSIDE fetchDataKecamatan");
-                            //console.log(res);
+    var selectKab = $('#select2-kota');
+    $(selectKab).change(function() {
+        console.log("on change selectKota");
 
-                            var data = $.map(res, function(obj) {
-                                obj.text = obj.nama
+        var value = $(this).val();
+        var text = $('#select2-kota :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+        $('#kota').val(text);
 
-                                return obj;
-                            });
-                            //console.log(data);
-                            loadKecamatan(data);
-                        });
-                    }
+        clearOptions('select2-kecamatan');
+        dataKecamatan = fetchDataKecamatan(value);
+        loadKecamatan(dataKecamatan);
+    });
 
-                    function loadPropinsi(data) {
-                        console.log('loadPropinsi');
-                        $("#select2-propinsi").select2({
-                            dropdownAutoWidth: true,
-                            width: '100%',
-                            data: data
-                        })
-                    };
+    var selectKec = $('#select2-kecamatan');
+    $(selectKec).change(function() {
+        console.log("on change selectKec");
 
-                    function loadKota(data) {
-                        console.log('loadKota');
-                        $("#select2-kota").select2({
-                            dropdownAutoWidth: true,
-                            width: '100%',
-                            data: data
-                        })
-                    };
+        var value = $(this).val();
+        var text = $('#select2-kecamatan :selected').text();
+        console.log("value = " + value + " / " + "text = " + text);
+        $('#kecamatan').val(text);
+    });
 
-                    function loadKecamatan(data) {
-                        console.log('loadKecamatan');
-                        $("#select2-kecamatan").select2({
-                            dropdownAutoWidth: true,
-                            width: '100%',
-                            data: data
-                        })
-                    };
+    // SPASI DI USERNAME
+    $(function() {
+        $('#userid').on('keypress', function(e) {
+            if (e.which == 32) {
+                console.log('Space Detected');
+                return false;
+            }
+        });
+    });
 
-                    function clearOptions(id) {
-                        console.log("on clearOptions");
+    $(function() {
+        $('#idUserEdit').on('keypress', function(e) {
+            if (e.which == 32) {
+                console.log('Space Detected');
+                return false;
+            }
+        });
+    });
 
-                        //$('#' + id).val(null);
-                        $('#' + id).empty().trigger('change');
-                    }
+    $(function() {
+        $('#idLink').on('keypress', function(e) {
+            if (e.which == 32) {
+                console.log('Space Detected');
+                return false;
+            }
+        });
+    });
 
-                    var selectProv = $('#select2-propinsi');
-                    $(selectProv).change(function() {
-                        console.log("on change selectProv");
-
-                        var value = $(selectProv).val();
-                        var text = $('#select2-propinsi :selected').text();
-                        console.log("value = " + value + " / " + "text = " + text);
-                        $('#propinsi').val(text);
-
-                        clearOptions('select2-kota');
-                        dataKota = fetchDataKota(value);
-                        loadKota(dataKota);
-
-                    });
-
-                    var selectKab = $('#select2-kota');
-                    $(selectKab).change(function() {
-                        console.log("on change selectKota");
-
-                        var value = $(this).val();
-                        var text = $('#select2-kota :selected').text();
-                        console.log("value = " + value + " / " + "text = " + text);
-                        $('#kota').val(text);
-
-                        clearOptions('select2-kecamatan');
-                        dataKecamatan = fetchDataKecamatan(value);
-                        loadKecamatan(dataKecamatan);
-                    });
-
-                    var selectKec = $('#select2-kecamatan');
-                    $(selectKec).change(function() {
-                        console.log("on change selectKec");
-
-                        var value = $(this).val();
-                        var text = $('#select2-kecamatan :selected').text();
-                        console.log("value = " + value + " / " + "text = " + text);
-                        $('#kecamatan').val(text);
-                    });
-
-                    // SPASI DI USERNAME
-                    $(function() {
-                        $('#userid').on('keypress', function(e) {
-                            if (e.which == 32) {
-                                console.log('Space Detected');
-                                return false;
-                            }
-                        });
-                    });
-
-                    $(function() {
-                        $('#idUserEdit').on('keypress', function(e) {
-                            if (e.which == 32) {
-                                console.log('Space Detected');
-                                return false;
-                            }
-                        });
-                    });
-
-                    $(function() {
-                        $('#idLink').on('keypress', function(e) {
-                            if (e.which == 32) {
-                                console.log('Space Detected');
-                                return false;
-                            }
-                        });
-                    });
-
-                    $(function() {
-                        $('#sponsor').on('keypress', function(e) {
-                            if (e.which == 32) {
-                                console.log('Space Detected');
-                                return false;
-                            }
-                        });
-                    });
-                </script>
+    $(function() {
+        $('#sponsor').on('keypress', function(e) {
+            if (e.which == 32) {
+                console.log('Space Detected');
+                return false;
+            }
+        });
+    });
+</script>
