@@ -369,8 +369,9 @@
          <div class="page-wrap">
              <div class="app-sidebar colored">
                  <div class="sidebar-header">
-                     <a class="header-brand" href="dashboard.php">
-                         <span class="text"><img src="https://lifeforwin.co.id/assets/images/logo.png" width="70%" class="header-brand-img" alt="<?php include "$username"; ?>"></span>
+                     <a class="header-brand" href="dashboard.php"> 
+                         <!-- <span class="text"><img src="https://lifeforwin.co.id/assets/images/logo.png" width="70%" class="header-brand-img" alt="<?php include "$username"; ?>"></span> -->
+                         <span class="text"><img src="../assets/img/logo_tomboati.png" width="30%" class="header-brand-img" alt="<?php echo "$username"; ?>"></span>
                      </a>
                      <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                      <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>

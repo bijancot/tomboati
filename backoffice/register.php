@@ -601,9 +601,9 @@ include 'footer.php';
     var urlKota = "https://ibnux.github.io/data-indonesia/kabupaten/";
     var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan/";
 
-    console.log('url: ' + urlPropinsi);
+    // console.log('url: ' + urlPropinsi);
     $.getJSON(urlPropinsi, function(res) {
-        console.log("INSIDE FUNC");
+        // console.log("INSIDE FUNC");
         //console.log(res);
 
         var data = $.map(res, function(obj) {
@@ -617,9 +617,9 @@ include 'footer.php';
 
     function fetchDataKota(idPropinsi) {
         let url = urlKota + idPropinsi + ".json";
-        console.log('url kota : ' + url);
+        // console.log('url kota : ' + url);
         $.getJSON(url, function(res) {
-            console.log("INSIDE fetchDataKota");
+            // console.log("INSIDE fetchDataKota");
             //console.log(res);
 
             var data = $.map(res, function(obj) {
@@ -634,9 +634,9 @@ include 'footer.php';
 
     function fetchDataKecamatan(idKota) {
         let url = urlKecamatan + idKota + ".json";
-        console.log('url kec : ' + url);
+        // console.log('url kec : ' + url);
         $.getJSON(url, function(res) {
-            console.log("INSIDE fetchDataKecamatan");
+            // console.log("INSIDE fetchDataKecamatan");
             //console.log(res);
 
             var data = $.map(res, function(obj) {
@@ -650,7 +650,7 @@ include 'footer.php';
     }
 
     function loadPropinsi(data) {
-        console.log('loadPropinsi');
+        // console.log('loadPropinsi');
         $("#select2-propinsi").select2({
             dropdownAutoWidth: true,
             width: '100%',
@@ -659,7 +659,7 @@ include 'footer.php';
     };
 
     function loadKota(data) {
-        console.log('loadKota');
+        // console.log('loadKota');
         $("#select2-kota").select2({
             dropdownAutoWidth: true,
             width: '100%',
@@ -668,7 +668,7 @@ include 'footer.php';
     };
 
     function loadKecamatan(data) {
-        console.log('loadKecamatan');
+        // console.log('loadKecamatan');
         $("#select2-kecamatan").select2({
             dropdownAutoWidth: true,
             width: '100%',
@@ -677,7 +677,7 @@ include 'footer.php';
     };
 
     function clearOptions(id) {
-        console.log("on clearOptions");
+        // console.log("on clearOptions");
 
         //$('#' + id).val(null);
         $('#' + id).empty().trigger('change');
@@ -685,11 +685,11 @@ include 'footer.php';
 
     var selectProv = $('#select2-propinsi');
     $(selectProv).change(function() {
-        console.log("on change selectProv");
+        // console.log("on change selectProv");
 
         var value = $(selectProv).val();
         var text = $('#select2-propinsi :selected').text();
-        console.log("value = " + value + " / " + "text = " + text);
+        // console.log("value = " + value + " / " + "text = " + text);
         $('#propinsi').val(text);
 
         clearOptions('select2-kota');
@@ -700,11 +700,11 @@ include 'footer.php';
 
     var selectKab = $('#select2-kota');
     $(selectKab).change(function() {
-        console.log("on change selectKota");
+        // console.log("on change selectKota");
 
         var value = $(this).val();
         var text = $('#select2-kota :selected').text();
-        console.log("value = " + value + " / " + "text = " + text);
+        // console.log("value = " + value + " / " + "text = " + text);
         $('#kota').val(text);
 
         clearOptions('select2-kecamatan');
@@ -714,11 +714,11 @@ include 'footer.php';
 
     var selectKec = $('#select2-kecamatan');
     $(selectKec).change(function() {
-        console.log("on change selectKec");
+        // console.log("on change selectKec");
 
         var value = $(this).val();
         var text = $('#select2-kecamatan :selected').text();
-        console.log("value = " + value + " / " + "text = " + text);
+        // console.log("value = " + value + " / " + "text = " + text);
         $('#kecamatan').val(text);
     });
 
@@ -726,7 +726,7 @@ include 'footer.php';
     $(function() {
         $('#userid').on('keypress', function(e) {
             if (e.which == 32) {
-                console.log('Space Detected');
+                // console.log('Space Detected');
                 return false;
             }
         });
@@ -735,7 +735,7 @@ include 'footer.php';
     $(function() {
         $('#idUserEdit').on('keypress', function(e) {
             if (e.which == 32) {
-                console.log('Space Detected');
+                // console.log('Space Detected');
                 return false;
             }
         });
@@ -744,7 +744,7 @@ include 'footer.php';
     $(function() {
         $('#idLink').on('keypress', function(e) {
             if (e.which == 32) {
-                console.log('Space Detected');
+                // console.log('Space Detected');
                 return false;
             }
         });
@@ -753,7 +753,7 @@ include 'footer.php';
     $(function() {
         $('#sponsor').on('keypress', function(e) {
             if (e.which == 32) {
-                console.log('Space Detected');
+                // console.log('Space Detected');
                 return false;
             }
         });
