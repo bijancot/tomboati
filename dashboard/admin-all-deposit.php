@@ -7,7 +7,7 @@ include 'header.php';
   <title>Deposit | Tombo Ati </title>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="modalstyle.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
 <!-- Right side column. Contains the navbar and content of the page -->
@@ -90,13 +90,17 @@ include 'header.php';
                         <center><?php echo $no; ?>.</center>
                       </td>
                       <?php
-                      $tampil_user_id = $data_deposit['user_id'];
-                      $sqlTampilx = mysqli_query($koneksi, "SELECT * FROM hm2_users WHERE id='$tampil_user_id' ");
-                      $dataTampilx = mysqli_fetch_assoc($sqlTampilx);
+                        $tampil_user_id = $data_deposit['user_id'];
+                        $sqlTampilx = mysqli_query($koneksi, "SELECT * FROM mebers WHERE id='$tampil_user_id' ");
+                        $dataTampilx = mysqli_fetch_assoc($sqlTampilx);
+                       
+                      // $tampil_user_id = $data_deposit['user_id'];
+                      // $sqlTampilx = mysqli_query($koneksi, "SELECT * FROM hm2_users WHERE id='$tampil_user_id' ");
+                      // $dataTampilx = mysqli_fetch_assoc($sqlTampilx);
                       ?>
 
                       <td>
-                        <center><?php echo $dataTampilx['username']; ?></center>
+                        <center><?php echo $dataTampilx['userid']; ?></center>
                       </td>
                       <td align="right">
                         <center><?php echo number_format($data_deposit['amount'], 3, ",", "."); ?></center>
@@ -123,8 +127,8 @@ include 'header.php';
                       </td>
                     </tr>
             </div>
-             <!-- modal detail -->
-             <div class="modal fade" id="modalBukti<?= $data_deposit['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+            <!-- modal detail -->
+            <div class="modal fade" id="modalBukti<?= $data_deposit['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -135,10 +139,11 @@ include 'header.php';
                   </div>
                   <div class="modal-body">
                     <center>
-                      <img src="https://tomboatitour.biz/backoffice/<?php echo $data_deposit['photo']; ?>" width="400px" height="400px">
+                      <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px">
                     </center>
                   </div>
                   <div class="modal-footer">
+                    <a href="downloadBuktiBayar.php?file=<?= $data_deposit['photo'] ?>" class="btn btn-primary mb-4"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                     <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
                   </div>
                 </div>
@@ -158,19 +163,27 @@ include 'header.php';
     </div>
   </section>
   <script type="text/javascript">
-        function closeModal() {
-          $('.modal-backdrop').hide();
-          $('body').removeClass('modal-open');
-          $('#myModal').modal('hide');
-          $('#<%=hfImg.ClientID%>').val("");
-        }
-        $(function() {
-          $(document.body).on('show.bs.modal', function() {
-            $(window.document).find('html').addClass('modal-open');
-          });
-          $(document.body).on('hide.bs.modal', function() {
-            $(window.document).find('html').removeClass('modal-open');
-          });
-        });
-      </script>
+    function closeModal() {
+      $('.modal-backdrop').hide();
+      $('body').removeClass('modal-open');
+      $('#myModal').modal('hide');
+      $('#<%=hfImg.ClientID%>').val("");
+    }
+    $(function() {
+      $(document.body).on('show.bs.modal', function() {
+        $(window.document).find('html').addClass('modal-open');
+      });
+      $(document.body).on('hide.bs.modal', function() {
+        $(window.document).find('html').removeClass('modal-open');
+      });
+    });
+  </script>
+
+  <?php if (isset($_SESSION['error'])) { ?>
+    <script>
+      swal("Gagal!", "<?php echo $_SESSION['error']; ?>", "error");
+    </script>
+  <?php unset($_SESSION['error']);
+  } ?>
+
   <?php include 'footer.php'; ?>

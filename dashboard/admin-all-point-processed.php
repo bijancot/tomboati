@@ -186,7 +186,7 @@ include 'header.php';
                   </div>
                   <div class="modal-body">
                     <center>
-                      <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px" >
+                      <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px">
                     </center>
                   </div>
                   <div class="modal-footer">
@@ -285,4 +285,10 @@ include 'header.php';
           });
         });
       </script>
+      <?php if (isset($_SESSION['error'])) { ?>
+        <script>
+          swal("Gagal!", "<?php echo $_SESSION['error']; ?>", "error");
+        </script>
+      <?php unset($_SESSION['error']);
+      } ?>
       <?php include 'footer.php'; ?>

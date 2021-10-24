@@ -9,9 +9,9 @@ include 'header.php';
     <link rel="stylesheet" href="modalstyle.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
-        .mrg-3{
+        .mrg-3 {
             margin-right: 10px;
-        }   
+        }
     </style>
 </head>
 
@@ -108,7 +108,7 @@ include 'header.php';
                                             $tampil_refferal = mysqli_query($koneksi, "select * from mebers WHERE sponsor = '$rowsponsor[userid]'");
                                             $total_refferal = mysqli_num_rows($tampil_refferal);
 
-                                            if ($data['is_wa'] == null) {
+                                            if ($data['is_wa'] == null || $data['is_wa'] == 0) {
                                                 $kirim = '<a type="button" class="btn btn-success btn-xl m-l-5 m-t-5" data-toggle="modal" data-target="#modalWA' . $data['id'] . '"><i class="fab fa-whatsapp
                                                 ">&nbsp Chat</i>
                                                 </a>';
@@ -138,7 +138,7 @@ include 'header.php';
                                             <center>
                                                 <?php echo "<a href='#myModal' class='btn btn-info btn-sm m-l-5 m-t-5' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3'></i>Detail</a>"; ?>
                                                 <?php echo $kirim; ?>
-                                               </center>
+                                            </center>
                                         </td>
                                     </tr>
                         </div>
@@ -159,13 +159,17 @@ include 'header.php';
                                     <div class="modal-footer mb-4">
                                         <form action="update-statuswa.php" method="post">
                                             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-                                            <!-- <button type="submit" class="btn kirimwa btn-success"><i class="fab fa-whatsapp mr-3 "></i>Kirim</button> -->
-                                            <a type="submit" class="btn btn-success" href="https://web.whatsapp.com/send?phone='.<?php echo $rowsponsor['hphone']; ?>.'&text=Selamat <?php echo $rowsponsor['name']; ?>%0A
-Anda telah mendapatkan pendaftar baru pada aplikasi Tombo Ati Tour 	%26 Travel dengan No.HP : <?php echo $data['hphone']; ?> %0a %0A
-Silahkan melakukan sosialisasi terhadap pengguna baru dengan klik https://wa.me/<?php echo $data['hphone']; ?> %0a %0A
-Jumlah pendaftar referral Anda : <?php echo number_format($total_refferal, 0, ",", "."); ?> %0a %0A
-Terima kasih sudah bergabung bersama Tombo Ati Tour %26 Travel" target="_blank"><i class="fab fa-whatsapp mr-3"></i>Kirim</a>
+                                            <!-- <a id="btn1" class="btn btn-success" href="https://web.whatsapp.com/send?phone='.<?php echo $rowsponsor['hphone']; ?>.'&text=Selamat <?php echo $rowsponsor['name']; ?>%0A
+                                            Anda telah mendapatkan pendaftar baru pada aplikasi Tombo Ati Tour 	%26 Travel dengan No.HP : <?php echo $data['hphone']; ?> %0a %0A
+                                            Silahkan melakukan sosialisasi terhadap pengguna baru dengan klik https://wa.me/<?php echo $data['hphone']; ?> %0a %0A
+                                            Jumlah pendaftar referral Anda : <?php echo number_format($total_refferal, 0, ",", "."); ?> %0a %0A
+                                            Terima kasih sudah bergabung bersama Tombo Ati Tour %26 Travel" target="_blank"><i class="fab fa-whatsapp mr-3"></i>Kirim</a> -->
+
+                                            <button type="submit" onclick="window.open('https://web.whatsapp.com/send?phone=<?php echo $data['hphone']; ?>&text=Selamat <?php echo $rowsponsor['name']; ?>%0aAnda telah mendapatkan pendaftar baru pada aplikasi Tombo Ati Tour %26 Travel dengan No.HP : <?php echo $data['hphone']; ?> %0a %0ASilahkan melakukan sosialisasi terhadap pengguna baru dengan klik https://wa.me/<?php echo $data['hphone']; ?> %0a %0A Jumlah pendaftar referral Anda : <?php echo number_format($total_refferal); ?> %0a %0A Terima kasih sudah bergabung bersama Tombo Ati Tour %26 Travel'); return true; " id="btn2" class="btn kirimwa btn-success"><i class="fab fa-whatsapp mr-3 "></i>Kirim</button>
+
                                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
+
+
                                         </form>
                                     </div>
                                 </div>
@@ -300,6 +304,6 @@ Terima kasih sudah bergabung bersama Tombo Ati Tour %26 Travel" target="_blank">
                     // divsToHide[i].style.display = "none";
                 }
             </script>
-            
+
 
             <?php include 'footer.php'; ?>
