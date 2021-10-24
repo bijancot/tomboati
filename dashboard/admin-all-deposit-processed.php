@@ -1,6 +1,6 @@
 <?php
-session_start();
 include 'header.php';
+session_start();
 ?>
 
 <head>
@@ -276,4 +276,12 @@ include 'header.php';
           });
         });
       </script>
+
+      <?php if (isset($_SESSION['error'])) { ?>
+        <script>
+          swal("Gagal!", "<?php echo $_SESSION['error']; ?>", "error");
+        </script>
+      <?php unset($_SESSION['error']);
+      } ?>
+
       <?php include 'footer.php'; ?>

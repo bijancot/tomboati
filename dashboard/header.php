@@ -145,12 +145,16 @@
              scrollbar-width: none;
          }
 
-         .bg-danger{background-color:#dc3545!important}
+         .bg-danger {
+             background-color: #dc3545 !important
+         }
+
          a.bg-danger:focus,
          a.bg-danger:hover,
          button.bg-danger:focus,
-         button.bg-danger:hover{background-color:#bd2130!important}
-         
+         button.bg-danger:hover {
+             background-color: #bd2130 !important
+         }
      </style>
      <meta charset="UTF-8">
      <meta name="robots" content="noindex" />
@@ -170,6 +174,9 @@
      <link href="css/util.css" rel="stylesheet" type="text/css" />
      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
      <script type="text/javascript">
          function newPopup(url) {
              popupWindow = window.open(url, 'popUpWindow', 'height=500,width=700,left=300,top=300,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes')
@@ -255,7 +262,7 @@
                      <li class="dropdown user user-menu">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                              <i class="glyphicon glyphicon-bell"></i>
-                             <span class="badge badge-danger bg-danger "><?php if ($get_rows_paket_user != 0) echo '!'?></span>
+                             <span class="badge badge-danger bg-danger "><?php if ($get_rows_paket_user != 0) echo '!' ?></span>
                              <span> <i class="caret"></i></span>
                          </a>
                          <ul class="dropdown-menu text-white notif myDropDown">
