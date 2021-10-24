@@ -6,7 +6,7 @@ if (!$file) {
     $_SESSION["error"] = 'File Bukti Bayar Tidak Ada !';
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
-    $maxRead = 5 * 1024 * 1024; // 1MB
+    $maxRead = 1 * 1024 * 1024; // 1MB
     $fileName = basename($file);
 
     // Open a file in read mode.
