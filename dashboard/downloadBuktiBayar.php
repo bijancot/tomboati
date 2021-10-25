@@ -18,7 +18,7 @@ if (!$file) {
     while (!feof($fh)) {
         // Read and output the next chunk.
         echo fread($fh, $maxRead);
-        ob_flush();
+        ob_end_clean();
     }
     exit;
 }
