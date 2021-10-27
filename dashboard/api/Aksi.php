@@ -35,8 +35,8 @@ class Aksi
                 $RESPONSE = [
                     'error'                     => false,
                     'message'                   => 'Sukses Daftar',
-                    'data_db_dash_tombo'        => $DATA_TOMBO,
-                    'data_tomboati'             => $DATA_DASH
+                    'data_db_dash_tombo'        => $DATA_DASH,
+                    'data_tomboati'             => $DATA_TOMBO
                 ];
             } else {
                 $DATA_USER = $CEK_USER->fetch_array(MYSQLI_ASSOC);
