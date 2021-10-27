@@ -2,6 +2,20 @@
 session_start();
 include 'config.php';
 $file = $_GET['file'];
+
+$file_name    =    basename($file);
+$fn = file_put_contents($file_name, file_get_contents($file));
+header("Expires: 0");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Content-type: application/file");
+header('Content-length: ' . filesize($file_name));
+header('Content-disposition: attachment; filename="' . basename($file_name) . '"');
+readfile($file_name);
+exit();
+
 // if (!$file) {
 //     $_SESSION["error"] = 'File Bukti Bayar Tidak Ada !';
 //     header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -54,23 +68,23 @@ $file = $_GET['file'];
 //     readfile($file_name);
 //     exit();
 // }
-$url = $_GET['file'];
-if ($url != '')
-{
-    $filename = end(explode('/', $url));
-    $fileext = strtolower(end(explode('.', $filename)));
+// $url = $_GET['file'];
+// if ($url != '')
+// {
+//     $filename = end(explode('/', $url));
+//     $fileext = strtolower(end(explode('.', $filename)));
     
-    if ($fileext == 'jpg' || $fileext == 'jpeg') { $type = 'image/jpeg'; }
-    if ($fileext == 'png') { $type = 'image/png'; }
-    if ($fileext == 'gif') { $type = 'image/gif'; }
+//     if ($fileext == 'jpg' || $fileext == 'jpeg') { $type = 'image/jpeg'; }
+//     if ($fileext == 'png') { $type = 'image/png'; }
+//     if ($fileext == 'gif') { $type = 'image/gif'; }
     
-    //$size = filesize($url);
-    header("Content-Type: $type");
-    header("Content-disposition: attachment; filename=\"" . $filename . "\"");
-    header("Content-Transfer-Encoding: binary");
-    //header("Content-Length: " . $size);
-    readfile($url);
-}else{
-    $_SESSION["error"] = 'File Bukti Bayar Tidak Ada !';
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
+//     //$size = filesize($url);
+//     header("Content-Type: $type");
+//     header("Content-disposition: attachment; filename=\"" . $filename . "\"");
+//     header("Content-Transfer-Encoding: binary");
+//     //header("Content-Length: " . $size);
+//     readfile($url);
+// }else{
+//     $_SESSION["error"] = 'File Bukti Bayar Tidak Ada !';
+//         header('Location: ' . $_SERVER['HTTP_REFERER']);
+// }
