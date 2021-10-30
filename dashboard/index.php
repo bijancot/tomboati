@@ -350,11 +350,11 @@ include 'header.php';
                                     </div>
                                     <div class="modal-body">
                                         <center>
-                                            <img src="<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
+                                            <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px">
                                         </center>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="downloadBuktiBayar.php?file=<?= $data['bukti_bayar'] ?>" class="btn btn-primary"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
+                                        <a href="downloadBuktiBayar.php?file=<?= $data_deposit['photo'] ?>" class="btn btn-primary mb-4"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                                         <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
                                     </div>
                                 </div>
@@ -415,6 +415,9 @@ include 'header.php';
                                 </th>
                                 <th>
                                     <center>Date</i></center>
+                                </th>
+                                <th>
+                                    <center>Bukti Bayar </center>
                                 </th>
                                 <th>
                                     <center>Status </center>
@@ -491,10 +494,11 @@ include 'header.php';
                             </div>
                             <div class="modal-body">
                                 <center>
-                                    <img src="<?php echo $data_deposit['photo']; ?>" width="500px" height="500px">
+                                    <img src="<?php echo $data_deposit['photo']; ?>" min-width="200px" max-width="500px">
                                 </center>
                             </div>
                             <div class="modal-footer">
+                                <a href="downloadBuktiBayar.php?file=<?= $data_deposit['photo'] ?>" class="btn btn-primary mb-4"><i class="fa fa-download mr-3"></i>Bukti Bayar</a>
                                 <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
                             </div>
                         </div>
