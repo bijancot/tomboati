@@ -88,16 +88,16 @@ include 'header.php';
                                     } else if ($data['status'] == 'pending') {
                                         $status = '<a href="#" class="btn btn-sm btn-warning">pending</a>';
                                         if($data['gateway'] == "TUNAI"){
-                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning">on process</a>';
+                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning" style="margin-right: 4px">on process</a>';
                                         }else{
-                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning">on process</a><a href="upload-process.php?code=' . $data['code'] . '" class="btn btn-sm btn-primary">upload</a>';
+                                        $tindakan = '<a href="#" class="btn btn-sm btn-warning" style="margin-right: 4px">on process</a><a href="upload-process.php?code=' . $data['code'] . '" class="btn btn-sm btn-primary">upload</a>';
                                         }
                                         $delete = '';
                                         $class = '';
                                         $class2 = '';
                                     } else {
-                                        $status = '<a href="#" class="btn btn-sm btn-success">paid</a>';
-                                        $tindakan = '<a href="#" class="btn btn-sm btn-success">processed</a>';
+                                        $status = '<a href="#" class="btn btn-sm btn-success" style="margin-right: 4px">paid</a>';
+                                        $tindakan = '<a href="#" class="btn btn-sm btn-success" style="margin-right: 4px">processed</a>';
                                         $delete = '';
                                         $class = '';
                                         $class2 = '';
@@ -105,7 +105,7 @@ include 'header.php';
 
                                     $dataphoto = $data['photo'];
                                     if ($dataphoto != '') {
-                                        $photo = "<button type='button' class='btn btn-light' data-toggle='modal' data-target='#buktiTransfer$dataid'><img src=\"img/widget/receipt.svg\" style='width:20px;'></button>";
+                                        $photo = "<button type='button' class='btn btn-light' data-toggle='modal' data-target='#buktiTransfer$dataid'><i class='fa fa-file-invoice-dollar fa-2x' style='margin-top: -4px'></i></button>";
                                         ?>
                                         <!-- Modal Bukti Transfer -->
                                         <div class="modal fade" id="buktiTransfer<?php echo $dataid; ?>" role="dialog">

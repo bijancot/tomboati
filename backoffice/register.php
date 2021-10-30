@@ -306,7 +306,7 @@ if ($sum_register > 0) {
                                                                     <div class="row py-2">
                                                                         <div class="col-4">ID Link</div>
                                                                         <div class="col-1 text-left">:</div>
-                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" class="form-control" placeholder="ID Link" id="idUserEdit" />
+                                                                        <div class="col-7 text-left text-bold"><input name="upline" type="text" style="text-transform : lowercase;" onkeyup="return forceLower(this);" class="form-control" placeholder="ID Link" id="idUserEdit" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -349,12 +349,12 @@ if ($sum_register > 0) {
                                     <div class="col-md-12">
                                         <form class="forms-sample" action="register-add.php" method="post" enctype="multipart/form-data">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Freelance<span class="text-danger">*</span></label>
+                                                <label for="exampleInputUsername2" class="col-sm-3 col-form-label" >Freelance<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
                                                     <?php if ($username == "company") { ?>
-                                                        <input name="sponsor" type="text" class="form-control" id="sponsor" placeholder="Sponsor" value="<?php echo $_GET['sponsor']; ?>" required />
+                                                        <input name="sponsor" type="text" class="form-control" id="sponsor" style="text-transform : lowercase;" onkeyup="return forceLower(this);" placeholder="Sponsor" value="<?php echo $_GET['sponsor']; ?>" required />
                                                     <?php } else { ?>
-                                                        <input name="sponsor" type="text" class="form-control" id="sponsor" placeholder="Sponsor" value="<?php echo $row['userid']; ?>" readonly />
+                                                        <input name="sponsor" type="text" class="form-control" id="sponsor" style="text-transform : lowercase;" onkeyup="return forceLower(this);" placeholder="Sponsor" value="<?php echo $row['userid']; ?>" readonly />
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -362,19 +362,19 @@ if ($sum_register > 0) {
                                                 <?php if ($username == "company") { ?>
                                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link</label>
                                                     <div class="col-sm-9">
-                                                        <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" />
+                                                        <input name="upline" type="text" class="form-control" id="idLink" style="text-transform : lowercase;" onkeyup="return forceLower(this);" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" />
                                                     </div>
                                                 <?php } else { ?>
                                                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID Link<span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input name="upline" type="text" class="form-control" id="idLink" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
+                                                        <input name="upline" type="text" class="form-control" id="idLink" style="text-transform : lowercase;" onkeyup="return forceLower(this);" placeholder="ID Link" value="<?php echo $_GET['upline']; ?>" required />
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username<span class="text-danger">*</span></label>
                                                 <div class="col-sm-9">
-                                                    <input name="userid" type="text" class="form-control" id="userid" placeholder="Username" value="<?php echo $_GET['userid']; ?>" required />
+                                                    <input name="userid" type="text" class="form-control" id="userid" style="text-transform : lowercase;" onkeyup="return forceLower(this);" placeholder="Username" value="<?php echo $_GET['userid']; ?>" required />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -758,4 +758,9 @@ include 'footer.php';
             }
         });
     });
+
+    function forceLower(strInput) 
+    {
+        strInput.value=strInput.value.toLowerCase();
+    }
 </script>
