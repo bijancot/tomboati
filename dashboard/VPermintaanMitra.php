@@ -196,8 +196,18 @@ include 'config2.php';
                         </div>
                         <!-- end modal  -->
 
-                        <!-- modal detail  -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+
+                        <!-- <?php
+                                            $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
+                                        }
+
+
+                                ?> -->
+                        </tbody>
+                        </table>
+
+                         <!-- modal detail  -->
+                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -216,15 +226,6 @@ include 'config2.php';
                             </div>
                         </div>
                         <!-- end modal  -->
-
-                        <!-- <?php
-                                            $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
-                                        }
-
-
-                                ?> -->
-                        </tbody>
-                        </table>
 
                         <form method="get">
                             <div class="form-group row">
@@ -290,7 +291,7 @@ include 'config2.php';
             </div><!-- col-lg-12-->
             
             <?php include 'footer.php'; ?>
-            
+
             <script type="text/javascript">
                 function closeModal() {
                     $('.modal-backdrop').hide();
