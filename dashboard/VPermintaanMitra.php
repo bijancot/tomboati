@@ -164,6 +164,7 @@ include 'config2.php';
                                                 <a href='#modalVerif<?= $data['id'] ?>' class='btn btn-primary btn-sm m-l-5 m-t-5' data-toggle='modal'><i class='fa fa-check mr-3'></i>Verifikasi</a>
                                                 <?php echo "<a href='#myModal' class='btn btn-info btn-sm m-l-5 m-t-5' id='myBtn' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye mr-3'></i>Detail</a>"; ?>
                                             </center>
+
                                         </td>
                                     </tr>
                         </div>
@@ -195,19 +196,8 @@ include 'config2.php';
                             </div>
                         </div>
                         <!-- end modal  -->
-
-
-                        <!-- <?php
-                                            $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
-                                        }
-
-
-                                ?> -->
-                        </tbody>
-                        </table>
-
-                         <!-- modal detail  -->
-                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                        <!-- modal detail  -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -226,6 +216,14 @@ include 'config2.php';
                             </div>
                         </div>
                         <!-- end modal  -->
+                        <!-- <?php
+                                            $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
+                                        }
+
+
+                                ?> -->
+                        </tbody>
+                        </table>
 
                         <form method="get">
                             <div class="form-group row">
@@ -289,9 +287,6 @@ include 'config2.php';
                     </div>
                 </div>
             </div><!-- col-lg-12-->
-            
-            <?php include 'footer.php'; ?>
-
             <script type="text/javascript">
                 function closeModal() {
                     $('.modal-backdrop').hide();
@@ -326,3 +321,5 @@ include 'config2.php';
                     $("#flash-msg").delay(5000).fadeOut("slow");
                 });
             </script>
+
+            <?php include 'footer.php'; ?>
