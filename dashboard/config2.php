@@ -3,7 +3,7 @@
 $hostname = "tomboatitour.biz";
 $database = "tomboati";
 $username = "tomboati";
-$password = "1sampaitombo";
+$password = "1sampaitomboati";
 $koneksi2 =  mysqli_connect($hostname, $username, $password, $database);
 
 if (!$koneksi2) {
