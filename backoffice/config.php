@@ -1,7 +1,7 @@
 <?php
-$hostname = "dash-tombo.bgskr-project.my.id";
+$hostname = "tomboatitour.biz";
 $database = "dash_tombo";
-$username = "dash_tombo";
+$username = "tomboati";
 $password = "1sampaitomboati";
 
 $mysqli =  mysqli_connect($hostname, $username, $password, $database);
