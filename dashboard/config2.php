@@ -1,6 +1,6 @@
 <?php
 
-$hostname = "tomboati.bgskr-project.my.id";
+$hostname = "tomboatitour.biz";
 $database = "tomboati";
 $username = "tomboati";
 $password = "1sampaitombo";

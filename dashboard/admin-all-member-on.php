@@ -94,7 +94,7 @@ include 'header.php';
                     <th>
                       <center>Register Date </center>
                     </th>
-                    <th width=15%>
+                    <th width=18%>
                       <center>Aksi</center>
                     </th>
                   </tr>
@@ -152,27 +152,6 @@ include 'header.php';
                     </tr>
             </div>
 
-            <!-- modal detail -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="myModal">Detail Mitra</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="fetched-data"></div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- end modal -->
-
           <?php
                   $html_paging = "<li><a href='?halaman=" . $nomor_paging . "&batas=" . $default_batas . "'>" . $nomor_paging . "</a></li>";
                 }
@@ -193,6 +172,27 @@ include 'header.php';
             </div>
           </form>
           <center>
+
+            <!-- modal detail -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModal">Detail Mitra</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="fetched-data"></div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary mb-4" data-dismiss="modal"><i class="fa fa-times mr-3"></i>Tutup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end modal -->
 
 
             <?php
@@ -248,7 +248,7 @@ include 'header.php';
       </div><!-- col-lg-12-->
       
       <?php include 'footer.php'; ?>
-      
+
       <script type="text/javascript">
         function closeModal() {
           $('.modal-backdrop').hide();
