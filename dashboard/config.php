@@ -1,6 +1,6 @@
 <?php
 define("HOST", "tomboatitour.biz");
-define("USER", "dash_tombo");
+define("USER", "tomboati");
 define("PASSWORD", "1sampaitomboati");
 define("DATABASE", "dash_tombo");
 
