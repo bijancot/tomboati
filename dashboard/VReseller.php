@@ -94,7 +94,7 @@ include 'header.php';
                     <th>
                       <center>Register Date </center>
                     </th>
-                    <th width=15%>
+                    <th style="width:16%">
                       <center>Aksi</center>
                     </th>
                   </tr>
