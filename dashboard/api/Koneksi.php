@@ -1,9 +1,9 @@
 <?php
 class Koneksi
 {
-    private $HOST = 'tomboati.bgskr-project.my.id';
+    private $HOST = 'tomboatitour.biz';
     private $USER = 'tomboati';
-    private $PASS = '1sampaitombo';
+    private $PASS = '1sampaitomboati';
     private $con = null;
 
     public function __construct($DATABASE)
