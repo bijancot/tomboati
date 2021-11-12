@@ -45,6 +45,10 @@ if (($total_upline == 0) && ($username != $upline)) {
     if (mysqli_query($koneksi, "update mebers set upline='$upline', is_hr = '2' where id='$id'")) {
         // echo "BERHASIL";
 
+            // config tombo (Db)
+            require_once 'config-tombo.php';
+            mysqli_query($koneksi_tombo, "update USER_REGISTER set KODEREFERRALFROM='$upline' where IDUSERREGISTER='$id'");
+
         $_SESSION["berhasil"] = 'Pendaftaran mitra berhasil!';
         // echo '<script type="text/javascript">swal.fire("Berhasil!", "Pendaftaran mitra berhasil!", "success");</script>';
         echo "<script type='text/javascript'>document.location.href = 'register.php';</script>";
