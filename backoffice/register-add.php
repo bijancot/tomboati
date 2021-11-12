@@ -73,6 +73,20 @@ if (isset($_POST['button'])) {
         return $string;
     }
 
+    
+    function random_id()
+    {
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+        $rand_alnum = substr(str_shuffle($permitted_chars), 0, 3);
+        $date = date('Ymdhis');
+        $rand_result = $date.$rand_alnum;
+
+        return $rand_result;
+    }
+
+    // random id
+    $random_id = random_id();
+
     //cara panggil random
     $unik_password = randomPassword(8);
     $unik_transaksi = randomPassword(4);
@@ -199,21 +213,21 @@ if (isset($_POST['button'])) {
 
             $photo = $base_url . 'gambar_customer/users.png';
             $insert_dash = mysqli_query($koneksi, "INSERT INTO mebers 
-    (sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, bukti_bayar, photo, is_hr, usertoken, timer)
+    (id, sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, bukti_bayar, photo, is_hr, usertoken, timer)
     VALUES
-    ('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$no_hp', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password', '$buktibayar', '$photo', '$is_hr', 'tokenTomboAti', now())") or die(mysqli_error($koneksi));
+    ('$random_id','$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$no_hp', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password', '$buktibayar', '$photo', '$is_hr', 'tokenTomboAti', now())") or die(mysqli_error($koneksi));
 
             // config tombo (Db)
             require_once 'config-tombo.php';
             $insert_tombo = mysqli_query($koneksi_tombo, "INSERT INTO USER_REGISTER 
-            (STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, BUKTIBAYAR, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
+            (IDUSERREGISTER, STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, BUKTIBAYAR, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
             VALUES
-            ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$buktibayar', '$no_hp', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
+            ('$random_id','MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$buktibayar', '$no_hp', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
 
             if ($insert_tombo) {
-                $last_id = mysqli_insert_id($koneksi_tombo);
+                // $last_id = mysqli_insert_id($koneksi_tombo);
                 // echo ($last_id);
-                mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$last_id')");
+                mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$random_id')");
             }
             //Kirim Email
 
@@ -565,21 +579,21 @@ if (isset($_POST['button'])) {
 
             $photo = $base_url . 'gambar_customer/users.png';
             $insert_dash = mysqli_query($koneksi, "INSERT INTO mebers 
-(sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, bukti_bayar, photo, is_hr, usertoken, timer)
+(id, sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, bukti_bayar, photo, is_hr, usertoken, timer)
 VALUES
-('$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$no_hp', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password', '$buktibayar', '$photo', '$is_hr', 'tokenTomboAti', now())") or die(mysqli_error($koneksi));
+('$random_id','$sponsor', '$upline', '$g2', '$g3', '$g4', '$g5', '$g6', '$g7', '$g8', '$g9', '$g10', '$userid', '$name', '$no_hp', '$email', '$fotoktp', '$ktp', '$address', '$kecamatan', '$kota', '$propinsi', '$kode_pos', '$country', '$bank', '$cabang', '$rekening', '$atasnama', '$unik_password', '$buktibayar', '$photo', '$is_hr', 'tokenTomboAti', now())") or die(mysqli_error($koneksi));
 
             // config tombo (Db)
             require_once 'config-tombo.php';
             $insert_tombo = mysqli_query($koneksi_tombo, "INSERT INTO USER_REGISTER 
-        (STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, BUKTIBAYAR, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
+        (IDUSERREGISTER, STATUS_USER, NOMORKTP, EMAIL, PASSWORD, NAMALENGKAP, KODEREFERRALFROM, KODEREFERRAL, BUKTIBAYAR, NOMORHP, FILEKTP, FOTO, USERNAME, KECAMATAN, ALAMAT, USERTOKEN, PROVINSI, KODEPOS, ATASNAMA, REKENING, BANK, CABANG, NEGARA, KOTA, CREATED_AT)
         VALUES
-        ('MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$buktibayar', '$no_hp', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
+        ('$random_id', 'MITRA', '$ktp', '$email', '$unik_password', '$name', '$upline', '$sponsor', '$buktibayar', '$no_hp', '$fotoktp', '$photo', '$userid', '$kecamatan', '$address', 'tokenTomboAti', '$propinsi', '$kode_pos', '$atasnama', '$rekening', '$bank', '$cabang', '$country', '$kota', now())") or die(mysqli_error($koneksi_tombo));
 
             if ($insert_tombo) {
-                $last_id = mysqli_insert_id($koneksi_tombo);
+                // $last_id = mysqli_insert_id($koneksi_tombo);
                 // echo ($last_id);
-                mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$last_id')");
+                mysqli_query($koneksi_tombo, "INSERT INTO CHAT_ROOM (IDUSERREGISTER) VALUES ('$random_id')");
             }
             //Kirim Email
 
