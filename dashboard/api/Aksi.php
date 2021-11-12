@@ -7,13 +7,16 @@ class Aksi
     public function __construct()
     {
         require('Koneksi.php');
+        require('Fungsi.php');
         $this->conTombo = new Koneksi('tomboati');
         $this->conDash = new Koneksi('dash_tombo');
+        $this->id = new Fungsi();
     }
 
     public function register()
     {
         $POST = $_POST;
+        $id = $this->id->random_id();
         $CEK_REFERRAL = $this->executeDash("SELECT * FROM mebers WHERE userid ='" . $POST['referral'] . "' AND paket != 'USER'");
         $CEK_USER = $this->executeDash("SELECT * FROM mebers WHERE hphone ='" . $POST['nomorHP'] . "' ORDER BY paket DESC");
 
@@ -25,13 +28,13 @@ class Aksi
         } else {
             if ($CEK_USER->num_rows < 1) {
                 $DATE = $this->getDateNow();
-                $this->executeDash("INSERT INTO mebers(paket, hphone, sponsor, timer, usertoken) VALUES('USER','" . $POST['nomorHP'] . "','" . $POST['referral'] . "','" . $DATE . "','" . $POST['token'] . "')");
+                $this->executeDash("INSERT INTO mebers(id,paket, hphone, sponsor, timer, usertoken) VALUES('" . $id . "','USER','" . $POST['nomorHP'] . "','" . $POST['referral'] . "','" . $DATE . "','" . $POST['token'] . "')");
                 $USER = $this->executeDash("SELECT id FROM mebers WHERE timer ='" . $DATE . "'")->fetch_array(MYSQLI_ASSOC);
-                $this->executeTombo("INSERT INTO USER_REGISTER(STATUS_USER, IDUSERREGISTER, NOMORHP, KODEREFERRAL, CREATED_AT, USERTOKEN) VALUES('USER','" . $USER['id'] . "','" .  $POST['nomorHP'] . "','" . $POST['referral'] . "','" . $DATE . "','" . $POST['token'] . "')");
-                $this->executeTombo("INSERT INTO CHAT_ROOM(IDUSERREGISTER) VALUES('" . $USER['id'] . "')");
+                $this->executeTombo("INSERT INTO USER_REGISTER(STATUS_USER, IDUSERREGISTER, NOMORHP, KODEREFERRAL, CREATED_AT, USERTOKEN) VALUES('USER','" . $id . "','" .  $POST['nomorHP'] . "','" . $POST['referral'] . "','" . $DATE . "','" . $POST['token'] . "')");
+                $this->executeTombo("INSERT INTO CHAT_ROOM(IDUSERREGISTER) VALUES('" . $id . "')");
 
-                $DATA_TOMBO = $this->executeTombo("SELECT * FROM USER_REGISTER, CHAT_ROOM WHERE USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER AND USER_REGISTER.IDUSERREGISTER ='" . $USER['id'] . "'")->fetch_object();
-                $DATA_DASH = $this->executeDash("SELECT * FROM mebers WHERE id ='" . $USER['id'] . "'")->fetch_object();
+                $DATA_TOMBO = $this->executeTombo("SELECT * FROM USER_REGISTER, CHAT_ROOM WHERE USER_REGISTER.IDUSERREGISTER = CHAT_ROOM.IDUSERREGISTER AND USER_REGISTER.IDUSERREGISTER ='" . $id . "'")->fetch_object();
+                $DATA_DASH = $this->executeDash("SELECT * FROM mebers WHERE id ='" . $id . "'")->fetch_object();
                 $RESPONSE = [
                     'error'                     => false,
                     'message'                   => 'Sukses Daftar',

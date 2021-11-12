@@ -64,6 +64,15 @@ function cek_login($mysqli){
 	}
 }
 
+function random_id(){
+	$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+	$rand_alnum = substr(str_shuffle($permitted_chars), 0, 3);
+	$date = date('Ymdhis');
+	$rand_result = $date.$rand_alnum;
+
+	return $rand_result;
+}
+
 // BASE URL
 if (!function_exists('base_url')) {
 	function base_url($atRoot = FALSE, $atCore = FALSE, $parse = FALSE)

@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'tomboati.bgskr-project.my.id',
+	'hostname' => 'tomboatitour.biz',
 	'username' => 'tomboati',
-	'password' => '1sampaitombo',
+	'password' => '1sampaitomboati',
 	'database' => 'tomboati',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
