@@ -1,0 +1,20 @@
+name : Deploy tomboatitour.biz
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  first:
+    name: Pull from github
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy tomboati
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.MY_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd ${{ secrets.DIR }}
+          git pull origin main
