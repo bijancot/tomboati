@@ -1,9 +1,9 @@
 <?php
 
-$hostname = "dash-tombo.bgskr-project.my.id";
+$hostname = "tomboatitour.biz";
 $database = "dash_tombo";
-$username = "dash_tombo";
-$password = "1sampaitombo";
+$username = "tomboati";
+$password = "1sampaitomboati";
 $connect =  mysqli_connect($hostname, $username, $password, $database);
 
 if (!$connect) {
