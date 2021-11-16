@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+include('config2.php');
 include('fungsi.php');
 
 if(isset($_POST['update-deposit'])){
@@ -16,6 +17,7 @@ $upline=$dataTampilx['upline'];
 
 $query = mysqli_query($koneksi, "UPDATE hm2_pending_deposits SET status='processed' WHERE id='$id' ") or die(mysql_error());
 $query = mysqli_query($koneksi, "UPDATE mebers SET paket='RESELLER' WHERE userid='$userid' ") or die(mysql_error());
+$query = mysqli_query($koneksi2, "UPDATE USER_REGISTER SET STATUS_USER='RESELLER' WHERE USERNAME='$userid' ") or die(mysql_error());
 $query = mysqli_query($koneksi, "INSERT bonus_sponsor SET userid='$sponsor', bonusfrom='$userid', timer=now(), paid='0', bonus='200000', type='fee awal'")or die(mysql_error());
 
      $uplineid=$upline; 
