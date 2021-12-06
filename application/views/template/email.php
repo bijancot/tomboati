@@ -49,7 +49,7 @@
         <article>
             <p><strong>Reset Password</strong></p>
             <p>Yth. Bapak/Ibu <strong><?php echo $NAMALENGKAP?></strong></p>
-            <p>Anda telah melakukan permintaan untuk mereset password Akun Tombo Ati. Untuk melanjutkan prosesnya, <a href="https://tomboati.bgskr-project.my.id/Admin/ChangePassword?idUserRegister=<?php echo $IDUSERREGISTER?>">silahkan mengikuti link ini</a></p>
+            <p>Anda telah melakukan permintaan untuk mereset password Akun Tombo Ati. Untuk melanjutkan prosesnya, <a href="https://tomboatitour.biz/Admin/ChangePassword?idUserRegister=<?php echo $IDUSERREGISTER?>">silahkan mengikuti link ini</a></p>
             <p>Namun bila Anda tidak pernah meminta proses ini, maka kami berharap Anda mengabaikan email ini <br></p>
             <p>Terima Kasih,<br></p>
             <p>&nbsp;</p>
