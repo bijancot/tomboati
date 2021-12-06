@@ -73,7 +73,7 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="tanggalKeberangkatan">Tanggal Keberangkatan</label>
-                                                <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" required/>
+                                                <input name="tanggalKeberangkatan" class="form-control" id="tanggalKeberangkatan" type="text" placeholder="Masukkan Tanggal" autocomplete="off" required/>
                                             </div>
                                         </div>
                                     </div>
