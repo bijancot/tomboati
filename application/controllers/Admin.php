@@ -26,7 +26,7 @@ class Admin extends CI_Controller
             );
             $this->session->set_userdata($session);
 
-            redirect('Dashboard');
+            redirect('Home');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email / password salah! </div>');
             redirect('Admin');

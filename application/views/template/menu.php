@@ -1,5 +1,5 @@
 <div class="nav accordion" id="accordionSidenav">
-    <a class="nav-link " href="<?php echo site_url('Dashboard'); ?>">
+    <a class="nav-link " href="<?php echo site_url('Home'); ?>">
         <i class="fas fa-home ml-2 mr-2 fa-lg fa-fw"></i>
         Dashboard
     </a>

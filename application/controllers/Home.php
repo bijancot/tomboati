@@ -1,5 +1,5 @@
 <?php
-class Dashboard extends CI_Controller
+class Home extends CI_Controller
 {
     public function __construct()
     {
@@ -30,6 +30,6 @@ class Dashboard extends CI_Controller
         $data['totalPaketNonaktif']	= $this->MPaket->totalPaketNonaktif();
         $data['totalChat']		= $this->MJamaah->totalChat();
         //Change this 
-        $this->template->view('admin/VDashboard', $data);
+        $this->template->view('admin/VHome', $data);
     }
 }
