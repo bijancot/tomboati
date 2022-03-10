@@ -210,7 +210,7 @@ if (isset($_POST['button'])) {
             }
 
             $no_hp = "62" . $hphone;
-
+            $name = addslashes($name);
             $photo = $base_url . 'gambar_customer/users.png';
             $insert_dash = mysqli_query($koneksi, "INSERT INTO mebers 
     (id, sponsor, upline, g2, g3, g4, g5, g6, g7, g8, g9, g10, userid, name, hphone, email, fotoktp, ktp, address, kecamatan, kota, propinsi, kode_pos, country, bank, cabang, rekening, atasnama, passw, bukti_bayar, photo, is_hr, usertoken, timer)
